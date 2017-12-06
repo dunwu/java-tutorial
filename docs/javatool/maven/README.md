@@ -1,8 +1,5 @@
 # Maven
 
-## 目录
+## 知识结构图
 
-* [Maven 快速指南（一）](maven-quickstart-01.html)
-* [Maven 快速指南（二）](maven-quickstart-02.html)
-* [Maven 之 settings.xml 详解](maven-settings-config.html)
-* [Maven 排错](maven-faq.html)
+![maven.png](http://upload-images.jianshu.io/upload_images/3101171-b5325d3c12338b65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)

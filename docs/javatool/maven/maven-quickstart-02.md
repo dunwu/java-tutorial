@@ -1,13 +1,16 @@
 ---
 title: Maven 快速指南（二）
-date: 2016/06/16
+date: 2016/11/10
 categories:
 - javatool
 tags:
 - java
 - tool
 - build
+- maven
 ---
+
+# Maven 快速指南（二）
 
 ## 使用指导
 

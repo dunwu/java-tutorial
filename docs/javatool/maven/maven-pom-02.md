@@ -1,4 +1,16 @@
-# [maven]pom.xml详解二
+---
+title: Maven 之 pom.xml 详解（二）
+date: 2016/11/10
+categories:
+- javatool
+tags:
+- java
+- tool
+- build
+- maven
+---
+
+# Maven 之 pom.xml 详解（二）
 
 ## 构建配置
 
