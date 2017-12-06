@@ -4,8 +4,7 @@ date: 2016/03/20
 categories:
 - javatool
 tags:
-- java
-- tool
+- javatool
 - IDE
 ---
 

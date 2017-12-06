@@ -4,8 +4,7 @@ date: 2017-11-14
 categories:
 - javatool
 tags:
-- java
-- tool
+- javatool
 - log
 ---
 
