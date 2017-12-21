@@ -24,6 +24,17 @@
 
 ### Java 库
 
+* [Java 库](docs/javalib/README.md)
+  * [ActiveMQ 使用小结](docs/javalib/activemq.md)
+  * [Dozer 使用小结](docs/javalib/dozer.md)
+  * [细说 Java 主流日志工具库](docs/javalib/java-log.md)
+  * [JavaMail 使用小结](docs/javalib/javamail.md)
+  * [jsoup 使用小结](docs/javalib/jsoup.md)
+  * [JUnit 使用小结](docs/javalib/junit.md)
+  * [Lombok 使用小结](docs/javalib/lombok.md)
+  * [Thumbnailator 使用小结](docs/javalib/thumbnailator.md)
+  * [ZXing 使用小结](docs/javalib/zxing.md)
+
 ### Java 工具
 
 * [构建工具](docs/javatool/build/README.md)
