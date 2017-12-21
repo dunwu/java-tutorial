@@ -1,4 +1,15 @@
-# nginx快速入门
+---
+title: nginx 快速入门
+date: 2016-10-10
+categories:
+- web
+tags:
+- server
+- nginx
+- load balance
+---
+
+# nginx 快速入门
 
 ## 概述
 

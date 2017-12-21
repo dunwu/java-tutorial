@@ -39,7 +39,9 @@
 
 * [数据库](extend/database.md)
 * [数据结构和算法](extend/algorithm.md)
-* [Linux](extend/linux.md)
+* [操作系统](extend/os.md)
+* [网络](extend/web/README.md)
+  * [nginx 快速入门](extend/web/nginx-quickstart.md)
 
 ------
 
