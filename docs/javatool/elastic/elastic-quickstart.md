@@ -1,5 +1,5 @@
 ---
-title: ELK 快速指南
+title: Elastic 快速指南
 date: 2017-11-14
 categories:
 - javatool
@@ -8,7 +8,7 @@ tags:
 - log
 ---
 
-# ELK 快速指南
+# Elastic 快速指南
 
 ## 概念
 
@@ -28,7 +28,7 @@ ELK 是 elastic 公司旗下三款产品 [ElasticSearch](https://www.elastic.co/
 
 而通过 ELK 这套解决方案，可以同时实现日志收集、日志搜索和日志分析的功能。
 
-### ELK 架构
+### Elastic 架构
 
 ![static/images/deploy3.png](https://www.elastic.co/guide/en/logstash/current/static/images/deploy3.png)
 

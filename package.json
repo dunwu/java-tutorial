@@ -1,0 +1,24 @@
+{
+  "name": "java-stack",
+  "description": "Java 技术栈",
+  "scripts": {
+    "clean": "rimraf _book",
+    "prepare": "gitbook install",
+    "build": "gitbook build ./ --log=debug --debug",
+    "start": "gitbook serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dunwu/java-stack.git"
+  },
+  "author": "Zhang Peng <forbreak@163.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dunwu/java-stack/issues"
+  },
+  "homepage": "https://github.com/dunwu/java-stack",
+  "devDependencies": {
+    "gitbook-cli": "^2.3.2",
+    "rimraf": "^2.6.1"
+  }
+}

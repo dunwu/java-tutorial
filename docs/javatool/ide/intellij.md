@@ -8,6 +8,8 @@ tags:
 - IDE
 ---
 
+# Intellij IDEA 使用小结
+
 ## 快捷键
 
 ### 核心快捷键
