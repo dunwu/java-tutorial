@@ -254,6 +254,28 @@ IntelliJ IDEA 作为一个以快捷键为中心的 IDE，为大多数操作建�
 
 ![solarized show](https://github.com/altercation/solarized/raw/master/img/solarized-vim.png)
 
+## 破解
+
+Intellij 是一个收费的 IDE，坦白说有点小贵，买不起。
+
+所以，很惭愧，只好用下破解方法了。网上有很多使用注册码的网文，但是注册码不稳定，随时可能被封。还是自行搭建一个注册服务器比较稳定。我使用了 [ilanyu](http://blog.lanyus.com/) 博文 [IntelliJ IDEA License Server本地搭建教程](http://blog.lanyus.com/archives/174.html)  的方法，亲测十分有效。
+
+我的备用地址：[百度云盘](https://yun.baidu.com/disk/home?#list/vmode=list&path=%2F%E8%BD%AF%E4%BB%B6%2F%E5%BC%80%E5%8F%91%E8%BD%AF%E4%BB%B6%2FIDE)
+
+下载并解压文中的压缩包到本地，选择适合操作系统的版本运行。
+
+如果是在 Linux 上运行，推荐创建一个脚本，代码如下：
+
+```sh
+# 使用 nohup 创建守护进程，运行 IntelliJIDEALicenseServer_linux_amd64
+# 如果运行在其他 Linux 发行版本，替换执行的脚本即可
+nohup sh IntelliJIDEALicenseServer_linux_amd64 2>&1
+```
+
+这样做是因为：大部分人使用 linux 是使用仿真器连接虚拟机，如果断开连接，进程也会被 kill，每次启动这个注册服务器很麻烦不是吗？而启动了守护进程，则不会出现这种情况，只有你主动 kill 进程才能将其干掉。
+
+Windows 版本是 exe 程序，将其设为开机自动启动即可，别告诉我你不知道怎么设置开机自动启动。
+
 ## 参考资料
 
 [IntelliJ-IDEA-Tutorial](https://github.com/judasn/IntelliJ-IDEA-Tutorial)
