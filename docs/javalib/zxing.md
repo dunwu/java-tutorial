@@ -4,6 +4,7 @@ date: 2017/01/17
 categories:
 - javalib
 tags:
+- java
 - javalib
 - barcode
 ---

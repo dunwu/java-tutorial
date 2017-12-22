@@ -4,6 +4,7 @@ date: 2017/11/10
 categories:
 - javatool
 tags:
+- java
 - javatool
 - build
 - maven

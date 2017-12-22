@@ -4,6 +4,7 @@ date: 2017/8/18
 categories:
 - javalib
 tags:
+- java
 - javalib
 - jms
 ---

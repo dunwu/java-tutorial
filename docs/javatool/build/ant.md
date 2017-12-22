@@ -4,6 +4,7 @@ date: 2015-04-19
 categories:
 - javatool
 tags:
+- java
 - javatool
 - build
 ---

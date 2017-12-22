@@ -4,6 +4,7 @@ date: 2017/11/09
 categories:
 - javalib
 tags:
+- java
 - javalib
 - bean
 ---

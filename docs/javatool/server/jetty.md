@@ -4,6 +4,7 @@ date: 2017/11/08
 categories:
 - javatool
 tags:
+- java
 - javatool
 - server
 ---
