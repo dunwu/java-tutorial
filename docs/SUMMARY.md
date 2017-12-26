@@ -38,8 +38,8 @@
   * [Maven 排错](javatool/build/maven/maven-faq.md)
   * [Ant 简易教程](javatool/build/ant.md)
 * [Elastic](javatool/elastic/README.md)
-  * [Elastic 快速指南](javatool/elastic/elastic-quickstart.md)
-  * [Elastic 学习资源](javatool/elastic/resources.md)
+  * [Elastic 技术栈之快速入门](javatool/elastic/elastic-quickstart.md)
+  * [Elastic 技术栈之 Logstash 基础](javatool/elastic/elastic-logstash.md)
 * [Java IDE](javatool/ide/README.md)
   * [Intellij IDEA 使用小结](javatool/ide/intellij.md)
   * [Eclipse 使用小结](javatool/ide/eclipse.md)
@@ -57,4 +57,4 @@
 ------
 
 * [附录](appendix/README.md)
-  * [Java 学习资源](spring/appendix/resources.md)
+  * [Java 学习资源](appendix/resources.md)

@@ -48,8 +48,8 @@
   * [Maven 排错](docs/javatool/build/maven/maven-faq.md)
   * [Ant 简易教程](docs/javatool/build/ant.md)
 * [Elastic](docs/javatool/elastic/README.md)
-  * [Elastic 快速指南](docs/javatool/elastic/elastic-quickstart.md)
-  * [Elastic 学习资源](docs/javatool/elastic/resources.md)
+  * [Elastic 技术栈之快速指南](docs/javatool/elastic/elastic-quickstart.md)
+  * [Elastic 技术栈之 Logstash 基础](docs/javatool/elastic/elastic-logstash.md)
 * [Java IDE](docs/javatool/ide/README.md)
   * [Intellij IDEA 使用小结](docs/javatool/ide/intellij.md)
   * [Eclipse 使用小结](docs/javatool/ide/eclipse.md)
@@ -61,7 +61,9 @@
 * [数据库](docs/extend/database.md)
 * [数据结构和算法](docs/extend/algorithm.md)
 * [Linux](docs/extend/linux.md)
-
+* [网络](docs/extend/web/README.md)
+  * [nginx 快速入门](docs/extend/web/nginx-quickstart.md)
+  
 ### [附录](docs/appendix/README.md)
 
-* [Java 学习资源](docs/spring/appendix/resources.md)
+* [Java 学习资源](docs/appendix/resources.md)

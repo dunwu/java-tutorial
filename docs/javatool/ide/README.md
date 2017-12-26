@@ -2,5 +2,5 @@
 
 ## 目录
 
-* [Intellij IDEA 使用小结](intellij.html)
-* [Eclipse 使用小结](eclipse.html)
+* [Intellij IDEA 使用小结](intellij.md)
+* [Eclipse 使用小结](eclipse.md)

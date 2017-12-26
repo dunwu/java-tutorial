@@ -1,15 +1,16 @@
 ---
-title: Elastic 快速指南
-date: 2017-11-14
+title: Elastic 技术栈之快速入门
+date: 2017-12-06
 categories:
 - javatool
 tags:
 - java
 - javatool
 - log
+- elastic
 ---
 
-# Elastic 快速指南
+# Elastic 技术栈之快速入门
 
 ## 概念
 
