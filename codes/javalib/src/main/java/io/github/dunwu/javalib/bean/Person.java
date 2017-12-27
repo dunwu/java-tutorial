@@ -1,6 +1,7 @@
 package io.github.dunwu.javalib.bean;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 /**
@@ -10,6 +11,7 @@ import lombok.ToString;
  */
 @Data
 @ToString(exclude = "age")
+@EqualsAndHashCode(exclude = { "age", "sex" })
 public class Person {
     private String name;
     private Integer age;

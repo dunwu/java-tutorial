@@ -3,6 +3,7 @@ package io.github.dunwu.javalib.bean;
 import java.util.List;
 
 import lombok.Data;
+import lombok.NonNull;
 
 /**
  * Lombok 示例

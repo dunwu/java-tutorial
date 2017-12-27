@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import lombok.Cleanup;
@@ -15,11 +16,6 @@ import lombok.Cleanup;
  * @author Zhang Peng
  */
 public class LombokTest {
-    @Test
-    public void testGetterAndSetter() {
-        Employee employee = new Employee();
-    }
-
     @Test
     public void testData() {
         Person huangshiren = new Person();
@@ -71,5 +67,26 @@ public class LombokTest {
         person.setSex("男");
         System.out.println(person.toString());
         // output: Person(name=张三, sex=男)
+    }
+
+    @Test
+    public void testEqualsAndHashCode() {
+        Person person = new Person();
+        person.setName("张三");
+        person.setAge(20);
+        person.setSex("男");
+
+        Person person2 = new Person();
+        person2.setName("张三");
+        person2.setAge(18);
+        person2.setSex("男");
+
+        Person person3 = new Person();
+        person3.setName("李四");
+        person3.setAge(20);
+        person3.setSex("男");
+
+        Assert.assertEquals(person, person2);
+        Assert.assertNotEquals(person, person3);
     }
 }
