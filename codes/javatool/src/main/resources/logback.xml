@@ -32,7 +32,6 @@
   <appender name="ELK-UDP" class="net.logstash.logback.appender.LogstashSocketAppender">
     <host>192.168.28.32</host>
     <port>9250</port>
-    <customFields>{"appname":"myWebservice"}</customFields>
   </appender>
   <appender name="ELK-TCP" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
     <!--
@@ -40,7 +39,9 @@
     相当于和 logstash 建立了管道，将日志数据定向传输到 logstash
     -->
     <destination>192.168.28.32:9251</destination>
-    <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder"/>
+    <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder">
+      <customFields>{"appname":"javatool"}</customFields>
+    </encoder>
   </appender>
 
   <!-- RollingFileAppender end -->
