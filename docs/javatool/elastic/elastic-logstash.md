@@ -323,19 +323,19 @@ bin/logstash -f logstash-input-stdin.conf
 
    （1）创建 `logstash-input-tcp.conf` ：
 
-   ```
-   input {
-    tcp {
-      port => 9251
-      codec => json_lines
-      mode => server
-    }
-   }
-   output {
-     elasticsearch { hosts => ["localhost:9200"] }
-     stdout { codec => rubydebug }
-   }
-   ```
+```
+input {
+tcp {
+  port => 9251
+  codec => json_lines
+  mode => server
+}
+}
+output {
+ elasticsearch { hosts => ["localhost:9200"] }
+ stdout { codec => rubydebug }
+}
+```
 
    更多配置项可以参考：https://www.elastic.co/guide/en/logstash/current/plugins-inputs-tcp.html
 
@@ -346,46 +346,46 @@ bin/logstash -f logstash-input-stdin.conf
 
    （1）在 Java 应用的 pom.xml 中引入 jar 包：
 
-   ```xml
-   <dependency>
-     <groupId>net.logstash.logback</groupId>
-     <artifactId>logstash-logback-encoder</artifactId>
-     <version>4.11</version>
-   </dependency>
+```xml
+<dependency>
+ <groupId>net.logstash.logback</groupId>
+ <artifactId>logstash-logback-encoder</artifactId>
+ <version>4.11</version>
+</dependency>
 
-   <!-- logback 依赖包 -->
-   <dependency>
-     <groupId>ch.qos.logback</groupId>
-     <artifactId>logback-core</artifactId>
-     <version>1.2.3</version>
-   </dependency>
-   <dependency>
-     <groupId>ch.qos.logback</groupId>
-     <artifactId>logback-classic</artifactId>
-     <version>1.2.3</version>
-   </dependency>
-   <dependency>
-     <groupId>ch.qos.logback</groupId>
-     <artifactId>logback-access</artifactId>
-     <version>1.2.3</version>
-   </dependency>
-   ```
+<!-- logback 依赖包 -->
+<dependency>
+ <groupId>ch.qos.logback</groupId>
+ <artifactId>logback-core</artifactId>
+ <version>1.2.3</version>
+</dependency>
+<dependency>
+ <groupId>ch.qos.logback</groupId>
+ <artifactId>logback-classic</artifactId>
+ <version>1.2.3</version>
+</dependency>
+<dependency>
+ <groupId>ch.qos.logback</groupId>
+ <artifactId>logback-access</artifactId>
+ <version>1.2.3</version>
+</dependency>
+```
 
    （2）接着，在 logback.xml 中添加 appender
 
-   ```xml
-   <appender name="ELK-TCP" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-     <!--
-     destination 是 logstash 服务的 host:port，
-     相当于和 logstash 建立了管道，将日志数据定向传输到 logstash
-     -->
-     <destination>192.168.28.32:9251</destination>
-     <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder"/>
-   </appender>
-   <logger name="io.github.dunwu.spring" level="TRACE" additivity="false">
-     <appender-ref ref="ELK-TCP" />
-   </logger>
-   ```
+```xml
+<appender name="ELK-TCP" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+ <!--
+ destination 是 logstash 服务的 host:port，
+ 相当于和 logstash 建立了管道，将日志数据定向传输到 logstash
+ -->
+ <destination>192.168.28.32:9251</destination>
+ <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder"/>
+</appender>
+<logger name="io.github.dunwu.spring" level="TRACE" additivity="false">
+ <appender-ref ref="ELK-TCP" />
+</logger>
+```
 
    （3）接下来，就是 logback 的具体使用 ，如果对此不了解，不妨参考一下我的这篇博文：[细说 Java 主流日志工具库](https://github.com/dunwu/java-stack/blob/master/docs/javalib/java-log.md) 。
 
@@ -399,18 +399,18 @@ UDP 和 TCP 的使用方式大同小异。
 
    （1）创建 `logstash-input-udp.conf` ：
 
-   ```
-   input {
-    udp {
-      port => 9250
-      codec => json
-    }
-   }
-   output {
-     elasticsearch { hosts => ["localhost:9200"] }
-     stdout { codec => rubydebug }
-   }
-   ```
+```
+input {
+udp {
+  port => 9250
+  codec => json
+}
+}
+output {
+ elasticsearch { hosts => ["localhost:9200"] }
+ stdout { codec => rubydebug }
+}
+```
 
    更多配置项可以参考：https://www.elastic.co/guide/en/logstash/current/plugins-inputs-udp.html
 
@@ -425,15 +425,15 @@ UDP 和 TCP 的使用方式大同小异。
 
    （2）接着，在 logback.xml 中添加 appender
 
-   ```xml
-   <appender name="ELK-UDP" class="net.logstash.logback.appender.LogstashSocketAppender">
-     <host>192.168.28.32</host>
-     <port>9250</port>
-   </appender>
-   <logger name="io.github.dunwu.spring" level="TRACE" additivity="false">
-     <appender-ref ref="ELK-UDP" />
-   </logger>
-   ```
+ ```xml
+ <appender name="ELK-UDP" class="net.logstash.logback.appender.LogstashSocketAppender">
+   <host>192.168.28.32</host>
+   <port>9250</port>
+ </appender>
+ <logger name="io.github.dunwu.spring" level="TRACE" additivity="false">
+   <appender-ref ref="ELK-UDP" />
+ </logger>
+ ```
 
    （3）接下来，就是 logback 的具体使用 ，如果对此不了解，不妨参考一下我的这篇博文：[细说 Java 主流日志工具库](https://github.com/dunwu/java-stack/blob/master/docs/javalib/java-log.md) 。
 

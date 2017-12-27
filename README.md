@@ -18,24 +18,24 @@
 
 ### [JavaEE](https://github.com/dunwu/javaee-notes)
 
-### Java 框架
+### [Java 框架](docs/framework/README.md)
 
 * [Spring](https://github.com/dunwu/spring-notes)
+* [Dubbo](docs/framework/dubbo/README.md)
 
-### Java 库
+### [Java 库](docs/javalib/README.md)
 
-* [Java 库](docs/javalib/README.md)
-  * [ActiveMQ 使用小结](docs/javalib/activemq.md)
-  * [Dozer 使用小结](docs/javalib/dozer.md)
-  * [细说 Java 主流日志工具库](docs/javalib/java-log.md)
-  * [JavaMail 使用小结](docs/javalib/javamail.md)
-  * [jsoup 使用小结](docs/javalib/jsoup.md)
-  * [JUnit 使用小结](docs/javalib/junit.md)
-  * [Lombok 使用小结](docs/javalib/lombok.md)
-  * [Thumbnailator 使用小结](docs/javalib/thumbnailator.md)
-  * [ZXing 使用小结](docs/javalib/zxing.md)
+* [ActiveMQ 使用小结](docs/javalib/activemq.md)
+* [Dozer 使用小结](docs/javalib/dozer.md)
+* [细说 Java 主流日志工具库](docs/javalib/java-log.md)
+* [JavaMail 使用小结](docs/javalib/javamail.md)
+* [jsoup 使用小结](docs/javalib/jsoup.md)
+* [JUnit 使用小结](docs/javalib/junit.md)
+* [Lombok 使用小结](docs/javalib/lombok.md)
+* [Thumbnailator 使用小结](docs/javalib/thumbnailator.md)
+* [ZXing 使用小结](docs/javalib/zxing.md)
 
-### Java 工具
+### [Java 工具](docs/javatool/README.md)
 
 * [构建工具](docs/javatool/build/README.md)
   * [Maven 快速指南（一）](docs/javatool/build/maven/maven-quickstart-01.md)
@@ -56,11 +56,11 @@
 * [Java 服务器](docs/javatool/server/README.md)
   * [Jetty 使用小结](docs/javatool/server/jetty.md)
 
-### 技术扩展
+### [技术扩展](docs/extend/README.md)
 
 * [数据库](docs/extend/database.md)
 * [数据结构和算法](docs/extend/algorithm.md)
-* [Linux](docs/extend/linux.md)
+* [Linux](docs/extend/os.md)
 * [网络](docs/extend/web/README.md)
   * [nginx 快速入门](docs/extend/web/nginx-quickstart.md)
   
