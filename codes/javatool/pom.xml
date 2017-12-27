@@ -17,6 +17,12 @@
   <dependencies>
     <!-- log start -->
     <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.17</version>
+    </dependency>
+
+    <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-core</artifactId>
       <version>1.2.3</version>
@@ -44,11 +50,6 @@
       <version>4.12</version>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>commons-codec</groupId>
-      <artifactId>commons-codec</artifactId>
-      <version>1.4</version>
-    </dependency>
   </dependencies>
   <!-- RELATIONSHIP SETTINGS END -->
 
@@ -72,6 +73,7 @@
         <directory>src/main/resources</directory>
         <includes>
           <include>logback.xml</include>
+          <include>log4j.xml</include>
         </includes>
         <!--<targetPath>/abc</targetPath>-->
       </resource>
