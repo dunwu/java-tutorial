@@ -39,8 +39,12 @@
     相当于和 logstash 建立了管道，将日志数据定向传输到 logstash
     -->
     <destination>192.168.28.32:9251</destination>
+    <keepAliveDuration>5 minutes</keepAliveDuration>
+    <reconnectionDelay>6 second</reconnectionDelay>
+    <writeBufferSize>16384</writeBufferSize>
     <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder">
-      <customFields>{"appname":"javatool"}</customFields>
+      <customFields>{"appname":"metis"}</customFields>
+      <customFields>{"subappname":"metis-vdisk"}</customFields>
     </encoder>
   </appender>
 
