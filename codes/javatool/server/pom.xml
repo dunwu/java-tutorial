@@ -47,11 +47,11 @@
     <!-- javaee end -->
 
     <!-- server betgin -->
-<dependency>
-  <groupId>org.apache.tomcat.embed</groupId>
-  <artifactId>tomcat-embed-core</artifactId>
-  <version>${tomcat.version}</version>
-</dependency>
+    <dependency>
+      <groupId>org.apache.tomcat.embed</groupId>
+      <artifactId>tomcat-embed-core</artifactId>
+      <version>${tomcat.version}</version>
+    </dependency>
     <dependency>
       <groupId>org.apache.tomcat.embed</groupId>
       <artifactId>tomcat-embed-el</artifactId>
@@ -88,6 +88,19 @@
 
   <!-- [Part 2] BUILD SETTINGS BEGIN -->
   <build>
+    <plugins>
+      <!-- 由于一直没找到 tomcat8 的插件，所以弃用 -->
+      <!--<plugin>
+        <groupId>org.apache.tomcat.maven</groupId>
+        <artifactId>tomcat7-maven-plugin</artifactId>
+        <version>2.2</version>
+        <configuration>
+          <port>8080</port>
+          <path>/${project.artifactId}</path>
+          <uriEncoding>UTF-8</uriEncoding>
+        </configuration>
+      </plugin>-->
+    </plugins>
   </build>
   <!-- [Part 2] BUILD SETTINGS END -->
 

@@ -19,7 +19,7 @@
       <Host name="localhost" createDirs="false" appBase="${catalina.base}/../../../../" unpackWARs="false"
             autoDeploy="false"
             deployOnStartup="false" failCtxIfServletStartFails="true">
-        <Context path="" docBase="src/main/webapp" reloadable="false" logEffectiveWebXml="false" privileged="false"
+        <Context path="/javatool-server" docBase="src/main/webapp" reloadable="false" logEffectiveWebXml="false" privileged="false"
                  swallowOutput="false" workDir="${catalina.base}/work"/>
       </Host>
     </Engine>

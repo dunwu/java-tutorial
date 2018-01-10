@@ -3,6 +3,7 @@
 classes
 target
 logs
+work
 
 # temp files
 *.class
