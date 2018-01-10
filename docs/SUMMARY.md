@@ -44,6 +44,8 @@
   * [Intellij IDEA 使用小结](javatool/ide/intellij.md)
   * [Eclipse 使用小结](javatool/ide/eclipse.md)
 * [Java 服务器](javatool/server/README.md)
+  * [Tomcat](javatool/server/tomcat/README.md)
+    * [Tomcat 快速入门](javatool/server/tomcat/tomcat-quickstart.md)
   * [Jetty 使用小结](javatool/server/jetty.md)
 
 ## 技术扩展
