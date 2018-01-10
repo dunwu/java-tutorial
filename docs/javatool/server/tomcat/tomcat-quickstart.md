@@ -90,6 +90,8 @@ tar -zxf apache-tomcat-8.5.24.tar.gz
 
 启动后，访问 http://localhost:8080 ，可以看到 Tomcat 安装成功的测试页面。
 
+![tomcat.png](images/tomcat.png)
+
 ## 配置
 
 本节将列举一些重要、常见的配置项。详细的 Tomcat8 配置可以参考 [Tomcat 8 配置官方参考文档](http://tomcat.apache.org/tomcat-8.5-doc/config/index.html) 。
