@@ -46,6 +46,7 @@
 * [Java 服务器](javatool/server/README.md)
   * [Tomcat](javatool/server/tomcat/README.md)
     * [Tomcat 快速入门](javatool/server/tomcat/tomcat-quickstart.md)
+    * [Tomcat 工作原理](javatool/server/tomcat/tomcat-how-to-work.md)
   * [Jetty 使用小结](javatool/server/jetty.md)
 
 ## 技术扩展
