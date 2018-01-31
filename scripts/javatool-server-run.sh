@@ -42,7 +42,7 @@ execBootScript(){
   # 启动类
   bootstrapClass="io.github.dunwu.javatool.server.TomcatServer"
 
-  ${BOOT_SCRIPT} ${APP_NAME} ${oper} "${javaArgs}" "${classpathArgs}" "${bootstrapClass}"
+  ${SCRIPT_PATH}/embed-tomcat-server-boot.sh ${APP_NAME} ${oper} "${javaArgs}" "${classpathArgs}" "${bootstrapClass}"
 }
 
 ######################################## MAIN ########################################
@@ -60,7 +60,7 @@ export LANG="zh_CN.UTF-8"
 #export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$MAVEN_HOME/bin:$PATH
 
 # 关键路径
-BOOT_SCRIPT=./embed-tomcat-server-boot.sh
+SCRIPT_PATH=/home/zp/source/java-stack/scripts
 COMPILED_WEBAPP=/home/zp/source/java-stack/codes/javatool/server/target/javatool-server
-RESOURCES_PATH=/home/zp/source/union/modules/athena/src/main/resources
+RESOURCES_PATH=/home/zp/source/java-stack/codes/javatool/server/src/main/resources
 execBootScript

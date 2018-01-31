@@ -19,9 +19,18 @@ checkInput() {
 # 检查文件是否存在，不存在则退出脚本
 #
 checkFileExist() {
-  if [ ! -f "$1" ]
-  then
+  if [ ! -f "$1" ];then
     echo "关键文件 $1 找不到，脚本执行结束"
+    exit 0
+  fi
+}
+
+#
+# 检查目录是否存在，不存在则退出脚本
+#
+checkFolderExist() {
+  if [ ! -d "$1" ];then
+    echo "关键目录 $1 找不到，脚本执行结束"
     exit 0
   fi
 }
@@ -59,18 +68,20 @@ branch=`echo $1`
 profile=`echo $2`
 repository=`echo $3`
 checkInput
+checkFolderExist ${SOURCE_PATH}
+checkFolderExist ${SCRIPT_PATH}
+checkFileExist ${SCRIPT_PATH}/git-clone.sh
+checkFileExist ${SCRIPT_PATH}/javatool-server-run.sh
+checkFileExist ${SCRIPT_PATH}/embed-tomcat-server-boot.sh
 
 # 1. 停止应用
-checkFileExist "${SCRIPT_PATH}/javatool-server-run.sh"
-echo "停止所有 javatool-server 应用开始"
-${SCRIPT_PATH}/javatool-server-run.sh ${profile} stop
-echo "停止所有 javatool-server 应用结束"
+#echo "停止所有 javatool-server 应用开始"
+#${SCRIPT_PATH}/javatool-server-run.sh ${profile} stop
+#echo "停止所有 javatool-server 应用结束"
 
 # 2. 更新代码
 cd ${SOURCE_PATH}
-UPDATE_CODE_SCRIPT_PATH=/home/zp/script/common/git-clone.sh
-checkFileExist ${UPDATE_CODE_SCRIPT_PATH}
-${UPDATE_CODE_SCRIPT_PATH} dunwu javatool-server ${branch}
+${SCRIPT_PATH}/git-clone.sh java-stack ${branch}
 chmod -R 777 ${SOURCE_PATH}
 
 # 3. 替换配置
@@ -81,7 +92,6 @@ cd ${SOURCE_PATH}/codes/javatool
 mvn clean package -Dmaven.test.skip=true
 
 # 5. 启动应用
-checkFileExist "${SCRIPT_PATH}/javatool-server-run.sh"
 echo "启动所有 javatool-server 应用开始"
 # 手动释放内存
 echo 3 > /proc/sys/vm/drop_caches

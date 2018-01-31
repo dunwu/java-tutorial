@@ -81,7 +81,9 @@ doCheckout() {
 
 ##############################__MAIN__########################################
 export LANG="zh_CN.UTF-8"
+# Github 账户
 ACCOUNT=dunwu
+# 源码默认根目录
 SOURCE_PATH=/home/zp/source
 
 # 必填输入参数
