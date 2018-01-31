@@ -12,5 +12,5 @@ cd /home/temp
 wget https://raw.githubusercontent.com/dunwu/java-stack/master/scripts/git-clone.sh
 chmod 777 git-clone.sh
 ./git-clone.sh java-stack master
-chmod 777 /home/zp/source/java-stack
+chmod 777 -R /home/zp/source/java-stack
 rm -rf /home/temp

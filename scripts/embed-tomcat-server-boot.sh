@@ -39,11 +39,11 @@ execOper() {
     start)
       echo -n "starting server: "
       #检查服务是否已经启动
-      if checkStarted ;then
-        echo "ERROR: server already started!"
-        echo "PID: $PIDS"
-        exit 1
-      fi
+#      if checkStarted ;then
+#        echo "ERROR: server already started!"
+#        echo "PID: $PIDS"
+#        exit 1
+#      fi
 
       args="${javaArgs} -classpath ${classpathArgs} ${bootstrapClass}"
       #echo -e "启动参数:\n${args}"

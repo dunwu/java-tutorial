@@ -28,7 +28,7 @@ execBootScript(){
 
   # JVM 参数
   # JAVA_OPTS=" -Ddubbo.resolve.file=${RESOURCES_PATH}/dubbo/dubbo-resolve.properties -Djava.awt.headless=true -Dfile.encoding=UTF8 -Djava.net.preferIPv4Stack=true -Ddubbo.shutdown.hook=true -Dspring.profiles.active=${profile} -Djava.security.egd=file:/dev/./urandom -Xms1024m -Xmx1024m -Xss2m "
-  JAVA_OPTS=" -Djava.awt.headless=true -Dfile.encoding=UTF8 -Djava.net.preferIPv4Stack=true -Ddubbo.shutdown.hook=true -Dspring.profiles.active=${profile} -Xms1024m -Xmx1024m -Xss2m "
+  JAVA_OPTS=" -Djava.awt.headless=true -Dfile.encoding=UTF8 -Djava.net.preferIPv4Stack=true -Dspring.profiles.active=${profile} -Xms1024m -Xmx1024m -Xss2m "
   JAVA_DEBUG_OPTS=""
   if [ "$3" == "debug" ]; then
       JAVA_DEBUG_OPTS=" -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,address=2235,server=y,suspend=n "
