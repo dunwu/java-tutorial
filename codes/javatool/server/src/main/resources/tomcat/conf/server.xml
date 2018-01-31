@@ -16,11 +16,18 @@
                processorCache="300"/>
 
     <Engine name="localhost" defaultHost="localhost">
-      <Host name="localhost" createDirs="false" appBase="${catalina.base}/../../../../" unpackWARs="false"
+      <Host name="localhost" createDirs="false" appBase="${tomcat.host.appBase}" unpackWARs="false"
             autoDeploy="false"
             deployOnStartup="false" failCtxIfServletStartFails="true">
-        <Context path="/javatool-server" docBase="src/main/webapp" reloadable="false" logEffectiveWebXml="false" privileged="false"
-                 swallowOutput="false" workDir="${catalina.base}/work"/>
+        <Context path="/javatool-server"  docBase="${tomcat.context.docBase}" reloadable="false" logEffectiveWebXml="false"
+                 privileged="false"
+                 swallowOutput="false" workDir="${catalina.base}/work">
+          <JarScanner>
+            <JarScanFilter pluggabilitySkip="*.jar" pluggabilityScan=""
+                           defaultPluggabilityScan="true" tldSkip="*.jar"
+                           tldScan="" defaultTldScan="true"/>
+          </JarScanner>
+        </Context>
       </Host>
     </Engine>
   </Service>
