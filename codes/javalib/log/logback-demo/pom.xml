@@ -8,40 +8,23 @@
 
   <!-- MAVEN COORDINATE BEGIN -->
   <groupId>io.github.dunwu</groupId>
-  <artifactId>javalib</artifactId>
+  <artifactId>javalib-log-logback</artifactId>
   <version>1.0.0</version>
-  <packaging>pom</packaging>
+  <packaging>jar</packaging>
   <!-- MAVEN COORDINATE END -->
 
   <!-- RELATIONSHIP SETTINGS BEGIN -->
-  <modules>
-    <module>bean</module>
-    <module>log</module>
-  </modules>
   <dependencies>
-    <!-- bean start -->
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <version>1.16.8</version>
-    </dependency>
-    <!-- bean end -->
-
     <!-- log start -->
     <dependency>
       <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-core</artifactId>
-      <version>1.2.3</version>
-    </dependency>
-    <dependency>
-      <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
-      <version>1.2.3</version>
+      <version>${logback.version}</version>
     </dependency>
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-access</artifactId>
-      <version>1.2.3</version>
+      <version>${logback.version}</version>
     </dependency>
     <!-- log end -->
 
@@ -60,15 +43,28 @@
     <java.version>1.8</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
+    <logback.version>1.2.3</logback.version>
   </properties>
   <!-- PROPERTIES END -->
 
   <!-- [Part 1] BASIC SETTINGS END -->
 
 
+  <!-- [Part 2] BUILD SETTINGS BEGIN -->
+  <build>
+    <resources>
+      <resource>
+        <filtering>true</filtering>
+        <directory>src/main/resources</directory>
+      </resource>
+    </resources>
+  </build>
+  <!-- [Part 2] BUILD SETTINGS END -->
+
+
   <!-- [Part 3] PROJECT INFO BEGIN -->
   <name>${project.artifactId}</name>
-  <description>Java 库使用示例</description>
+  <description>logback 示例</description>
   <!-- [Part 3] PROJECT INFO END -->
 
 

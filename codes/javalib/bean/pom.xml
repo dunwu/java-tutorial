@@ -7,19 +7,15 @@
   <!-- [Part 1] BASIC SETTINGS BEGIN -->
 
   <!-- MAVEN COORDINATE BEGIN -->
-  <groupId>io.github.dunwu</groupId>
-  <artifactId>javalib</artifactId>
+  <groupId>io.github.dunwu.javalib</groupId>
+  <artifactId>javalib-bean</artifactId>
   <version>1.0.0</version>
-  <packaging>pom</packaging>
+  <packaging>jar</packaging>
   <!-- MAVEN COORDINATE END -->
 
   <!-- RELATIONSHIP SETTINGS BEGIN -->
-  <modules>
-    <module>bean</module>
-    <module>log</module>
-  </modules>
   <dependencies>
-    <!-- bean start -->
+    <!-- bean begin -->
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
@@ -27,30 +23,14 @@
     </dependency>
     <!-- bean end -->
 
-    <!-- log start -->
-    <dependency>
-      <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-core</artifactId>
-      <version>1.2.3</version>
-    </dependency>
-    <dependency>
-      <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-classic</artifactId>
-      <version>1.2.3</version>
-    </dependency>
-    <dependency>
-      <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-access</artifactId>
-      <version>1.2.3</version>
-    </dependency>
-    <!-- log end -->
-
+    <!-- test begin -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.12</version>
       <scope>test</scope>
     </dependency>
+    <!-- test end -->
   </dependencies>
   <!-- RELATIONSHIP SETTINGS END -->
 
@@ -66,9 +46,21 @@
   <!-- [Part 1] BASIC SETTINGS END -->
 
 
+  <!-- [Part 2] BUILD SETTINGS BEGIN -->
+  <build>
+    <resources>
+      <resource>
+        <filtering>true</filtering>
+        <directory>src/main/resources</directory>
+      </resource>
+    </resources>
+  </build>
+  <!-- [Part 2] BUILD SETTINGS END -->
+
+
   <!-- [Part 3] PROJECT INFO BEGIN -->
   <name>${project.artifactId}</name>
-  <description>Java 库使用示例</description>
+  <description>javalib 之JavaBean库示例集锦</description>
   <!-- [Part 3] PROJECT INFO END -->
 
 

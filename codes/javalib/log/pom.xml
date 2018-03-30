@@ -8,50 +8,15 @@
 
   <!-- MAVEN COORDINATE BEGIN -->
   <groupId>io.github.dunwu</groupId>
-  <artifactId>javalib</artifactId>
+  <artifactId>javalib-log</artifactId>
   <version>1.0.0</version>
   <packaging>pom</packaging>
   <!-- MAVEN COORDINATE END -->
 
   <!-- RELATIONSHIP SETTINGS BEGIN -->
   <modules>
-    <module>bean</module>
-    <module>log</module>
+    <module>logback-demo</module>
   </modules>
-  <dependencies>
-    <!-- bean start -->
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <version>1.16.8</version>
-    </dependency>
-    <!-- bean end -->
-
-    <!-- log start -->
-    <dependency>
-      <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-core</artifactId>
-      <version>1.2.3</version>
-    </dependency>
-    <dependency>
-      <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-classic</artifactId>
-      <version>1.2.3</version>
-    </dependency>
-    <dependency>
-      <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-access</artifactId>
-      <version>1.2.3</version>
-    </dependency>
-    <!-- log end -->
-
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.12</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
   <!-- RELATIONSHIP SETTINGS END -->
 
   <!-- PROPERTIES BEGIN -->
@@ -65,10 +30,9 @@
 
   <!-- [Part 1] BASIC SETTINGS END -->
 
-
   <!-- [Part 3] PROJECT INFO BEGIN -->
   <name>${project.artifactId}</name>
-  <description>Java 库使用示例</description>
+  <description>javalib 之日志库示例集锦</description>
   <!-- [Part 3] PROJECT INFO END -->
 
 
