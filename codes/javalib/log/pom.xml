@@ -17,6 +17,7 @@
   <modules>
     <module>logback-demo</module>
     <module>log4j-demo</module>
+    <module>log4j2-demo</module>
   </modules>
   <!-- RELATIONSHIP SETTINGS END -->
 
