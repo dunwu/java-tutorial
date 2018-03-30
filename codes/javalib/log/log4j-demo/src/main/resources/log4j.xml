@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+  <appender name="TRACE-APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+    <param name="File" value="/home/log/javalib-log4j-trace.log"/>
+    <param name="Append" value="true"/>
+    <!-- 每天重新生成日志文件 -->
+    <param name="DatePattern" value="'.'yyyy-MM-dd'.log'"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern"
+        value="%d{yyyy-MM-dd HH:mm:ss,SSS\} [%-5p] [%t] %c{36\}.%M - %m%n"/>
+    </layout>
+
+    <filter class="org.apache.log4j.varia.LevelRangeFilter">
+      <param name="levelMin" value="TRACE"/>
+      <param name="levelMax" value="TRACE"/>
+      <param name="AcceptOnMatch" value="true"/>
+    </filter>
+  </appender>
+  <appender name="DEBUG-APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+    <param name="File" value="/home/log/javalib-log4j-debug.log"/>
+    <param name="Append" value="true"/>
+    <!-- 每天重新生成日志文件 -->
+    <param name="DatePattern" value="'.'yyyy-MM-dd'.log'"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern"
+        value="%d{yyyy-MM-dd HH:mm:ss,SSS\} [%-5p] [%t] %c{36\}.%M - %m%n"/>
+    </layout>
+
+    <filter class="org.apache.log4j.varia.LevelRangeFilter">
+      <param name="levelMin" value="DEBUG"/>
+      <param name="levelMax" value="DEBUG"/>
+      <param name="AcceptOnMatch" value="true"/>
+    </filter>
+  </appender>
+  <appender name="INFO-APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+    <param name="File" value="/home/log/javalib-log4j-info.log"/>
+    <param name="Append" value="true"/>
+    <!-- 每天重新生成日志文件 -->
+    <param name="DatePattern" value="'.'yyyy-MM-dd'.log'"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern"
+        value="%d{yyyy-MM-dd HH:mm:ss,SSS\} [%-5p] [%t] %c{36\}.%M - %m%n"/>
+    </layout>
+
+    <filter class="org.apache.log4j.varia.LevelRangeFilter">
+      <param name="levelMin" value="INFO"/>
+      <param name="levelMax" value="INFO"/>
+      <param name="AcceptOnMatch" value="true"/>
+    </filter>
+  </appender>
+  <appender name="WARN-APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+    <param name="File" value="/home/log/javalib-log4j-warn.log"/>
+    <param name="Append" value="true"/>
+    <!-- 每天重新生成日志文件 -->
+    <param name="DatePattern" value="'.'yyyy-MM-dd'.log'"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern"
+        value="%d{yyyy-MM-dd HH:mm:ss,SSS\} [%-5p] [%t] %c{36\}.%M - %m%n"/>
+    </layout>
+
+    <filter class="org.apache.log4j.varia.LevelRangeFilter">
+      <param name="levelMin" value="WARN"/>
+      <param name="levelMax" value="WARN"/>
+      <param name="AcceptOnMatch" value="true"/>
+    </filter>
+  </appender>
+  <appender name="ERROR-APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+    <param name="File" value="/home/log/javalib-log4j-error.log"/>
+    <param name="Append" value="true"/>
+    <!-- 每天重新生成日志文件 -->
+    <param name="DatePattern" value="'.'yyyy-MM-dd'.log'"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern"
+        value="%d{yyyy-MM-dd HH:mm:ss,SSS\} [%-5p] [%t] %c{36\}.%M - %m%n"/>
+    </layout>
+
+    <filter class="org.apache.log4j.varia.LevelRangeFilter">
+      <param name="levelMin" value="ERROR"/>
+      <param name="levelMax" value="ERROR"/>
+      <param name="AcceptOnMatch" value="true"/>
+    </filter>
+  </appender>
+
+  <appender name="CONSOLE-APPENDER" class="org.apache.log4j.ConsoleAppender">
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss,SSS\} [%-5p] [%t] %c{36\}.%M - %m%n"/>
+    </layout>
+
+    <!--过滤器设置输出的级别-->
+    <filter class="org.apache.log4j.varia.LevelRangeFilter">
+      <param name="levelMin" value="trace"/>
+      <param name="levelMax" value="error"/>
+      <param name="AcceptOnMatch" value="true"/>
+    </filter>
+  </appender>
+  <appender name="ALL-APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+    <param name="File" value="/home/log/javalib-log4j-all.log"/>
+    <param name="Append" value="true"/>
+    <!-- 每天重新生成日志文件 -->
+    <param name="DatePattern" value="'.'yyyy-MM-dd'.log'"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern"
+        value="%d{yyyy-MM-dd HH:mm:ss,SSS\} [%-5p] [%t] %c{36\}.%M - %m%n"/>
+    </layout>
+
+    <filter class="org.apache.log4j.varia.LevelRangeFilter">
+      <param name="levelMin" value="TRACE"/>
+      <param name="levelMax" value="ERROR"/>
+      <param name="AcceptOnMatch" value="true"/>
+    </filter>
+  </appender>
+  <root>
+    <level value="ALL"/>
+    <appender-ref ref="CONSOLE-APPENDER"/>
+    <appender-ref ref="ALL-APPENDER"/>
+    <appender-ref ref="TRACE-APPENDER"/>
+    <appender-ref ref="DEBUG-APPENDER"/>
+    <appender-ref ref="INFO-APPENDER"/>
+    <appender-ref ref="WARN-APPENDER"/>
+    <appender-ref ref="ERROR-APPENDER"/>
+  </root>
+</log4j:configuration>
