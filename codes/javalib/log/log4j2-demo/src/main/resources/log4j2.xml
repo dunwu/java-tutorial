@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+  <properties>
+    <property name="fileName" value="javalib-log4j2"/>
+    <property name="logPath" value="D:\home\log"/>
+
+    <property name="logPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [javalib] [%t] [%-5level] %c{36}#%M - %msg%n"/>
+
+
+  </properties>
+  <Appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="${logPattern}"/>
+    </Console>
+    <RollingFile name="Trace" fileName="${logPath}/${fileName}-trace.log"
+      filePattern="${logPath}/$${date:yyyy-MM}/${fileName}-trace-%d{yyyy-MM-dd}-%i.log.gz">
+      <PatternLayout>
+        <Pattern>${logPattern}</Pattern>
+      </PatternLayout>
+      <Filters>
+        <ThresholdFilter level="trace" onMatch="ACCEPT" onMismatch="DENY"/>
+      </Filters>
+      <Policies>
+        <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+        <SizeBasedTriggeringPolicy size="250 MB"/>
+      </Policies>
+      <DefaultRolloverStrategy>
+        <Delete basePath="${logPath}" maxDepth="2">
+          <IfFileName glob="*/${fileName}-trace-*.log.gz" />
+          <IfLastModified age="30d" />
+        </Delete>
+      </DefaultRolloverStrategy>
+    </RollingFile>
+    <RollingFile name="Debug" fileName="${logPath}/${fileName}-debug.log"
+      filePattern="${logPath}/$${date:yyyy-MM}/${fileName}-debug-%d{yyyy-MM-dd}-%i.log.gz">
+      <PatternLayout>
+        <Pattern>${logPattern}</Pattern>
+      </PatternLayout>
+      <Filters>
+        <ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
+      </Filters>
+      <Policies>
+        <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+        <SizeBasedTriggeringPolicy size="250 MB"/>
+      </Policies>
+      <DefaultRolloverStrategy>
+        <Delete basePath="${logPath}" maxDepth="2">
+          <IfFileName glob="*/${fileName}-debug-*.log.gz" />
+          <IfLastModified age="30d" />
+        </Delete>
+      </DefaultRolloverStrategy>
+    </RollingFile>
+    <RollingFile name="Info" fileName="${logPath}/${fileName}-info.log"
+      filePattern="${logPath}/$${date:yyyy-MM}/${fileName}-info-%d{yyyy-MM-dd}-%i.log.gz">
+      <PatternLayout>
+        <Pattern>${logPattern}</Pattern>
+      </PatternLayout>
+      <Filters>
+        <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+      </Filters>
+      <Policies>
+        <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+        <SizeBasedTriggeringPolicy size="250 MB"/>
+      </Policies>
+      <DefaultRolloverStrategy>
+        <Delete basePath="${logPath}" maxDepth="2">
+          <IfFileName glob="*/${fileName}-info-*.log.gz" />
+          <IfLastModified age="30d" />
+        </Delete>
+      </DefaultRolloverStrategy>
+    </RollingFile>
+    <RollingFile name="Warn" fileName="${logPath}/${fileName}-warn.log"
+      filePattern="${logPath}/$${date:yyyy-MM}/${fileName}-warn-%d{yyyy-MM-dd}-%i.log.gz">
+      <PatternLayout>
+        <Pattern>${logPattern}</Pattern>
+      </PatternLayout>
+      <Filters>
+        <ThresholdFilter level="WARN" onMatch="ACCEPT" onMismatch="DENY"/>
+      </Filters>
+      <Policies>
+        <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+        <SizeBasedTriggeringPolicy size="250 MB"/>
+      </Policies>
+      <DefaultRolloverStrategy>
+        <Delete basePath="${logPath}" maxDepth="2">
+          <IfFileName glob="*/${fileName}-warn-*.log.gz" />
+          <IfLastModified age="30d" />
+        </Delete>
+      </DefaultRolloverStrategy>
+    </RollingFile>
+    <RollingFile name="Error" fileName="${logPath}/${fileName}-error.log"
+      filePattern="${logPath}/$${date:yyyy-MM}/${fileName}-error-%d{yyyy-MM-dd}-%i.log.gz">
+      <PatternLayout>
+        <Pattern>${logPattern}</Pattern>
+      </PatternLayout>
+      <Filters>
+        <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+      </Filters>
+      <Policies>
+        <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+        <SizeBasedTriggeringPolicy size="250 MB"/>
+      </Policies>
+      <DefaultRolloverStrategy>
+        <Delete basePath="${logPath}" maxDepth="2">
+          <IfFileName glob="*/${fileName}-error-*.log.gz" />
+          <IfLastModified age="30d" />
+        </Delete>
+      </DefaultRolloverStrategy>
+    </RollingFile>
+  </Appenders>
+
+  <Loggers>
+    <Logger name="io.github.dunwu.javalib.log" level="trace" additivity="false">
+      <AppenderRef ref="Trace"/>
+      <AppenderRef ref="Debug"/>
+      <AppenderRef ref="Info"/>
+      <AppenderRef ref="Warn"/>
+      <AppenderRef ref="Error"/>
+    </Logger>
+    <Root level="trace">
+      <AppenderRef ref="Console"/>
+    </Root>
+  </Loggers>
+</Configuration>

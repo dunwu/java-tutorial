@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+  xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+
+
+  <!-- [Part 1] BASIC SETTINGS BEGIN -->
+
+  <!-- MAVEN COORDINATE BEGIN -->
+  <groupId>io.github.dunwu</groupId>
+  <artifactId>javalib-log-log4j2</artifactId>
+  <version>1.0.0</version>
+  <packaging>jar</packaging>
+  <!-- MAVEN COORDINATE END -->
+
+  <!-- RELATIONSHIP SETTINGS BEGIN -->
+  <dependencies>
+    <!-- log start -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.7.25</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-slf4j-impl</artifactId>
+      <version>2.11.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api</artifactId>
+      <version>2.11.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>2.11.0</version>
+    </dependency>
+    <!-- log end -->
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <!-- RELATIONSHIP SETTINGS END -->
+
+  <!-- PROPERTIES BEGIN -->
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <java.version>1.8</java.version>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+  </properties>
+  <!-- PROPERTIES END -->
+
+  <!-- [Part 1] BASIC SETTINGS END -->
+
+
+  <!-- [Part 2] BUILD SETTINGS BEGIN -->
+  <build>
+    <resources>
+      <resource>
+        <filtering>true</filtering>
+        <directory>src/main/resources</directory>
+      </resource>
+    </resources>
+  </build>
+  <!-- [Part 2] BUILD SETTINGS END -->
+
+
+  <!-- [Part 3] PROJECT INFO BEGIN -->
+  <name>${project.artifactId}</name>
+  <description>log4j2 示例</description>
+  <!-- [Part 3] PROJECT INFO END -->
+
+
+</project>
