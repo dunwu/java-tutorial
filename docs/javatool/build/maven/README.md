@@ -1,8 +1,10 @@
 # Maven
 
-## 知识结构图
+## 知识点
 
-![maven.png](http://upload-images.jianshu.io/upload_images/3101171-b5325d3c12338b65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+maven 知识点见 `maven.xmind`。
+
+_xmind 是思维导图文件，打开需使用 [xmind](https://www.xmind.cn/) 工具。_
 
 ## 目录
 
