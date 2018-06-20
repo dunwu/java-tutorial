@@ -16,14 +16,15 @@
 
 ### [JavaSE](https://github.com/dunwu/javase-notes)
 
-### [JavaEE](https://github.com/dunwu/javaee-notes)
+> Java 语法基础
 
-### [Java 框架](docs/framework/README.md)
+### [Java Web](https://github.com/dunwu/java-web)
 
-* [Spring](https://github.com/dunwu/spring-notes)
-* [Dubbo](docs/framework/dubbo/README.md)
+> Java Web 领域开发经验总结
 
 ### [Java 库](docs/javalib/README.md)
+
+> 常用 Java 库总结
 
 * [ActiveMQ 使用小结](docs/javalib/activemq.md)
 * [Dozer 使用小结](docs/javalib/dozer.md)
@@ -36,6 +37,8 @@
 * [ZXing 使用小结](docs/javalib/zxing.md)
 
 ### [Java 工具](docs/javatool/README.md)
+
+> 常用 Java 软件总结
 
 * [构建工具](docs/javatool/build/README.md)
   * [Maven 快速指南（一）](docs/javatool/build/maven/maven-quickstart-01.md)
