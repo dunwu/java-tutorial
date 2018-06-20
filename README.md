@@ -56,8 +56,6 @@
 * [Java IDE](docs/javatool/ide/README.md)
   * [Intellij IDEA 使用小结](docs/javatool/ide/intellij.md)
   * [Eclipse 使用小结](docs/javatool/ide/eclipse.md)
-* [Java 服务器](docs/javatool/server/README.md)
-  * [Jetty 使用小结](docs/javatool/server/jetty.md)
 
 ### [技术扩展](docs/extend/README.md)
 
