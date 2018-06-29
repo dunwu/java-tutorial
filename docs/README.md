@@ -14,7 +14,7 @@
 
 ## 目录
 
-### [JavaSE](https://github.com/dunwu/javase-notes)
+### [JavaSE](https://github.com/dunwu/JavaSE)
 
 ### [JavaEE](https://github.com/dunwu/javaee-notes)
 
