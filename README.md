@@ -14,11 +14,11 @@
 
 ## 目录
 
-### [JavaSE](https://github.com/dunwu/javase-notes)
+### [JavaSE](https://github.com/dunwu/JavaSE)
 
 > Java 语法基础
 
-### [Java Web](https://github.com/dunwu/java-web)
+### [Java Web](https://github.com/dunwu/JavaWeb)
 
 > Java Web 领域开发经验总结
 
