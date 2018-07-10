@@ -26,7 +26,6 @@
 
 > 常用 Java 库总结
 
-* [ActiveMQ 使用小结](docs/javalib/activemq.md)
 * [Dozer 使用小结](docs/javalib/dozer.md)
 * [细说 Java 主流日志工具库](docs/javalib/java-log.md)
 * [JavaMail 使用小结](docs/javalib/javamail.md)
