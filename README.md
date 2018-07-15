@@ -1,69 +1,41 @@
-# java-stack
+# JavaStack
 
-## 简介
+> JavaStack 是本人作为一名 Java Web 工程师的技术积累。
 
-**建项原因**
+|           :one:           |           :two:           |          :three:          |           :four:           |            :five:            |     :six:     |
+| :-----------------------: | :-----------------------: | :-----------------------: | :------------------------: | :--------------------------: | :-----------: |
+| [JavaCore](#one-javacore) | [JavaTool](#two-javatool) | [JavaWeb](#three-javaweb) | [Database](#four-database) | [Algorithm](#five-algorithm) | [OS](#six-os) |
 
-系统化的学习知识，有利于将知识碎片拼凑起来，融会贯通。这对于掌握任何一门技术，都是非常必要的。所以，作为一名 Java 工程师，应该系统化管理自己的 Java 技术栈知识。
+## :one: JavaCore
 
-**范围**
+> [JavaCore](https://github.com/dunwu/JavaCore) 是对 Java 核心技术的总结。
+>
+> 内容包含：Java 基础特性、Java 高级特性、Java 并发、JVM、Java IO 等。
 
-学海无涯，学的越多，越感到个人精力有限，难以对所有技术都面面俱到。所以，根据自己的工作领域，有侧重点的去掌握知识才是明智的。
+## :two: JavaTool
 
-由于本人人从事 Java Web 领域的开发，所以本项目主要是整理 Java Web 及相关领域的知识点。
+> [JavaTool](docs) 是 Java 常用工具、lib 库的经验总结。
+>
+> 内容包含：Java 常用工具、lib 库等。
 
-## 目录
+## :three: JavaWeb
 
-### [JavaSE](https://github.com/dunwu/JavaSE)
+> [JavaWeb](https://github.com/dunwu/JavaWeb) 是对 Java Web 领域开发经验的总结。
+>
+> 内容包含：JavaEE、单点式应用技术、分布式应用技术等。
 
-> Java 语法基础
+## :four: Database
 
-### [Java Web](https://github.com/dunwu/JavaWeb)
+> [Database](https://github.com/dunwu/Database) 是对数据库领域开发经验的总结。
+>
+> 内容包含：数据库理论、Mysql、Redis 等。
 
-> Java Web 领域开发经验总结
+## :five: Algorithm
 
-### [Java 库](docs/javalib/README.md)
+> [Algorithm](https://github.com/dunwu/Algorithm) 是对数据结构和算法的总结。
+>
+> 内容包含：一些基本的数据结构、算法。
 
-> 常用 Java 库总结
+## :six: OS
 
-* [Dozer 使用小结](docs/javalib/dozer.md)
-* [细说 Java 主流日志工具库](docs/javalib/java-log.md)
-* [JavaMail 使用小结](docs/javalib/javamail.md)
-* [jsoup 使用小结](docs/javalib/jsoup.md)
-* [JUnit 使用小结](docs/javalib/junit.md)
-* [Lombok 使用小结](docs/javalib/lombok.md)
-* [Thumbnailator 使用小结](docs/javalib/thumbnailator.md)
-* [ZXing 使用小结](docs/javalib/zxing.md)
-
-### [Java 工具](docs/javatool/README.md)
-
-> 常用 Java 软件总结
-
-* [构建工具](docs/javatool/build/README.md)
-  * [Maven 快速指南（一）](docs/javatool/build/maven/maven-quickstart-01.md)
-  * [Maven 快速指南（二）](docs/javatool/build/maven/maven-quickstart-02.md)
-  * [Maven 之 pom.xml 详解（一）](docs/javatool/build/maven/maven-pom-01.md)
-  * [Maven 之 pom.xml 详解（二）](docs/javatool/build/maven/maven-pom-02.md)
-  * [Maven 之 pom.xml 详解（三）](docs/javatool/build/maven/maven-pom-03.md)
-  * [Maven 之 settings.xml 详解](docs/javatool/build/maven/maven-settings-config.md)
-  * [发布项目到中央仓库](docs/javatool/build/maven/maven-deploy.md)
-  * [Maven 排错](docs/javatool/build/maven/maven-faq.md)
-  * [Ant 简易教程](docs/javatool/build/ant.md)
-* [Elastic](docs/javatool/elastic/README.md)
-  * [Elastic 技术栈之快速指南](docs/javatool/elastic/elastic-quickstart.md)
-  * [Elastic 技术栈之 Logstash 基础](docs/javatool/elastic/elastic-logstash.md)
-* [Java IDE](docs/javatool/ide/README.md)
-  * [Intellij IDEA 使用小结](docs/javatool/ide/intellij.md)
-  * [Eclipse 使用小结](docs/javatool/ide/eclipse.md)
-
-### [技术扩展](docs/extend/README.md)
-
-* [数据库](docs/extend/database.md)
-* [数据结构和算法](docs/extend/algorithm.md)
-* [Linux](docs/extend/os.md)
-* [网络](docs/extend/web/README.md)
-  * [nginx 快速入门](docs/extend/web/nginx-quickstart.md)
-  
-### [附录](docs/appendix/README.md)
-
-* [Java 学习资源](docs/appendix/resources.md)
+> [OS](https://github.com/dunwu/OS) 是对操作系统的经验总结。

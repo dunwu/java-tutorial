@@ -28,12 +28,12 @@
 
 > 本项目添加了脚本启动范例。
 >
-> 脚本代码全在 [`scripts`](https://github.com/dunwu/java-stack/tree/master/scripts) 目录下。
+> 脚本代码全在 [`scripts`](https://github.com/dunwu/JavaStack/tree/master/scripts) 目录下。
 
 * 初始化
 
 ```sh
-wget https://raw.githubusercontent.com/dunwu/java-stack/master/scripts/init.sh
+wget https://raw.githubusercontent.com/dunwu/JavaStack/master/scripts/init.sh
 chmod 777 init.sh
 ./init.sh
 ```
@@ -41,7 +41,7 @@ chmod 777 init.sh
 * 发布
 
 ```
-cd /home/zp/source/java-stack/scripts
+cd /home/zp/source/JavaStack/scripts
 ./javatool-server-release.sh master develop
 ```
 

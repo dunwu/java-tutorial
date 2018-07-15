@@ -14,7 +14,7 @@ tags:
 
 > 本文是 Elastic 技术栈（ELK）的 Logstash 应用。
 >
-> 如果不了解 Elastic 的安装、配置、部署，可以参考：[Elastic 技术栈之快速入门](https://github.com/dunwu/java-stack/blob/master/docs/javatool/elastic/elastic-quickstart.md)
+> 如果不了解 Elastic 的安装、配置、部署，可以参考：[Elastic 技术栈之快速入门](https://github.com/dunwu/JavaStack/blob/master/docs/javatool/elastic/elastic-quickstart.md)
 
 ## 简介
 
@@ -315,7 +315,7 @@ bin/logstash -f logstash-input-stdin.conf
 >
 > 想使用 logback + logstash ，可以使用 [logstash-logback-encoder](https://github.com/logstash/logstash-logback-encoder) 。[logstash-logback-encoder](https://github.com/logstash/logstash-logback-encoder) 提供了 UDP / TCP / 异步方式来传输日志数据到 logstash。
 >
-> 如果你使用的是 log4j ，也不是不可以用这种方式，只要引入桥接 jar 包即可。如果你对 log4j 、logback ，或是桥接 jar 包不太了解，可以参考我的这篇博文：[细说 Java 主流日志工具库](https://github.com/dunwu/java-stack/blob/master/docs/javalib/java-log.md) 。
+> 如果你使用的是 log4j ，也不是不可以用这种方式，只要引入桥接 jar 包即可。如果你对 log4j 、logback ，或是桥接 jar 包不太了解，可以参考我的这篇博文：[细说 Java 主流日志工具库](https://github.com/dunwu/JavaStack/blob/master/docs/javalib/java-log.md) 。
 
 #### TCP 应用
 
@@ -387,9 +387,9 @@ output {
 </logger>
 ```
 
-   （3）接下来，就是 logback 的具体使用 ，如果对此不了解，不妨参考一下我的这篇博文：[细说 Java 主流日志工具库](https://github.com/dunwu/java-stack/blob/master/docs/javalib/java-log.md) 。
+   （3）接下来，就是 logback 的具体使用 ，如果对此不了解，不妨参考一下我的这篇博文：[细说 Java 主流日志工具库](https://github.com/dunwu/JavaStack/blob/master/docs/javalib/java-log.md) 。
 
-   **实例：**[我的logback.xml](https://github.com/dunwu/java-stack/blob/master/codes/javatool/src/main/resources/logback.xml)
+   **实例：**[我的logback.xml](https://github.com/dunwu/JavaStack/blob/master/codes/javatool/src/main/resources/logback.xml)
 
 #### UDP 应用
 
@@ -435,9 +435,9 @@ output {
  </logger>
  ```
 
-   （3）接下来，就是 logback 的具体使用 ，如果对此不了解，不妨参考一下我的这篇博文：[细说 Java 主流日志工具库](https://github.com/dunwu/java-stack/blob/master/docs/javalib/java-log.md) 。
+   （3）接下来，就是 logback 的具体使用 ，如果对此不了解，不妨参考一下我的这篇博文：[细说 Java 主流日志工具库](https://github.com/dunwu/JavaStack/blob/master/docs/javalib/java-log.md) 。
 
-   **实例：**[我的logback.xml](https://github.com/dunwu/java-stack/blob/master/codes/javatool/src/main/resources/logback.xml)
+   **实例：**[我的logback.xml](https://github.com/dunwu/JavaStack/blob/master/codes/javatool/src/main/resources/logback.xml)
 
 ### 传输文件
 
@@ -515,5 +515,5 @@ kill -9 ${PID}
 
 ## 推荐阅读
 
-- [Elastic 技术栈](https://github.com/dunwu/java-stack/blob/master/docs/javatool/elastic/README.md)
-- [java-stack](https://github.com/dunwu/java-stack)
+- [Elastic 技术栈](https://github.com/dunwu/JavaStack/blob/master/docs/javatool/elastic/README.md)
+- [JavaStack](https://github.com/dunwu/JavaStack)

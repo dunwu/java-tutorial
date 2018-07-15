@@ -376,7 +376,7 @@ public class JclTest {
   * 它有 `<appender>`、`<logger>`、`<root>` 三个子元素。
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/dunwu/java-stack/master/images/javalib/log/logback/basicSyntax.png">
+  <img src="https://raw.githubusercontent.com/dunwu/JavaStack/master/images/javalib/log/logback/basicSyntax.png">
 </p>
 
 ### `<appender>`
@@ -416,7 +416,7 @@ public class JclTest {
   * class：设置具体的实例化类。
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/dunwu/java-stack/master/images/javalib/log/logback/appenderSyntax.png">
+  <img src="https://raw.githubusercontent.com/dunwu/JavaStack/master/images/javalib/log/logback/appenderSyntax.png">
 </p>
 
 ### `<logger>`
