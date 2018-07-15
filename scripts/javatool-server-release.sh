@@ -57,11 +57,11 @@ saveVersionInfo() {
 export LANG="zh_CN.UTF-8"
 
 # 设置全局常量
-SOURCE_PATH=/home/zp/source/java-stack
-SCRIPT_PATH=/home/zp/source/java-stack/scripts
+SOURCE_PATH=/home/zp/source/JavaStack
+SCRIPT_PATH=/home/zp/source/JavaStack/scripts
 
 # 分配 script 和 config 目录的权限
-chmod -R 755 /home/zp/source/java-stack
+chmod -R 755 /home/zp/source/JavaStack
 
 # 0. 获取传入参数并检查
 branch=`echo $1`
@@ -81,7 +81,7 @@ checkFileExist ${SCRIPT_PATH}/embed-tomcat-server-boot.sh
 
 # 2. 更新代码
 cd ${SOURCE_PATH}
-${SCRIPT_PATH}/git-clone.sh java-stack ${branch}
+${SCRIPT_PATH}/git-clone.sh JavaStack ${branch}
 chmod -R 777 ${SOURCE_PATH}
 
 # 3. 替换配置

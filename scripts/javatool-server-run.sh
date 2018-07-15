@@ -60,7 +60,7 @@ export LANG="zh_CN.UTF-8"
 #export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$MAVEN_HOME/bin:$PATH
 
 # 关键路径
-SCRIPT_PATH=/home/zp/source/java-stack/scripts
-COMPILED_WEBAPP=/home/zp/source/java-stack/codes/javatool/server/target/javatool-server
-RESOURCES_PATH=/home/zp/source/java-stack/codes/javatool/server/src/main/resources
+SCRIPT_PATH=/home/zp/source/JavaStack/scripts
+COMPILED_WEBAPP=/home/zp/source/JavaStack/codes/javatool/server/target/javatool-server
+RESOURCES_PATH=/home/zp/source/JavaStack/codes/javatool/server/src/main/resources
 execBootScript
