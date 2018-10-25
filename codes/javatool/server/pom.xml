@@ -79,7 +79,7 @@
 
   <!-- PROPERTIES BEGIN -->
   <properties>
-    <tomcat.version>8.5.24</tomcat.version>
+    <tomcat.version>8.5.34</tomcat.version>
   </properties>
   <!-- PROPERTIES END -->
 
