@@ -3,39 +3,24 @@
          xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
 
-
-  <!-- [Part 1] BASIC SETTINGS BEGIN -->
-
-  <!-- MAVEN COORDINATE BEGIN -->
-  <groupId>io.github.dunwu</groupId>
+  <groupId>io.github.dunwu.javalib</groupId>
   <artifactId>javalib-log</artifactId>
   <version>1.0.0</version>
   <packaging>pom</packaging>
-  <!-- MAVEN COORDINATE END -->
+  <name>JavaLib Demos - Log</name>
+  <description>javalib 之日志库示例集锦</description>
 
-  <!-- RELATIONSHIP SETTINGS BEGIN -->
   <modules>
     <module>logback-demo</module>
     <module>log4j-demo</module>
     <module>log4j2-demo</module>
   </modules>
-  <!-- RELATIONSHIP SETTINGS END -->
 
-  <!-- PROPERTIES BEGIN -->
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>1.8</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
   </properties>
-  <!-- PROPERTIES END -->
-
-  <!-- [Part 1] BASIC SETTINGS END -->
-
-  <!-- [Part 3] PROJECT INFO BEGIN -->
-  <name>${project.artifactId}</name>
-  <description>javalib 之日志库示例集锦</description>
-  <!-- [Part 3] PROJECT INFO END -->
-
 
 </project>

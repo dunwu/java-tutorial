@@ -3,50 +3,34 @@
          xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
 
-
-  <!-- [Part 1] BASIC SETTINGS BEGIN -->
-
-  <!-- MAVEN COORDINATE BEGIN -->
   <groupId>io.github.dunwu.javalib</groupId>
   <artifactId>javalib-bean</artifactId>
   <version>1.0.0</version>
   <packaging>jar</packaging>
-  <!-- MAVEN COORDINATE END -->
+  <name>JavaLib Demos - Bean</name>
+  <description>javalib 之JavaBean库示例集锦</description>
 
-  <!-- RELATIONSHIP SETTINGS BEGIN -->
-  <dependencies>
-    <!-- bean begin -->
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <version>1.16.8</version>
-    </dependency>
-    <!-- bean end -->
-
-    <!-- test begin -->
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.12</version>
-      <scope>test</scope>
-    </dependency>
-    <!-- test end -->
-  </dependencies>
-  <!-- RELATIONSHIP SETTINGS END -->
-
-  <!-- PROPERTIES BEGIN -->
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>1.8</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
   </properties>
-  <!-- PROPERTIES END -->
 
-  <!-- [Part 1] BASIC SETTINGS END -->
+  <dependencies>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.16.8</version>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 
-
-  <!-- [Part 2] BUILD SETTINGS BEGIN -->
   <build>
     <resources>
       <resource>
@@ -55,13 +39,5 @@
       </resource>
     </resources>
   </build>
-  <!-- [Part 2] BUILD SETTINGS END -->
-
-
-  <!-- [Part 3] PROJECT INFO BEGIN -->
-  <name>${project.artifactId}</name>
-  <description>javalib 之JavaBean库示例集锦</description>
-  <!-- [Part 3] PROJECT INFO END -->
-
 
 </project>

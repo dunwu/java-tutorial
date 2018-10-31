@@ -3,73 +3,16 @@
          xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
 
-
-  <!-- [Part 1] BASIC SETTINGS BEGIN -->
-
-  <!-- MAVEN COORDINATE BEGIN -->
-  <groupId>io.github.dunwu</groupId>
-  <artifactId>javalib</artifactId>
+  <groupId>io.github.dunwu.javalib</groupId>
+  <artifactId>javalib-demos</artifactId>
   <version>1.0.0</version>
   <packaging>pom</packaging>
-  <!-- MAVEN COORDINATE END -->
+  <name>JavaLib Demos</name>
+  <description>Java 库使用示例</description>
 
-  <!-- RELATIONSHIP SETTINGS BEGIN -->
   <modules>
     <module>bean</module>
     <module>log</module>
+    <module>mvel</module>
   </modules>
-  <dependencies>
-    <!-- bean start -->
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <version>1.16.8</version>
-    </dependency>
-    <!-- bean end -->
-
-    <!-- log start -->
-    <dependency>
-      <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-core</artifactId>
-      <version>1.2.3</version>
-    </dependency>
-    <dependency>
-      <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-classic</artifactId>
-      <version>1.2.3</version>
-    </dependency>
-    <dependency>
-      <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-access</artifactId>
-      <version>1.2.3</version>
-    </dependency>
-    <!-- log end -->
-
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.12</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
-  <!-- RELATIONSHIP SETTINGS END -->
-
-  <!-- PROPERTIES BEGIN -->
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <java.version>1.8</java.version>
-    <maven.compiler.source>${java.version}</maven.compiler.source>
-    <maven.compiler.target>${java.version}</maven.compiler.target>
-  </properties>
-  <!-- PROPERTIES END -->
-
-  <!-- [Part 1] BASIC SETTINGS END -->
-
-
-  <!-- [Part 3] PROJECT INFO BEGIN -->
-  <name>${project.artifactId}</name>
-  <description>Java 库使用示例</description>
-  <!-- [Part 3] PROJECT INFO END -->
-
-
 </project>

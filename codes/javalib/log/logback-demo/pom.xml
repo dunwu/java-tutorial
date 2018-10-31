@@ -3,17 +3,21 @@
          xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
 
-
-  <!-- [Part 1] BASIC SETTINGS BEGIN -->
-
-  <!-- MAVEN COORDINATE BEGIN -->
   <groupId>io.github.dunwu</groupId>
   <artifactId>javalib-log-logback</artifactId>
   <version>1.0.0</version>
   <packaging>jar</packaging>
-  <!-- MAVEN COORDINATE END -->
+  <name>JavaLib Demos - Log - logback</name>
+  <description>log4j2 示例</description>
 
-  <!-- RELATIONSHIP SETTINGS BEGIN -->
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <java.version>1.8</java.version>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+    <logback.version>1.2.3</logback.version>
+  </properties>
+
   <dependencies>
     <!-- log start -->
     <dependency>
@@ -35,22 +39,7 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-  <!-- RELATIONSHIP SETTINGS END -->
 
-  <!-- PROPERTIES BEGIN -->
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <java.version>1.8</java.version>
-    <maven.compiler.source>${java.version}</maven.compiler.source>
-    <maven.compiler.target>${java.version}</maven.compiler.target>
-    <logback.version>1.2.3</logback.version>
-  </properties>
-  <!-- PROPERTIES END -->
-
-  <!-- [Part 1] BASIC SETTINGS END -->
-
-
-  <!-- [Part 2] BUILD SETTINGS BEGIN -->
   <build>
     <resources>
       <resource>
@@ -59,13 +48,5 @@
       </resource>
     </resources>
   </build>
-  <!-- [Part 2] BUILD SETTINGS END -->
-
-
-  <!-- [Part 3] PROJECT INFO BEGIN -->
-  <name>${project.artifactId}</name>
-  <description>logback 示例</description>
-  <!-- [Part 3] PROJECT INFO END -->
-
 
 </project>
