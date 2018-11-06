@@ -12,6 +12,22 @@ tags:
 
 # Maven 之 pom.xml 详解（一）
 
+<!-- TOC depthFrom:2 depthTo:3 -->
+
+- [简介](#简介)
+    - [什么是 pom？](#什么是-pom)
+    - [pom 配置一览](#pom-配置一览)
+- [基本配置](#基本配置)
+    - [maven 坐标](#maven-坐标)
+- [依赖配置](#依赖配置)
+    - [dependencies](#dependencies)
+    - [parent](#parent)
+    - [dependencyManagement](#dependencymanagement)
+    - [modules](#modules)
+    - [properties](#properties)
+
+<!-- /TOC -->
+
 ## 简介
 
 - [The POM 4.0.0 XSD](http://maven.apache.org/xsd/maven-4.0.0.xsd) and [descriptor reference documentation](http://maven.apache.org/ref/current/maven-model/maven.html)

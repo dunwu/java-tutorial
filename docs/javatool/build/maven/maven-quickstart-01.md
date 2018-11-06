@@ -12,6 +12,25 @@ tags:
 
 # Maven 快速指南（一）
 
+<!-- TOC depthFrom:2 depthTo:3 -->
+
+- [概念](#概念)
+    - [Maven是什么](#maven是什么)
+    - [Maven的生命周期](#maven的生命周期)
+    - [Maven的标准工程结构](#maven的标准工程结构)
+    - [Maven的"约定优于配置"](#maven的约定优于配置)
+    - [Maven的版本规范](#maven的版本规范)
+- [安装](#安装)
+    - [官网下载地址](#官网下载地址)
+    - [配置环境变量](#配置环境变量)
+    - [本地仓储配置](#本地仓储配置)
+- [第一个Maven工程](#第一个maven工程)
+    - [在Eclipse中创建Maven工程](#在eclipse中创建maven工程)
+    - [使用Maven进行构建](#使用maven进行构建)
+- [参考资料](#参考资料)
+
+<!-- /TOC -->
+
 ## 概念
 
 ### Maven是什么

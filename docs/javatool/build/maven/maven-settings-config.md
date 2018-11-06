@@ -12,6 +12,27 @@ tags:
 
 # Maven 之 settings.xml 详解
 
+<!-- TOC depthFrom:2 depthTo:3 -->
+
+- [概要](#概要)
+    - [settings.xml有什么用？](#settingsxml有什么用)
+    - [settings.xml文件位置](#settingsxml文件位置)
+    - [配置优先级](#配置优先级)
+- [settings.xml元素详解](#settingsxml元素详解)
+    - [顶级元素概览](#顶级元素概览)
+    - [LocalRepository](#localrepository)
+    - [InteractiveMode](#interactivemode)
+    - [UsePluginRegistry](#usepluginregistry)
+    - [Offline](#offline)
+    - [PluginGroups](#plugingroups)
+    - [Servers](#servers)
+    - [Mirrors](#mirrors)
+    - [Proxies](#proxies)
+    - [Profiles](#profiles)
+    - [ActiveProfiles](#activeprofiles)
+
+<!-- /TOC -->
+
 ## 概要
 
 ### settings.xml有什么用？

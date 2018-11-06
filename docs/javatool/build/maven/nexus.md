@@ -19,7 +19,18 @@ tags:
 > - Nexus 3.13.0
 > - JDK 1.8
 > - Maven 3.5.4
->
+
+<!-- TOC depthFrom:2 depthTo:3 -->
+
+- [下载安装 Nexus](#下载安装-nexus)
+- [启动停止 Nexus](#启动停止-nexus)
+- [使用 Nexus](#使用-nexus)
+    - [配置 settings.xml](#配置-settingsxml)
+    - [配置 pom.xml](#配置-pomxml)
+    - [执行 maven 构建](#执行-maven-构建)
+- [参考资料](#参考资料)
+
+<!-- /TOC -->
 
 ## 下载安装 Nexus
 

@@ -12,6 +12,22 @@ tags:
 
 # Maven 之 pom.xml 详解（三）
 
+<!-- TOC depthFrom:2 depthTo:3 -->
+
+- [项目信息](#项目信息)
+- [环境配置](#环境配置)
+    - [issueManagement](#issuemanagement)
+    - [ciManagement](#cimanagement)
+    - [mailingLists](#mailinglists)
+    - [scm](#scm)
+    - [prerequisites](#prerequisites)
+    - [repositories](#repositories)
+    - [pluginRepositories](#pluginrepositories)
+    - [distributionManagement](#distributionmanagement)
+    - [profiles](#profiles)
+
+<!-- /TOC -->
+
 ## 项目信息
 
 项目信息相关的这部分标签**都不是必要的**，也就是说完全可以不填写。

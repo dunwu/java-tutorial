@@ -12,6 +12,14 @@ tags:
 
 # Maven 之 pom.xml 详解（二）
 
+<!-- TOC depthFrom:2 depthTo:3 -->
+
+- [构建配置](#构建配置)
+    - [build](#build)
+    - [reporting](#reporting)
+
+<!-- /TOC -->
+
 ## 构建配置
 
 ### build

@@ -20,7 +20,7 @@
   - [Maven 之 pom.xml 详解（二）](javatool/build/maven/maven-pom-02.md)
   - [Maven 之 pom.xml 详解（三）](javatool/build/maven/maven-pom-03.md)
   - [Maven 之 settings.xml 详解](javatool/build/maven/maven-settings-config.md)
-  - [发布项目到中央仓库](javatool/build/maven/maven-deploy.md)
+  - [发布项目到 maven 中央仓库](javatool/build/maven/maven-deploy.md)
   - [部署并使用 Nexus 作为 Maven 私服](javatool/build/maven/nexus.md) - 关键词：maven, nexus
   - [Maven 排错](javatool/build/maven/maven-faq.md)
   - [Ant 简易教程](javatool/build/ant.md)
