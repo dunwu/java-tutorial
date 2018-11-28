@@ -1,24 +1,12 @@
----
-title: Maven 之 settings.xml 详解
-date: 2016/11/10
-categories:
-- javatool
-tags:
-- java
-- javatool
-- build
-- maven
----
-
 # Maven 之 settings.xml 详解
 
 <!-- TOC depthFrom:2 depthTo:3 -->
 
-- [概要](#概要)
-    - [settings.xml有什么用？](#settingsxml有什么用)
-    - [settings.xml文件位置](#settingsxml文件位置)
+- [简介](#简介)
+    - [settings.xml 有什么用？](#settingsxml-有什么用)
+    - [settings.xml 文件位置](#settingsxml-文件位置)
     - [配置优先级](#配置优先级)
-- [settings.xml元素详解](#settingsxml元素详解)
+- [settings.xml 元素详解](#settingsxml-元素详解)
     - [顶级元素概览](#顶级元素概览)
     - [LocalRepository](#localrepository)
     - [InteractiveMode](#interactivemode)
@@ -33,32 +21,44 @@ tags:
 
 <!-- /TOC -->
 
-## 概要
+## 简介
 
-### settings.xml有什么用？
-如果在Eclipse中使用过Maven插件，想必会有这个经验：配置settings.xml文件的路径。
-![Paste_Image.png](http://upload-images.jianshu.io/upload_images/3101171-a9137d52a1eab02d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-**settings.xml文件是干什么的，为什么要配置它呢？**
-从settings.xml的文件名就可以看出，它是用来设置maven参数的配置文件。并且，**settings.xml是maven的全局配置文件**。而pom.xml文件是所在项目的局部配置。
-Settings.xml中包含类似本地仓储位置、修改远程仓储服务器、认证信息等配置。
+### settings.xml 有什么用？
 
-### settings.xml文件位置
-settings.xml文件一般存在于两个位置：
-全局配置: ${M2_HOME}/conf/settings.xml
-用户配置: ${user.home}/.m2/settings.xml
-note：用户配置优先于全局配置。${user.home} 和和所有其他系统属性只能在3.0+版本上使用。请注意windows和Linux使用变量的区别。
+如果在 Eclipse 中使用过 Maven 插件，想必会有这个经验：配置 settings.xml 文件的路径。
+
+![](http://dunwu.test.upcdn.net/snap/20181127195810.png)
+
+**settings.xml 文件有什么用，为什么要配置它？**
+
+从 settings.xml 的文件名就可以看出，它是用来设置 maven 参数的配置文件。settings.xml 中包含类似本地仓储位置、修改远程仓储服务器、认证信息等配置。
+
+- settings.xml 是 maven 的**全局配置文件**。
+- pom.xml 文件是本地**项目配置文件**。
+
+### settings.xml 文件位置
+
+settings.xml 文件一般存在于两个位置：
+
+- **全局配置** - `${M2_HOME}/conf/settings.xml`
+- **用户配置** - `${user.home}/.m2/settings.xml`
+
+> 注意：用户配置优先于全局配置。`${user.home}` 和和所有其他系统属性只能在 3.0+版本上使用。请注意 windows 和 Linux 使用变量的区别。
 
 ### 配置优先级
 
-需要注意的是：**局部配置优先于全局配置**。
-配置优先级从高到低：pom.xml> user settings > global settings
+> 重要：**局部配置优先于全局配置**。
+
+配置优先级从高到低：pom.xml > user settings > global settings
+
 如果这些文件同时存在，在应用配置时，会合并它们的内容，如果有重复的配置，优先级高的配置会覆盖优先级低的。
 
-## settings.xml元素详解
+## settings.xml 元素详解
 
 ### 顶级元素概览
 
 下面列举了`settings.xml`中的顶级元素
+
 ```xml
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -80,41 +80,53 @@ note：用户配置优先于全局配置。${user.home} 和和所有其他系统
 ### LocalRepository
 
 **作用**：该值表示构建系统本地仓库的路径。
+
 其默认值：~/.m2/repository。
+
 ```xml
 <localRepository>${user.home}/.m2/repository</localRepository>
 ```
 
 ### InteractiveMode
 
-**作用**：表示maven是否需要和用户交互以获得输入。
-如果maven需要和用户交互以获得输入，则设置成true，反之则应为false。默认为true。
+**作用**：表示 maven 是否需要和用户交互以获得输入。
+
+如果 maven 需要和用户交互以获得输入，则设置成 true，反之则应为 false。默认为 true。
+
 ```xml
 <interactiveMode>true</interactiveMode>
 ```
 
 ### UsePluginRegistry
 
-**作用**：maven是否需要使用plugin-registry.xml文件来管理插件版本。
-如果需要让maven使用文件~/.m2/plugin-registry.xml来管理插件版本，则设为true。默认为false。
+**作用**：maven 是否需要使用 plugin-registry.xml 文件来管理插件版本。
+
+如果需要让 maven 使用文件~/.m2/plugin-registry.xml 来管理插件版本，则设为 true。默认为 false。
+
 ```xml
 <usePluginRegistry>false</usePluginRegistry>
 ```
 
 ### Offline
 
-**作用**：表示maven是否需要在离线模式下运行。
-如果构建系统需要在离线模式下运行，则为true，默认为false。
+**作用**：表示 maven 是否需要在离线模式下运行。
+
+如果构建系统需要在离线模式下运行，则为 true，默认为 false。
+
 当由于网络设置原因或者安全因素，构建服务器不能连接远程仓库的时候，该配置就十分有用。
+
 ```xml
 <offline>false</offline>
 ```
 
 ### PluginGroups
 
-**作用**：当插件的组织id（groupId）没有显式提供时，供搜寻插件组织Id（groupId）的列表。
-该元素包含一个pluginGroup元素列表，每个子元素包含了一个组织Id（groupId）。
-当我们使用某个插件，并且没有在命令行为其提供组织Id（groupId）的时候，Maven就会使用该列表。默认情况下该列表包含了`org.apache.maven.plugins`和`org.codehaus.mojo`。
+**作用**：当插件的组织 id（groupId）没有显式提供时，供搜寻插件组织 Id（groupId）的列表。
+
+该元素包含一个 pluginGroup 元素列表，每个子元素包含了一个组织 Id（groupId）。
+
+当我们使用某个插件，并且没有在命令行为其提供组织 Id（groupId）的时候，Maven 就会使用该列表。默认情况下该列表包含了 `org.apache.maven.plugins` 和 `org.codehaus.mojo`。
+
 ```xml
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
@@ -130,7 +142,7 @@ note：用户配置优先于全局配置。${user.home} 和和所有其他系统
 
 ### Servers
 
-**作用**：一般，仓库的下载和部署是在pom.xml文件中的`repositories`和`distributionManagement`元素中定义的。然而，一般类似用户名、密码（**有些仓库访问是需要安全认证的**）等信息不应该在pom.xml文件中配置，这些信息可以配置在`settings.xml`中。
+**作用**：一般，仓库的下载和部署是在 pom.xml 文件中的 `repositories` 和 `distributionManagement` 元素中定义的。然而，一般类似用户名、密码（**有些仓库访问是需要安全认证的**）等信息不应该在 pom.xml 文件中配置，这些信息可以配置在 `settings.xml` 中。
 
 ```xml
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -164,6 +176,7 @@ note：用户配置优先于全局配置。${user.home} 和和所有其他系统
 ### Mirrors
 
 **作用**：为仓库列表配置的下载镜像列表。
+
 ```xml
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
@@ -189,6 +202,7 @@ note：用户配置优先于全局配置。${user.home} 和和所有其他系统
 ### Proxies
 
 **作用**：用来配置不同的代理。
+
 ```xml
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
@@ -222,8 +236,11 @@ note：用户配置优先于全局配置。${user.home} 和和所有其他系统
 ### Profiles
 
 **作用**：根据环境参数来调整构建配置的列表。
-`settings.xml`中的`profile`元素是`pom.xml`中`profile`元素的**裁剪版本**。
-它包含了`id`、`activation`、`repositories`、`pluginRepositories`和 `properties`元素。这里的profile元素只包含这五个子元素是因为这里只关心构建系统这个整体（这正是settings.xml文件的角色定位），而非单独的项目对象模型设置。如果一个`settings.xml`中的`profile`被激活，它的值会覆盖任何其它定义在`pom.xml`中带有相同id的`profile`。
+
+`settings.xml` 中的 `profile` 元素是 `pom.xml` 中 `profile` 元素的**裁剪版本**。
+
+它包含了`id`、`activation`、`repositories`、`pluginRepositories` 和 `properties` 元素。这里的 profile 元素只包含这五个子元素是因为这里只关心构建系统这个整体（这正是 settings.xml 文件的角色定位），而非单独的项目对象模型设置。如果一个 `settings.xml` 中的 `profile` 被激活，它的值会覆盖任何其它定义在 `pom.xml` 中带有相同 id 的 `profile`。
+
 ```xml
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
@@ -249,9 +266,11 @@ note：用户配置优先于全局配置。${user.home} 和和所有其他系统
 
 #### Activation
 
-**作用**：自动触发`profile`的条件逻辑。
-如`pom.xml`中的`profile`一样，`profile`的作用在于它能够在某些特定的环境中自动使用某些特定的值；这些环境通过`activation`元素指定。
-`activation`元素并不是激活`profile`的唯一方式。`settings.xml`文件中的`activeProfile`元素可以包含`profile`的`id`。`profile`也可以通过在命令行，使用-P标记和逗号分隔的列表来显式的激活（如，-P test）。
+**作用**：自动触发 `profile` 的条件逻辑。
+
+如 `pom.xml` 中的 `profile` 一样，`profile` 的作用在于它能够在某些特定的环境中自动使用某些特定的值；这些环境通过 `activation` 元素指定。
+`activation` 元素并不是激活 `profile` 的唯一方式。`settings.xml` 文件中的 `activeProfile` 元素可以包含 `profile` 的 `id`。`profile` 也可以通过在命令行，使用 `-P` 标记和逗号分隔的列表来显式的激活（如，`-P test`）。
+
 ```xml
 <activation>
   <!--profile默认是否激活的标识 -->
@@ -286,30 +305,33 @@ note：用户配置优先于全局配置。${user.home} 和和所有其他系统
 </activation>
 ```
 
-***注：在maven工程的pom.xml所在目录下执行`mvn help:active-profiles`命令可以查看中央仓储的profile是否在工程中生效。***
+> 注：在 maven 工程的 pom.xml 所在目录下执行 `mvn help:active-profiles` 命令可以查看中央仓储的 profile 是否在工程中生效。
 
 #### properties
 
 **作用**：对应`profile`的扩展属性列表。
-maven属性和ant中的属性一样，可以用来存放一些值。这些值可以在`pom.xml`中的任何地方使用标记${X}来使用，这里X是指属性的名称。属性有五种不同的形式，并且都能在settings.xml文件中访问。
+
+maven 属性和 ant 中的属性一样，可以用来存放一些值。这些值可以在 `pom.xml` 中的任何地方使用标记\${X}来使用，这里 X 是指属性的名称。属性有五种不同的形式，并且都能在 settings.xml 文件中访问。
+
 ```xml
-<!-- 
-  1. env.X: 在一个变量前加上"env."的前缀，会返回一个shell环境变量。例如,"env.PATH"指代了$path环境变量（在Windows上是%PATH%）。 
-2. project.x：指代了POM中对应的元素值。例如: <project><version>1.0</version></project>通过${project.version}获得version的值。 
-  3. settings.x: 指代了settings.xml中对应元素的值。例如：<settings><offline>false</offline></settings>通过 ${settings.offline}获得offline的值。 
-  4. Java System Properties: 所有可通过java.lang.System.getProperties()访问的属性都能在POM中使用该形式访问，例如 ${java.home}。 
-5. x: 在<properties/>元素中，或者外部文件中设置，以${someVar}的形式使用。
+<!--
+  1. env.X: 在一个变量前加上"env."的前缀，会返回一个shell环境变量。例如,"env.PATH"指代了$path环境变量（在Windows上是%PATH%）。
+  2. project.x：指代了POM中对应的元素值。例如: <project><version>1.0</version></project>通过${project.version}获得version的值。
+  3. settings.x: 指代了settings.xml中对应元素的值。例如：<settings><offline>false</offline></settings>通过 ${settings.offline}获得offline的值。
+  4. Java System Properties: 所有可通过java.lang.System.getProperties()访问的属性都能在POM中使用该形式访问，例如 ${java.home}。
+  5. x: 在<properties/>元素中，或者外部文件中设置，以${someVar}的形式使用。
  -->
 <properties>
   <user.install>${user.home}/our-project</user.install>
 </properties>
 ```
 
-***注：如果该profile被激活，则可以在`pom.xml`中使用${user.install}。***
+> 注：如果该 profile 被激活，则可以在`pom.xml`中使用\${user.install}。
 
 #### Repositories
 
-**作用**：远程仓库列表，它是maven用来填充构建系统本地仓库所使用的一组远程仓库。
+**作用**：远程仓库列表，它是 maven 用来填充构建系统本地仓库所使用的一组远程仓库。
+
 ```xml
 <repositories>
   <!--包含需要连接到远程仓库的信息 -->
@@ -344,8 +366,9 @@ maven属性和ant中的属性一样，可以用来存放一些值。这些值可
 #### pluginRepositories
 
 **作用**：发现插件的远程仓库列表。
-和`repository`类似，只是`repository`是管理jar包依赖的仓库，`pluginRepositories`则是管理插件的仓库。
-maven插件是一种特殊类型的构件。由于这个原因，插件仓库独立于其它仓库。`pluginRepositories`元素的结构和`repositories`元素的结构类似。每个`pluginRepository`元素指定一个Maven可以用来寻找新插件的远程地址。
+
+和 `repository` 类似，只是 `repository` 是管理 jar 包依赖的仓库，`pluginRepositories` 则是管理插件的仓库。
+maven 插件是一种特殊类型的构件。由于这个原因，插件仓库独立于其它仓库。`pluginRepositories` 元素的结构和 `repositories` 元素的结构类似。每个 `pluginRepository` 元素指定一个 Maven 可以用来寻找新插件的远程地址。
 
 ```xml
 <pluginRepositories>
@@ -371,9 +394,12 @@ maven插件是一种特殊类型的构件。由于这个原因，插件仓库独
 
 ### ActiveProfiles
 
-**作用**：手动激活profiles的列表，按照`profile`被应用的顺序定义`activeProfile`。
-该元素包含了一组`activeProfile`元素，每个`activeProfile`都含有一个profile id。任何在`activeProfile`中定义的profile id，不论环境设置如何，其对应的 `profile`都会被激活。如果没有匹配的`profile`，则什么都不会发生。
-例如，env-test是一个activeProfile，则在pom.xml（或者profile.xml）中对应id的profile会被激活。如果运行过程中找不到这样一个profile，Maven则会像往常一样运行。
+**作用**：手动激活 profiles 的列表，按照`profile`被应用的顺序定义`activeProfile`。
+
+该元素包含了一组 `activeProfile` 元素，每个 `activeProfile` 都含有一个 profile id。任何在 `activeProfile` 中定义的 profile id，不论环境设置如何，其对应的 `profile` 都会被激活。如果没有匹配的 `profile`，则什么都不会发生。
+
+例如，env-test 是一个 activeProfile，则在 pom.xml（或者 profile.xml）中对应 id 的 profile 会被激活。如果运行过程中找不到这样一个 profile，Maven 则会像往常一样运行。
+
 ```xml
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
@@ -387,4 +413,4 @@ maven插件是一种特殊类型的构件。由于这个原因，插件仓库独
 </settings>
 ```
 
-至此，maven settings.xml中的标签都讲解完毕，希望对大家有所帮助。
+至此，maven settings.xml 中的标签都讲解完毕，希望对大家有所帮助。

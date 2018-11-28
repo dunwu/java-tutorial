@@ -10,7 +10,7 @@
     - [settings.xml 配置](#settingsxml-配置)
     - [pom.xml 配置](#pomxml-配置)
 - [部署和发布](#部署和发布)
-- [引用和引申](#引用和引申)
+- [引申和引用](#引申和引用)
 
 <!-- /TOC -->
 
@@ -26,7 +26,7 @@
 
 注册账号成功后，根据你 Java 包的功能分别写上`Summary`、`Description`、`Group Id`、`SCM url`以及`Project URL`等必要信息，可以参见我之前创建的 Issue：[OSSRH-36187](https://issues.sonatype.org/browse/OSSRH-36187)。
 
-![](https://raw.githubusercondunwu.com/dunwu/images-bed/screenshot/images/20181106111734.png)
+![](http://dunwu.test.upcdn.net/snap/20181106143734.png)
 
 创建完之后需要等待 Sonatype 的工作人员审核处理，审核时间还是很快的，我的审核差不多等待了两小时。当 Issue 的 Status 变为`RESOLVED`后，就可以进行下一步操作了。
 
@@ -294,7 +294,7 @@ gpg:              unchanged: 1
 
 > 说明：-P 参数后面的 sonatype 需要和 pom.xml 中 `<profile>` 的 id 保持一致，才能激活 profile。
 
-## 引用和引申
+## 引申和引用
 
 - https://www.jianshu.com/p/8c3d7fb09bce
 - http://www.ruanyifeng.com/blog/2013/07/gpg.html
