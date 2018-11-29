@@ -14,5 +14,6 @@
     <module>bean</module>
     <module>log</module>
     <module>mvel</module>
+    <module>test</module>
   </modules>
 </project>
