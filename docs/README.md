@@ -3,7 +3,7 @@
 ## [Java 库](javalib/README.md)
 
 - [Dozer 使用小结](javalib/dozer.md)
-- [细说 Java 主流日志工具库](javalib/java-log.md)
+- [细说 Java 主流日志工具库](https://github.com/dunwu/notes/blob/master/编程语言/Java/javastack/javalib/java-log.md)
 - [JavaMail 使用小结](javalib/javamail.md)
 - [jsoup 使用小结](javalib/jsoup.md)
 - [JUnit 使用小结](javalib/junit.md)
