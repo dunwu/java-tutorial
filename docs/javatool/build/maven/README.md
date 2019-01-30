@@ -1,5 +1,6 @@
 # Maven
 
+- [Maven 安装](maven-install.md)
 - [Maven 快速指南](maven-quickstart.md)
 - [Maven 之 pom.xml 详解](maven-pom.md)
 - [Maven 之 settings.xml 详解](maven-settings.md)
