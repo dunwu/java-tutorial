@@ -12,6 +12,7 @@
 
   <modules>
     <module>bean</module>
+    <module>json</module>
     <module>log</module>
     <module>mvel</module>
     <module>test</module>
