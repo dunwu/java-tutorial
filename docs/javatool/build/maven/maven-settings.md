@@ -1,4 +1,6 @@
-# Maven 之 settings.xml 详解
+# Maven 教程之 settings.xml 详解
+
+> :notebook: 本文已归档到：「[blog](https://github.com/dunwu/blog/blob/master/source/_posts/java/javatool/build/maven/)」
 
 <!-- TOC depthFrom:2 depthTo:3 -->
 
@@ -18,18 +20,13 @@
     - [Proxies](#proxies)
     - [Profiles](#profiles)
     - [ActiveProfiles](#activeprofiles)
+- [参考资料](#参考资料)
 
 <!-- /TOC -->
 
 ## 简介
 
 ### settings.xml 有什么用？
-
-如果在 Eclipse 中使用过 Maven 插件，想必会有这个经验：配置 settings.xml 文件的路径。
-
-<div align="center"><img src="http://dunwu.test.upcdn.net/snap/20181127195810.png"/></div>
-
-**settings.xml 文件有什么用，为什么要配置它？**
 
 从 settings.xml 的文件名就可以看出，它是用来设置 maven 参数的配置文件。settings.xml 中包含类似本地仓储位置、修改远程仓储服务器、认证信息等配置。
 
@@ -40,7 +37,7 @@
 
 settings.xml 文件一般存在于两个位置：
 
-- **全局配置** - `${M2_HOME}/conf/settings.xml`
+- **全局配置** - `${maven.home}/conf/settings.xml`
 - **用户配置** - `${user.home}/.m2/settings.xml`
 
 > 注意：用户配置优先于全局配置。`${user.home}` 和和所有其他系统属性只能在 3.0+版本上使用。请注意 windows 和 Linux 使用变量的区别。
@@ -414,3 +411,7 @@ maven 插件是一种特殊类型的构件。由于这个原因，插件仓库�
 ```
 
 至此，maven settings.xml 中的标签都讲解完毕，希望对大家有所帮助。
+
+## 参考资料
+
+- [maven 官方文档之 settings](https://maven.apache.org/settings.html)

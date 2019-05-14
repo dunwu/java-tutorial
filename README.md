@@ -23,17 +23,15 @@
 - :four: [JavaTool](docs/javatool/README.md) - 各种主流 Java 工具的应用。
   - [构建工具](docs/javatool/build/README.md)
     - [Maven 教程](docs/javatool/build/maven/README.md)
-      - [Maven 安装](docs/javatool/build/maven/maven-install.md)
       - [Maven 快速指南](docs/javatool/build/maven/maven-quickstart.md)
-      - [Maven 之 pom.xml 详解](docs/javatool/build/maven/maven-pom.md)
-      - [Maven 之 settings.xml 详解](docs/javatool/build/maven/maven-settings.md)
+      - [Maven 教程之 pom.xml 详解](docs/javatool/build/maven/maven-pom.md)
+      - [Maven 教程之 settings.xml 详解](docs/javatool/build/maven/maven-settings.md)
       - [Maven 实战问题和最佳实践](docs/javatool/build/maven/maven-action.md)
-      - [发布项目到 Maven 中央仓库](docs/javatool/build/maven/maven-deploy.md)
-      - [部署并使用 Nexus 作为 Maven 私服](docs/javatool/build/maven/nexus.md)
+      - [Maven 教程之发布 jar 到私服或中央仓库](docs/javatool/build/maven/maven-deploy.md)
     - [Ant 简易教程](docs/javatool/build/ant.md)
   - Java IDE
-    - [Intellij IDEA 使用小结](docs/javatool/ide/intellij.md)
-    - [Eclipse 使用小结](docs/javatool/ide/eclipse.md)
+    - [Intellij IDEA 使用指南](docs/javatool/ide/intellij.md)
+    - [Eclipse 使用指南](docs/javatool/ide/eclipse.md)
 - :five: [Spring 教程](https://dunwu.gitbooks.io/spring-tutorial/)
 - :six: [Spring Boot 教程](https://dunwu.github.io/spring-boot-tutorial/)
 

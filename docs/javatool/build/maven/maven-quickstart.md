@@ -1,4 +1,6 @@
-# Maven 快速指南
+# Maven 教程之入门指南
+
+> :notebook: 本文已归档到：「[blog](https://github.com/dunwu/blog/blob/master/source/_posts/java/javatool/build/maven/)」
 
 <!-- TOC depthFrom:2 depthTo:3 -->
 
@@ -9,19 +11,17 @@
     - [Maven 的"约定优于配置"](#maven-的约定优于配置)
     - [Maven 的版本规范](#maven-的版本规范)
 - [安装](#安装)
-    - [配置环境变量](#配置环境变量)
     - [本地仓储配置](#本地仓储配置)
 - [第一个 Maven 工程](#第一个-maven-工程)
+    - [在 Intellij 中创建 Maven 工程](#在-intellij-中创建-maven-工程)
     - [在 Eclipse 中创建 Maven 工程](#在-eclipse-中创建-maven-工程)
-    - [使用 Maven 进行构建](#使用-maven-进行构建)
 - [使用指导](#使用指导)
-    - [如何添加外部依赖 jar 包](#如何添加外部依赖-jar-包)
+    - [如何添加依赖](#如何添加依赖)
     - [如何寻找 jar 包](#如何寻找-jar-包)
     - [如何使用 Maven 插件(Plugin)](#如何使用-maven-插件plugin)
     - [如何一次编译多个工程](#如何一次编译多个工程)
     - [常用 Maven 插件](#常用-maven-插件)
     - [常用 Maven 命令](#常用-maven-命令)
-- [常见问题](#常见问题)
 - [引用和引申](#引用和引申)
 
 <!-- /TOC -->
@@ -30,7 +30,7 @@
 
 ### Maven 是什么
 
-Maven  是一个项目管理工具。它负责管理项目开发过程中的几乎所有的东西。
+Maven 是一个项目管理工具。它负责管理项目开发过程中的几乎所有的东西。
 
 - **版本** - maven 有自己的版本定义和规则。
 - **构建** - maven 支持许多种的应用程序类型，对于每一种支持的应用程序类型都定义好了一组构建规则和工具集。
@@ -79,9 +79,9 @@ maven 使用如下几个要素来唯一定位某一个输出物：
 - **version** - 一个项目的特定版本。
 - **packaging** - 项目的类型，默认是 jar，描述了项目打包后的输出。类型为 jar 的项目产生一个 JAR 文件，类型为 war 的项目产生一个 web 应用。
 
-maven 有自己的版本规范，一般是如下定义  `<major version>`、`<minor version>`、`<incremental version>-<qualifier>` ，比如 1.2.3-beta-01。要说明的是，maven 自己判断版本的算法是 major,minor,incremental 部分用数字比   较，qualifier 部分用字符串比较，所以要小心  alpha-2 和 alpha-15 的比较关系，最好用  alpha-02 的格式。
+maven 有自己的版本规范，一般是如下定义 `<major version>`、`<minor version>`、`<incremental version>-<qualifier>` ，比如 1.2.3-beta-01。要说明的是，maven 自己判断版本的算法是 major,minor,incremental 部分用数字比 较，qualifier 部分用字符串比较，所以要小心 alpha-2 和 alpha-15 的比较关系，最好用 alpha-02 的格式。
 
-maven 在版本管理时候可以使用几个特殊的字符串  SNAPSHOT，LATEST，RELEASE。比如"1.0-SNAPSHOT"。各个部分的含义和处理逻辑如下说明：
+maven 在版本管理时候可以使用几个特殊的字符串 SNAPSHOT，LATEST，RELEASE。比如"1.0-SNAPSHOT"。各个部分的含义和处理逻辑如下说明：
 
 - **SNAPSHOT** - 这个版本一般用于开发过程中，表示不稳定的版本。
 - **LATEST** - 指某个特定构件的最新发布，这个发布可能是一个发布版，也可能是一个 snapshot 版，具体看哪个时间最后。
@@ -90,22 +90,30 @@ maven 在版本管理时候可以使用几个特殊的字符串  SNAPSHOT，LATE
 ## 安装
 
 > [官网下载地址](http://maven.apache.org/download.cgi)
+>
+> Linux 环境安装可以使用我写一键安装脚本：https://github.com/dunwu/linux-tutorial/tree/master/codes/linux/ops/service/maven
 
-### 配置环境变量
+安装步骤如下：
 
-> **注意：安装 maven 之前，必须先确保你的机器中已经安装了 JDK。**
+（1）进入官网下载地址：https://maven.apache.org/download.cgi ，选择合适的版本下载并解压到本地。
 
-1．解压压缩包（以 apache-maven-3.3.9-bin.zip 为例）
+（2）添加环境变量 MAVEN_HOME，值为 maven 的安装路径
 
-2．添加环境变量 MAVEN_HOME，值为 apache-maven-3.3.9 的安装路径
+输入 `vi /etc/profile` ，添加环境变量如下：
 
-<div align="center"><img src="http://dunwu.test.upcdn.net/snap/20181127195009.png"/></div>
+```
+# MAVEN 的根路径
+export MAVEN_HOME=/opt/maven/apache-maven-3.5.2
+export PATH=\$MAVEN_HOME/bin:\$PATH
+```
 
-3．在 Path 环境变量的变量值末尾添加%MAVEN_HOME%\bin
+执行 `source /etc/profile` ，立即生效
 
-4．在 cmd 输入 mvn –version，如果出现 maven 的版本信息，说明配置成功。
+<div align="center"><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20181127195009.png"/></div>
 
-<div align="center"><img src="http://dunwu.test.upcdn.net/snap/20181127195046.png"/></div>
+（3）检验是否安装成功，执行 `mvn -v` 命令，如果出现 maven 的版本信息，说明配置成功。
+
+<div align="center"><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20181127195046.png"/></div>
 
 ### 本地仓储配置
 
@@ -115,13 +123,29 @@ maven 在版本管理时候可以使用几个特殊的字符串  SNAPSHOT，LATE
 
 可以参照下图配置本地仓储位置。
 
-<div align="center"><img src="http://dunwu.test.upcdn.net/snap/20181127195104.png"/></div>
+<div align="center"><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20181127195104.png"/></div>
 
 ## 第一个 Maven 工程
 
+### 在 Intellij 中创建 Maven 工程
+
+（1）创建 Maven 工程
+
+依次点击 File -> New -> Project 打开创建工程对话框，选择 Maven 工程。
+
+<div align="center"><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/1555414103572.png"/></div>
+
+（2）输入项目信息
+
+<div align="center"><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/1555415549748.png"/></div>
+
+（3）点击 Intellij 侧边栏中的 Maven 工具界面，有几个可以直接使用的 maven 命令，可以帮助你进行构建。
+
+<div align="center"><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/1555415806237.png"/></div>
+
 ### 在 Eclipse 中创建 Maven 工程
 
-#### Maven 插件
+（1）Maven 插件
 
 在 Eclipse 中创建 Maven 工程，需要安装 Maven 插件。
 
@@ -129,23 +153,23 @@ maven 在版本管理时候可以使用几个特殊的字符串  SNAPSHOT，LATE
 
 点击 Help -> Eclipse Marketplace，搜索 maven 关键字，选择安装红框对应的 Maven 插件。
 
-<div align="center"><img src="http://dunwu.test.upcdn.net/snap/20181127195117.png"/></div>
+<div align="center"><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20181127195117.png"/></div>
 
-#### Maven 环境配置
+（2）Maven 环境配置
 
 点击 Window -> Preferences
 
 如下图所示，配置 settings.xml 文件的位置
 
-<div align="center"><img src="http://dunwu.test.upcdn.net/snap/20181127195128.png"/></div>
+<div align="center"><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20181127195128.png"/></div>
 
-#### 创建 Maven 工程
+（3）创建 Maven 工程
 
 File -> New -> Maven Project -> Next，在接下来的窗口中会看到一大堆的项目模板，选择合适的模板。
 
 接下来设置项目的参数，如下：
 
-<div align="center"><img src="http://dunwu.test.upcdn.net/snap/20181127195151.png"/></div>
+<div align="center"><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20181127195151.png"/></div>
 
 **groupId**是项目组织唯一的标识符，实际对应 JAVA 的包的结构，是 main 目录里 java 的目录结构。
 
@@ -153,17 +177,17 @@ File -> New -> Maven Project -> Next，在接下来的窗口中会看到一大�
 
 点击 Finish，Eclipse 会创建一个 Maven 工程。
 
-### 使用 Maven 进行构建
+（4）使用 Maven 进行构建
 
 **Eclipse 中构建方式**
 
-在 Elipse 项目上右击  -> Run As  就能看到很多 Maven 操作。这些操作和 maven 命令是等效的。例如 Maven clean，等同于 mvn clean 命令。
+在 Elipse 项目上右击 -> Run As 就能看到很多 Maven 操作。这些操作和 maven 命令是等效的。例如 Maven clean，等同于 mvn clean 命令。
 
-<div align="center"><img src="http://dunwu.test.upcdn.net/snap/20181127195208.png"/></div>
+<div align="center"><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20181127195208.png"/></div>
 
 你也可以点击 Maven build，输入组合命令，并保存下来。如下图：
 
-<div align="center"><img src="http://dunwu.test.upcdn.net/snap/20181127195219.png"/></div>
+<div align="center"><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20181127195219.png"/></div>
 
 **Maven 命令构建方式**
 
@@ -171,11 +195,11 @@ File -> New -> Maven Project -> Next，在接下来的窗口中会看到一大�
 
 进入工程所在目录，输入 maven 命令就可以了。
 
-<div align="center"><img src="http://dunwu.test.upcdn.net/snap/20181127195243.png"/></div>
+<div align="center"><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20181127195243.png"/></div>
 
 ## 使用指导
 
-### 如何添加外部依赖 jar 包
+### 如何添加依赖
 
 在 Maven 工程中添加依赖 jar 包，很简单，只要在 POM 文件中引入对应的`<dependency>`标签即可。
 
@@ -229,8 +253,6 @@ File -> New -> Maven Project -> Next，在接下来的窗口中会看到一大�
 
 例如，想要使用 log4j，可以找到需要的版本号，然后拷贝对应的 maven 标签信息，将其添加到 pom .xml 文件中。
 
-<div align="center"><img src="http://oyz7npk35.bkt.clouddn.com//image/java/libs/maven/maven-quickstart-10.png"/></div>
-
 ### 如何使用 Maven 插件(Plugin)
 
 要添加 Maven 插件，可以在 pom.xml 文件中添加 `<plugin>` 标签。
@@ -255,114 +277,106 @@ File -> New -> Maven Project -> Next，在接下来的窗口中会看到一大�
 
 ### 如何一次编译多个工程
 
-在 Maven 中，允许一个 Maven Project 中有多个 Maven Module
+假设要创建一个父 maven 工程，它有两个子工程：my-app 和 my-webapp：
 
-1.创建 maven 父工程步骤：new-->other-->选择 maven project-->next-->勾选 create a simple project-->next-->填写 Group Id、Artifact Id、Version --> packaging 选择 pom-->finish。
+```
++- pom.xml
++- my-app
+| +- pom.xml
+| +- src
+|   +- main
+|     +- java
++- my-webapp
+| +- pom.xml
+| +- src
+|   +- main
+|     +- webapp
+```
 
-<div align="center"><img src="http://oyz7npk35.bkt.clouddn.com//image/java/libs/maven/maven-quickstart-11.png"/></div>
-
-2.创建 maven 子工程步骤：选中刚才创建的父工程右键-->new-->other-->选择 maven module-->next-->勾选 create a simple project-->填写 module name（其实就是 artifact id）-->next-->GAV 继承父工程-->packaging 选择你需要的-->finish。
-
-<div align="center"><img src="http://oyz7npk35.bkt.clouddn.com//image/java/libs/maven/maven-quickstart-12.png"/></div>
-
-3.完成，刷新父工程；如有多个子工程，继续按照第二步骤创建。
-
-<div align="center"><img src="http://oyz7npk35.bkt.clouddn.com//image/java/libs/maven/maven-quickstart-13.png"/></div>
-
-这时打开 XXX 中的 pom.xml 可以看到其中有以下标签
+app 工程的 pom.xml 如下，重点在于在 modules 中引入两个子 module：
 
 ```xml
-<modules>
-  <module>xxx1</module>
-</modules>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.mycompany.app</groupId>
+  <artifactId>app</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>my-app</module>
+    <module>my-webapp</module>
+  </modules>
+</project>
 ```
 
 选择编译 XXX 时，会依次对它的所有 Module 执行相同操作。
 
 ### 常用 Maven 插件
 
-#### maven-antrun-plugin
+> 更多详情请参考：[https://maven.apache.org/plugins/](https://maven.apache.org/plugins/)
 
-[http://maven.apache.org/plugins/maven-antrun-plugin/](http://maven.apache.org/plugins/maven-antrun-plugin/)
+#### [maven-antrun-plugin](http://maven.apache.org/plugins/maven-antrun-plugin/)
 
-maven-antrun-plugin 能让用户在 Maven 项目中运行 Ant 任务。用户可以直接在该插件的配置以 Ant 的方式编写 Target，  然后交给该插件的 run 目标去执行。在一些由 Ant 往 Maven 迁移的项目中，该插件尤其有用。此外当你发现需要编写一些自定义程度很高的任务，同时又觉   得 Maven 不够灵活时，也可以以 Ant 的方式实现之。maven-antrun-plugin 的 run 目标通常与生命周期绑定运行。
+maven-antrun-plugin 能让用户在 Maven 项目中运行 Ant 任务。用户可以直接在该插件的配置以 Ant 的方式编写 Target， 然后交给该插件的 run 目标去执行。在一些由 Ant 往 Maven 迁移的项目中，该插件尤其有用。此外当你发现需要编写一些自定义程度很高的任务，同时又觉 得 Maven 不够灵活时，也可以以 Ant 的方式实现之。maven-antrun-plugin 的 run 目标通常与生命周期绑定运行。
 
-#### maven-archetype-plugin
+#### [maven-archetype-plugin](http://maven.apache.org/archetype/maven-archetype-plugin/)
 
-[http://maven.apache.org/archetype/maven-archetype-plugin/](http://maven.apache.org/archetype/maven-archetype-plugin/)
+Archtype 指项目的骨架，Maven 初学者最开始执行的 Maven 命令可能就是**mvn archetype:generate**，这实际上就是让 maven-archetype-plugin 生成一个很简单的项目骨架，帮助开发者快速上手。可能也有人看到一些文档写了**mvn archetype:create**， 但实际上 create 目标已经被弃用了，取而代之的是 generate 目标，该目标使用交互式的方式提示用户输入必要的信息以创建项目，体验更好。 maven-archetype-plugin 还有一些其他目标帮助用户自己定义项目原型，例如你由一个产品需要交付给很多客户进行二次开发，你就可以为 他们提供一个 Archtype，帮助他们快速上手。
 
-Archtype 指项目的骨架，Maven 初学者最开始执行的 Maven 命令可能就是**mvn archetype:generate**，这实际上就是让 maven-archetype-plugin 生成一个很简单的项目骨架，帮助开发者快速上手。可能也有人看到一些文档写了**mvn archetype:create**，  但实际上 create 目标已经被弃用了，取而代之的是 generate 目标，该目标使用交互式的方式提示用户输入必要的信息以创建项目，体验更好。 maven-archetype-plugin 还有一些其他目标帮助用户自己定义项目原型，例如你由一个产品需要交付给很多客户进行二次开发，你就可以为   他们提供一个 Archtype，帮助他们快速上手。
+#### [maven-assembly-plugin](http://maven.apache.org/plugins/maven-assembly-plugin/)
 
-#### maven-assembly-plugin
+maven-assembly-plugin 的用途是将项目打包，该包可能包含了项目的可执行文件、源代码、readme、平台脚本等等。 maven-assembly-plugin 支持各种主流的格式如 zip、tar.gz、jar 和 war 等，具体打包哪些文件是高度可控的，例如用户可以 按文件级别的粒度、文件集级别的粒度、模块级别的粒度、以及依赖级别的粒度控制打包，此外，包含和排除配置也是支持的。maven-assembly- plugin 要求用户使用一个名为`assembly.xml`的元数据文件来表述打包，它的 single 目标可以直接在命令行调用，也可以被绑定至生命周期。
 
-[http://maven.apache.org/plugins/maven-assembly-plugin/](http://maven.apache.org/plugins/maven-assembly-plugin/)
-
-maven-assembly-plugin 的用途是制作项目分发包，该分发包可能包含了项目的可执行文件、源代码、readme、平台脚本等等。 maven-assembly-plugin 支持各种主流的格式如 zip、tar.gz、jar 和 war 等，具体打包哪些文件是高度可控的，例如用户可以   按文件级别的粒度、文件集级别的粒度、模块级别的粒度、以及依赖级别的粒度控制打包，此外，包含和排除配置也是支持的。maven-assembly- plugin 要求用户使用一个名为`assembly.xml`的元数据文件来表述打包，它的 single 目标可以直接在命令行调用，也可以被绑定至生命周期。
-
-#### maven-dependency-plugin
-
-[http://maven.apache.org/plugins/maven-dependency-plugin/](http://maven.apache.org/plugins/maven-dependency-plugin/)
+#### [maven-dependency-plugin](http://maven.apache.org/plugins/maven-dependency-plugin/)
 
 maven-dependency-plugin 最大的用途是帮助分析项目依赖，**dependency:list**能够列出项目最终解析到的依赖列表，**dependency:tree**能进一步的描绘项目依赖树，**dependency:analyze**可以告诉你项目依赖潜在的问题，如果你有直接使用到的却未声明的依赖，该目标就会发出警告。maven-dependency-plugin 还有很多目标帮助你操作依赖文件，例如**dependency:copy-dependencies**能将项目依赖从本地 Maven 仓库复制到某个特定的文件夹下面。
 
-#### maven-enforcer-plugin
+#### [maven-enforcer-plugin](http://maven.apache.org/plugins/maven-enforcer-plugin/)
 
-[http://maven.apache.org/plugins/maven-enforcer-plugin/](http://maven.apache.org/plugins/maven-enforcer-plugin/)
+在一个稍大一点的组织或团队中，你无法保证所有成员都熟悉 Maven，那他们做一些比较愚蠢的事情就会变得很正常，例如给项目引入了外部的 SNAPSHOT 依赖而导致构建不稳定，使用了一个与大家不一致的 Maven 版本而经常抱怨构建出现诡异问题。maven-enforcer- plugin 能够帮助你避免之类问题，它允许你创建一系列规则强制大家遵守，包括设定 Java 版本、设定 Maven 版本、禁止某些依赖、禁止 SNAPSHOT 依赖。只要在一个父 POM 配置规则，然后让大家继承，当规则遭到破坏的时候，Maven 就会报错。除了标准的规则之外，你还可以扩展该插 件，编写自己的规则。maven-enforcer-plugin 的 enforce 目标负责检查规则，它默认绑定到生命周期的 validate 阶段。
 
-在一个稍大一点的组织或团队中，你无法保证所有成员都熟悉 Maven，那他们做一些比较愚蠢的事情就会变得很正常，例如给项目引入了外部的  SNAPSHOT 依赖而导致构建不稳定，使用了一个与大家不一致的 Maven 版本而经常抱怨构建出现诡异问题。maven-enforcer- plugin 能够帮助你避免之类问题，它允许你创建一系列规则强制大家遵守，包括设定 Java 版本、设定 Maven 版本、禁止某些依赖、禁止  SNAPSHOT 依赖。只要在一个父 POM 配置规则，然后让大家继承，当规则遭到破坏的时候，Maven 就会报错。除了标准的规则之外，你还可以扩展该插   件，编写自己的规则。maven-enforcer-plugin 的 enforce 目标负责检查规则，它默认绑定到生命周期的 validate 阶段。
+#### [maven-help-plugin](http://maven.apache.org/plugins/maven-help-plugin/)
 
-#### maven-help-plugin
+maven-help-plugin 是一个小巧的辅助工具，最简单的**help:system**可以打印所有可用的环境变量和 Java 系统属性。**help:effective-pom**和**help:effective-settings**最 为有用，它们分别打印项目的有效 POM 和有效 settings，有效 POM 是指合并了所有父 POM（包括 Super POM）后的 XML，当你不确定 POM 的某些信息从何而来时，就可以查看有效 POM。有效 settings 同理，特别是当你发现自己配置的 settings.xml 没有生效时，就可以用**help:effective-settings**来验证。此外，maven-help-plugin 的 describe 目标可以帮助你描述任何一个 Maven 插件的信息，还有 all-profiles 目标和 active-profiles 目标帮助查看项目的 Profile。
 
-[http://maven.apache.org/plugins/maven-help-plugin/](http://maven.apache.org/plugins/maven-help-plugin/)
-maven-help-plugin 是一个小巧的辅助工具，最简单的**help:system**可以打印所有可用的环境变量和 Java 系统属性。**help:effective-pom**和**help:effective-settings**最   为有用，它们分别打印项目的有效 POM 和有效 settings，有效 POM 是指合并了所有父 POM（包括 Super POM）后的 XML，当你不确定 POM 的某些信息从何而来时，就可以查看有效 POM。有效 settings 同理，特别是当你发现自己配置的  settings.xml 没有生效时，就可以用**help:effective-settings**来验证。此外，maven-help-plugin 的 describe 目标可以帮助你描述任何一个 Maven 插件的信息，还有 all-profiles 目标和 active-profiles 目标帮助查看项目的 Profile。
+#### [maven-release-plugin](http://maven.apache.org/plugins/maven-release-plugin/)
 
-#### maven-release-plugin
+maven-release-plugin 的用途是帮助自动化项目版本发布，它依赖于 POM 中的 SCM 信息。**release:prepare**用来准备版本发布，具体的工作包括检查是否有未提交代码、检查是否有 SNAPSHOT 依赖、升级项目的 SNAPSHOT 版本至 RELEASE 版本、为项目打标签等等。**release:perform**则 是签出标签中的 RELEASE 源码，构建并发布。版本发布是非常琐碎的工作，它涉及了各种检查，而且由于该工作仅仅是偶尔需要，因此手动操作很容易遗漏一 些细节，maven-release-plugin 让该工作变得非常快速简便，不易出错。maven-release-plugin 的各种目标通常直接在 命令行调用，因为版本发布显然不是日常构建生命周期的一部分。
 
-[http://maven.apache.org/plugins/maven-release-plugin/](http://maven.apache.org/plugins/maven-release-plugin/)
-
-maven-release-plugin 的用途是帮助自动化项目版本发布，它依赖于 POM 中的 SCM 信息。**release:prepare**用来准备版本发布，具体的工作包括检查是否有未提交代码、检查是否有 SNAPSHOT 依赖、升级项目的 SNAPSHOT 版本至 RELEASE 版本、为项目打标签等等。**release:perform**则   是签出标签中的 RELEASE 源码，构建并发布。版本发布是非常琐碎的工作，它涉及了各种检查，而且由于该工作仅仅是偶尔需要，因此手动操作很容易遗漏一   些细节，maven-release-plugin 让该工作变得非常快速简便，不易出错。maven-release-plugin 的各种目标通常直接在   命令行调用，因为版本发布显然不是日常构建生命周期的一部分。
-
-#### maven-resources-plugin
-
-[http://maven.apache.org/plugins/maven-resources-plugin/](http://maven.apache.org/plugins/maven-resources-plugin/)
+#### [maven-resources-plugin](http://maven.apache.org/plugins/maven-resources-plugin/)
 
 为了使项目结构更为清晰，Maven 区别对待 Java 代码文件和资源文件，maven-compiler-plugin 用来编译 Java 代码，maven-resources-plugin 则用来处理资源文件。默认的主资源文件目录是`src/main/resources`，很多用户会需要添加额外的资源文件目录，这个时候就可以通过配置 maven-resources-plugin 来实现。此外，资源文件过滤也是 Maven 的一大特性，你可以在资源文件中使用*\${propertyName}*形式的 Maven 属性，然后配置 maven-resources-plugin 开启对资源文件的过滤，之后就可以针对不同环境通过命令行或者 Profile 传入属性的值，以实现更为灵活的构建。
 
-#### maven-surefire-plugin
+#### [maven-surefire-plugin](http://maven.apache.org/plugins/maven-surefire-plugin/)
 
-[http://maven.apache.org/plugins/maven-surefire-plugin/](http://maven.apache.org/plugins/maven-surefire-plugin/)
+可能是由于历史的原因，Maven 2.3 中用于执行测试的插件不是 maven-test-plugin，而是 maven-surefire-plugin。其实大部分时间内，只要你的测试 类遵循通用的命令约定（以 Test 结尾、以 TestCase 结尾、或者以 Test 开头），就几乎不用知晓该插件的存在。然而在当你想要跳过测试、排除某些 测试类、或者使用一些 TestNG 特性的时候，了解 maven-surefire-plugin 的一些配置选项就很有用了。例如 **mvn test -Dtest=FooTest** 这样一条命令的效果是仅运行 FooTest 测试类，这是通过控制 maven-surefire-plugin 的 test 参数实现的。
 
-可能是由于历史的原因，Maven 2/3 中用于执行测试的插件不是 maven-test-plugin，而是 maven-surefire-plugin。其实大部分时间内，只要你的测试   类遵循通用的命令约定（以 Test 结尾、以 TestCase 结尾、或者以 Test 开头），就几乎不用知晓该插件的存在。然而在当你想要跳过测试、排除某些   测试类、或者使用一些 TestNG 特性的时候，了解 maven-surefire-plugin 的一些配置选项就很有用了。例如  **mvn test -Dtest=FooTest**  这样一条命令的效果是仅运行 FooTest 测试类，这是通过控制 maven-surefire-plugin 的 test 参数实现的。
+#### [build-helper-maven-plugin](http://mojo.codehaus.org/build-helper-maven-plugin/)
 
-#### build-helper-maven-plugin
-
-[http://mojo.codehaus.org/build-helper-maven-plugin/](http://mojo.codehaus.org/build-helper-maven-plugin/)
-
-Maven 默认只允许指定一个主 Java 代码目录和一个测试 Java 代码目录，虽然这其实是个应当尽量遵守的约定，但偶尔你还是会希望能够指定多个   源码目录（例如为了应对遗留项目），build-helper-maven-plugin 的 add-source 目标就是服务于这个目的，通常它被绑定到   默认生命周期的 generate-sources 阶段以添加额外的源码目录。需要强调的是，这种做法还是不推荐的，因为它破坏了  Maven 的约定，而且可能会遇到其他严格遵守约定的插件工具无法正确识别额外的源码目录。
+Maven 默认只允许指定一个主 Java 代码目录和一个测试 Java 代码目录，虽然这其实是个应当尽量遵守的约定，但偶尔你还是会希望能够指定多个 源码目录（例如为了应对遗留项目），build-helper-maven-plugin 的 add-source 目标就是服务于这个目的，通常它被绑定到 默认生命周期的 generate-sources 阶段以添加额外的源码目录。需要强调的是，这种做法还是不推荐的，因为它破坏了 Maven 的约定，而且可能会遇到其他严格遵守约定的插件工具无法正确识别额外的源码目录。
 
 build-helper-maven-plugin 的另一个非常有用的目标是 attach-artifact，使用该目标你可以以 classifier 的形式选取部分项目文件生成附属构件，并同时 install 到本地仓库，也可以 deploy 到远程仓库。
 
-#### exec-maven-plugin
+#### [exec-maven-plugin](http://mojo.codehaus.org/exec-maven-plugin/)
 
-[http://mojo.codehaus.org/exec-maven-plugin/](http://mojo.codehaus.org/exec-maven-plugin/)
+exec-maven-plugin 很好理解，顾名思义，它能让你运行任何本地的系统程序，在某些特定情况下，运行一个 Maven 外部的程序可能就是最简单的问题解决方案，这就是**exec:exec**的 用途，当然，该插件还允许你配置相关的程序运行参数。除了 exec 目标之外，exec-maven-plugin 还提供了一个 java 目标，该目标要求你 提供一个 mainClass 参数，然后它能够利用当前项目的依赖作为 classpath，在同一个 JVM 中运行该 mainClass。有时候，为了简单的 演示一个命令行 Java 程序，你可以在 POM 中配置好 exec-maven-plugin 的相关运行参数，然后直接在命令运行**mvn exec:java** 以查看运行效果。
 
-exec-maven-plugin 很好理解，顾名思义，它能让你运行任何本地的系统程序，在某些特定情况下，运行一个 Maven 外部的程序可能就是最简单的问题解决方案，这就是**exec:exec**的   用途，当然，该插件还允许你配置相关的程序运行参数。除了 exec 目标之外，exec-maven-plugin 还提供了一个 java 目标，该目标要求你   提供一个 mainClass 参数，然后它能够利用当前项目的依赖作为 classpath，在同一个 JVM 中运行该 mainClass。有时候，为了简单的   演示一个命令行 Java 程序，你可以在 POM 中配置好 exec-maven-plugin 的相关运行参数，然后直接在命令运行**mvn exec:java**  以查看运行效果。
+#### [jetty-maven-plugin](http://wiki.eclipse.org/Jetty/Feature/Jetty_Maven_Plugin)
 
-#### jetty-maven-plugin
+在进行 Web 开发的时候，打开浏览器对应用进行手动的测试几乎是无法避免的，这种测试方法通常就是将项目打包成 war 文件，然后部署到 Web 容器 中，再启动容器进行验证，这显然十分耗时。为了帮助开发者节省时间，jetty-maven-plugin 应运而生，它完全兼容 Maven 项目的目录结构，能够周期性地检查源文件，一旦发现变更后自动更新到内置的 Jetty Web 容器中。做一些基本配置后（例如 Web 应用的 contextPath 和自动扫描变更的时间间隔），你只要执行 **mvn jetty:run** ，然后在 IDE 中修改代码，代码经 IDE 自动编译后产生变更，再由 jetty-maven-plugin 侦测到后更新至 Jetty 容器，这时你就可以直接 测试 Web 页面了。需要注意的是，jetty-maven-plugin 并不是宿主于 Apache 或 Codehaus 的官方插件，因此使用的时候需要额外 的配置`settings.xml`的 pluginGroups 元素，将 org.mortbay.jetty 这个 pluginGroup 加入。
 
-[http://wiki.eclipse.org/Jetty/Feature/Jetty_Maven_Plugin](http://wiki.eclipse.org/Jetty/Feature/Jetty_Maven_Plugin)
+#### [versions-maven-plugin](http://mojo.codehaus.org/versions-maven-plugin/)
 
-在进行 Web 开发的时候，打开浏览器对应用进行手动的测试几乎是无法避免的，这种测试方法通常就是将项目打包成 war 文件，然后部署到 Web 容器   中，再启动容器进行验证，这显然十分耗时。为了帮助开发者节省时间，jetty-maven-plugin 应运而生，它完全兼容  Maven 项目的目录结构，能够周期性地检查源文件，一旦发现变更后自动更新到内置的 Jetty Web 容器中。做一些基本配置后（例如 Web 应用的 contextPath 和自动扫描变更的时间间隔），你只要执行  **mvn jetty:run** ，然后在 IDE 中修改代码，代码经 IDE 自动编译后产生变更，再由 jetty-maven-plugin 侦测到后更新至 Jetty 容器，这时你就可以直接   测试 Web 页面了。需要注意的是，jetty-maven-plugin 并不是宿主于 Apache 或 Codehaus 的官方插件，因此使用的时候需要额外   的配置`settings.xml`的 pluginGroups 元素，将 org.mortbay.jetty 这个 pluginGroup 加入。
-
-#### versions-maven-plugin
-
-[http://mojo.codehaus.org/versions-maven-plugin/](http://mojo.codehaus.org/versions-maven-plugin/)
-
-很多 Maven 用户遇到过这样一个问题，当项目包含大量模块的时候，为他们集体更新版本就变成一件烦人的事情，到底有没有自动化工具能帮助完成这件   事情呢？（当然你可以使用 sed 之类的文本操作工具，不过不在本文讨论范围）答案是肯定的，versions-maven- plugin 提供了很多目标帮助你管理 Maven 项目的各种版本信息。例如最常用的，命令  **mvn versions:set -DnewVersion=1.1-SNAPSHOT**  就能帮助你把所有模块的版本更新到 1.1-SNAPSHOT。该插件还提供了其他一些很有用的目标，display-dependency- updates 能告诉你项目依赖有哪些可用的更新；类似的 display-plugin-updates 能告诉你可用的插件更新；然后 use- latest-versions 能自动帮你将所有依赖升级到最新版本。最后，如果你对所做的更改满意，则可以使用  **mvn versions:commit**  提交，不满意的话也可以使用  **mvn versions:revert**  进行撤销。
-
-更多详情请参考[https://maven.apache.org/plugins/](https://maven.apache.org/plugins/)
+很多 Maven 用户遇到过这样一个问题，当项目包含大量模块的时候，为他们集体更新版本就变成一件烦人的事情，到底有没有自动化工具能帮助完成这件 事情呢？（当然你可以使用 sed 之类的文本操作工具，不过不在本文讨论范围）答案是肯定的，versions-maven- plugin 提供了很多目标帮助你管理 Maven 项目的各种版本信息。例如最常用的，命令 **mvn versions:set -DnewVersion=1.1-SNAPSHOT** 就能帮助你把所有模块的版本更新到 1.1-SNAPSHOT。该插件还提供了其他一些很有用的目标，display-dependency- updates 能告诉你项目依赖有哪些可用的更新；类似的 display-plugin-updates 能告诉你可用的插件更新；然后 use- latest-versions 能自动帮你将所有依赖升级到最新版本。最后，如果你对所做的更改满意，则可以使用 **mvn versions:commit** 提交，不满意的话也可以使用 **mvn versions:revert** 进行撤销。
 
 ### 常用 Maven 命令
+
+> 更详细命令说明请参考：https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html
 
 | **生命周期**                | **阶段描述**                                                                                                    |
 | --------------------------- | --------------------------------------------------------------------------------------------------------------- |
@@ -390,17 +404,7 @@ exec-maven-plugin 很好理解，顾名思义，它能让你运行任何本地�
 
 **使用参数**
 
-`-Dmaven.test.skip=true`:  跳过单元测试(eg: mcn clean package -Dmaven.test.skip=true)
-
-## 常见问题
-
-dependencies 和 dependencyManagement，plugins 和 pluginManagement 有什么区别？
-
-dependencyManagement 是表示依赖 jar 包的声明，即你在项目中的 dependencyManagement 下声明了依赖，maven 不会加载该依赖，dependencyManagement 声明可以被继承。
-
-dependencyManagement 的一个使用案例是当有父子项目的时候，父项目中可以利用 dependencyManagement 声明子项目中需要用到的依赖 jar 包，之后，当某个或者某几个子项目需要加载该插件的时候，就可以在子项目中 dependencies 节点只配置  groupId  和  artifactId 就可以完成插件的引用。
-
-dependencyManagement 主要是为了统一管理插件，确保所有子项目使用的插件版本保持一致，类似的还有 plugins 和 pluginManagement。
+`-Dmaven.test.skip=true`: 跳过单元测试(eg: mvn clean package -Dmaven.test.skip=true)
 
 ## 引用和引申
 
