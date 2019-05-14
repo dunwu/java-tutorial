@@ -1,4 +1,4 @@
-# Maven
+# Maven 教程
 
 - [Maven 安装](maven-install.md)
 - [Maven 快速指南](maven-quickstart.md)
