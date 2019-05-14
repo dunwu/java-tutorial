@@ -27,7 +27,7 @@
 
 如果在 Eclipse 中使用过 Maven 插件，想必会有这个经验：配置 settings.xml 文件的路径。
 
-![](http://dunwu.test.upcdn.net/snap/20181127195810.png)
+<div align="center"><img src="http://dunwu.test.upcdn.net/snap/20181127195810.png"/></div>
 
 **settings.xml 文件有什么用，为什么要配置它？**
 
@@ -81,7 +81,7 @@ settings.xml 文件一般存在于两个位置：
 
 **作用**：该值表示构建系统本地仓库的路径。
 
-其默认值：~/.m2/repository。
+其默认值：\~/.m2/repository。
 
 ```xml
 <localRepository>${user.home}/.m2/repository</localRepository>
@@ -101,7 +101,7 @@ settings.xml 文件一般存在于两个位置：
 
 **作用**：maven 是否需要使用 plugin-registry.xml 文件来管理插件版本。
 
-如果需要让 maven 使用文件~/.m2/plugin-registry.xml 来管理插件版本，则设为 true。默认为 false。
+如果需要让 maven 使用文件\~/.m2/plugin-registry.xml 来管理插件版本，则设为 true。默认为 false。
 
 ```xml
 <usePluginRegistry>false</usePluginRegistry>

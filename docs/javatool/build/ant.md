@@ -1,15 +1,22 @@
----
-title: Ant 简易教程
-date: 2015-04-19
-categories:
-- javatool
-tags:
-- java
-- javatool
-- build
----
-
 # Ant 简易教程
+
+<!-- TOC depthFrom:2 depthTo:3 -->
+
+- [前言](#前言)
+- [下载和安装](#下载和安装)
+    - [下载](#下载)
+    - [配置环境变量](#配置环境变量)
+    - [验证](#验证)
+- [例子](#例子)
+- [关键元素](#关键元素)
+    - [Project 元素](#project-元素)
+    - [Target 元素](#target-元素)
+    - [Task 元素](#task-元素)
+    - [Property 元素](#property-元素)
+    - [extension-point元素](#extension-point元素)
+- [参考资料](#参考资料)
+
+<!-- /TOC -->
 
 ## 前言
 
@@ -17,7 +24,7 @@ tags:
 
 Ant是纯Java语言编写的，所以具有很好的跨平台性。
 
-![Paste_Image.png](http://upload-images.jianshu.io/upload_images/3101171-d9da2a06160103d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-d9da2a06160103d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
 
 ## 下载和安装
 
@@ -25,9 +32,9 @@ Ant是纯Java语言编写的，所以具有很好的跨平台性。
 
 ant的官方下载地址：http://ant.apache.org/bindownload.cgi
 
-进入页面后，在下图的红色方框中可以下载最新版本。笔者下载的版本是 **apache-ant-1.9.4。**
+进入页面后，在下图的红色方框中可以下载最新版本。笔者下载的版本是 **apache-ant-1.9.4。**
 
-![Paste_Image.png](http://upload-images.jianshu.io/upload_images/3101171-72d3bc81cd29e68d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-72d3bc81cd29e68d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
 
 ### 配置环境变量
 
@@ -35,17 +42,17 @@ ant的官方下载地址：http://ant.apache.org/bindownload.cgi
 
 设置ant环境变量：
 
-**ANT_HOME**    C:/ apache-ant-1.9.4
+**ANT_HOME**    C:/ apache-ant-1.9.4
 
-![Paste_Image.png](http://upload-images.jianshu.io/upload_images/3101171-682a8e16b82a7532.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-682a8e16b82a7532.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
 
-**path **              C:/ apache-ant-1.9.4/bin
+**path **              C:/ apache-ant-1.9.4/bin
 
-![Paste_Image.png](http://upload-images.jianshu.io/upload_images/3101171-ea61070f97b5a7cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-ea61070f97b5a7cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
 
-**classpath**        C:/apache-ant-1.9.4/lib
+**classpath**        C:/apache-ant-1.9.4/lib
 
-![Paste_Image.png](http://upload-images.jianshu.io/upload_images/3101171-5bc45dbe64602bc7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-5bc45dbe64602bc7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
 
 ### 验证
 
@@ -62,13 +69,13 @@ ant的官方下载地址：http://ant.apache.org/bindownload.cgi
 
 注意：因为ant默认运行build.xml文件，这个文件需要我们创建。
 
-如果不想命名为build.xml，运行时可以使用 **ant -buildfile test.xml** 命令指明要运行的构建文件。
+如果不想命名为build.xml，运行时可以使用 **ant -buildfile test.xml** 命令指明要运行的构建文件。
 
 **查看版本信息**
 
-输入 **ant  -version**，可以查看版本信息。 
+输入 **ant  -version**，可以查看版本信息。 
 
-![Paste_Image.png](http://upload-images.jianshu.io/upload_images/3101171-920e94f33b4d7dd9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-920e94f33b4d7dd9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
 
 但如果出现 'ant' 不是内部或外部命令，也不是可运行的程序或批处理文件，说明安装失败：（可以重复前述步骤，直至安装成功。）
 
@@ -78,7 +85,7 @@ ant的官方下载地址：http://ant.apache.org/bindownload.cgi
 
 为了让读者对ant有一个直观的认识，首先以Ant官方手册上的一个简单例子做一个说明。
 
-以下是一个build.xml文件的内容： 
+以下是一个build.xml文件的内容： 
 
 ```xml
 <project name="MyProject" default="dist" basedir=".">
@@ -123,60 +130,60 @@ ant的官方下载地址：http://ant.apache.org/bindownload.cgi
 
 在这个xml文件中，有几个target标签，每个target对应一个执行目标。
 
-我们将这个build.xml放在 D:\Temp\ant_test 路径下，然后在dos界面下进行测试。 
+我们将这个build.xml放在 D:\Temp\ant_test 路径下，然后在dos界面下进行测试。 
 
 **ant init**
 
-![Paste_Image.png](http://upload-images.jianshu.io/upload_images/3101171-0d37a1be0ef4238a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-0d37a1be0ef4238a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
 
 在 D:\Temp\ant_test 路径下创建了一个build目录，执行成功。
 
-**ant compile** 
+**ant compile** 
 
-![Paste_Image.png](http://upload-images.jianshu.io/upload_images/3101171-6f35ed13331c87c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-6f35ed13331c87c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
 
 提示错误，原来是在build.xml的所在目录下找不到src目录。好的，我们直接创建一个src目录，然后再次尝试。这次，执行成功。
 
-![Paste_Image.png](http://upload-images.jianshu.io/upload_images/3101171-9e84af99a8e952e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-9e84af99a8e952e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
 
-**ant dist **
+**ant dist **
 
-![Paste_Image.png](http://upload-images.jianshu.io/upload_images/3101171-daeaf201bf05e097.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-daeaf201bf05e097.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
 
 在 D:\Temp\ant_test 路径下创建了一个dist目录，执行成功。
 
 **ant clean**
 
-![Paste_Image.png](http://upload-images.jianshu.io/upload_images/3101171-be427613f7867513.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-be427613f7867513.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
 
-清除创建的build和dist目录，执行成功。 
+清除创建的build和dist目录，执行成功。 
 
 **一个细节**
 
 细心的读者，想必已经发现一个问题——在执行 ant compile 和 ant dist 命令的时候把前面的命令也执行了。这是为什么呢？
 
-请留意一下build.xml中的内容。有部分 **target** 标签中含有 **depends** 关键字。 
+请留意一下build.xml中的内容。有部分 **target** 标签中含有 **depends** 关键字。 
 
-![Paste_Image.png](http://upload-images.jianshu.io/upload_images/3101171-746a2156fbfb8d54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-746a2156fbfb8d54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
 
-这表明，当前的 target 在执行时需要依赖其他的target，必须先执行依赖的target，然后再执行。 
+这表明，当前的 target 在执行时需要依赖其他的target，必须先执行依赖的target，然后再执行。 
 
 ## 关键元素
 
 Ant的构件文件都是XML格式的。每个构件文件包含一个project元素和至少一个target。
 
-target元素可以包含多个task元素。 
+target元素可以包含多个task元素。 
 
 ### Project 元素
 
-**project 元素**是构建文件的根元素。 
+**project 元素**是构建文件的根元素。 
 
 一个 project 元素可以有多个 target 元素，一个 target 元素可以有多个 task。
 
-在上节的例子中，project标签里有三个属性。  
+在上节的例子中，project标签里有三个属性。  
 
 ```xml
-<project name="MyProject" default="dist" basedir=".">
+<project name="MyProject" default="dist" basedir=".">
 ```
 
 **name属性**，指示 project 元素的名字。例子中的名字就是 MyProject。
@@ -187,11 +194,11 @@ target元素可以包含多个task元素。 
 
 **basedir属性**，指定根路径的位置。该属性没有指定时，使用Ant的构件文件的所在目录作为根目录。
 
- 
+ 
 
 ### Target 元素
 
-**target 元素**是 task 的容器，也就是 Ant 的一个基本执行单元。 
+**target 元素**是 task 的容器，也就是 Ant 的一个基本执行单元。 
 
 以上节例子中的 compile 来举例。
 
@@ -218,11 +225,11 @@ target元素可以包含多个task元素。 
 
 **unless属性**，**正好和 if属性相反**，验证指定的属性是否存在，若存在，所在target将不会被执行。****
 
-**extensionOf属性**，添加当前 target 到 **extension-point** 依赖列表。**——Ant1.8.0新特性。**
+**extensionOf属性**，添加当前 target 到 **extension-point** 依赖列表。**——Ant1.8.0新特性。**
 
 > **extension-point 元素**和 target 元素十分类似，都可以指定依赖的target。但是不同的是，extension-point 中不能包含任何 task。
 
-请看以下实例： 
+请看以下实例： 
 
 ```xml
 <target name="create-directory-layout">
@@ -234,7 +241,7 @@ target元素可以包含多个task元素。 
 </target>
 ```
 
-**调用target顺序**:  create-directory-layout --> 'empty slot' --> compile 
+**调用target顺序**:  create-directory-layout --> 'empty slot' --> compile 
 
 ```xml
 <target name="generate-sources" extensionOf="ready-to-compile">
@@ -242,7 +249,7 @@ target元素可以包含多个task元素。 
 </target>
 ```
 
-**调用target顺序**:  create-directory-layout --> generate-sources  --> compile
+**调用target顺序**:  create-directory-layout --> generate-sources  --> compile
 
 **onMissingExtensionPoint属性**：当无法找到一个extension-point时，target尝试去做的动作("fail", "warn", "ignore")。*——Ant1.8.2新特性*
 
@@ -250,12 +257,12 @@ target元素可以包含多个task元素。 
 
 task是一段可以被执行的代码。
 
-一个task可以有多个属性， 一个属性可以包含对一个 **property** 的引用。
+一个task可以有多个属性， 一个属性可以包含对一个 **property** 的引用。
 
 task的通常结构为
 
 ```xml
-<name attribute1="value1" attribute2="value2" ... />
+<name attribute1="value1" attribute2="value2" ... />
 ```
 
 其中，name 是 task 的名字， attributeN 是属性名， valueN 是这个属性的值。
@@ -263,9 +270,9 @@ task的通常结构为
 还是以 compile 做为例子：
 
 ```xml
-<target name="compile" depends="init" description="compile the source " >
-    <!-- Compile the java code from srcintosrcinto{build} -->
-    <javac srcdir="${src}" destdir="${build}"/>
+<target name="compile" depends="init" description="compile the source " >
+    <!-- Compile the java code from srcintosrcinto{build} -->
+    <javac srcdir="${src}" destdir="${build}"/>
 </target>
 ```
 
@@ -273,12 +280,12 @@ task的通常结构为
 
 这个任务的动作是：执行JAVA编译，编译src下的代码，并把编译生成的文件放在build目录中。
 
-**常用task **
+**常用task **
 
 **javac**：用于编译一个或者多个Java源文件，通常需要srcdir和destdir两个属性，用于指定Java源文件的位置和编译后class文件的保存位置。
 
 ```xml
-<javac srcdir="${src}" destdir="${build}" classpath="abc.jar" debug="on" source="1.7" />
+<javac srcdir="${src}" destdir="${build}" classpath="abc.jar" debug="on" source="1.7" />
 ```
 
 **java**：用于运行某个Java类，通常需要classname属性，用于指定需要运行哪个类。
@@ -295,7 +302,7 @@ task的通常结构为
 **jar**：用于生成JAR包，通常需要指定destfile属性，用于指定所创建JAR包的文件名。除此之外，通常还应指定一个文件集，表明需要将哪些文件打包到JAR包里。
 
 ```xml
-<jar jarfile="dist/lib/MyProject−dist/lib/MyProject−{DSTAMP}.jar" basedir="${build}"/>
+<jar jarfile="dist/lib/MyProject−dist/lib/MyProject−{DSTAMP}.jar" basedir="${build}"/>
 ```
 
 **echo**：输出某个字符串。
@@ -334,7 +341,7 @@ task的通常结构为
 **mkdir**：用于创建文件夹。
 
 ```xml
-<mkdir dir="${dist}/lib" /> 
+<mkdir dir="${dist}/lib" /> 
 ```
 
 **move**：用户移动文件和路径。
@@ -356,10 +363,10 @@ project的属性可以通过property元素来设定，也可在Ant之外设定�
 
 property元素可用作 task 的属性值。在task中是通过将属性名放在“${”和“}”之间，并放在task属性值的位置来实现的。
 
-例如 complile 例子中，使用了前面定义的 src 作为源目录。 
+例如 complile 例子中，使用了前面定义的 src 作为源目录。 
 
 ```xml
-<javac srcdir="${src}" destdir="${build}"/>
+<javac srcdir="${src}" destdir="${build}"/>
 ```
 
 Ant提供了一些内置的属性，它能得到的系统属性的列表与Java文档中System.getPropertis()方法得到的属性一致，这些系统属性可参考sun网站的说明。
@@ -370,9 +377,9 @@ Ant提供了一些内置的属性，它能得到的系统属性的列表与Java�
 
 *——Ant1.8.0新增特性。*
 
-在 target元素中的例子里已提到过，不再赘述。 
+在 target元素中的例子里已提到过，不再赘述。 
 
 ## 参考资料
 
-- [ant官方手册](http://ant.apache.org/manual/index.html )
+- [ant官方手册](http://ant.apache.org/manual/index.html )
 - [http://www.blogjava.net/amigoxie/archive/2007/11/09/159413.html](http://www.blogjava.net/amigoxie/archive/2007/11/09/159413.html)

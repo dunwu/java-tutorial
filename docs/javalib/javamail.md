@@ -1,29 +1,40 @@
----
-title: JavaMail 使用小结
-date: 2016/4/25
-categories:
-- javalib
-tags:
-- java
-- javalib
-- mail
----
+# JavaMail 使用指南
 
-# JavaMail 使用小结
+<!-- TOC depthFrom:2 depthTo:3 -->
 
-## 概述
+- [简介](#简介)
+    - [邮件相关的标准](#邮件相关的标准)
+    - [JavaMail 简介](#javamail-简介)
+    - [邮件传输过程](#邮件传输过程)
+    - [Message 结构](#message-结构)
+- [JavaMail 的核心类](#javamail-的核心类)
+    - [java.util.Properties 类（属性对象）](#javautilproperties-类属性对象)
+    - [javax.mail.Session 类（会话对象）](#javaxmailsession-类会话对象)
+    - [javax.mail.Transport 类（邮件传输）](#javaxmailtransport-类邮件传输)
+    - [javax.mail.Store 类（邮件存储 ）](#javaxmailstore-类邮件存储-)
+    - [javax.mail.Message 类（消息对象）](#javaxmailmessage-类消息对象)
+    - [javax.mail.Address 类（地址）](#javaxmailaddress-类地址)
+    - [Authenticator 类（认证者）](#authenticator-类认证者)
+- [实例](#实例)
+    - [发送文本邮件](#发送文本邮件)
+    - [发送 HTML 格式的邮件](#发送-html-格式的邮件)
+    - [发送带附件的邮件](#发送带附件的邮件)
+    - [获取邮箱中的邮件](#获取邮箱中的邮件)
+    - [转发邮件](#转发邮件)
+
+<!-- /TOC -->
+
+## 简介
 
 ### 邮件相关的标准
 
 厂商所提供的 JavaMail 服务程序可以有选择地实现某些邮件协议，常见的邮件协议包括：
 
-`SMTP(Simple Mail Transfer Protocol)` ：即简单邮件传输协议，它是一组用于由源地址到目的地址传送邮件的规则，由它来控制信件的中转方式。
+- `SMTP(Simple Mail Transfer Protocol)` ：即简单邮件传输协议，它是一组用于由源地址到目的地址传送邮件的规则，由它来控制信件的中转方式。
+- `POP3(Post Office Protocol - Version 3)` ：即邮局协议版本 3 ，用于接收电子邮件的标准协议。
+- `IMAP(Internet Mail Access Protocol)` ：即 Internet 邮件访问协议。是 POP3 的替代协议。
 
-`POP3(Post Office Protocol - Version 3)` ：即邮局协议版本 3 ，用于接收电子邮件的标准协议。
-
-`IMAP(Internet Mail Access Protocol)` ：即 Internet 邮件访问协议。是 POP3 的替代协议。
-
-这三种协议都有对应 SSL 加密传输的协议，分别是 **SMTPS **， **POP3S **和 **IMAPS **。
+这三种协议都有对应 SSL 加密传输的协议，分别是 **SMTPS **， **POP3S **和 **IMAPS **。
 
 `MIME(Multipurpose Internet Mail Extensions)` ：即多用途因特网邮件扩展标准。它不是邮件传输协议。但对传输内容的消息、附件及其它的内容定义了格式。
 
@@ -31,9 +42,8 @@ tags:
 
 JavaMail 是由 Sun 发布的用来处理 email 的 API 。它并没有包含在 Java SE 中，而是作为 Java EE 的一部分。
 
-`mail.jar` ：此 JAR 文件包含 JavaMail API 和 Sun 提供的 SMTP 、 IMAP 和 POP3 服务提供程序；
-
-`activation.jar` ：此 JAR 文件包含 JAF API 和 Sun 的实现。
+- `mail.jar` ：此 JAR 文件包含 JavaMail API 和 Sun 提供的 SMTP 、 IMAP 和 POP3 服务提供程序；
+- `activation.jar` ：此 JAR 文件包含 JAF API 和 Sun 的实现。
 
 JavaMail 包中用于处理电子邮件的核心类是： `Properties` 、 `Session` 、 `Message` 、 `Address` 、 `Authenticator` 、 `Transport` 、 `Store` 等。
 
@@ -42,121 +52,103 @@ JavaMail 包中用于处理电子邮件的核心类是： `Properties` 、 `Sess
 如上图，电子邮件的处理步骤如下：
 
 1. 创建一个 Session 对象。
-
 2. Session 对象创建一个 Transport 对象 /Store 对象，用来发送 / 保存邮件。
-
 3. Transport 对象 /Store 对象连接邮件服务器。
-
 4. Transport 对象 /Store 对象创建一个 Message 对象 ( 也就是邮件内容 ) 。
-
 5. Transport 对象发送邮件； Store 对象获取邮箱的邮件。
-
 
 ### Message 结构
 
-`MimeMessage` 类：代表整封邮件。
+- `MimeMessage` 类：代表整封邮件。
+- `MimeBodyPart` 类：代表邮件的一个 MIME 信息。
+- `MimeMultipart` 类：代表一个由多个 MIME 信息组合成的组合 MIME 信息。
 
-`MimeBodyPart` 类：代表邮件的一个 MIME 信息。
-
-`MimeMultipart` 类：代表一个由多个 MIME 信息组合成的组合 MIME 信息。
-
-![使用JavaMail收发邮件0](http://upload-images.jianshu.io/upload_images/3101171-948230d2f5c7a620.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-948230d2f5c7a620.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
 
 ## JavaMail 的核心类
 
 JavaMail 对收发邮件进行了高级的抽象，形成了一些关键的的接口和类，它们构成了程序的基础，下面我们分别来了解一下这些最常见的对象。
 
-### java.util.Properties类（属性对象）
+### java.util.Properties 类（属性对象）
 
 java.util.Properties 类代表一组属性集合。
 
-它的每一个键和值都是 String **类型。**
+它的每一个键和值都是 String **类型。**
 
 由于 JavaMail 需要和邮件服务器进行通信，这就要求程序提供许多诸如服务器地址、端口、用户名、密码等信息， JavaMail 通过 Properties 对象封装这些属性信息。
 
 例： 如下面的代码封装了几个属性信息：
 
 ```java
-Properties prop = new Properties();
-prop.setProperty("mail.debug", "true");
-prop.setProperty("mail.host", "[email protected]");
-prop.setProperty("mail.transport.protocol", "smtp");
-prop.setProperty("mail.smtp.auth", "true");
+Properties prop = new Properties();
+prop.setProperty("mail.debug", "true");
+prop.setProperty("mail.host", "[email protected]");
+prop.setProperty("mail.transport.protocol", "smtp");
+prop.setProperty("mail.smtp.auth", "true");
 ```
 
 针对不同的的邮件协议， JavaMail 规定了服务提供者必须支持一系列属性，
 
 下表是一些常见属性（属性值都以 String 类型进行设置，属性类型栏仅表示属性是如何被解析的）：
 
-| 关键词                     | 类型      | 描述                            |
-| ----------------------- | ------- | ----------------------------- |
-| mail.debug              | boolean | debug 开关。                     |
-| mail.host               | String  | 指定发送、接收邮件的默认邮箱服务器。            |
-| mail.store.protocol     | String  | 指定接收邮件的协议。                    |
-| mail.transport.protocol | String  | 指定发送邮件的协议。                    |
+| 关键词                  | 类型    | 描述                                          |
+| ----------------------- | ------- | --------------------------------------------- |
+| mail.debug              | boolean | debug 开关。                                  |
+| mail.host               | String  | 指定发送、接收邮件的默认邮箱服务器。          |
+| mail.store.protocol     | String  | 指定接收邮件的协议。                          |
+| mail.transport.protocol | String  | 指定发送邮件的协议。                          |
 | mail.debug.auth         | boolean | debug 输出中是否包含认证命令。默认是 false 。 |
 
 详情请参考官方 API 文档：
 
 https://javamail.java.net/nonav/docs/api/ 。
 
-### javax.mail.Session类（会话对象）
+### javax.mail.Session 类（会话对象）
 
 `Session` 表示一个邮件会话。
 
 Session 的主要作用包括两个方面：
 
 - 接收各种配置属性信息：通过 Properties 对象设置的属性信息；
-
 - 初始化 JavaMail 环境：根据 JavaMail 的配置文件，初始化 JavaMail 环境，以便通过 Session 对象创建其他重要类的实例。
-
 
 JavaMail 在 Jar 包的 META-INF 目录下，通过以下文件提供了基本配置信息，以便 session 能够根据这个配置文件加载提供者的实现类：
 
 - javamail.default.providers
-
 - javamail.default.address.map
 
-
-![Paste_Image.png](http://upload-images.jianshu.io/upload_images/3101171-b59382c69385df45.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-b59382c69385df45.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
 
 **例：**
 
 ```java
-Properties props = new Properties();
-props.setProperty("mail.transport.protocol", "smtp");
-Session session = Session.getInstance(props);
+Properties props = new Properties();
+props.setProperty("mail.transport.protocol", "smtp");
+Session session = Session.getInstance(props);
 ```
 
-### javax.mail.Transport类（邮件传输）
+### javax.mail.Transport 类（邮件传输）
 
 邮件操作只有发送或接收两种处理方式。
 
 JavaMail 将这两种不同操作描述为传输（ javax.mail.Transport ）和存储（ javax.mail.Store ），传输对应邮件的发送，而存储对应邮件的接收。
 
-`getTransport` **： **Session 类中的 getTransport **() **有多个重载方法，可以用来创建 Transport 对象。
-
-`connect` **： **如果设置了认证命令—— mail.smtp.auth ，那么使用 Transport 类的 connect 方法连接服务器时，则必须加上用户名和密码。
-
-`sendMessage` ： Transport 类的 sendMessage 方法用来发送邮件消息。
-
-`close` ： Transport 类的 close 方法用来关闭和邮件服务器的连接。
+- `getTransport` - Session 类中的 getTransport **() **有多个重载方法，可以用来创建 Transport 对象。
+- `connect` - 如果设置了认证命令—— mail.smtp.auth ，那么使用 Transport 类的 connect 方法连接服务器时，则必须加上用户名和密码。
+- `sendMessage` - Transport 类的 sendMessage 方法用来发送邮件消息。
+- `close` - Transport 类的 close 方法用来关闭和邮件服务器的连接。
 
 ### javax.mail.Store 类（邮件存储 ）
 
-`getStore` ：Session 类中的 getStore () 有多个重载方法，可以用来创建 Store 对象。
+- `getStore` - Session 类中的 getStore () 有多个重载方法，可以用来创建 Store 对象。
+- `connect` - 如果设置了认证命令—— mail.smtp.auth ，那么使用 Store 类的 connect 方法连接服务器时，则必须加上用户名和密码。
+- `getFolder` - Store 类的 getFolder 方法可以 获取邮箱内的邮件夹 Folder 对象
+- `close` - Store 类的 close 方法用来关闭和邮件服务器的连接。
 
-`connect` ： 如果设置了认证命令—— mail.smtp.auth ，那么使用 Store 类的 connect 方法连接服务器时，则必须加上用户名和密码。
+### javax.mail.Message 类（消息对象）
 
-`getFolder`：Store 类的 getFolder 方法可以 获取邮箱内的邮件夹 Folder 对象
-
-`close` ： Store 类的 close 方法用来关闭和邮件服务器的连接。
-
-### javax.mail.Message类（消息对象）
-
-`javax.mail.Message` 是个抽象类，只能用子类去实例化，多数情况下为 `javax.mail.internet.MimeMessage`。
-
-`MimeMessage` 代表 MIME 类型的电子邮件消息。
+- `javax.mail.Message` - 是个抽象类，只能用子类去实例化，多数情况下为 `javax.mail.internet.MimeMessage`。
+- `MimeMessage` - 代表 MIME 类型的电子邮件消息。
 
 要创建一个 Message ，需要将 Session 对象传递给 `MimeMessage` 构造器：
 
@@ -166,25 +158,19 @@ MimeMessage message = new MimeMessage(session);
 
 注意：还存在其它构造器，如用按 RFC822 格式的输入流来创建消息。
 
-setFrom ：设置邮件的发件人
-
-setRecipient ：设置邮件的发送人、抄送人、密送人
+- setFrom - 设置邮件的发件人
+- setRecipient - 设置邮件的发送人、抄送人、密送人
 
 三种预定义的地址类型是：
 
-`Message.RecipientType.TO` ：收件人
+- `Message.RecipientType.TO` - 收件人
+- `Message.RecipientType.CC` - 抄送人
+- `Message.RecipientType.BCC` - 密送人
+- `setSubject` - 设置邮件的主题
+- `setContent` - 设置邮件内容
+- `setText` - 如果邮件内容是纯文本，可以使用此接口设置文本内容。
 
-`Message.RecipientType.CC` ：抄送人
-
-`Message.RecipientType.BCC` ：密送人
-
-`setSubject` ：设置邮件的主题
-
-`setContent` ：设置邮件内容
-
-`setText` ：如果邮件内容是纯文本，可以使用此接口设置文本内容。
-
-### javax.mail.Address类（地址）
+### javax.mail.Address 类（地址）
 
 一旦您创建了 Session 和 Message ，并将内容填入消息后，就可以用 Address 确定信件地址了。和 Message 一样， Address 也是个抽象类。您用的是 javax.mail.internet.InternetAddress 类。
 
@@ -193,10 +179,10 @@ setRecipient ：设置邮件的发送人、抄送人、密送人
 **例：**
 
 ```java
-Address address = new InternetAddress("[email protected]");
+Address address = new InternetAddress("[email protected]");
 ```
 
-### Authenticator类（认证者）
+### Authenticator 类（认证者）
 
 与 java.net 类一样， JavaMail API 也可以利用 `Authenticator` 通过用户名和密码访问受保护的资源。对于 JavaMail API 来说，这些资源就是邮件服务器。`Authenticator` 在 javax.mail 包中，而且它和 java.net 中同名的类 Authenticator 不同。两者并不共享同一个 Authenticator ，因为 JavaMail API 用于 Java 1.1 ，它没有 java.net 类别。
 
@@ -205,9 +191,9 @@ Address address = new InternetAddress("[email protected]");
 **例：**
 
 ```java
-Properties props = new Properties();
-Authenticator auth = new MyAuthenticator();
-Session session = Session.getDefaultInstance(props, auth);
+Properties props = new Properties();
+Authenticator auth = new MyAuthenticator();
+Session session = Session.getDefaultInstance(props, auth);
 ```
 
 ## 实例
@@ -356,10 +342,10 @@ public static void main(String[] args) throws Exception {
     // 5、发送邮件
     ts.sendMessage(message, message.getAllRecipients());
     ts.close();
-} 
+}
 ```
 
-### 获取邮箱中的邮件  
+### 获取邮箱中的邮件
 
 ```java
  public static void main(String[] args) throws Exception {

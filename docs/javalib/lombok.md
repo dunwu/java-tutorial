@@ -1,4 +1,5 @@
-# Lombok 使用小结
+# Lombok 使用指南
+
 
 <!-- TOC depthFrom:2 depthTo:3 -->
 
@@ -7,61 +8,61 @@
 - [Lombok 使用](#lombok-使用)
     - [API](#api)
     - [示例](#示例)
-- [示例源码](#示例源码)
-- [引用和引申](#引用和引申)
+- [资料](#资料)
 
 <!-- /TOC -->
 
 ## Lombok 简介
 
-Lombok 是一种 Java 实用工具，可用来帮助开发人员消除 Java 的冗长，尤其是对于简单的 Java 对象（POJO）。它通过注释实现这一目的。通过在开发环境中实现 Lombok，开发人员可以节省构建诸如 `hashCode()` 和 `equals()` 、`getter / setter` 这样的方法以及以往用来分类各种 accessor 和 mutator 的大量时间。
+Lombok 是一种 Java 实用工具，可用来帮助开发人员消除 Java 的冗长，尤其是对于简单的 Java 对象（POJO）。它通过注释实现这一目的。通过在开发环境中实现  Lombok，开发人员可以节省构建诸如 `hashCode()` 和 `equals()` 、`getter / setter` 这样的方法以及以往用来分类各种 accessor 和 mutator 的大量时间。
 
 ## Lombok 安装
 
 使 IntelliJ IDEA 支持 Lombok 方式如下：
 
-（1）**Intellij 设置支持注解处理**
+1. **Intellij 设置支持注解处理**
 
-点击 `File > Settings > Build > Annotation Processors`
+   点击 File > Settings > Build > Annotation Processors 
 
-勾选 Enable annotation processing
+   勾选 Enable annotation processing
 
-（2）**安装插件**
 
-点击 `Settings > Plugins > Browse repositories`
+2. **安装插件**
 
-查找 Lombok Plugin 并进行安装
+   点击 Settings > Plugins > Browse repositories 
 
-重启 IntelliJ IDEA
+   查找 Lombok Plugin 并进行安装
 
-（3）**将 lombok 添加到 pom 文件**
+   重启 IntelliJ IDEA
 
-```xml
-<dependency>
-  <groupId>org.projectlombok</groupId>
-  <artifactId>lombok</artifactId>
-  <version>1.16.8</version>
-</dependency>
-```
+3. **将 lombok 添加到 pom 文件**
+
+   ```xml
+   <dependency>
+     <groupId>org.projectlombok</groupId>
+     <artifactId>lombok</artifactId>
+     <version>1.16.8</version>
+   </dependency>
+   ```
 
 ## Lombok 使用
 
 ### API
 
-Lombok 提供注解 API 来修饰指定的类：
+Lombok 提供注解API 来修饰指定的类：
 
 #### @Getter and @Setter
 
 [@Getter and @Setter](http://jnb.ociweb.com/jnb/jnbJan2010.html#gettersetter) Lombok 代码：
 
-```java
+```
 @Getter @Setter private boolean employed = true;
 @Setter(AccessLevel.PROTECTED) private String name;
 ```
 
 等价于 Java 源码：
 
-```java
+```
 private boolean employed = true;
 private String name;
 
@@ -77,7 +78,6 @@ protected void setName(final String name) {
     this.name = name;
 }
 ```
-
 #### @NonNull
 
 [@NonNull](http://jnb.ociweb.com/jnb/jnbJan2010.html#nonnull) Lombok 代码：
@@ -89,7 +89,7 @@ private List<Person> members;
 
 等价于 Java 源码：
 
-```java
+```
 @NonNull
 private List<Person> members;
 
@@ -97,7 +97,7 @@ public Family(@NonNull final List<Person> members) {
     if (members == null) throw new java.lang.NullPointerException("members");
     this.members = members;
 }
-
+    
 @NonNull
 public List<Person> getMembers() {
     return members;
@@ -108,12 +108,11 @@ public void setMembers(@NonNull final List<Person> members) {
     this.members = members;
 }
 ```
-
 #### @ToString
 
 [@ToString](http://jnb.ociweb.com/jnb/jnbJan2010.html#tostring) Lombok 代码：
 
-```java
+```
 @ToString(callSuper=true,exclude="someExcludedField")
 public class Foo extends Bar {
     private boolean someBoolean = true;
@@ -124,12 +123,12 @@ public class Foo extends Bar {
 
 等价于 Java 源码：
 
-```java
+```
 public class Foo extends Bar {
     private boolean someBoolean = true;
     private String someStringField;
     private float someExcludedField;
-
+    
     @java.lang.Override
     public java.lang.String toString() {
         return "Foo(super=" + super.toString() +
@@ -138,19 +137,18 @@ public class Foo extends Bar {
     }
 }
 ```
-
 #### @EqualsAndHashCode
 
 [@EqualsAndHashCode](http://jnb.ociweb.com/jnb/jnbJan2010.html#equals) Lombok 代码：
 
-```java
+```
 @EqualsAndHashCode(callSuper=true,exclude={"address","city","state","zip"})
 public class Person extends SentientBeing {
     enum Gender { Male, Female }
 
     @NonNull private String name;
     @NonNull private Gender gender;
-
+    
     private String ssn;
     private String address;
     private String city;
@@ -161,9 +159,9 @@ public class Person extends SentientBeing {
 
 等价于 Java 源码：
 
-```java
+```
 public class Person extends SentientBeing {
-
+    
     enum Gender {
         /*public static final*/ Male /* = new Gender() */,
         /*public static final*/ Female /* = new Gender() */;
@@ -177,7 +175,7 @@ public class Person extends SentientBeing {
     private String city;
     private String state;
     private String zip;
-
+    
     @java.lang.Override
     public boolean equals(final java.lang.Object o) {
         if (o == this) return true;
@@ -190,7 +188,7 @@ public class Person extends SentientBeing {
         if (this.ssn == null ? other.ssn != null : !this.ssn.equals(other.ssn)) return false;
         return true;
     }
-
+    
     @java.lang.Override
     public int hashCode() {
         final int PRIME = 31;
@@ -203,12 +201,11 @@ public class Person extends SentientBeing {
     }
 }
 ```
-
 #### @Data
 
 [@Data](http://jnb.ociweb.com/jnb/jnbJan2010.html#data) Lombok 代码：
 
-```java
+```
 @Data(staticConstructor="of")
 public class Company {
     private final Person founder;
@@ -219,40 +216,40 @@ public class Company {
 
 等价于 Java 源码：
 
-```java
+```
 public class Company {
     private final Person founder;
     private String name;
     private List<Person> employees;
-
+    
     private Company(final Person founder) {
         this.founder = founder;
     }
-
+    
     public static Company of(final Person founder) {
         return new Company(founder);
     }
-
+    
     public Person getFounder() {
         return founder;
     }
-
+    
     public String getName() {
         return name;
     }
-
+    
     public void setName(final String name) {
         this.name = name;
     }
-
+    
     public List<Person> getEmployees() {
         return employees;
     }
-
+    
     public void setEmployees(final List<Person> employees) {
         this.employees = employees;
     }
-
+    
     @java.lang.Override
     public boolean equals(final java.lang.Object o) {
         if (o == this) return true;
@@ -264,7 +261,7 @@ public class Company {
         if (this.employees == null ? other.employees != null : !this.employees.equals(other.employees)) return false;
         return true;
     }
-
+    
     @java.lang.Override
     public int hashCode() {
         final int PRIME = 31;
@@ -274,19 +271,18 @@ public class Company {
         result = result * PRIME + (this.employees == null ? 0 : this.employees.hashCode());
         return result;
     }
-
+    
     @java.lang.Override
     public java.lang.String toString() {
         return "Company(founder=" + founder + ", name=" + name + ", employees=" + employees + ")";
     }
 }
 ```
-
 #### @Cleanup
 
 [@Cleanup](http://jnb.ociweb.com/jnb/jnbJan2010.html#cleanup) Lombok 代码：
 
-```java
+```
 public void testCleanUp() {
     try {
         @Cleanup ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -300,7 +296,7 @@ public void testCleanUp() {
 
 等价于 Java 源码：
 
-```java
+```
 public void testCleanUp() {
     try {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -315,12 +311,11 @@ public void testCleanUp() {
     }
 }
 ```
-
 #### @Synchronized
 
 [@Synchronized](http://jnb.ociweb.com/jnb/jnbJan2010.html#synchronized) Lombok 代码：
 
-```java
+```
 private DateFormat format = new SimpleDateFormat("MM-dd-YYYY");
 
 @Synchronized
@@ -331,7 +326,7 @@ public String synchronizedFormat(Date date) {
 
 等价于 Java 源码：
 
-```java
+```
 private final java.lang.Object $lock = new java.lang.Object[0];
 private DateFormat format = new SimpleDateFormat("MM-dd-YYYY");
 
@@ -341,12 +336,11 @@ public String synchronizedFormat(Date date) {
     }
 }
 ```
-
 #### @SneakyThrows
 
 [@SneakyThrows](http://jnb.ociweb.com/jnb/jnbJan2010.html#sneaky) Lombok 代码：
 
-```java
+```
 @SneakyThrows
 public void testSneakyThrows() {
     throw new IllegalAccessException();
@@ -355,7 +349,7 @@ public void testSneakyThrows() {
 
 等价于 Java 源码：
 
-```java
+```
 public void testSneakyThrows() {
     try {
         throw new IllegalAccessException();
@@ -364,7 +358,6 @@ public void testSneakyThrows() {
     }
 }
 ```
-
 ### 示例
 
 使用 Lombok 定义一个 Java Bean
@@ -393,18 +386,8 @@ System.out.println(person.toString());
 // output: Person(name=张三, sex=男)
 ```
 
-## 示例源码
+## 资料
 
-完整示例：[源码](https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/core/sbe-bean-lombok)
+[Lombok 官网](https://projectlombok.org/) | [Lombok Github](https://github.com/rzwitserloot/lombok)
 
-## 引用和引申
-
-**引申**
-
-- [JavaStack](https://github.com/dunwu/javastack)
-
-**参考**
-
-- [Lombok 官网](https://projectlombok.org/)
-- [Lombok Github](https://github.com/rzwitserloot/lombok)
-- [IntelliJ IDEA - Lombok Plugin](http://plugins.jetbrains.com/plugin/6317-lombok-plugin)
+[IntelliJ IDEA - Lombok Plugin](http://plugins.jetbrains.com/plugin/6317-lombok-plugin)

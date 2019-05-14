@@ -7,14 +7,19 @@
 - :one: [JavaCore](https://dunwu.github.io/javacore/) - Java 核心技术教程。内容包含：Java 基础特性、Java 高级特性、Java 并发、JVM、Java IO 等（由于内容较多，已独立维护在另一个项目中）。
 - :two: [JavaWeb](https://github.com/dunwu/javaweb) - Java Web 技术教程。内容包含：JavaEE、分布式应用技术等（由于内容较多，已独立维护在另一个项目中）。
 - :three: [JavaLib](javalib/README.md) - 各种主流 Java 库的应用。
-  - [Dozer 使用小结](javalib/dozer.md)
-  - [细说 Java 主流日志工具库](https://github.com/dunwu/notes/blob/master/编程语言/Java/javastack/javalib/java-log.md)
-  - [JavaMail 使用小结](javalib/javamail.md)
-  - [jsoup 使用小结](javalib/jsoup.md)
-  - [JUnit 使用小结](javalib/junit.md)
-  - [Lombok 使用小结](javalib/lombok.md)
-  - [Thumbnailator 使用小结](javalib/thumbnailator.md)
-  - [ZXing 使用小结](javalib/zxing.md)
+  - [Dozer 使用指南](javalib/dozer.md)
+  - [Freemark 使用指南](javalib/freemark.md)
+  - [细说 Java 主流 JSON 库](javalib/java-json.md)
+  - [细说 Java 主流日志工具库](javalib/java-log.md)
+  - [细说 Java 主流工具包](javalib/java-util.md)
+  - [JavaMail 使用指南](javalib/javamail.md)
+  - [Jsoup 使用指南](javalib/jsoup.md)
+  - [JUnit5 使用指南](javalib/junit.md)
+  - [Lombok 使用指南](javalib/lombok.md)
+  - [Mockito 使用指南](javalib/mockito.md)
+  - [Reflections 使用指南](javalib/reflections.md)
+  - [Thumbnailator 使用指南](javalib/thumbnailator.md)
+  - [ZXing 使用指南](javalib/zxing.md)
 - :four: [JavaTool](javatool/README.md) - 各种主流 Java 工具的应用。
   - [构建工具](javatool/build/README.md)
     - Maven 教程

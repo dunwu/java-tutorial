@@ -1,17 +1,18 @@
----
-title: ZXing 使用小结
-date: 2017/01/17
-categories:
-- javalib
-tags:
-- java
-- javalib
-- barcode
----
+# ZXing 使用指南
 
-# ZXing 使用小结
 
-## 概述
+<!-- TOC depthFrom:2 depthTo:3 -->
+
+- [简介](#简介)
+- [实战](#实战)
+    - [安装](#安装)
+    - [生成二维码图片](#生成二维码图片)
+    - [解析二维码图片](#解析二维码图片)
+- [参考](#参考)
+
+<!-- /TOC -->
+
+## 简介
 
 `ZXing` 是一个开源 Java 类库用于解析多种格式的 1D/2D 条形码。目标是能够对QR编码、Data Matrix、UPC的1D条形码进行解码。 其提供了多种平台下的客户端包括：J2ME、J2SE和Android。 
 
@@ -87,7 +88,7 @@ public String decode(String filepath) throws IOException, NotFoundException {
 
 以下是一个生成的二维码图片示例：
 
-![qrcode.png](http://upload-images.jianshu.io/upload_images/3101171-26b73730088f0ab8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-26b73730088f0ab8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
 
 ## 参考
 

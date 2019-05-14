@@ -1,17 +1,24 @@
----
-title: Thumbnailator 使用小结
-date: 2017/01/17
-categories:
-- javalib
-tags:
-- java
-- javalib
-- image
----
+# Thumbnailator 使用指南
 
-# Thumbnailator 使用小结
 
-## 概述
+<!-- TOC depthFrom:2 depthTo:3 -->
+
+- [简介](#简介)
+- [核心 API](#核心-api)
+    - [Thumbnails](#thumbnails)
+    - [Thumbnails.Builder](#thumbnailsbuilder)
+    - [工作流](#工作流)
+- [实战](#实战)
+    - [安装](#安装)
+    - [图片缩放](#图片缩放)
+    - [图片旋转](#图片旋转)
+    - [加水印](#加水印)
+    - [批量处理图片](#批量处理图片)
+- [参考](#参考)
+
+<!-- /TOC -->
+
+## 简介
 
 `Thumbnailator` 是一个开源的 **Java** 项目，它提供了非常简单的 API 来对图片进行缩放、旋转以及加水印的处理。
 
@@ -169,10 +176,10 @@ Thumbnails.of("oldFile.png")
 ```
 
 **oldFile.png**
-![lion_scale_1.0.png](http://upload-images.jianshu.io/upload_images/3101171-ba63439898602e8f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-ba63439898602e8f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
 
 **newFile_scale_1.0_0.5.png**
-![lion_scale_1.0_0.5.png](http://upload-images.jianshu.io/upload_images/3101171-a01ea4515fff865d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-a01ea4515fff865d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
 
 ### 图片旋转
 
@@ -192,7 +199,7 @@ Thumbnails.of("oldFile.png")
 
 **newFile_rotate_90.png**
 
-![lion2_rotate_90.png](http://upload-images.jianshu.io/upload_images/3101171-17d54bc33b38d45b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-17d54bc33b38d45b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
 
 ### 加水印
 
@@ -208,11 +215,11 @@ Thumbnails.of("oldFile.png")
 
 **wartermarkFile.png**
 
-![wartermark.png](http://upload-images.jianshu.io/upload_images/3101171-97909ee6c066c195.png?imageMogr2/auto-orient/strip)
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-97909ee6c066c195.png?imageMogr2/auto-orient/strip"/></div>
 
 **newFile_watermark.png**
 
-![lion2_watermark.png](http://upload-images.jianshu.io/upload_images/3101171-93eb7ef71b811a0c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-93eb7ef71b811a0c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
 
 ### 批量处理图片
 

@@ -32,7 +32,7 @@
 
 ## 简介
 
-- [The POM 4.0.0 XSD](http://maven.apache.org/xsd/maven-4.0.0.xsd) and [descriptor reference documentation](http://maven.apache.org/ref/current/maven-model/maven.html)
+- [The POM 4.0.0 XSD](http://maven.apache.org/xsd/maven-4.0.0.xsd) and [descriptor reference documentation](http://maven.apache.org/ref/current/maven-model/maven.html)
 
 ### 什么是 pom？
 
@@ -118,15 +118,15 @@ pom.xml 就是 maven 的配置文件，用以描述项目的各种信息。
 
 - **version**：一个项目的特定版本。
 
-  maven 有自己的版本规范，一般是如下定义  major version、minor version、incremental version-qualifier ，比如 1.2.3-beta-01。要说明的是，maven 自己判断版本的算法是 major、minor、incremental 部分用数字比较，qualifier 部分用字符串比较，所以要小心  alpha-2 和 alpha-15 的比较关系，最好用 alpha-02 的格式。
+  maven 有自己的版本规范，一般是如下定义  major version、minor version、incremental version-qualifier ，比如 1.2.3-beta-01。要说明的是，maven 自己判断版本的算法是 major、minor、incremental 部分用数字比较，qualifier 部分用字符串比较，所以要小心  alpha-2 和 alpha-15 的比较关系，最好用 alpha-02 的格式。
 
-  maven 在版本管理时候可以使用几个特殊的字符串  SNAPSHOT、LATEST、RELEASE。比如 “1.0-SNAPSHOT”。各个部分的含义和处理逻辑如下说明：
+  maven 在版本管理时候可以使用几个特殊的字符串  SNAPSHOT、LATEST、RELEASE。比如 “1.0-SNAPSHOT”。各个部分的含义和处理逻辑如下说明：
 
   - **SNAPSHOT**：这个版本一般用于开发过程中，表示不稳定的版本。
   - **LATEST**：指某个特定构件的最新发布，这个发布可能是一个发布版，也可能是一个 snapshot 版，具体看哪个时间最后。
   - **RELEASE** ：指最后一个发布版。
 
-- **packaging**：项目的类型，描述了项目打包后的输出，默认是 jar。常见的输出类型为：pom, jar, maven-plugin, ejb, war, ear, rar, par。
+- **packaging**：项目的类型，描述了项目打包后的输出，默认是 jar。常见的输出类型为：pom, jar, maven-plugin, ejb, war, ear, rar, par。
 
 ## 依赖配置
 
@@ -159,7 +159,7 @@ pom.xml 就是 maven 的配置文件，用以描述项目的各种信息。
 </project>
 ```
 
-- **groupId**, **artifactId**, **version** ：和基本配置中的 `groupId`、`artifactId`、`version` 意义相同。
+- **groupId**, **artifactId**, **version** ：和基本配置中的 `groupId`、`artifactId`、`version` 意义相同。
 - **type**：对应 `packaging` 的类型，如果不使用 `type` 标签，maven 默认为 jar。
 - **scope**：此元素指的是任务的类路径（编译和运行时，测试等）以及如何限制依赖关系的传递性。有 5 种可用的限定范围：
   - **compile** - 如果没有指定 `scope` 标签，maven 默认为这个范围。编译依赖关系在所有 classpath 中都可用。此外，这些依赖关系被传播到依赖项目。
@@ -199,7 +199,7 @@ maven 支持继承功能。子 POM 可以使用 `parent` 指定父 POM ，然后
 
 `dependencyManagement` 是表示依赖 jar 包的声明。即你在项目中的 `dependencyManagement` 下声明了依赖，maven 不会加载该依赖，`dependencyManagement` 声明可以被子 POM 继承。
 
-`dependencyManagement` 的一个使用案例是当有父子项目的时候，父项目中可以利用 `dependencyManagement` 声明子项目中需要用到的依赖 jar 包，之后，当某个或者某几个子项目需要加载该依赖的时候，就可以在子项目中 `dependencies` 节点只配置  `groupId`  和  `artifactId` 就可以完成依赖的引用。
+`dependencyManagement` 的一个使用案例是当有父子项目的时候，父项目中可以利用 `dependencyManagement` 声明子项目中需要用到的依赖 jar 包，之后，当某个或者某几个子项目需要加载该依赖的时候，就可以在子项目中 `dependencies` 节点只配置  `groupId`  和  `artifactId` 就可以完成依赖的引用。
 
 `dependencyManagement` 主要是为了统一管理依赖包的版本，确保所有子项目使用的版本一致，类似的还有`plugins`和`pluginManagement`。
 
@@ -328,7 +328,7 @@ build 可以分为 "project build" 和 "profile build"。
 - **directory**: 值定义了资源的路径。构建的默认目录是`${basedir}/src/main/resources`。
 - **includes**: 一组文件匹配模式，指定目录中要包括的文件，使用\*作为通配符。
 - **excludes**: 与 `includes` 类似，指定目录中要排除的文件，使用\*作为通配符。注意：如果 `include` 和 `exclude` 发生冲突，maven 会以 `exclude` 作为有效项。
-- **testResources**: `testResources`  与 `resources` 功能类似，区别仅在于：`testResources`  指定的资源仅用于 test 阶段，并且其默认资源目录为：`${basedir}/src/test/resources` 。
+- **testResources**: `testResources`  与 `resources` 功能类似，区别仅在于：`testResources`  指定的资源仅用于 test 阶段，并且其默认资源目录为：`${basedir}/src/test/resources` 。
 
 #### plugins
 
@@ -357,11 +357,11 @@ build 可以分为 "project build" 和 "profile build"。
 </project>
 ```
 
-- **groupId**, **artifactId**, **version** ：和基本配置中的 `groupId`、`artifactId`、`version` 意义相同。
+- **groupId**, **artifactId**, **version** ：和基本配置中的 `groupId`、`artifactId`、`version` 意义相同。
 
-- **extensions** ：值为 true  或  false。是否加载此插件的扩展名。默认为 false。
+- **extensions** ：值为 true  或  false。是否加载此插件的扩展名。默认为 false。
 
-- **inherited** ：值为 true  或  false。这个插件配置是否应该适用于继承自这个插件的 POM。默认值为 true。
+- **inherited** ：值为 true  或  false。这个插件配置是否应该适用于继承自这个插件的 POM。默认值为 true。
 
 - **configuration**：这是针对个人插件的配置，这里不扩散讲解。
 
@@ -410,7 +410,7 @@ build 可以分为 "project build" 和 "profile build"。
 
 #### pluginManagement
 
-与 `dependencyManagement` 很相似，在当前 POM 中仅声明插件，而不是实际引入插件。子 POM 中只配置  `groupId`  和  `artifactId` 就可以完成插件的引用，且子 POM 有权重写 pluginManagement 定义。
+与 `dependencyManagement` 很相似，在当前 POM 中仅声明插件，而不是实际引入插件。子 POM 中只配置  `groupId`  和  `artifactId` 就可以完成插件的引用，且子 POM 有权重写 pluginManagement 定义。
 
 它的目的在于统一所有子 POM 的插件版本。
 
@@ -439,7 +439,7 @@ build 可以分为 "project build" 和 "profile build"。
 
 #### extensions
 
-扩展是在此构建中使用的 artifacts  的列表。它们将被包含在运行构建的 classpath 中。它们可以启用对构建过程的扩展（例如为 Wagon 传输机制添加一个 ftp 提供程序），并使活动的插件能够对构建生命周期进行更改。简而言之，扩展是在构建期间激活的 artifacts。扩展不需要实际执行任何操作，也不包含 Mojo。因此，扩展对于指定普通插件接口的多个实现中的一个是非常好的。
+扩展是在此构建中使用的 artifacts  的列表。它们将被包含在运行构建的 classpath 中。它们可以启用对构建过程的扩展（例如为 Wagon 传输机制添加一个 ftp 提供程序），并使活动的插件能够对构建生命周期进行更改。简而言之，扩展是在构建期间激活的 artifacts。扩展不需要实际执行任何操作，也不包含 Mojo。因此，扩展对于指定普通插件接口的多个实现中的一个是非常好的。
 
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -463,7 +463,7 @@ build 可以分为 "project build" 和 "profile build"。
 
 ### reporting
 
-报告包含特定针对 `site` 生成阶段的元素。某些 maven 插件可以生成 `reporting` 元素下配置的报告，例如：生成 javadoc 报告。`reporting` 与 `build` 元素配置插件的能力相似。明显的区别在于：在执行块中插件目标的控制不是细粒度的，报表通过配置 `reportSet` 元素来精细控制。而微妙的区别在于 `reporting`  元素下的 `configuration` 元素可以用作 `build` 下的 `configuration` ，尽管相反的情况并非如此（ `build` 下的 `configuration` 不影响 `reporting`  元素下的 `configuration` ）。
+报告包含特定针对 `site` 生成阶段的元素。某些 maven 插件可以生成 `reporting` 元素下配置的报告，例如：生成 javadoc 报告。`reporting` 与 `build` 元素配置插件的能力相似。明显的区别在于：在执行块中插件目标的控制不是细粒度的，报表通过配置 `reportSet` 元素来精细控制。而微妙的区别在于 `reporting`  元素下的 `configuration` 元素可以用作 `build` 下的 `configuration` ，尽管相反的情况并非如此（ `build` 下的 `configuration` 不影响 `reporting`  元素下的 `configuration` ）。
 
 另一个区别就是 `plugin` 下的 `outputDirectory` 元素。在报告的情况下，默认输出目录为 `${basedir}/target/site`。
 
