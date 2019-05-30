@@ -2,6 +2,6 @@
   "name": "java-tutorial",
   "version": "1.0.0",
   "scripts": {
-    "start": "docsify serve ./"
+    "start": "docsify serve ./  --port 4000"
   }
 }

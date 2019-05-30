@@ -33,7 +33,7 @@
 
 注册账号成功后，根据你 Java 包的功能分别写上`Summary`、`Description`、`Group Id`、`SCM url`以及`Project URL`等必要信息，可以参见我之前创建的 Issue：[OSSRH-36187](https://issues.sonatype.org/browse/OSSRH-36187)。
 
-<div align="center"><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20181106143734.png"/></div>
+<div align="center"><img src="https://gitee.com/turnon/images/raw/master/snap/20181106143734.png"/></div>
 
 创建完之后需要等待 Sonatype 的工作人员审核处理，审核时间还是很快的，我的审核差不多等待了两小时。当 Issue 的 Status 变为`RESOLVED`后，就可以进行下一步操作了。
 
@@ -309,13 +309,13 @@ gpg:              unchanged: 1
 
 进入[官方下载地址](https://www.sonatype.com/download-oss-sonatype)，选择合适版本下载。
 
-<div align="center"><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20181127203029.png"/></div>
+<div align="center"><img src="https://gitee.com/turnon/images/raw/master/snap/20181127203029.png"/></div>
 
 本人希望将 Nexus 部署在 Linux 机器，所以选用的是 Unix 版本。
 
 这里，如果想通过命令方式直接下载（比如用脚本安装），可以在[官方历史发布版本页面](https://help.sonatype.com/repomanager3/download/download-archives---repository-manager-3)中找到合适版本，然后执行以下命令：
 
-```sh
+```bash
 wget -O /opt/maven/nexus-unix.tar.gz http://download.sonatype.com/nexus/3/nexus-3.13.0-01-unix.tar.gz
 tar -zxf nexus-unix.tar.gz
 ```
@@ -331,7 +331,7 @@ tar -zxf nexus-unix.tar.gz
 
 执行 `./nexus`，可以查看允许执行的参数，如下所示，含义可谓一目了然：
 
-```sh
+```bash
 $ ./nexus
 Usage: ./nexus {start|stop|run|run-redirect|status|restart|force-reload}
 ```
@@ -341,13 +341,13 @@ Usage: ./nexus {start|stop|run|run-redirect|status|restart|force-reload}
 
 启动成功后，在浏览器中访问 `http://<ip>:8081`，欢迎页面如下图所示：
 
-<div align="center"><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20181127203131.png"/></div>
+<div align="center"><img src="https://gitee.com/turnon/images/raw/master/snap/20181127203131.png"/></div>
 
 点击右上角 Sign in 登录，默认用户名/密码为：admin/admin123。
 
 有必要提一下的是，在 Nexus 的 Repositories 管理页面，展示了可用的 maven 仓库，如下图所示：
 
-<div align="center"><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20181127203156.png"/></div>
+<div align="center"><img src="https://gitee.com/turnon/images/raw/master/snap/20181127203156.png"/></div>
 
 > 说明：
 >
@@ -463,7 +463,7 @@ Usage: ./nexus {start|stop|run|run-redirect|status|restart|force-reload}
 
 示例：
 
-```sh
+```bash
 ## 编译并打包 maven 项目
 $ mvn clean package -Dmaven.skip.test=true -P zp
 

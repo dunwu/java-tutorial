@@ -153,7 +153,7 @@ Freemark 支持的类型有：
 - **FTL 标签**：FTL 标签和 HTML 标签很相似，但是它们却是给 FreeMarker 的指示， 而且不会打印在输出内容中。
 - **注释**：注释和 HTML 的注释也很相似，但它们是由 `<#--` 和 `-->`来分隔的。注释会被 FreeMarker 直接忽略， 更不会在输出内容中显示。
 
-<div align="center"><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/ftl-template.png"/></div>
+<div align="center"><img src="https://gitee.com/turnon/images/raw/master/snap/ftl-template.png"/></div>
 
 > :warning: 注意：
 >

@@ -32,7 +32,7 @@
 
 * 初始化
 
-```sh
+```bash
 wget https://raw.githubusercontent.com/dunwu/JavaStack/master/scripts/init.sh
 chmod 777 init.sh
 ./init.sh

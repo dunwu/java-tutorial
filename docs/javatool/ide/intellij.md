@@ -265,7 +265,7 @@ Intellij 是一个收费的 IDE，坦白说有点小贵，买不起。
 
 如果是在 Linux 上运行，推荐创建一个脚本，代码如下：
 
-```sh
+```bash
 # 使用 nohup 创建守护进程，运行 IntelliJIDEALicenseServer_linux_amd64
 # 如果运行在其他 Linux 发行版本，替换执行的脚本即可
 nohup sh IntelliJIDEALicenseServer_linux_amd64 2>&1

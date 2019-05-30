@@ -53,21 +53,21 @@ maven 的 JDK 源与指定的 JDK 编译版本不符。
 
 Project SDK 是否正确
 
-<div align="center"><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20181127203324.png"/></div>
+<div align="center"><img src="https://gitee.com/turnon/images/raw/master/snap/20181127203324.png"/></div>
 
 SDK 路径是否正确
 
-<div align="center"><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20181127203427.png"/></div>
+<div align="center"><img src="https://gitee.com/turnon/images/raw/master/snap/20181127203427.png"/></div>
 
 - **查看 Settings > Maven 的配置**
 
 JDK for importer 是否正确
 
-<div align="center"><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20181127203408.png"/></div>
+<div align="center"><img src="https://gitee.com/turnon/images/raw/master/snap/20181127203408.png"/></div>
 
 Runner 是否正确
 
-<div align="center"><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20181127203439.png"/></div>
+<div align="center"><img src="https://gitee.com/turnon/images/raw/master/snap/20181127203439.png"/></div>
 
 ### 1.3. 重复引入依赖
 
