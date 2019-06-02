@@ -9,5 +9,4 @@
 - [Spring 教程](https://dunwu.gitbooks.io/spring-tutorial/)
 - [Spring Boot 教程](https://dunwu.github.io/spring-boot-tutorial/)
 
-[Java Tutorial](https://dunwu.github.io/java-tutorial/)
 [开始阅读](README.md)
