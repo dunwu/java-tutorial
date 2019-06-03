@@ -52,7 +52,7 @@
   - [Intellij IDEA 使用指南](javatool/ide/intellij.md)
   - [Eclipse 使用指南](javatool/ide/eclipse.md)
 
-## [Spring 教程](https://dunwu.gitbooks.io/spring-tutorial/)
+## [Spring 教程](https://dunwu.github.io/spring-tutorial/)
 
 > 已独立维护在另一个项目中。
 

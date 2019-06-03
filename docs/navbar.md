@@ -23,5 +23,5 @@
   - [Ant 简易教程](javatool/build/ant.md)
   - [Intellij IDEA 使用指南](javatool/ide/intellij.md)
   - [Eclipse 使用指南](javatool/ide/eclipse.md)
-- :five: [Spring](https://dunwu.gitbooks.io/spring-tutorial/)
+- :five: [Spring](https://dunwu.github.io/spring-tutorial/)
 - :six: [SpringBoot](https://dunwu.github.io/spring-boot-tutorial/)
