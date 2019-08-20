@@ -27,6 +27,8 @@ yarn-debug.log*
 yarn-error.log*
 bundle*.js
 
+# special files
+package-lock.json
 
 ################ IDEA ################
 .idea

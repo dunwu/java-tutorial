@@ -85,7 +85,7 @@ _Mockito_ 是一个流行 mock 框架，可以和 JUnit 结合起来使用。Moc
 2. 执行测试代码
 3. 验证测试代码是否被正确的执行
 
-<div align="center"><img src="https://camo.githubusercontent.com/d10c5af5eb7d78af30d92e0f1a9813f419e3975e/687474703a2f2f7777322e73696e61696d672e636e2f6c617267652f3732663936636261677731663562326a386d3276736a323068683035366a7276"/></div>
+<div align="center"><img src="https://camo.githubusercontent.com/d10c5af5eb7d78af30d92e0f1a9813f419e3975e/687474703a2f2f7777322e73696e61696d672e636e2f6c617267652f3732663936636261677731663562326a386d3276736a323068683035366a7276!zp"/></div>
 
 ## 为自己的项目添加 Mockito 依赖
 
@@ -112,7 +112,7 @@ Eclipse IDE 支持 Gradle 和 Maven 两种构建工具，所以在 Eclipse IDE �
 
 Orbit 仓库地址：http://download.eclipse.org/tools/orbit/downloads
 
-<div align="center"><img src="https://camo.githubusercontent.com/79c0e1d7c1e50563574535f33e64b365af512af9/687474703a2f2f7777322e73696e61696d672e636e2f6c617267652f3732663936636261677731663562326a6c627239376a32306e79306867373763"/></div>
+<div align="center"><img src="https://camo.githubusercontent.com/79c0e1d7c1e50563574535f33e64b365af512af9/687474703a2f2f7777322e73696e61696d672e636e2f6c617267652f3732663936636261677731663562326a6c627239376a32306e79306867373763!zp"/></div>
 
 ## 使用 Mockito API
 

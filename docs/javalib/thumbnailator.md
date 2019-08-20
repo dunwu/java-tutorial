@@ -176,10 +176,10 @@ Thumbnails.of("oldFile.png")
 ```
 
 **oldFile.png**
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-ba63439898602e8f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-ba63439898602e8f.png"/></div>
 
 **newFile_scale_1.0_0.5.png**
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-a01ea4515fff865d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-a01ea4515fff865d.png"/></div>
 
 ### 图片旋转
 
@@ -199,7 +199,7 @@ Thumbnails.of("oldFile.png")
 
 **newFile_rotate_90.png**
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-17d54bc33b38d45b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-17d54bc33b38d45b.png"/></div>
 
 ### 加水印
 
@@ -219,7 +219,7 @@ Thumbnails.of("oldFile.png")
 
 **newFile_watermark.png**
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-93eb7ef71b811a0c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-93eb7ef71b811a0c.png"/></div>
 
 ### 批量处理图片
 

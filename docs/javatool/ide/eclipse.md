@@ -20,11 +20,11 @@
 
 Window -> Preferences -> Java -> Editor -> Content Assist -> Auto Activation
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-1a0d2206870c6542.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-1a0d2206870c6542.jpg"/></div>
 
 delay 是自动弹出提示框的延时时间，我们可以修改成 100 毫秒；triggers 这里默认是"."，只要加上"abcdefghijklmnopqrstuvwxyz"或者"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"，嘿嘿！这下就能做到和 VS 一样的输入每个字母都能提示啦：
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-5eb9ad6afbe05289.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-5eb9ad6afbe05289.jpg"/></div>
 
 其它类型的文件比如 HTML、JavaScript、JSP 如果也能提供提示那不是更爽了？有了第二点设置的基础，其实这些设置都是一样的。
 
@@ -32,13 +32,13 @@ delay 是自动弹出提示框的延时时间，我们可以修改成 100 毫秒
 
 Window -> Preferences -> JavaScript-> Editor -> Content Assist -> Auto-Activation
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-31bca3ed1b0d0050.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-31bca3ed1b0d0050.jpg"/></div>
 
 ### HTML 智能提示
 
 Window -> Preferences -> Web -> HTML Files -> Editor -> Content Assist -> Auto-Activation
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-7c1ce7a35793f234.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-7c1ce7a35793f234.jpg"/></div>
 
 保存后，我们再来输入看看，感觉真是不错呀：
 
@@ -50,15 +50,15 @@ Window -> Preferences -> Web -> HTML Files -> Editor -> Content Assist -> Auto-A
 
 我们以 Eclipse 的中文汉化包插件为例，先到官方提供的汉化包地址下载一个：[http://www.eclipse.org/babel/downloads.php](http://www.eclipse.org/babel/downloads.php)，注意选好自己的 Eclipse 版本：
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-d8a662eaba3550e3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-d8a662eaba3550e3.jpg"/></div>
 
 我的版本是 Kepler，然后进入下载页面，单击红框框中的链接，即可下载汉化包了：
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-3544d5393f4e298f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-3544d5393f4e298f.jpg"/></div>
 
 下载完解压缩后，会有个包含 features 和 plugin 目录的 eclipse 文件夹，把这个 eclipse 放在我们的 Eclipse 安装根目录，也就是和 eclipse.exe 同一级目录下。然后仍然在这一级目录下，新建一个 links 文件夹，并在该文件夹内，建一个 language.link 的文本文件。该文本文件的名字是可以任取的，后缀名是.link，而不是.txt 哟。好了，最后一步，编辑该文件，在里面写入刚才放入的语言包的地址，并用“\\”表示路径，一定要有 path= 这个前缀。
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-18f74bf3080d2c1b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-18f74bf3080d2c1b.jpg"/></div>
 
 保存文件后，重新打开 Eclipse，熟悉的中文界面终于看到了。虽然汉化不完全，不过也够用了不是么。如果仍然出现的是英文，说明汉化失败，重新检查下 language.link 文件中配置的信息是否和汉化包的目录一致。　　其它的插件安装方法也是如此，当不需要某个插件时，只需删除存放插件的目录和 links 目录下相应的 link 文件，或者改变下 link 文件里面的路径变成无效路径即可；对 Eclipse 做高版本升级时，也只需把老版存放插件的目录和 links 目录复制过去就行了。
 
@@ -70,30 +70,30 @@ Show line numbers
 Show print margin
 Insert spaces for tabs
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-91aa025fbe7592f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-91aa025fbe7592f8.png"/></div>
 设置代码的字体类型和大小：
 
 Window -> Preferences -> General -> Appearance -> Content Assist -> Colors and Fornts，只需修改 Basic 里面的 Text Font 就可以了。
 
 推荐 Courier New。
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-49b9126aa0dd58c0.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-49b9126aa0dd58c0.jpg"/></div>
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-b7d6d71b2c211321.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-b7d6d71b2c211321.jpg"/></div>
 
 ## 设置文本文件及 JSP 文件编码
 
 Window -> Preferences -> General -> Workspace -> Text file encoding -> Other：
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-b7aa010673565c88.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-b7aa010673565c88.jpg"/></div>
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-b83fa3476fddde46.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-b83fa3476fddde46.jpg"/></div>
 
 ## 设置 JDK 本地 JavaDOC API 路径及源码路径
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-45b5dee3d3ce917a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-45b5dee3d3ce917a.jpg"/></div>
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-f960daf4839662e3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-f960daf4839662e3.jpg"/></div>
 
 还都生成的是无意义的变量名，这样可能会对含有相同类型的变量参数的调用顺序造成干扰；
 
@@ -101,23 +101,23 @@ Window -> Preferences -> General -> Workspace -> Text file encoding -> Other：
 
 Window -> Preferences -> Java -> Installed JREs -> Edit：
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-a08c9166dbbf4361.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-a08c9166dbbf4361.jpg"/></div>
 
 选中设置好的 JRE 目录，编辑，然后全选 JRE system libraries 下的所有 Jar 包，点击右边的 Source Attachment；
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-4e6c78afa8e3e50b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-4e6c78afa8e3e50b.jpg"/></div>
 
 External location 下，选中 JDK 安装目录下的 src.zip 文件，一路 OK 下来。
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-e82d03ce88f64312.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-e82d03ce88f64312.jpg"/></div>
 
 设置完，我们再来看看，幸福来的好突然有木有！
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-400b3952aa60cb8e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-400b3952aa60cb8e.jpg"/></div>
 
 ## 设置 Servlet 源码或其它 Jar 包源码
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-ec1980f58297e42c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-ec1980f58297e42c.jpg"/></div>
 
 上一步已经设置过了 JDK 的源码或 JavaDoc 路径，为啥现在又出来了呢？其实这个不难理解，因为我们使用到的类的源码并不在 JDK 的源码包中。
 
@@ -125,21 +125,21 @@ External location 下，选中 JDK 安装目录下的 src.zip 文件，一路 OK
 
 http://tomcat.apache.org/download-70.cgi这里有Tomcat的安装包和源码包；
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-2962b9cd48422373.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-2962b9cd48422373.jpg"/></div>
 
 可以自定义一个专门用于存放 JavaSource 和 JavaDoc 的文件夹，把下载文件放到该目录下，
 
 然后再切换到 Eclipse 下，选中没有代码提示的类或者函数， 按下 F3，点击 Change Attached Source：
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-e8c7cc17364206cf.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-e8c7cc17364206cf.jpg"/></div>
 
 选择我们刚才下载好的 tomcat 源码文件，一路 OK。
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-138cb66d553d9306.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-138cb66d553d9306.jpg"/></div>
 
 然后再回过头看看我们的代码提示，友好多了：
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-b27652e5ff1d6eab.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-b27652e5ff1d6eab.jpg"/></div>
 
 其它 Jar 包源码的设置方式也一样。
 
@@ -149,33 +149,33 @@ http://tomcat.apache.org/download-70.cgi这里有Tomcat的安装包和源码包�
 
 先从 http://jd.benow.ca/ 上下载离线安装包 jdeclipse_update_site.zip，解压缩后把 features、plugins 这 2 个文件夹复制到 新建文件夹 jdeclipse，然后把 jdeclipse 文件夹整个复制到 Eclipse 根目录的 dropins 文件夹下，重启 Eclipse 即可。这种方式是不是比建 link 文件更方便了？
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-403597b1b46607ef.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-403597b1b46607ef.jpg"/></div>
 
 打开 Eclipse，Window -> Preferences -> General - > Editors ，把 .class 文件设置关联成 jd 插件的 editor
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-d95625fcf362526c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-d95625fcf362526c.jpg"/></div>
 
 ## Validate 优化
 
 我们在 eclipse 里经常看到这个进程，validating... 逐个的检查每一个文件。那么如何关闭一些 validate 操作呢？
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-8323d6f595f96fdd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-8323d6f595f96fdd.png"/></div>
 
 打开 eclipse，点击【window】菜单，选择【preferences】选项。
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-88bd81ece1b3f29f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-88bd81ece1b3f29f.png"/></div>
 
 在左侧点击【validation】选项，在右侧可以看到 eclipse 进行的自动检查都有哪些内容。
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-0c3cf67c6e954dd6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-0c3cf67c6e954dd6.png"/></div>
 
 将 Manual（手动）保持不动，将 build 里面只留下 classpath dependency Validator，其他的全部去掉。
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-e1a3051fde4828d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-e1a3051fde4828d8.png"/></div>
 
 最后点击【OK】按钮，保存设置。
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-7c6803eed8cf618a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></div>
+<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-7c6803eed8cf618a.png"/></div>
 
 以后如果需要对文件进行校验检查的时候，在文件上点击右键，点击【Validate】进行检查。
 
