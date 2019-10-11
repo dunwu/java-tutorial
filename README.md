@@ -2,8 +2,8 @@
 
 > :coffee: Java Tutorial 是本人在 Java 技术领域的十年积累。
 >
-> - :repeat: 项目同步维护：[Github](https://github.com/dunwu/java-tutorial/) | [Gitee](https://gitee.com/turnon/java-tutorial/)
-> - :book: 电子书阅读：[Github Pages](https://dunwu.github.io/java-tutorial/) | [Gitee Pages](https://turnon.gitee.io/java-tutorial/)
+> - 🔁 项目同步维护：[Github](https://github.com/dunwu/java-tutorial/) | [Gitee](https://gitee.com/turnon/java-tutorial/)
+> - 📖 电子书阅读：[Github Pages](https://dunwu.github.io/java-tutorial/) | [Gitee Pages](https://turnon.gitee.io/java-tutorial/)
 
 ## [JavaCore 教程](https://dunwu.github.io/javacore/)
 
@@ -46,6 +46,7 @@
     - [Maven 教程之 settings.xml 详解](docs/javatool/build/maven/maven-settings.md)
     - [Maven 实战问题和最佳实践](docs/javatool/build/maven/maven-action.md)
     - [Maven 教程之发布 jar 到私服或中央仓库](docs/javatool/build/maven/maven-deploy.md)
+    - [Maven 插件之代码检查](docs/javatool/build/maven/plugins/maven-checkstyle.md)
   - [Ant 简易教程](docs/javatool/build/ant.md)
 - Java IDE
 

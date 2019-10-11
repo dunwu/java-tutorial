@@ -4,7 +4,7 @@
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
 
   <property name="FILE_NAME" value="javalib"/>
-  <property name="LOG_PATH" value="./" />
+  <property name="LOG_PATH" value="./"/>
 
   <!-- 重复信息过滤器 -->
   <turboFilter class="ch.qos.logback.classic.turbo.DuplicateMessageFilter">

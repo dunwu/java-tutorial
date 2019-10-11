@@ -32,11 +32,11 @@
   </appender>
 
   <appender name="ELK" class="org.apache.log4j.net.SocketAppender">
-    <param name="remoteHost" value="192.168.28.32" />
-    <param name="port" value="9252" />
-    <param name="Threshold" value="TRACE" />
-    <param name="ReconnectionDelay" value="6000" />
-    <param name="LocationInfo" value="true" />
+    <param name="remoteHost" value="192.168.28.32"/>
+    <param name="port" value="9252"/>
+    <param name="Threshold" value="TRACE"/>
+    <param name="ReconnectionDelay" value="6000"/>
+    <param name="LocationInfo" value="true"/>
   </appender>
 
   <!-- 指定logger的设置，additivity指示是否遵循缺省的继承机制-->

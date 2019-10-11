@@ -302,7 +302,7 @@ spring-boot-dependencies 的 pom.xml 形式：
 <modelVersion>4.0.0</modelVersion>
 <groupId>org.springframework.boot</groupId>
 <artifactId>spring-boot-dependencies</artifactId>
-<version>2.1.4.RELEASE</version>
+<version>2.1.9.RELEASE</version>
 <packaging>pom</packaging>
 
 <!-- 省略 -->

@@ -13,7 +13,7 @@
       <PatternLayout pattern="${logPattern}"/>
     </Console>
     <RollingFile name="Trace" fileName="${logPath}/${fileName}-trace.log"
-      filePattern="${logPath}/$${date:yyyy-MM}/${fileName}-trace-%d{yyyy-MM-dd}-%i.log.gz">
+                 filePattern="${logPath}/$${date:yyyy-MM}/${fileName}-trace-%d{yyyy-MM-dd}-%i.log.gz">
       <PatternLayout>
         <Pattern>${logPattern}</Pattern>
       </PatternLayout>
@@ -26,13 +26,13 @@
       </Policies>
       <DefaultRolloverStrategy>
         <Delete basePath="${logPath}" maxDepth="2">
-          <IfFileName glob="*/${fileName}-trace-*.log.gz" />
-          <IfLastModified age="30d" />
+          <IfFileName glob="*/${fileName}-trace-*.log.gz"/>
+          <IfLastModified age="30d"/>
         </Delete>
       </DefaultRolloverStrategy>
     </RollingFile>
     <RollingFile name="Debug" fileName="${logPath}/${fileName}-debug.log"
-      filePattern="${logPath}/$${date:yyyy-MM}/${fileName}-debug-%d{yyyy-MM-dd}-%i.log.gz">
+                 filePattern="${logPath}/$${date:yyyy-MM}/${fileName}-debug-%d{yyyy-MM-dd}-%i.log.gz">
       <PatternLayout>
         <Pattern>${logPattern}</Pattern>
       </PatternLayout>
@@ -45,13 +45,13 @@
       </Policies>
       <DefaultRolloverStrategy>
         <Delete basePath="${logPath}" maxDepth="2">
-          <IfFileName glob="*/${fileName}-debug-*.log.gz" />
-          <IfLastModified age="30d" />
+          <IfFileName glob="*/${fileName}-debug-*.log.gz"/>
+          <IfLastModified age="30d"/>
         </Delete>
       </DefaultRolloverStrategy>
     </RollingFile>
     <RollingFile name="Info" fileName="${logPath}/${fileName}-info.log"
-      filePattern="${logPath}/$${date:yyyy-MM}/${fileName}-info-%d{yyyy-MM-dd}-%i.log.gz">
+                 filePattern="${logPath}/$${date:yyyy-MM}/${fileName}-info-%d{yyyy-MM-dd}-%i.log.gz">
       <PatternLayout>
         <Pattern>${logPattern}</Pattern>
       </PatternLayout>
@@ -64,13 +64,13 @@
       </Policies>
       <DefaultRolloverStrategy>
         <Delete basePath="${logPath}" maxDepth="2">
-          <IfFileName glob="*/${fileName}-info-*.log.gz" />
-          <IfLastModified age="30d" />
+          <IfFileName glob="*/${fileName}-info-*.log.gz"/>
+          <IfLastModified age="30d"/>
         </Delete>
       </DefaultRolloverStrategy>
     </RollingFile>
     <RollingFile name="Warn" fileName="${logPath}/${fileName}-warn.log"
-      filePattern="${logPath}/$${date:yyyy-MM}/${fileName}-warn-%d{yyyy-MM-dd}-%i.log.gz">
+                 filePattern="${logPath}/$${date:yyyy-MM}/${fileName}-warn-%d{yyyy-MM-dd}-%i.log.gz">
       <PatternLayout>
         <Pattern>${logPattern}</Pattern>
       </PatternLayout>
@@ -83,13 +83,13 @@
       </Policies>
       <DefaultRolloverStrategy>
         <Delete basePath="${logPath}" maxDepth="2">
-          <IfFileName glob="*/${fileName}-warn-*.log.gz" />
-          <IfLastModified age="30d" />
+          <IfFileName glob="*/${fileName}-warn-*.log.gz"/>
+          <IfLastModified age="30d"/>
         </Delete>
       </DefaultRolloverStrategy>
     </RollingFile>
     <RollingFile name="Error" fileName="${logPath}/${fileName}-error.log"
-      filePattern="${logPath}/$${date:yyyy-MM}/${fileName}-error-%d{yyyy-MM-dd}-%i.log.gz">
+                 filePattern="${logPath}/$${date:yyyy-MM}/${fileName}-error-%d{yyyy-MM-dd}-%i.log.gz">
       <PatternLayout>
         <Pattern>${logPattern}</Pattern>
       </PatternLayout>
@@ -102,8 +102,8 @@
       </Policies>
       <DefaultRolloverStrategy>
         <Delete basePath="${logPath}" maxDepth="2">
-          <IfFileName glob="*/${fileName}-error-*.log.gz" />
-          <IfLastModified age="30d" />
+          <IfFileName glob="*/${fileName}-error-*.log.gz"/>
+          <IfLastModified age="30d"/>
         </Delete>
       </DefaultRolloverStrategy>
     </RollingFile>

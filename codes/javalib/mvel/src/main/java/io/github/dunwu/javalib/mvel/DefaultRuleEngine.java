@@ -10,152 +10,156 @@ import java.util.TreeSet;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class DefaultRuleEngine implements RuleEngine {
-    protected Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    /**
-     * The rules set.
-     */
-    protected Set<Rule> rules;
-    /**
-     * The engine parameters
-     */
-    protected RuleEngineParams params;
+	protected Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    /**
-     * The rule fact
-     */
-    protected RuleContext fact;
+	/**
+	 * The rules set.
+	 */
+	protected Set<Rule> rules;
 
-    /**
-     * ruleSet Map
-     */
-    private Map<String, TreeSet<Rule>> ruleSetMap = new ConcurrentHashMap<>();
+	/**
+	 * The engine parameters
+	 */
+	protected RuleEngineParams params;
 
-    public DefaultRuleEngine(RuleEngineParams params) {
-        this.params = params;
-        this.rules = new TreeSet<>();
-        if (params.isSilentMode()) {
-            //cancle log
-        }
-    }
+	/**
+	 * The rule fact
+	 */
+	protected RuleContext fact;
 
-    @Override
-    public void launch(RuleContext fact) {
-        if (rules.isEmpty()) {
-            logger.warn("No rules registered! Nothing to apply");
-            return;
-        }
+	/**
+	 * ruleSet Map
+	 */
+	private Map<String, TreeSet<Rule>> ruleSetMap = new ConcurrentHashMap<>();
 
-        logEngineParams();
-        sortRules();
-        applyRules(fact);
-    }
+	public DefaultRuleEngine(RuleEngineParams params) {
+		this.params = params;
+		this.rules = new TreeSet<>();
+		if (params.isSilentMode()) {
+			// cancle log
+		}
+	}
 
-    @Override
-    public void registerRule(Rule rule) {
-        //检查规则
-        if (rule.validate()) {
-            rules.add(rule);
-        }
-    }
+	@Override
+	public void launch(RuleContext fact) {
+		if (rules.isEmpty()) {
+			logger.warn("No rules registered! Nothing to apply");
+			return;
+		}
 
-    @Override
-    public void registerRule(MvelRuleSet ruleSet) {
-        ruleSet.getRules().forEach(rule -> registerRule(rule));
-        logRegisteredRules();
-    }
+		logEngineParams();
+		sortRules();
+		applyRules(fact);
+	}
 
+	@Override
+	public void registerRule(Rule rule) {
+		// 检查规则
+		if (rule.validate()) {
+			rules.add(rule);
+		}
+	}
 
-    @Override
-    public void unregisterRule(Rule rule) {
-        rules.remove(rule);
-    }
+	@Override
+	public void registerRule(MvelRuleSet ruleSet) {
+		ruleSet.getRules().forEach(rule -> registerRule(rule));
+		logRegisteredRules();
+	}
 
-    @Override
-    public void clearRules() {
-        ruleSetMap.clear();
-    }
+	@Override
+	public void unregisterRule(Rule rule) {
+		rules.remove(rule);
+	}
 
-    @Override
-    public Set<Rule> getRules() {
-        return rules;
-    }
+	@Override
+	public void clearRules() {
+		ruleSetMap.clear();
+	}
 
-    @Override
-    public Map<Rule, Boolean> checkRules() {
-        logger.info("Checking rules");
-        sortRules();
-        Map<Rule, Boolean> result = new HashMap<>();
-        for (Rule rule : rules) {
-            result.put(rule, rule.evaluate(fact));
-        }
-        return result;
-    }
+	@Override
+	public Set<Rule> getRules() {
+		return rules;
+	}
 
-    private void logEngineParams() {
-        logger.info("----- Params -----");
-        logger.info("Engine name: {}", params.getName());
-        logger.info("Rule priority threshold: {}", params.getPriorityThreshold());
-        logger.info("Skip on first applied rule: {}", params.isSkipOnFirstAppliedRule());
-        logger.info("Skip on first unapplied rule: {}", params.isSkipOnFirstUnAppliedRule());
-        logger.info("Skip on first failed rule: {}", params.isSkipOnFirstFailedRule());
-    }
+	@Override
+	public Map<Rule, Boolean> checkRules() {
+		logger.info("Checking rules");
+		sortRules();
+		Map<Rule, Boolean> result = new HashMap<>();
+		for (Rule rule : rules) {
+			result.put(rule, rule.evaluate(fact));
+		}
+		return result;
+	}
 
-    private void logRegisteredRules() {
-        logger.info("Registered rules:");
-        for (Rule rule : rules) {
-            logger.info("Rule { name = {}, description = {}, priority = {}}", rule.getName(), rule.getDescription(),
-                rule.getPriority());
-        }
-    }
+	private void logEngineParams() {
+		logger.info("----- Params -----");
+		logger.info("Engine name: {}", params.getName());
+		logger.info("Rule priority threshold: {}", params.getPriorityThreshold());
+		logger.info("Skip on first applied rule: {}", params.isSkipOnFirstAppliedRule());
+		logger.info("Skip on first unapplied rule: {}", params.isSkipOnFirstUnAppliedRule());
+		logger.info("Skip on first failed rule: {}", params.isSkipOnFirstFailedRule());
+	}
 
-    private void sortRules() {
-        rules = new TreeSet<>(rules);
-    }
+	private void logRegisteredRules() {
+		logger.info("Registered rules:");
+		for (Rule rule : rules) {
+			logger.info("Rule { name = {}, description = {}, priority = {}}", rule.getName(), rule.getDescription(),
+					rule.getPriority());
+		}
+	}
 
-    private void applyRules(RuleContext fact) {
-        logger.info("Rules evaluation started");
+	private void sortRules() {
+		rules = new TreeSet<>(rules);
+	}
 
-        for (Rule rule : rules) {
-            final String name = rule.getName();
-            final int priority = rule.getPriority();
+	private void applyRules(RuleContext fact) {
+		logger.info("Rules evaluation started");
 
-            if (priority > params.getPriorityThreshold()) {
-                logger.info(
-                    "Rule priority threshold ({}) exceeded at rule {} with priority={}, next rules will be skipped",
-                    new Object[] {params.getPriorityThreshold(), name, priority});
-                break;
-            }
+		for (Rule rule : rules) {
+			final String name = rule.getName();
+			final int priority = rule.getPriority();
 
-            if (rule.evaluate(fact)) {
-                logger.info("Rule [{}] triggered", name);
-                try {
-                    rule.execute(fact);
-                    logger.info("Rule {} performed successfully", name);
-                    if (params.isSkipOnFirstAppliedRule()) {
-                        logger.info("Next rules will be skipped since parameter skipOnFirstAppliedRule is set");
-                        break;
-                    }
-                    if (params.isSkipOnFirstUnAppliedRule()) {
-                        logger.info("Next rules will be skipped since parameter skipOnFirstUnAppliedRule is set");
-                        break;
-                    }
-                } catch (Exception exception) {
-                    logger.error("Rule [{}] performed with error {}", name, exception);
+			if (priority > params.getPriorityThreshold()) {
+				logger.info(
+						"Rule priority threshold ({}) exceeded at rule {} with priority={}, next rules will be skipped",
+						new Object[] { params.getPriorityThreshold(), name, priority });
+				break;
+			}
 
-                    if (params.isSkipOnFirstFailedRule()) {
-                        logger.info("Next rules will be skipped since parameter skipOnFirstFailedRule is set");
-                        break;
-                    }
-                }
-            } else {
-                logger.info("Rule [{}] has been evaluated to false, it has not been executed", name);
-            }
-        }
-    }
+			if (rule.evaluate(fact)) {
+				logger.info("Rule [{}] triggered", name);
+				try {
+					rule.execute(fact);
+					logger.info("Rule {} performed successfully", name);
+					if (params.isSkipOnFirstAppliedRule()) {
+						logger.info("Next rules will be skipped since parameter skipOnFirstAppliedRule is set");
+						break;
+					}
+					if (params.isSkipOnFirstUnAppliedRule()) {
+						logger.info("Next rules will be skipped since parameter skipOnFirstUnAppliedRule is set");
+						break;
+					}
+				}
+				catch (Exception exception) {
+					logger.error("Rule [{}] performed with error {}", name, exception);
 
-    @Override
-    public RuleEngineParams getParams() {
-        return params;
-    }
+					if (params.isSkipOnFirstFailedRule()) {
+						logger.info("Next rules will be skipped since parameter skipOnFirstFailedRule is set");
+						break;
+					}
+				}
+			}
+			else {
+				logger.info("Rule [{}] has been evaluated to false, it has not been executed", name);
+			}
+		}
+	}
+
+	@Override
+	public RuleEngineParams getParams() {
+		return params;
+	}
+
 }

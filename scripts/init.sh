@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 #################################################################################
 # javatool-server 项目初始化脚本
 # 执行本脚本后，会将 JavaStack 下载到 /home/zp/source/JavaStack 目录下。

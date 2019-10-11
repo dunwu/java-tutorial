@@ -9,7 +9,7 @@
     <param name="DatePattern" value="'.'yyyy-MM-dd'.log'"/>
     <layout class="org.apache.log4j.PatternLayout">
       <param name="ConversionPattern"
-        value="%d{yyyy-MM-dd HH:mm:ss,SSS\} [%-5p] [%t] %c{36\}.%M - %m%n"/>
+             value="%d{yyyy-MM-dd HH:mm:ss,SSS\} [%-5p] [%t] %c{36\}.%M - %m%n"/>
     </layout>
 
     <filter class="org.apache.log4j.varia.LevelRangeFilter">
@@ -25,7 +25,7 @@
     <param name="DatePattern" value="'.'yyyy-MM-dd'.log'"/>
     <layout class="org.apache.log4j.PatternLayout">
       <param name="ConversionPattern"
-        value="%d{yyyy-MM-dd HH:mm:ss,SSS\} [%-5p] [%t] %c{36\}.%M - %m%n"/>
+             value="%d{yyyy-MM-dd HH:mm:ss,SSS\} [%-5p] [%t] %c{36\}.%M - %m%n"/>
     </layout>
 
     <filter class="org.apache.log4j.varia.LevelRangeFilter">
@@ -41,7 +41,7 @@
     <param name="DatePattern" value="'.'yyyy-MM-dd'.log'"/>
     <layout class="org.apache.log4j.PatternLayout">
       <param name="ConversionPattern"
-        value="%d{yyyy-MM-dd HH:mm:ss,SSS\} [%-5p] [%t] %c{36\}.%M - %m%n"/>
+             value="%d{yyyy-MM-dd HH:mm:ss,SSS\} [%-5p] [%t] %c{36\}.%M - %m%n"/>
     </layout>
 
     <filter class="org.apache.log4j.varia.LevelRangeFilter">
@@ -57,7 +57,7 @@
     <param name="DatePattern" value="'.'yyyy-MM-dd'.log'"/>
     <layout class="org.apache.log4j.PatternLayout">
       <param name="ConversionPattern"
-        value="%d{yyyy-MM-dd HH:mm:ss,SSS\} [%-5p] [%t] %c{36\}.%M - %m%n"/>
+             value="%d{yyyy-MM-dd HH:mm:ss,SSS\} [%-5p] [%t] %c{36\}.%M - %m%n"/>
     </layout>
 
     <filter class="org.apache.log4j.varia.LevelRangeFilter">
@@ -73,7 +73,7 @@
     <param name="DatePattern" value="'.'yyyy-MM-dd'.log'"/>
     <layout class="org.apache.log4j.PatternLayout">
       <param name="ConversionPattern"
-        value="%d{yyyy-MM-dd HH:mm:ss,SSS\} [%-5p] [%t] %c{36\}.%M - %m%n"/>
+             value="%d{yyyy-MM-dd HH:mm:ss,SSS\} [%-5p] [%t] %c{36\}.%M - %m%n"/>
     </layout>
 
     <filter class="org.apache.log4j.varia.LevelRangeFilter">
@@ -102,7 +102,7 @@
     <param name="DatePattern" value="'.'yyyy-MM-dd'.log'"/>
     <layout class="org.apache.log4j.PatternLayout">
       <param name="ConversionPattern"
-        value="%d{yyyy-MM-dd HH:mm:ss,SSS\} [%-5p] [%t] %c{36\}.%M - %m%n"/>
+             value="%d{yyyy-MM-dd HH:mm:ss,SSS\} [%-5p] [%t] %c{36\}.%M - %m%n"/>
     </layout>
 
     <filter class="org.apache.log4j.varia.LevelRangeFilter">

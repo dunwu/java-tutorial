@@ -19,7 +19,7 @@ checkInput() {
 # 检查文件是否存在，不存在则退出脚本
 #
 checkFileExist() {
-  if [ ! -f "$1" ];then
+  if [ ! -f "$1" ]; then
     echo "关键文件 $1 找不到，脚本执行结束"
     exit 0
   fi
@@ -29,7 +29,7 @@ checkFileExist() {
 # 检查目录是否存在，不存在则退出脚本
 #
 checkFolderExist() {
-  if [ ! -d "$1" ];then
+  if [ ! -d "$1" ]; then
     echo "关键目录 $1 找不到，脚本执行结束"
     exit 0
   fi

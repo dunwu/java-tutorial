@@ -5,8 +5,8 @@
 # 删除旧日志文件
 removeOldLog() {
   mkdir -p /home/zp/log/startup
-  if [ -f $LOG_FILE ];then
-     rm -rf $LOG_FILE
+  if [ -f $LOG_FILE ]; then
+    rm -rf $LOG_FILE
   fi
 }
 
@@ -26,12 +26,12 @@ checkInput() {
 # 检查服务是否已经启动
 PIDS=""
 checkStarted() {
-    PIDS=`ps -ef | grep java | grep ${app} | awk '{print $2}'`
-    if [ -n "$PIDS" ]; then
-        return 0
-    else
-        return 1
-    fi
+  PIDS=`ps -ef | grep java | grep ${app} | awk '{print $2}'`
+  if [ -n "$PIDS" ]; then
+    return 0
+  else
+    return 1
+  fi
 }
 
 execOper() {
@@ -39,11 +39,11 @@ execOper() {
     start)
       echo -n "starting server: "
       #检查服务是否已经启动
-#      if checkStarted ;then
-#        echo "ERROR: server already started!"
-#        echo "PID: $PIDS"
-#        exit 1
-#      fi
+      #      if checkStarted ;then
+      #        echo "ERROR: server already started!"
+      #        echo "PID: $PIDS"
+      #        exit 1
+      #      fi
 
       args="${javaArgs} -classpath ${classpathArgs} ${bootstrapClass}"
       #echo -e "启动参数:\n${args}"
@@ -52,22 +52,22 @@ execOper() {
       nohup java ${args} > ${LOG_FILE} 2>&1 &
       # echo -e "执行参数：\n${args}"
       echo -e "\nthe server is started..."
-      ;;
+    ;;
     stop)
       echo -n "stopping server: "
       #dubbo提供优雅停机, 不能使用kill -9
-      if checkStarted ;then
+      if checkStarted; then
         kill $PIDS
         echo -e "\nthe server is stopped..."
       else
         echo -e "\nno server to be stopped..."
       fi
-      ;;
+    ;;
     restart)
       $0 ${app} stop "${javaArgs}" "${classpathArgs}" "${bootstrapClass}"
       sleep 5
       $0 ${app} start "${javaArgs}" "${classpathArgs}" "${bootstrapClass}"
-      ;;
+    ;;
     *)
       echo "Invalid oper: ${oper}."
       exit 1
