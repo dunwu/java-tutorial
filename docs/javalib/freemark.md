@@ -155,7 +155,7 @@ Freemark 支持的类型有：
 
 <div align="center"><img src="http://dunwu.test.upcdn.net/snap/ftl-template.png!zp"/></div>
 
-> :warning: 注意：
+> 🔔 注意：
 >
 > - FTL 是区分大小写的。
 > - `插值` 仅仅可以在 `文本` 中使用。
@@ -177,7 +177,7 @@ FTL 标签分为两种：
 
 事实上，指令有两种类型： [预定义指令](http://freemarker.foofun.cn/gloss.html#gloss.predefinedDirective) 和 [用户自定义指令](http://freemarker.foofun.cn/gloss.html#gloss.userDefinedDirective)。 对于用户自定义的指令使用 `@` 来代替 `#`。
 
-> :warning: 注意：
+> 🔔 注意：
 >
 > - FreeMarker 仅仅关心 FTL 标签的嵌套而不关心 HTML 标签的嵌套。 它只会把 HTML 看做是文本，不会来解释 HTML。
 > - 如果你尝试使用一个不存在的指令(比如，输错了指令的名称)， FreeMarker 就会拒绝执行模板，同时抛出错误信息。
@@ -227,13 +227,13 @@ FTL 标签分为两种：
 
 注意：插值 _仅仅_ 在 [文本区](http://freemarker.foofun.cn/dgui_template_overallstructure.html) (比如 `<h1>Hello ${name}!</h1>`) 和 [字符串](http://freemarker.foofun.cn/dgui_template_exp.html#dgui_template_exp_direct_string) 中起作用。
 
-:heavy_check_mark: `<#include "/footer/${company}.html">`
+⭕ `<#include "/footer/${company}.html">`
 
-:heavy_check_mark: `<#if big>...</#if>`
+⭕ `<#if big>...</#if>`
 
-:x: `<#if ${big}>...</#if>`
+❌ `<#if ${big}>...</#if>`
 
-:x: `<#if "${big}">...</#if>`
+❌ `<#if "${big}">...</#if>`
 
 ## 参考资料
 

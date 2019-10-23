@@ -40,7 +40,7 @@ settings.xml 文件一般存在于两个位置：
 - **全局配置** - `${maven.home}/conf/settings.xml`
 - **用户配置** - `${user.home}/.m2/settings.xml`
 
-> 注意：用户配置优先于全局配置。`${user.home}` 和和所有其他系统属性只能在 3.0+版本上使用。请注意 windows 和 Linux 使用变量的区别。
+> 🔔 注意：用户配置优先于全局配置。`${user.home}` 和和所有其他系统属性只能在 3.0+版本上使用。请注意 windows 和 Linux 使用变量的区别。
 
 ### 配置优先级
 

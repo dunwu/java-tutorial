@@ -1,7 +1,7 @@
 {
-  "name": "java-tutorial",
-  "version": "1.0.0",
-  "scripts": {
-    "start": "docsify serve ./  --port 4000"
-  }
+	"name": "java-tutorial",
+	"version": "1.0.0",
+	"scripts": {
+		"start": "docsify serve ./ --port 4000"
+	}
 }

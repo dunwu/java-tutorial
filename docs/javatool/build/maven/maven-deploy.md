@@ -119,7 +119,7 @@ C:\Program Files (x86)\GnuPG\bin>gpg --keyserver hkp://pool.sks-keyservers.net -
 gpg: sending key A306519BAFF57F60 to hkp://pool.sks-keyservers.net
 ```
 
-> 注意：有可能出现 gpg: keyserver receive failed: No dat 错误，等大约 30 分钟后再执行就不会报错了。
+> 🔔 注意：有可能出现 gpg: keyserver receive failed: No dat 错误，等大约 30 分钟后再执行就不会报错了。
 
 （5）查看公钥是否发布成功
 
@@ -452,7 +452,7 @@ Usage: ./nexus {start|stop|run|run-redirect|status|restart|force-reload}
   </distributionManagement>
 ```
 
-> 注意：
+> 🔔 注意：
 >
 > - `<repository>` 和 `<snapshotRepository>` 的 id 必须和 `settings.xml` 配置文件中的 `<server>` 标签中的 id 匹配。
 > - `<url>` 标签的地址需要和 maven 私服的地址匹配。
