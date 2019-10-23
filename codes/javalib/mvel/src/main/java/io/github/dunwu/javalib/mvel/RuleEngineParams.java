@@ -8,14 +8,12 @@ public class RuleEngineParams {
 	protected String name;
 
 	/**
-	 * 满足任意条件（即遇到第一个匹配规则时停止） Parameter to skip next applicable rules when a rule is
-	 * applied.
+	 * 满足任意条件（即遇到第一个匹配规则时停止） Parameter to skip next applicable rules when a rule is applied.
 	 */
 	private boolean skipOnFirstAppliedRule;
 
 	/**
-	 * 满足所有条件（即遇到第第一个未匹配规则时停止） Parameter to skip next applicable rules when a rule has
-	 * failed.
+	 * 满足所有条件（即遇到第第一个未匹配规则时停止） Parameter to skip next applicable rules when a rule has failed.
 	 */
 	private boolean skipOnFirstUnAppliedRule;
 
@@ -35,7 +33,7 @@ public class RuleEngineParams {
 	private boolean silentMode;
 
 	public RuleEngineParams(String name, boolean skipOnFirstAppliedRule, boolean skipOnFirstUnAppliedRule,
-			boolean skipOnFirstFailedRule, int priorityThreshold, boolean silentMode) {
+		boolean skipOnFirstFailedRule, int priorityThreshold, boolean silentMode) {
 		this.name = name;
 		this.skipOnFirstAppliedRule = skipOnFirstAppliedRule;
 		this.skipOnFirstUnAppliedRule = skipOnFirstUnAppliedRule;

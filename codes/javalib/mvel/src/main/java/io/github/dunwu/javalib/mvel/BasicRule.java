@@ -33,7 +33,6 @@ public class BasicRule implements Rule, Comparable<Rule> {
 			return false;
 		}
 		return !(description != null ? !description.equals(basicRule.description) : basicRule.description != null);
-
 	}
 
 	@Override
@@ -53,13 +52,20 @@ public class BasicRule implements Rule, Comparable<Rule> {
 	public int compareTo(Rule rule) {
 		if (priority < rule.getPriority()) {
 			return -1;
-		}
-		else if (priority > rule.getPriority()) {
+		} else if (priority > rule.getPriority()) {
 			return 1;
-		}
-		else {
+		} else {
 			return getName().compareTo(rule.getName());
 		}
+	}
+
+	@Override
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	@Override
@@ -81,15 +87,6 @@ public class BasicRule implements Rule, Comparable<Rule> {
 	@Override
 	public void execute(RuleContext ruleContext) {
 		// do nothing
-	}
-
-	@Override
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	@Override

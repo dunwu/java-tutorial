@@ -7,6 +7,7 @@ public interface RuleEngine {
 
 	/**
 	 * 规则引擎 设置参数
+	 *
 	 * @return The rules engine parameters
 	 */
 	RuleEngineParams getParams();
@@ -33,12 +34,14 @@ public interface RuleEngine {
 
 	/**
 	 * Return the set of registered rules.
+	 *
 	 * @return the set of registered rules
 	 */
 	Set<Rule> getRules();
 
 	/**
 	 * Check rules without firing them.
+	 *
 	 * @return a map with the result of evaluation of each rule
 	 */
 	Map<Rule, Boolean> checkRules();

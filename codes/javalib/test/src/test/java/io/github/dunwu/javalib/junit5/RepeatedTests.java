@@ -15,7 +15,7 @@ class RepeatedTests {
 		int totalRepetitions = repetitionInfo.getTotalRepetitions();
 		String methodName = testInfo.getTestMethod().get().getName();
 		LOGGER.info(String.format("About to execute repetition %d of %d for %s", //
-				currentRepetition, totalRepetitions, methodName));
+			currentRepetition, totalRepetitions, methodName));
 	}
 
 	@RepeatedTest(10)

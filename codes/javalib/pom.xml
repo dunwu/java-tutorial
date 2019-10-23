@@ -1,20 +1,21 @@
 <?xml version="1.0"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0">
-  <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>io.github.dunwu.javalib</groupId>
-  <artifactId>javalib-demos</artifactId>
-  <version>1.0.0</version>
-  <packaging>pom</packaging>
-  <name>JavaLib Demos</name>
-  <description>Java 库使用示例</description>
+	<groupId>io.github.dunwu.javalib</groupId>
+	<artifactId>javalib-demos</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+	<name>JavaLib Demos</name>
+	<description>Java 库使用示例</description>
 
-  <modules>
-    <module>bean</module>
-    <module>json</module>
-    <module>log</module>
-    <module>mvel</module>
-    <module>test</module>
-  </modules>
+	<modules>
+		<module>bean</module>
+		<module>json</module>
+		<module>log</module>
+		<module>mvel</module>
+		<module>test</module>
+	</modules>
 </project>

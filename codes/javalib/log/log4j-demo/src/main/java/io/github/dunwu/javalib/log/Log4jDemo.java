@@ -7,8 +7,8 @@ import org.slf4j.LoggerFactory;
  * log4j 示例
  *
  * @author Zhang Peng
- * @date 2018/3/29
  * @see <a href="http://logging.apache.org/log4j/1.2/">log4j 官网</a>
+ * @since 2018/3/29
  */
 public class Log4jDemo {
 

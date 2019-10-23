@@ -1,12 +1,11 @@
 package io.github.dunwu.javalib.json.fastjson;
 
 import com.alibaba.fastjson.annotation.JSONField;
-
 import java.util.Date;
 
 /**
  * @author Zhang Peng
- * @date 2019-03-18
+ * @since 2019-03-18
  */
 public class FastjsonAnnotationBean {
 

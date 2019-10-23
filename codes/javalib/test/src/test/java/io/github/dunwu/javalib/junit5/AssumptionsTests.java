@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assumptions.assumingThat;
  * Junit5 断言示例
  *
  * @author Zhang Peng
- * @date 2018-11-29
+ * @since 2018-11-29
  */
 class AssumptionsTests {
 

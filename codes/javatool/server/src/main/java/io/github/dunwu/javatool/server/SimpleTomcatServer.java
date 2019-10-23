@@ -1,8 +1,7 @@
 package io.github.dunwu.javatool.server;
 
-import org.apache.catalina.startup.Tomcat;
-
 import java.util.Optional;
+import org.apache.catalina.startup.Tomcat;
 
 /**
  * 简单的嵌入式 Tomcat 启动类 启动后可访问 http://localhost:8080/javatool-server/
@@ -31,7 +30,7 @@ public class SimpleTomcatServer {
 	private static String getAbsolutePath() {
 		String path = null;
 		String folderPath = SimpleTomcatServer.class.getProtectionDomain().getCodeSource().getLocation().getPath()
-				.substring(1);
+			.substring(1);
 		if (folderPath.indexOf("target") > 0) {
 			path = folderPath.substring(0, folderPath.indexOf("target"));
 		}

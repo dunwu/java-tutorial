@@ -1,6 +1,5 @@
 /**
- * The Apache License 2.0
- * Copyright (c) 2016 Zhang Peng
+ * The Apache License 2.0 Copyright (c) 2016 Zhang Peng
  */
 package io.github.dunwu.javatool.controller;
 
@@ -11,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @author Zhang Peng
- * @date 2017/4/12.
+ * @since 2017/4/12.
  */
 @Controller
 public class IndexController {

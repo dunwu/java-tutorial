@@ -7,8 +7,8 @@ import org.slf4j.LoggerFactory;
  * Logback 示例
  *
  * @author Zhang Peng
- * @date 2018/3/29
  * @see <a href="https://logback.qos.ch/">logback 官网</a>
+ * @since 2018/3/29
  */
 public class LogbackDemo {
 

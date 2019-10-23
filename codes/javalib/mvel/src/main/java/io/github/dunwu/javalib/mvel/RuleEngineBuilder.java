@@ -6,7 +6,7 @@ public class RuleEngineBuilder {
 
 	private RuleEngineBuilder() {
 		params = new RuleEngineParams(RuleConstant.DEFAULT_ENGINE_NAME, false, false, false,
-				RuleConstant.DEFAULT_RULE_PRIORITY_THRESHOLD, false);
+			RuleConstant.DEFAULT_RULE_PRIORITY_THRESHOLD, false);
 	}
 
 	public static RuleEngineBuilder newRuleEngine() {

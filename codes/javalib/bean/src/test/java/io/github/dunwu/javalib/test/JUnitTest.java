@@ -1,6 +1,5 @@
 package io.github.dunwu.javalib.test;
 
-import org.junit.*;
 import org.junit.runners.MethodSorters;
 
 /**
@@ -20,8 +19,7 @@ public class JUnitTest {
 	}
 
 	/**
-	 * 当需要执行所有的测试在JUnit测试用例类后执行，@AfterClass注解可以使用以清理建立方法，(从数据库如断开连接)。
-	 * 注意：附有此批注(类似于BeforeClass)的方法必须定义为静态。
+	 * 当需要执行所有的测试在JUnit测试用例类后执行，@AfterClass注解可以使用以清理建立方法，(从数据库如断开连接)。 注意：附有此批注(类似于BeforeClass)的方法必须定义为静态。
 	 */
 	@AfterClass
 	public static void afterClass() {
@@ -54,7 +52,7 @@ public class JUnitTest {
 	}
 
 	/**
-	 * @After 注解修饰的方法在执行每项测试后执行(如执行每一个测试后重置某些变量，删除临时变量等)
+	 * @After 注解修饰的方法在执行每项测试后执行(如执行每一个测试后重置某些变量 ， 删除临时变量等)
 	 */
 	@After
 	public void after() {

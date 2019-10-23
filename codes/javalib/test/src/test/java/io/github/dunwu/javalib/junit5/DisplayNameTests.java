@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
  * Junit5 定制测试类和方法的显示名称
  *
  * @author Zhang Peng
- * @date 2018-11-29
+ * @since 2018-11-29
  */
 @DisplayName("A special test case")
 class DisplayNameTests {

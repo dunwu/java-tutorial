@@ -1,5 +1,9 @@
 package io.github.dunwu.javalib.office;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import org.apache.poi.hpsf.DocumentSummaryInformation;
 import org.apache.poi.hpsf.SummaryInformation;
 import org.apache.poi.hwpf.HWPFDocument;
@@ -7,22 +11,17 @@ import org.apache.poi.ooxml.POIXMLProperties;
 import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
 import org.apache.poi.xwpf.usermodel.*;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-
 /**
  * @author Zhang Peng
- * @since 2018-11-08
  * @see <a href="https://poi.apache.org/">https://poi.apache.org/</a>
- * @see <a href=
- * "https://www.w3cschool.cn/apache_poi_word/apache_poi_word_overview.html">https://www.w3cschool.cn/apache_poi_word/apache_poi_word_overview.html</a>
+ * @see <a href= "https://www.w3cschool.cn/apache_poi_word/apache_poi_word_overview.html">https://www.w3cschool.cn/apache_poi_word/apache_poi_word_overview.html</a>
+ * @since 2018-11-08
  */
 public class WordUtil {
 
 	/**
 	 * 创建空白文档
+	 *
 	 * @param filename
 	 * @throws IOException
 	 */
@@ -38,6 +37,7 @@ public class WordUtil {
 
 	/**
 	 * 创建 *.docx 文档，包含 content 内容
+	 *
 	 * @param filename
 	 * @throws IOException
 	 */
@@ -58,6 +58,7 @@ public class WordUtil {
 
 	/**
 	 * 创建 *.docx 文档，包含 content 内容，content 内容置于边框中
+	 *
 	 * @param filename
 	 * @throws IOException
 	 */
@@ -93,6 +94,7 @@ public class WordUtil {
 
 	/**
 	 * 表格
+	 *
 	 * @param filename
 	 * @throws IOException
 	 */
@@ -128,6 +130,7 @@ public class WordUtil {
 
 	/**
 	 * 字体样式
+	 *
 	 * @param filename
 	 * @throws IOException
 	 */
@@ -167,6 +170,7 @@ public class WordUtil {
 
 	/**
 	 * 对齐方式
+	 *
 	 * @param filename
 	 * @throws IOException
 	 */
@@ -184,8 +188,8 @@ public class WordUtil {
 		paragraph.setAlignment(ParagraphAlignment.RIGHT);
 		XWPFRun run = paragraph.createRun();
 		run.setText("At tutorialspoint.com, we strive hard to " + "provide quality tutorials for self-learning "
-				+ "purpose in the domains of Academics, Information "
-				+ "Technology, Management and Computer Programming " + "Languages.");
+			+ "purpose in the domains of Academics, Information "
+			+ "Technology, Management and Computer Programming " + "Languages.");
 
 		// Create Another paragraph
 		paragraph = document.createParagraph();
@@ -194,10 +198,10 @@ public class WordUtil {
 		paragraph.setAlignment(ParagraphAlignment.CENTER);
 		run = paragraph.createRun();
 		run.setText("The endeavour started by Mohtashim, an AMU "
-				+ "alumni, who is the founder and the managing director "
-				+ "of Tutorials Point (I) Pvt. Ltd. He came up with the "
-				+ "website tutorialspoint.com in year 2006 with the help"
-				+ "of handpicked freelancers, with an array of tutorials" + " for computer programming languages. ");
+			+ "alumni, who is the founder and the managing director "
+			+ "of Tutorials Point (I) Pvt. Ltd. He came up with the "
+			+ "website tutorialspoint.com in year 2006 with the help"
+			+ "of handpicked freelancers, with an array of tutorials" + " for computer programming languages. ");
 		document.write(out);
 		out.close();
 		System.out.printf("create %s written successully\n", filename);
@@ -205,6 +209,7 @@ public class WordUtil {
 
 	/**
 	 * 文本提取
+	 *
 	 * @param filename
 	 * @throws IOException
 	 */

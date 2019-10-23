@@ -1,5 +1,6 @@
 package io.github.dunwu.javatool.server;
 
+import java.io.File;
 import org.apache.catalina.Server;
 import org.apache.catalina.startup.Catalina;
 import org.apache.catalina.startup.Tomcat;
@@ -9,15 +10,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
 
-import java.io.File;
-
 public class TomcatServer {
 
 	private static final Logger log = LoggerFactory.getLogger(TomcatServer.class);
 
 	private static final String CONNECTOR_PORT = "8080";
 
-	private static final String RELATIVE_DEV_DUBBO_RESOVE_FILE = "src/main/resources/properties/dubbo-resolve.properties";
+	private static final String RELATIVE_DEV_DUBBO_RESOVE_FILE =
+		"src/main/resources/properties/dubbo-resolve.properties";
 
 	private static final String RELATIVE_DUBBO_RESOVE_FILE = "WEB-INF/classes/properties/dubbo-resolve.properties";
 
@@ -42,12 +42,11 @@ public class TomcatServer {
 			System.setProperty("catalina.base", getAbsolutePath() + RELATIVE_DEV_BASE_DIR);
 			System.setProperty("tomcat.context.docBase", RELATIVE_DEV_DOCBASE_DIR);
 			System.setProperty("dubbo.resolve.file", getAbsolutePath() + RELATIVE_DEV_DUBBO_RESOVE_FILE);
-		}
-		else {
+		} else {
 			System.setProperty("catalina.base", getAbsolutePath() + RELATIVE_BASE_DIR);
 			System.setProperty("tomcat.context.docBase", RELATIVE_DOCBASE_DIR);
 			if ("develop".equalsIgnoreCase(System.getProperty("spring.profiles.active"))
-					|| "test".equalsIgnoreCase("spring.profiles.active")) {
+				|| "test".equalsIgnoreCase("spring.profiles.active")) {
 				System.setProperty("dubbo.resolve.file", getAbsolutePath() + RELATIVE_DUBBO_RESOVE_FILE);
 			}
 		}
@@ -57,7 +56,7 @@ public class TomcatServer {
 		}
 		if (StringUtils.isEmpty(System.getProperty("tomcat.server.shutdownPort"))) {
 			System.setProperty("tomcat.server.shutdownPort",
-					String.valueOf(Integer.valueOf(System.getProperty("tomcat.connector.port")) + 10000));
+				String.valueOf(Integer.valueOf(System.getProperty("tomcat.connector.port")) + 10000));
 		}
 
 		log.info("====================ENV setting====================");
@@ -79,8 +78,7 @@ public class TomcatServer {
 		String folderPath = TomcatServer.class.getProtectionDomain().getCodeSource().getLocation().getPath();
 		if (folderPath.indexOf("WEB-INF") > 0) {
 			path = folderPath.substring(0, folderPath.indexOf("WEB-INF"));
-		}
-		else if (folderPath.indexOf("target") > 0) {
+		} else if (folderPath.indexOf("target") > 0) {
 			path = folderPath.substring(0, folderPath.indexOf("target"));
 		}
 		return path;
@@ -91,6 +89,7 @@ public class TomcatServer {
 class ExtendedTomcat extends Tomcat {
 
 	private static final String RELATIVE_SERVERXML_PATH = "/conf/server.xml";
+
 	private Logger log = LoggerFactory.getLogger(this.getClass());
 
 	@Override
@@ -110,18 +109,16 @@ class ExtendedTomcat extends Tomcat {
 		digester.push(extendedCatalina);
 		try {
 			server = ((ExtendedCatalina) digester
-					.parse(new File(System.getProperty("catalina.base") + RELATIVE_SERVERXML_PATH))).getServer();
+				.parse(new File(System.getProperty("catalina.base") + RELATIVE_SERVERXML_PATH))).getServer();
 			// 设置catalina.base和catalna.home
 			this.initBaseDir();
 			return server;
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			log.error("Error while parsing server.xml", e);
 			throw new RuntimeException("server未创建,请检查server.xml(路径:" + System.getProperty("catalina.base")
-					+ RELATIVE_SERVERXML_PATH + ")配置是否正确");
+				+ RELATIVE_SERVERXML_PATH + ")配置是否正确");
 		}
 	}
-
 
 	private static class ExtendedCatalina extends Catalina {
 

@@ -1,9 +1,8 @@
 package io.github.dunwu.javalib.office;
 
-import org.junit.Test;
-
 import java.io.File;
 import java.io.IOException;
+import org.junit.Test;
 
 /**
  * @author Zhang Peng
@@ -15,8 +14,7 @@ public class WordUtilTest {
 	public void testCreateDocx() {
 		try {
 			WordUtil.create("d://temp.docx");
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -31,8 +29,7 @@ public class WordUtilTest {
 
 		try {
 			WordUtil.create("d://temp2.docx", sb.toString());
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -47,8 +44,7 @@ public class WordUtilTest {
 
 		try {
 			WordUtil.createWithBorders("d://temp3.docx", sb.toString());
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -57,8 +53,7 @@ public class WordUtilTest {
 	public void testCreateDocxWithTable() {
 		try {
 			WordUtil.createWithTable("d://temp4.docx");
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -67,8 +62,7 @@ public class WordUtilTest {
 	public void testCreateDocxWithFontStyle() {
 		try {
 			WordUtil.createWithFontStyle("d://temp5.docx");
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -77,8 +71,7 @@ public class WordUtilTest {
 	public void testCreateDocxWithAlign() {
 		try {
 			WordUtil.createWithAlign("d://temp6.docx");
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -87,8 +80,7 @@ public class WordUtilTest {
 	public void testExtractor() {
 		try {
 			WordUtil.extractor("d://temp6.docx");
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -97,8 +89,7 @@ public class WordUtilTest {
 	public void test() {
 		try {
 			WordUtil.setDocxProperties("d://temp6.docx");
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -111,8 +102,7 @@ public class WordUtilTest {
 			if (!file.isDirectory()) {
 				try {
 					WordUtil.setDocProperties(file.getAbsolutePath());
-				}
-				catch (IOException e) {
+				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			}

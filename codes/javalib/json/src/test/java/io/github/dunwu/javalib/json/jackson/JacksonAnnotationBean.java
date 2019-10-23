@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * @author Zhang Peng
- * @date 2019-03-18
+ * @since 2019-03-18
  */
 @JsonPropertyOrder(alphabetic = true)
 public class JacksonAnnotationBean {

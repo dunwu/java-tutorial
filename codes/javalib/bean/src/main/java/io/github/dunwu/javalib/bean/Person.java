@@ -7,12 +7,12 @@ import lombok.ToString;
 /**
  * Lombok 示例
  *
- * @see http://jnb.ociweb.com/jnb/jnbJan2010.html
  * @author Zhang Peng
+ * @see http://jnb.ociweb.com/jnb/jnbJan2010.html
  */
 @Data
 @ToString(exclude = "age")
-@EqualsAndHashCode(exclude = { "age", "sex" })
+@EqualsAndHashCode(exclude = {"age", "sex"})
 public class Person {
 
 	private String name;

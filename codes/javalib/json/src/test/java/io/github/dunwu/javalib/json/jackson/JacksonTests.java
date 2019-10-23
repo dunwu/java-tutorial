@@ -3,20 +3,19 @@ package io.github.dunwu.javalib.json.jackson;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.dunwu.javalib.json.Person;
-import org.junit.Assert;
-import org.junit.Test;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import org.junit.Assert;
+import org.junit.Test;
 
 /**
  * Jackson 使用示例
  *
  * @author Zhang Peng
- * @date 2019-03-18
+ * @since 2019-03-18
  */
 public class JacksonTests {
 
@@ -31,8 +30,7 @@ public class JacksonTests {
 		String json = null;
 		try {
 			json = mapper.writeValueAsString(p);
-		}
-		catch (JsonProcessingException e) {
+		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
 		Assert.assertNotNull(json);
@@ -48,8 +46,7 @@ public class JacksonTests {
 		Person p = null;
 		try {
 			p = mapper.readValue(json, Person.class);
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		Assert.assertNotNull(p);
@@ -76,8 +73,7 @@ public class JacksonTests {
 		String json = null;
 		try {
 			json = mapper.writeValueAsString(map);
-		}
-		catch (JsonProcessingException e) {
+		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
 
@@ -94,8 +90,7 @@ public class JacksonTests {
 		String json = null;
 		try {
 			json = mapper.writeValueAsString(jacksonAnnotationBean);
-		}
-		catch (JsonProcessingException e) {
+		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
 		Assert.assertNotNull(json);

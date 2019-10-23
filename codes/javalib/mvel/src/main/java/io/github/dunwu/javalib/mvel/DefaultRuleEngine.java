@@ -1,13 +1,12 @@
 package io.github.dunwu.javalib.mvel;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.concurrent.ConcurrentHashMap;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class DefaultRuleEngine implements RuleEngine {
 
@@ -53,6 +52,60 @@ public class DefaultRuleEngine implements RuleEngine {
 		applyRules(fact);
 	}
 
+	private void logEngineParams() {
+		logger.info("----- Params -----");
+		logger.info("Engine name: {}", params.getName());
+		logger.info("Rule priority threshold: {}", params.getPriorityThreshold());
+		logger.info("Skip on first applied rule: {}", params.isSkipOnFirstAppliedRule());
+		logger.info("Skip on first unapplied rule: {}", params.isSkipOnFirstUnAppliedRule());
+		logger.info("Skip on first failed rule: {}", params.isSkipOnFirstFailedRule());
+	}
+
+	private void sortRules() {
+		rules = new TreeSet<>(rules);
+	}
+
+	private void applyRules(RuleContext fact) {
+		logger.info("Rules evaluation started");
+
+		for (Rule rule : rules) {
+			final String name = rule.getName();
+			final int priority = rule.getPriority();
+
+			if (priority > params.getPriorityThreshold()) {
+				logger.info(
+					"Rule priority threshold ({}) exceeded at rule {} with priority={}, next rules will be skipped",
+					new Object[] {params.getPriorityThreshold(), name, priority});
+				break;
+			}
+
+			if (rule.evaluate(fact)) {
+				logger.info("Rule [{}] triggered", name);
+				try {
+					rule.execute(fact);
+					logger.info("Rule {} performed successfully", name);
+					if (params.isSkipOnFirstAppliedRule()) {
+						logger.info("Next rules will be skipped since parameter skipOnFirstAppliedRule is set");
+						break;
+					}
+					if (params.isSkipOnFirstUnAppliedRule()) {
+						logger.info("Next rules will be skipped since parameter skipOnFirstUnAppliedRule is set");
+						break;
+					}
+				} catch (Exception exception) {
+					logger.error("Rule [{}] performed with error {}", name, exception);
+
+					if (params.isSkipOnFirstFailedRule()) {
+						logger.info("Next rules will be skipped since parameter skipOnFirstFailedRule is set");
+						break;
+					}
+				}
+			} else {
+				logger.info("Rule [{}] has been evaluated to false, it has not been executed", name);
+			}
+		}
+	}
+
 	@Override
 	public void registerRule(Rule rule) {
 		// 检查规则
@@ -65,6 +118,14 @@ public class DefaultRuleEngine implements RuleEngine {
 	public void registerRule(MvelRuleSet ruleSet) {
 		ruleSet.getRules().forEach(rule -> registerRule(rule));
 		logRegisteredRules();
+	}
+
+	private void logRegisteredRules() {
+		logger.info("Registered rules:");
+		for (Rule rule : rules) {
+			logger.info("Rule { name = {}, description = {}, priority = {}}", rule.getName(), rule.getDescription(),
+				rule.getPriority());
+		}
 	}
 
 	@Override
@@ -91,70 +152,6 @@ public class DefaultRuleEngine implements RuleEngine {
 			result.put(rule, rule.evaluate(fact));
 		}
 		return result;
-	}
-
-	private void logEngineParams() {
-		logger.info("----- Params -----");
-		logger.info("Engine name: {}", params.getName());
-		logger.info("Rule priority threshold: {}", params.getPriorityThreshold());
-		logger.info("Skip on first applied rule: {}", params.isSkipOnFirstAppliedRule());
-		logger.info("Skip on first unapplied rule: {}", params.isSkipOnFirstUnAppliedRule());
-		logger.info("Skip on first failed rule: {}", params.isSkipOnFirstFailedRule());
-	}
-
-	private void logRegisteredRules() {
-		logger.info("Registered rules:");
-		for (Rule rule : rules) {
-			logger.info("Rule { name = {}, description = {}, priority = {}}", rule.getName(), rule.getDescription(),
-					rule.getPriority());
-		}
-	}
-
-	private void sortRules() {
-		rules = new TreeSet<>(rules);
-	}
-
-	private void applyRules(RuleContext fact) {
-		logger.info("Rules evaluation started");
-
-		for (Rule rule : rules) {
-			final String name = rule.getName();
-			final int priority = rule.getPriority();
-
-			if (priority > params.getPriorityThreshold()) {
-				logger.info(
-						"Rule priority threshold ({}) exceeded at rule {} with priority={}, next rules will be skipped",
-						new Object[] { params.getPriorityThreshold(), name, priority });
-				break;
-			}
-
-			if (rule.evaluate(fact)) {
-				logger.info("Rule [{}] triggered", name);
-				try {
-					rule.execute(fact);
-					logger.info("Rule {} performed successfully", name);
-					if (params.isSkipOnFirstAppliedRule()) {
-						logger.info("Next rules will be skipped since parameter skipOnFirstAppliedRule is set");
-						break;
-					}
-					if (params.isSkipOnFirstUnAppliedRule()) {
-						logger.info("Next rules will be skipped since parameter skipOnFirstUnAppliedRule is set");
-						break;
-					}
-				}
-				catch (Exception exception) {
-					logger.error("Rule [{}] performed with error {}", name, exception);
-
-					if (params.isSkipOnFirstFailedRule()) {
-						logger.info("Next rules will be skipped since parameter skipOnFirstFailedRule is set");
-						break;
-					}
-				}
-			}
-			else {
-				logger.info("Rule [{}] has been evaluated to false, it has not been executed", name);
-			}
-		}
 	}
 
 	@Override

@@ -1,19 +1,18 @@
 package io.github.dunwu.javalib.bean;
 
-import lombok.Cleanup;
-import org.junit.Assert;
-import org.junit.Test;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Cleanup;
+import org.junit.Assert;
+import org.junit.Test;
 
 /**
  * Lombok 单元测试
  *
- * @see @see http://jnb.ociweb.com/jnb/jnbJan2010.html
  * @author Zhang Peng
+ * @see @see http://jnb.ociweb.com/jnb/jnbJan2010.html
  */
 public class LombokTest {
 
@@ -53,10 +52,9 @@ public class LombokTest {
 		try {
 			@Cleanup
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			baos.write(new byte[] { 'Y', 'e', 's' });
+			baos.write(new byte[] {'Y', 'e', 's'});
 			System.out.println(baos.toString());
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}

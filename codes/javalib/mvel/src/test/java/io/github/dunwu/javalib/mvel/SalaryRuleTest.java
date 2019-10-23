@@ -1,6 +1,8 @@
 package io.github.dunwu.javalib.mvel;
 
 import com.alibaba.fastjson.JSON;
+import java.io.File;
+import java.io.IOException;
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Before;
@@ -8,22 +10,21 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
-import java.io.IOException;
-
 import static org.junit.Assert.assertEquals;
 
 public class SalaryRuleTest {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
 	private final String SALARY_RULE_PATH = System.getProperty("user.dir") + "\\src\\test\\resources\\SalaryRule.json";
+
 	private RuleEngine ruleEngine;
 
 	@Before
 	public void before() throws IOException {
 		logger.info("Begin");
 		RuleEngineParams params = new RuleEngineParams("SalaryEngine", true, false, true,
-				RuleConstant.DEFAULT_RULE_PRIORITY_THRESHOLD, false);
+			RuleConstant.DEFAULT_RULE_PRIORITY_THRESHOLD, false);
 		ruleEngine = new DefaultRuleEngine(params);
 
 		String json = FileUtils.readFileToString(new File(SALARY_RULE_PATH), "utf-8");
