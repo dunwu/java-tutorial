@@ -1,12 +1,13 @@
 package io.github.dunwu.javalib.bean;
 
+import lombok.Cleanup;
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import lombok.Cleanup;
-import org.junit.Assert;
-import org.junit.Test;
 
 /**
  * Lombok 单元测试

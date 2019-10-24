@@ -1,7 +1,8 @@
 package io.github.dunwu.javalib.bean;
 
-import java.util.List;
 import lombok.Data;
+
+import java.util.List;
 
 /**
  * Lombok 示例

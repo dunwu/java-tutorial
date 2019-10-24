@@ -1,6 +1,5 @@
 package io.github.dunwu.javatool.server;
 
-import java.io.File;
 import org.apache.catalina.Server;
 import org.apache.catalina.startup.Catalina;
 import org.apache.catalina.startup.Tomcat;
@@ -9,6 +8,8 @@ import org.apache.tomcat.util.scan.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
+
+import java.io.File;
 
 public class TomcatServer {
 

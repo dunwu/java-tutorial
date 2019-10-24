@@ -1,7 +1,8 @@
 package io.github.dunwu.javalib.mvel;
 
-import java.io.Serializable;
 import org.mvel2.MVEL;
+
+import java.io.Serializable;
 
 public class MvelRule extends BasicRule {
 

@@ -3,13 +3,14 @@ package io.github.dunwu.javalib.json.jackson;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.dunwu.javalib.json.Person;
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import org.junit.Assert;
-import org.junit.Test;
 
 /**
  * Jackson 使用示例

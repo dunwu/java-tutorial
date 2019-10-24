@@ -1,6 +1,7 @@
 package io.github.dunwu.javalib.json.fastjson;
 
 import com.alibaba.fastjson.annotation.JSONField;
+
 import java.util.Date;
 
 /**
