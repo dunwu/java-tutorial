@@ -5,16 +5,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>io.github.dunwu</groupId>
-	<artifactId>javalib</artifactId>
+	<artifactId>java-tutorial</artifactId>
 	<version>1.0.0</version>
 	<packaging>pom</packaging>
-	<description>Java 库使用示例</description>
 
 	<modules>
-		<module>javalib-bean</module>
-		<module>javalib-json</module>
-		<module>javalib-log</module>
-		<module>javalib-mvel</module>
-		<module>javalib-test</module>
+		<module>javalib</module>
+		<module>javatool</module>
 	</modules>
 </project>

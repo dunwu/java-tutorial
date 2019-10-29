@@ -5,16 +5,14 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>io.github.dunwu</groupId>
-	<artifactId>javalib</artifactId>
+	<artifactId>javalib-log</artifactId>
 	<version>1.0.0</version>
 	<packaging>pom</packaging>
-	<description>Java 库使用示例</description>
+	<description>javalib 之日志库示例集锦</description>
 
 	<modules>
-		<module>javalib-bean</module>
-		<module>javalib-json</module>
-		<module>javalib-log</module>
-		<module>javalib-mvel</module>
-		<module>javalib-test</module>
+		<module>javalib-log-log4j</module>
+		<module>javalib-log-log4j2</module>
+		<module>javalib-log-logback</module>
 	</modules>
 </project>
