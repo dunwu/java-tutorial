@@ -16,5 +16,6 @@
 		<module>javalib-log</module>
 		<module>javalib-mvel</module>
 		<module>javalib-test</module>
+		<module>javalib-cli</module>
 	</modules>
 </project>
