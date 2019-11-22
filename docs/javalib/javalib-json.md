@@ -2,21 +2,25 @@
 
 <!-- TOC depthFrom:2 depthTo:3 -->
 
-- [JSON 简介](#json-简介)
-- [Java JSON 库](#java-json-库)
-- [Fastjson](#fastjson)
-    - [添加 maven 依赖](#添加-maven-依赖)
-    - [Fastjson API](#fastjson-api)
-    - [Fastjson 注解](#fastjson-注解)
-- [Jackson](#jackson)
-    - [添加 maven 依赖](#添加-maven-依赖-1)
-    - [Jackson API](#jackson-api)
-    - [Jackson 注解](#jackson-注解)
-- [参考资料](#参考资料)
+- [1. JSON 简介](#1-json-简介)
+  - [1.1. JSON 数据结构](#11-json-数据结构)
+  - [1.2. Java JSON 库](#12-java-json-库)
+- [2. Fastjson](#2-fastjson)
+  - [2.1. 添加 maven 依赖](#21-添加-maven-依赖)
+  - [2.2. Fastjson API](#22-fastjson-api)
+  - [2.3. Fastjson 注解](#23-fastjson-注解)
+- [3. Jackson](#3-jackson)
+  - [3.1. 添加 maven 依赖](#31-添加-maven-依赖)
+  - [3.2. Jackson API](#32-jackson-api)
+  - [3.3. Jackson 注解](#33-jackson-注解)
+- [4. 示例源码](#4-示例源码)
+- [5. 参考资料](#5-参考资料)
 
 <!-- /TOC -->
 
-## JSON 简介
+## 1. JSON 简介
+
+### 1.1. JSON 数据结构
 
 JSON（JavaScript Object Notation）是一种基于文本的数据交换格式。几乎所有的编程语言都有很好的库或第三方工具来提供基于 JSON 的 API 支持，因此你可以非常方便地使用任何自己喜欢的编程语言来处理 JSON 数据。
 
@@ -31,7 +35,7 @@ JSON 建构于两种结构：
 >
 > - [json 的 RFC 文档](http://tools.ietf.org/html/rfc4627)
 
-## Java JSON 库
+### 1.2. Java JSON 库
 
 Java 中比较流行的 JSON 库有：
 
@@ -39,11 +43,11 @@ Java 中比较流行的 JSON 库有：
 - [Jackson](http://wiki.fasterxml.com/JacksonHome)
 - [Gson](https://github.com/google/gson)
 
-## Fastjson
+## 2. Fastjson
 
 [fastjson](https://github.com/alibaba/fastjson) 是阿里巴巴的开源 JSON 解析库。
 
-### 添加 maven 依赖
+### 2.1. 添加 maven 依赖
 
 ```xml
 <dependency>
@@ -53,7 +57,7 @@ Java 中比较流行的 JSON 库有：
 </dependency>
 ```
 
-### Fastjson API
+### 2.2. Fastjson API
 
 #### JavaBean 的序列化和反序列化
 
@@ -62,7 +66,7 @@ String text = JSON.toJSONString(obj); //序列化
 VO vo = JSON.parseObject("{...}", VO.class); //反序列化
 ```
 
-### Fastjson 注解
+### 2.3. Fastjson 注解
 
 #### `@JSONField`
 
@@ -110,11 +114,11 @@ public static class B {
 }
 ```
 
-## Jackson
+## 3. Jackson
 
 以下仅列举个人认为比较常用的特性。
 
-### 添加 maven 依赖
+### 3.1. 添加 maven 依赖
 
 ```xml
 <dependency>
@@ -124,7 +128,7 @@ public static class B {
 </dependency>
 ```
 
-### Jackson API
+### 3.2. Jackson API
 
 > 扩展阅读：更多 API 使用细节可以参考 [jackson-databind 官方说明](https://github.com/FasterXML/jackson-databind)
 
@@ -154,7 +158,9 @@ String jsonString = mapper.writeValueAsString(myResultObject);
 
 #### 容器的序列化和反序列化
 
-```> 扩展阅读：更多 API 使用细节可以参考  [jackson-databind 官方说明](https://github.com/FasterXML/jackson-databind)java
+> 扩展阅读：更多 API 使用细节可以参考 [jackson-databind 官方说明](https://github.com/FasterXML/jackson-databind)
+
+```java
 Person p = new Person("Tom", 20);
 Person p2 = new Person("Jack", 22);
 Person p3 = new Person("Mary", 18);
@@ -175,7 +181,7 @@ try {
 }
 ```
 
-### Jackson 注解
+### 3.3. Jackson 注解
 
 > 扩展阅读：更多注解使用细节可以参考 [jackson-annotations 官方说明](https://github.com/FasterXML/jackson-annotations/wiki/Jackson-Annotations)
 
@@ -238,12 +244,16 @@ public class CtorBean {
 
 alphabetic 设为 true 表示，json 字段按自然顺序排列，默认为 false。
 
-```
+```java
 @JsonPropertyOrder(alphabetic = true)
 public class JacksonAnnotationBean {}
 ```
 
-## 参考资料
+## 4. 示例源码
+
+> 示例源码：[javalib-io-json](https://github.com/dunwu/java-tutorial/tree/master/javalib-io-json)
+
+## 5. 参考资料
 
 - http://www.json.org/json-zh.html
 - [json 的 RFC 文档](http://tools.ietf.org/html/rfc4627)

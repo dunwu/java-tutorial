@@ -5,25 +5,13 @@
 > - 🔁 项目同步维护：[Github](https://github.com/dunwu/java-tutorial/) | [Gitee](https://gitee.com/turnon/java-tutorial/)
 > - 📖 电子书阅读：[Github Pages](https://dunwu.github.io/java-tutorial/) | [Gitee Pages](https://turnon.gitee.io/java-tutorial/)
 
-## [JavaCore 教程](https://dunwu.github.io/javacore/)
-
-> Java 核心技术教程。内容包含：Java 基础特性、Java 高级特性、Java 并发、JVM、Java IO 等。
->
-> 已独立维护在另一个项目中。
-
-## [JavaWeb 教程](https://dunwu.github.io/javaweb/)
-
-> Java Web 技术教程。内容包含：JavaEE、分布式应用技术等。
->
-> 已独立维护在另一个项目中。
-
 ## [JavaLib](javalib/README.md)
 
 > 各种主流 Java 库的应用。
 
 - [Dozer 使用指南](javalib/dozer.md)
 - [Freemark 使用指南](javalib/freemark.md)
-- [细说 Java 主流 JSON 库](javalib/java-json.md)
+- [细说 Java 主流 JSON 库](javalib/javalib-json.md)
 - [细说 Java 主流日志工具库](javalib/java-log.md)
 - [细说 Java 主流工具包](javalib/java-util.md)
 - [JavaMail 使用指南](javalib/javamail.md)
@@ -49,17 +37,24 @@
     - [Maven 插件之代码检查](javatool/build/maven/plugins/maven-checkstyle.md)
   - [Ant 简易教程](javatool/build/ant.md)
 - Java IDE
-
   - [Intellij IDEA 使用指南](javatool/ide/intellij.md)
   - [Eclipse 使用指南](javatool/ide/eclipse.md)
 
+## [JavaCore 教程](https://dunwu.github.io/javacore/)
+
+> Java 核心技术教程。内容包含：Java 基础特性、Java 高级特性、Java 并发、JVM、Java IO 等。
+
+## [JavaWeb 教程](https://dunwu.github.io/javaweb/)
+
+> Java Web 技术教程。内容包含：JavaEE、分布式应用技术等。
+
 ## [Spring 教程](https://dunwu.github.io/spring-tutorial/)
 
-> 已独立维护在另一个项目中。
+> Spring 教程。
 
 ## [Spring Boot 教程](https://dunwu.github.io/spring-boot-tutorial/)
 
-> 已独立维护在另一个项目中。
+> Spring Boot 教程
 
 ---
 
