@@ -11,7 +11,7 @@
 
 - [Dozer 使用指南](javalib/dozer.md)
 - [Freemark 使用指南](javalib/freemark.md)
-- [细说 Java 主流 JSON 库](javalib/javalib-json.md)
+- [Java 与 JSON](javalib/javalib-json.md)
 - [细说 Java 主流日志工具库](javalib/java-log.md)
 - [细说 Java 主流工具包](javalib/java-util.md)
 - [JavaMail 使用指南](javalib/javamail.md)
