@@ -16,6 +16,7 @@
 		<module>javalib-bean</module>
 		<module>javalib-cli</module>
 		<module>javalib-io</module>
+		<module>javalib-io-binary</module>
 		<module>javalib-io-json</module>
 		<module>javalib-log</module>
 		<module>javalib-mvel</module>
