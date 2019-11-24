@@ -1,6 +1,8 @@
 package io.github.dunwu.javalib.json.fastjson;
 
 import com.alibaba.fastjson.JSON;
+import io.github.dunwu.javalib.json.bean.Group;
+import io.github.dunwu.javalib.json.util.BeanUtils;
 import io.github.dunwu.util.time.DateExtUtils;
 import org.junit.Test;
 
@@ -15,6 +17,15 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @since 2019-11-22
  */
 public class FastjsonCaseTests {
+
+	@Test
+	public void test() {
+		Group oldGroup = BeanUtils.initGroupBean();
+		String jsonString = JSON.toJSONString(oldGroup);
+		System.out.println(jsonString);
+		Group newGroup = JSON.parseObject(jsonString, Group.class);
+		assertThat(newGroup).isNotNull();
+	}
 
 	/**
 	 * 序列化测试

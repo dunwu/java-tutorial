@@ -2,6 +2,8 @@ package io.github.dunwu.javalib.json.util;
 
 import io.github.dunwu.javalib.json.TestBean;
 import io.github.dunwu.javalib.json.TestBean2;
+import io.github.dunwu.javalib.json.bean.Group;
+import io.github.dunwu.javalib.json.bean.User;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -13,6 +15,25 @@ import java.util.*;
  * @since 2019-11-22
  */
 public class BeanUtils {
+
+	public static Group initGroupBean() {
+		Group group = new Group();
+		group.setId(0L);
+		group.setName("admin");
+
+		User guestUser = new User();
+		guestUser.setId(2L);
+		guestUser.setName("guest");
+
+		User rootUser = new User();
+		rootUser.setId(3L);
+		rootUser.setName("root");
+
+		group.addUser(guestUser);
+		group.addUser(rootUser);
+
+		return group;
+	}
 
 	public static TestBean initJdk8Bean() {
 		String[] strArray = { "a", "b", "c" };

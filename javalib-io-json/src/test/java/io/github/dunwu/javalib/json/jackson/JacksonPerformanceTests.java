@@ -18,9 +18,9 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class JacksonPerformanceTests {
 
-	final ObjectMapper mapper = new ObjectMapper();
+	private final ObjectMapper mapper = new ObjectMapper();
 
-	public static final int BATCH_SIZE = 100000;
+	private static final int BATCH_SIZE = 100000;
 
 	/**
 	 * 循环序列化、反序列 {@link #BATCH_SIZE} 条数据，测试性能
