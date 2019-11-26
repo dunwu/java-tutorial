@@ -1,6 +1,8 @@
 package io.github.dunwu.javalib.io;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 
 /**
  * JDK 默认序列化、反序列化机制示例
@@ -10,7 +12,14 @@ import java.io.*;
  */
 public class JdkSerializeDemo {
 
-	public static <T> byte[] serialize(T obj) throws IOException {
+	/**
+	 * 将对象序列化为 byte 数组
+	 *
+	 * @param obj 任意对象
+	 * @param <T> 对象的类型
+	 * @return 序列化后的 byte 数组
+	 */
+	public static <T> byte[] writeToBytes(T obj) throws IOException {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		ObjectOutputStream oos = new ObjectOutputStream(baos);
 		oos.writeObject(obj);
@@ -20,7 +29,27 @@ public class JdkSerializeDemo {
 		return bytes;
 	}
 
-	public static <T> T deserialize(byte[] bytes, Class<T> clazz) throws IOException, ClassNotFoundException {
+	/**
+	 * 将对象序列化为 byte 数组后，再使用 Base64 编码
+	 *
+	 * @param obj 任意对象
+	 * @param <T> 对象的类型
+	 * @return 序列化后的字符串
+	 */
+	public static <T> String writeToString(T obj) throws IOException {
+		byte[] bytes = writeToBytes(obj);
+		return new String(Base64.getEncoder().encode(bytes), StandardCharsets.UTF_8);
+	}
+
+	/**
+	 * 将 byte 数组反序列化为原对象
+	 *
+	 * @param bytes {@link #writeToBytes} 方法序列化后的 byte 数组
+	 * @param clazz 原对象的类型
+	 * @param <T>   原对象的类型
+	 * @return 原对象
+	 */
+	public static <T> T readFromBytes(byte[] bytes, Class<T> clazz) throws IOException, ClassNotFoundException {
 		ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
 		ObjectInputStream ois = new ObjectInputStream(bais);
 		Object obj = ois.readObject();
@@ -31,6 +60,19 @@ public class JdkSerializeDemo {
 		} else {
 			throw new IOException("derialize failed");
 		}
+	}
+
+	/**
+	 * 将字符串反序列化为原对象，先使用 Base64 解码
+	 *
+	 * @param str   {@link #writeToString} 方法序列化后的字符串
+	 * @param clazz 原对象的类型
+	 * @param <T>   原对象的类型
+	 * @return 原对象
+	 */
+	public static <T> T readFromString(String str, Class<T> clazz) throws IOException, ClassNotFoundException {
+		byte[] bytes = str.getBytes(StandardCharsets.UTF_8);
+		return readFromBytes(Base64.getDecoder().decode(bytes), clazz);
 	}
 
 }

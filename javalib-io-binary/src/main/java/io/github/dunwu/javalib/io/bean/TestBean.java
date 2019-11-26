@@ -50,7 +50,7 @@ public class TestBean implements Serializable {
 
 	private Map<String, Object> map;
 
-	public static enum Color {
+	public enum Color {
 		RED,
 		YELLOW,
 		BLUE
