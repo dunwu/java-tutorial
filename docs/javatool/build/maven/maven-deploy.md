@@ -1,6 +1,6 @@
 # Maven 教程之发布 jar 到私服或中央仓库
 
-> :notebook: 本文已归档到：「[blog](https://github.com/dunwu/blog/blob/master/source/_posts/java/javatool/build/maven/)」
+> 📓 本文已归档到：「[blog](https://github.com/dunwu/blog/blob/master/source/_posts/java/javatool/build/maven/)」
 
 <!-- TOC depthFrom:2 depthTo:3 -->
 

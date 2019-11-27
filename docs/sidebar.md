@@ -28,6 +28,8 @@
 - Java IDE
   - [Intellij IDEA 使用指南](javatool/ide/intellij.md)
   - [Eclipse 使用指南](javatool/ide/eclipse.md)
+- **测试工具**
+  - [Jmeter 应用指南](javatool/test/jmeter.md)
 
 ## [JavaCore 教程](https://dunwu.github.io/javacore/)
 
