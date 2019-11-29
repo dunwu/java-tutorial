@@ -9,37 +9,43 @@
 
 > 各种主流 Java 库的应用。
 
-- [Dozer 使用指南](javalib/dozer.md)
-- [Freemark 使用指南](javalib/freemark.md)
+- [Dozer 应用指南](javalib/dozer.md)
+- [Freemark 应用指南](javalib/freemark.md)
 - [Java 与 JSON](javalib/javalib-json.md)
-- [细说 Java 主流日志工具库](javalib/java-log.md)
-- [细说 Java 主流工具包](javalib/java-util.md)
-- [JavaMail 使用指南](javalib/javamail.md)
-- [Jsoup 使用指南](javalib/jsoup.md)
-- [JUnit5 使用指南](javalib/junit.md)
-- [Lombok 使用指南](javalib/lombok.md)
-- [Mockito 使用指南](javalib/mockito.md)
-- [Reflections 使用指南](javalib/reflections.md)
-- [Thumbnailator 使用指南](javalib/thumbnailator.md)
-- [ZXing 使用指南](javalib/zxing.md)
+- [细说 Java 主流日志工具库](javalib/javalib-log.md)
+- [细说 Java 主流工具包](javalib/javalib-util.md)
+- [JavaMail 应用指南](javalib/javamail.md)
+- [Jsoup 应用指南](javalib/jsoup.md)
+- [JUnit5 应用指南](javalib/junit.md)
+- [Lombok 应用指南](javalib/lombok.md)
+- [Mockito 应用指南](javalib/mockito.md)
+- [Reflections 应用指南](javalib/reflections.md)
+- [Thumbnailator 应用指南](javalib/thumbnailator.md)
+- [ZXing 应用指南](javalib/zxing.md)
 
 ## [JavaTool](javatool/README.md)
 
 > 各种主流 Java 工具的应用。
 
 - [构建工具](javatool/build/README.md)
-  - Maven 教程
+  - [Maven 教程 📚](javatool/build/maven/README.md)
     - [Maven 快速指南](javatool/build/maven/maven-quickstart.md)
     - [Maven 教程之 pom.xml 详解](javatool/build/maven/maven-pom.md)
     - [Maven 教程之 settings.xml 详解](javatool/build/maven/maven-settings.md)
     - [Maven 实战问题和最佳实践](javatool/build/maven/maven-action.md)
     - [Maven 教程之发布 jar 到私服或中央仓库](javatool/build/maven/maven-deploy.md)
-    - [Maven 插件之代码检查](javatool/build/maven/plugins/maven-checkstyle.md)
+    - [Maven 插件之代码检查](javatool/build/maven/maven-checkstyle-plugin.md)
   - [Ant 简易教程](javatool/build/ant.md)
-- Java IDE
-  - [Intellij IDEA 使用指南](javatool/ide/intellij.md)
-  - [Eclipse 使用指南](javatool/ide/eclipse.md)
-- **测试**
+- [搜索引擎 Elastic](javatool/elastic/README.md)
+  - [Elastic 技术栈快速入门](javatool/elastic/elastic-quickstart.md)
+  - [Elasticsearch 运维](javatool/elastic/elastic-elasticsearch-ops.md)
+  - [Beats 运维](javatool/elastic/elastic-beats-ops.md)
+  - [Kibana 运维](javatool/elastic/elastic-kibana-ops.md)
+  - [Logstash 运维](javatool/elastic/elastic-logstash-ops.md)
+- [Java IDE](javatool/ide/README.md)
+  - [Intellij IDEA 应用指南](javatool/ide/intellij.md)
+  - [Eclipse 应用指南](javatool/ide/eclipse.md)
+- **测试工具**
   - [Jmeter 应用指南](javatool/test/jmeter.md)
 
 ## [JavaCore 教程](https://dunwu.github.io/javacore/)
@@ -62,10 +68,10 @@
 
 ## 相关技术栈
 
-- :1234: [db-tutorial](https://dunwu.github.io/db-tutorial/) - 是对数据库领域开发经验的总结。内容包含：关系型数据库和 Nosql 理论、Mysql、Redis 等。
-- :dart: [algorithm-tutorial](https://dunwu.github.io/algorithm-tutorial/) - 是对数据结构和算法的总结。内容包含：一些基本的数据结构、算法。
-- :penguin: [linux-tutorial](https://github.com/dunwu/linux-tutorial) - 是对 Linux 操作系统的经验总结。内容包含：Linux 常用命令；各种常见软件的 Linux 环境安装配置；运维、部署脚本；Shell、Python 语法教程；Git、Docker 教程。
-- :art: [frontend-tutorial](https://github.com/dunwu/frontend-tutorial) - 前端教程
+- [db-tutorial](https://dunwu.github.io/db-tutorial/) - 是对数据库领域开发经验的总结。内容包含：关系型数据库和 Nosql 理论、Mysql、Redis 等。
+- [algorithm-tutorial](https://dunwu.github.io/algorithm-tutorial/) - 是对数据结构和算法的总结。内容包含：一些基本的数据结构、算法。
+- [linux-tutorial](https://github.com/dunwu/linux-tutorial) - 是对 Linux 操作系统的经验总结。内容包含：Linux 常用命令；各种常见软件的 Linux 环境安装配置；运维、部署脚本；Shell、Python 语法教程；Git、Docker 教程。
+- [frontend-tutorial](https://github.com/dunwu/frontend-tutorial) - 前端教程
 
 ---
 

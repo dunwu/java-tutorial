@@ -9,8 +9,7 @@
 ## 学习资料
 
 - 官网
-  - [Maven 官网](https://maven.apache.org/) 
+  - [Maven 官网](https://maven.apache.org/)
   - [Maven Github](https://github.com/apache/maven)
 - 书
-  - [《Maven 实战》](https://book.douban.com/subject/5345682/) - 国内最权威的Maven专家的力作，唯一一本哦！
-
+  - [《Maven 实战》](https://book.douban.com/subject/5345682/) - 国内最权威的 Maven 专家的力作，唯一一本哦！

@@ -1,19 +1,18 @@
-# Thumbnailator 使用指南
-
+# Thumbnailator 应用指南
 
 <!-- TOC depthFrom:2 depthTo:3 -->
 
 - [简介](#简介)
 - [核心 API](#核心-api)
-    - [Thumbnails](#thumbnails)
-    - [Thumbnails.Builder](#thumbnailsbuilder)
-    - [工作流](#工作流)
+  - [Thumbnails](#thumbnails)
+  - [Thumbnails.Builder](#thumbnailsbuilder)
+  - [工作流](#工作流)
 - [实战](#实战)
-    - [安装](#安装)
-    - [图片缩放](#图片缩放)
-    - [图片旋转](#图片旋转)
-    - [加水印](#加水印)
-    - [批量处理图片](#批量处理图片)
+  - [安装](#安装)
+  - [图片缩放](#图片缩放)
+  - [图片旋转](#图片旋转)
+  - [加水印](#加水印)
+  - [批量处理图片](#批量处理图片)
 - [参考](#参考)
 
 <!-- /TOC -->
@@ -58,7 +57,7 @@ public static Builder<InputStream> fromInputStreams(Iterable<? extends InputStre
 public static Builder<BufferedImage> fromImages(Iterable<BufferedImage> images) {...}
 ```
 
-很显然，**Thumbnails 允许通过传入文件名、文件、网络图的URL、图片流、图片缓存多种方式来初始化构造器**。
+很显然，**Thumbnails 允许通过传入文件名、文件、网络图的 URL、图片流、图片缓存多种方式来初始化构造器**。
 
 因此，你可以根据实际需求来灵活的选择图片的输入方式。
 
@@ -68,7 +67,7 @@ public static Builder<BufferedImage> fromImages(Iterable<BufferedImage> images) 
 
 `Thumbnails.Builder` 是 `Thumbnails` 的内部静态类。它用于设置生成缩略图任务的相关参数。
 
-***注：`Thumbnails.Builder` 的构造函数是私有函数。所以，它只允许通过 `Thumbnails` 的实例化函数来进行初始化。***
+**_注：`Thumbnails.Builder` 的构造函数是私有函数。所以，它只允许通过 `Thumbnails` 的实例化函数来进行初始化。_**
 
 #### 设置参数的函数
 
@@ -81,16 +80,16 @@ public Builder<T> size(int width, int height)
 {
 	updateStatus(Properties.SIZE, Status.ALREADY_SET);
 	updateStatus(Properties.SCALE, Status.CANNOT_SET);
-	
+
 	validateDimensions(width, height);
 	this.width = width;
 	this.height = height;
-	
+
 	return this;
 }
 ```
 
-通过返回this指针，使得设置参数函数可以以链式调用的方式来使用，形式如下：
+通过返回 this 指针，使得设置参数函数可以以链式调用的方式来使用，形式如下：
 
 ```java
 Thumbnails.of(new File("original.jpg"))
@@ -138,7 +137,7 @@ Thumbnailator 的工作步骤十分简单，可分为三步：
 
 3. **输出**：`Thumbnails.Builder` 输出图片文件或图片流。
 
-> 更多详情可以参考： [<u>Thumbnailator 官网javadoc</u>](https://coobird.github.io/thumbnailator/javadoc/0.4.8/)
+> 更多详情可以参考： [<u>Thumbnailator 官网 javadoc</u>](https://coobird.github.io/thumbnailator/javadoc/0.4.8/)
 
 ## 实战
 
@@ -148,7 +147,7 @@ Thumbnailator 生成什么样的图片，是根据设置参数来决定的。
 
 ### 安装
 
-maven项目中引入依赖：
+maven 项目中引入依赖：
 
 ```xml
 <dependency>
@@ -157,6 +156,7 @@ maven项目中引入依赖：
   <version>[0.4, 0.5)</version>
 </dependency>
 ```
+
 ### 图片缩放
 
 `Thumbnails.Builder` 的 `size` 函数可以设置新图片精确的宽度和高度，也可以用 `scale` 函数设置缩放比例。
@@ -176,9 +176,11 @@ Thumbnails.of("oldFile.png")
 ```
 
 **oldFile.png**
+
 <div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-ba63439898602e8f.png"/></div>
 
 **newFile_scale_1.0_0.5.png**
+
 <div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-a01ea4515fff865d.png"/></div>
 
 ### 图片旋转

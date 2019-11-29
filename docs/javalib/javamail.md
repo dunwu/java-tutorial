@@ -1,26 +1,26 @@
-# JavaMail 使用指南
+# JavaMail 应用指南
 
 <!-- TOC depthFrom:2 depthTo:3 -->
 
 - [简介](#简介)
-    - [邮件相关的标准](#邮件相关的标准)
-    - [JavaMail 简介](#javamail-简介)
-    - [邮件传输过程](#邮件传输过程)
-    - [Message 结构](#message-结构)
+  - [邮件相关的标准](#邮件相关的标准)
+  - [JavaMail 简介](#javamail-简介)
+  - [邮件传输过程](#邮件传输过程)
+  - [Message 结构](#message-结构)
 - [JavaMail 的核心类](#javamail-的核心类)
-    - [java.util.Properties 类（属性对象）](#javautilproperties-类属性对象)
-    - [javax.mail.Session 类（会话对象）](#javaxmailsession-类会话对象)
-    - [javax.mail.Transport 类（邮件传输）](#javaxmailtransport-类邮件传输)
-    - [javax.mail.Store 类（邮件存储 ）](#javaxmailstore-类邮件存储-)
-    - [javax.mail.Message 类（消息对象）](#javaxmailmessage-类消息对象)
-    - [javax.mail.Address 类（地址）](#javaxmailaddress-类地址)
-    - [Authenticator 类（认证者）](#authenticator-类认证者)
+  - [java.util.Properties 类（属性对象）](#javautilproperties-类属性对象)
+  - [javax.mail.Session 类（会话对象）](#javaxmailsession-类会话对象)
+  - [javax.mail.Transport 类（邮件传输）](#javaxmailtransport-类邮件传输)
+  - [javax.mail.Store 类（邮件存储 ）](#javaxmailstore-类邮件存储-)
+  - [javax.mail.Message 类（消息对象）](#javaxmailmessage-类消息对象)
+  - [javax.mail.Address 类（地址）](#javaxmailaddress-类地址)
+  - [Authenticator 类（认证者）](#authenticator-类认证者)
 - [实例](#实例)
-    - [发送文本邮件](#发送文本邮件)
-    - [发送 HTML 格式的邮件](#发送-html-格式的邮件)
-    - [发送带附件的邮件](#发送带附件的邮件)
-    - [获取邮箱中的邮件](#获取邮箱中的邮件)
-    - [转发邮件](#转发邮件)
+  - [发送文本邮件](#发送文本邮件)
+  - [发送 HTML 格式的邮件](#发送-html-格式的邮件)
+  - [发送带附件的邮件](#发送带附件的邮件)
+  - [获取邮箱中的邮件](#获取邮箱中的邮件)
+  - [转发邮件](#转发邮件)
 
 <!-- /TOC -->
 

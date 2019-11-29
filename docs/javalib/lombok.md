@@ -1,4 +1,4 @@
-# Lombok 使用指南
+# Lombok 应用指南
 
 <!-- TOC depthFrom:2 depthTo:3 -->
 

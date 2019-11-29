@@ -1,4 +1,4 @@
-# Reflections 使用指南
+# Reflections 应用指南
 
 <!-- TOC depthFrom:2 depthTo:3 -->
 
@@ -92,7 +92,7 @@ Set<Method> getters = getAllMethods(someClass,
   withModifier(Modifier.PUBLIC), withPrefix("get"), withParametersCount(0));
 
 //or
-Set<Method> listMethodsFromCollectionToBoolean = 
+Set<Method> listMethodsFromCollectionToBoolean =
   getAllMethods(List.class,
     withParametersAssignableTo(Collection.class), withReturnType(boolean.class));
 

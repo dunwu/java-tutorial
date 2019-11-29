@@ -15,7 +15,7 @@ import java.util.Base64;
  * <a href="https://github.com/EsotericSoftware/kryo">Kyro</a> 序列化/反序列化示例
  *
  * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>
- * @author <a href="https://www.cnblogs.com/hntyzgn/p/7122709.html">Kryo 使用指南</a>
+ * @author <a href="https://www.cnblogs.com/hntyzgn/p/7122709.html">Kryo 应用指南</a>
  * @since 2019-11-26
  */
 public class KryoDemo {

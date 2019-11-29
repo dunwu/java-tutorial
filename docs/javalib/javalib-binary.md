@@ -6,14 +6,14 @@
 
 原因很简单，就是 Java 默认的序列化机制（`ObjectInputStream` 和 `ObjectOutputStream`）具有很多缺点。
 
-> 不了解 Java 默认的序列化机制，可以参考：[Java 序列化](https://github.com/dunwu/javacore/blob/master/docs/io/Java序列化.md) 
+> 不了解 Java 默认的序列化机制，可以参考：[Java 序列化](https://github.com/dunwu/javacore/blob/master/docs/io/Java序列化.md)
 
 Java 自身的序列化方式具有以下缺点：
 
 - **无法跨语言使用 **。这点最为致命，对于很多需要跨语言通信的异构系统来说，不能跨语言序列化，即意味着完全无法通信（彼此数据不能识别，当然无法交互了）。
-- **序列化的性能不高**。序列化后的数据体积较大，这大大影响存储和传输的效率。 
--  序列化一定需要实现 `Serializable` 接口。
--  需要关注 `serialVersionUID`。
+- **序列化的性能不高**。序列化后的数据体积较大，这大大影响存储和传输的效率。
+- 序列化一定需要实现 `Serializable` 接口。
+- 需要关注 `serialVersionUID`。
 
 引入二进制序列化库就是为了解决这些问题，这在 RPC 应用中尤为常见。
 
@@ -86,6 +86,7 @@ Java 自身的序列化方式具有以下缺点：
 **（2）选型建议**
 
 - 如果需要跨语言通信，那么可以考虑：Protobuf、Thrift、Hession。
+
   - [thrift](https://github.com/apache/thrift)、[protobuf](https://github.com/protocolbuffers/protobuf) - 适用于对性能敏感，对开发体验要求不高的内部系统。
   - [hessian](http://hessian.caucho.com/doc/hessian-overview.xtp) - 适用于对开发体验敏感，性能有要求的内外部系统。
 
@@ -334,4 +335,4 @@ System.out.printf("Kryo 序列化/反序列化耗时：%s", (end - begin));
   - [Hessian 官网](http://hessian.caucho.com/)
   - [FST Github](https://github.com/RuedigerMoeller/fast-serialization)
 - **文章**
-  - [java序列化框架对比](https://www.jianshu.com/p/937883b6b2e5)
+  - [java 序列化框架对比](https://www.jianshu.com/p/937883b6b2e5)

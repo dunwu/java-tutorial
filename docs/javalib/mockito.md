@@ -1,52 +1,12 @@
-# Mockito 使用指南
+# Mockito 应用指南
 
 > Mockito 是一个针对 Java 的 mock 框架。
-
-<!-- TOC depthFrom:2 depthTo:3 -->
-
-- [预备知识](#预备知识)
-- [使用 mock 对象来进行测试](#使用-mock-对象来进行测试)
-    - [单元测试的目标和挑战](#单元测试的目标和挑战)
-    - [测试类的分类](#测试类的分类)
-    - [Mock 对象的产生](#mock-对象的产生)
-    - [使用 Mockito 生成 Mock 对象](#使用-mockito-生成-mock-对象)
-- [为自己的项目添加 Mockito 依赖](#为自己的项目添加-mockito-依赖)
-    - [在 Gradle 添加 Mockito 依赖](#在-gradle-添加-mockito-依赖)
-    - [在 Maven 添加 Mockito 依赖](#在-maven-添加-mockito-依赖)
-    - [在 Eclipse IDE 使用 Mockito](#在-eclipse-ide-使用-mockito)
-    - [以 OSGi 或者 Eclipse 插件形式添加 Mockito 依赖](#以-osgi-或者-eclipse-插件形式添加-mockito-依赖)
-- [使用 Mockito API](#使用-mockito-api)
-    - [静态引用](#静态引用)
-    - [使用 Mockito 创建和配置 mock 对象](#使用-mockito-创建和配置-mock-对象)
-    - [配置 mock](#配置-mock)
-    - [验证 mock 对象方法是否被调用](#验证-mock-对象方法是否被调用)
-    - [使用 Spy 封装 java 对象](#使用-spy-封装-java-对象)
-    - [使用 @InjectMocks 在 Mockito 中进行依赖注入](#使用-injectmocks-在-mockito-中进行依赖注入)
-    - [捕捉参数](#捕捉参数)
-    - [Mockito 的限制](#mockito-的限制)
-- [在 Android 中使用 Mockito](#在-android-中使用-mockito)
-- [实例：使用 Mockito 写一个 Instrumented Unit Test](#实例使用-mockito-写一个-instrumented-unit-test)
-    - [创建一个测试的 Android 应用](#创建一个测试的-android-应用)
-    - [在 app/build.gradle 文件中添加 Mockito 依赖](#在-appbuildgradle-文件中添加-mockito-依赖)
-    - [创建测试](#创建测试)
-- [实例：使用 Mockito 创建一个 mock 对象](#实例使用-mockito-创建一个-mock-对象)
-    - [目标](#目标)
-    - [创建一个 Twitter API 的例子](#创建一个-twitter-api-的例子)
-    - [模拟 ITweet 的实例](#模拟-itweet-的实例)
-    - [验证方法调用](#验证方法调用)
-    - [验证](#验证)
-- [模拟静态方法](#模拟静态方法)
-    - [使用 Powermock 来模拟静态方法](#使用-powermock-来模拟静态方法)
-    - [用封装的方法代替 Powermock](#用封装的方法代替-powermock)
-- [引用和引申](#引用和引申)
-
-<!-- /TOC -->
 
 ## 预备知识
 
 如果需要往下学习，你需要先理解 Junit 框架中的单元测试。
 
-如果你不熟悉 JUnit，请查看下面的教程： <http://www.vogella.com/tutorials/JUnit/article.html>
+如果你不熟悉 JUnit，请看 [Junit 教程](http://www.vogella.com/tutorials/JUnit/article.html)
 
 ## 使用 mock 对象来进行测试
 
@@ -83,9 +43,7 @@ _Mockito_ 是一个流行 mock 框架，可以和 JUnit 结合起来使用。Moc
 
 1. 模拟并替换测试代码中外部依赖
 2. 执行测试代码
-3. 验证测试代码是否被正确的执行
-
-<div align="center"><img src="https://camo.githubusercontent.com/d10c5af5eb7d78af30d92e0f1a9813f419e3975e/687474703a2f2f7777322e73696e61696d672e636e2f6c617267652f3732663936636261677731663562326a386d3276736a323068683035366a7276!zp"/></div>
+3. 验证测试代码是否被正确的执行 0
 
 ## 为自己的项目添加 Mockito 依赖
 
@@ -100,7 +58,7 @@ dependencies { testCompile "org.mockito:mockito-core:2.0.57-beta" }
 
 ### 在 Maven 添加 Mockito 依赖
 
-需要在 Maven 声明依赖，您可以在 [http://search.maven.org](http://search.maven.org/) 网站中搜索 g:"org.mockito", a:"mockito-core" 来得到具体的声明方式。
+需要在 Maven 声明依赖，您可以在 [http://search.maven.org](http://search.maven.org/) 网站中搜索 `g:"org.mockito", a:"mockito-core"` 来得到具体的声明方式。
 
 ### 在 Eclipse IDE 使用 Mockito
 
@@ -110,9 +68,7 @@ Eclipse IDE 支持 Gradle 和 Maven 两种构建工具，所以在 Eclipse IDE �
 
 在 Eclipse RCP 应用依赖通常可以在 p2 update 上得到。Orbit 是一个很好的第三方仓库，我们可以在里面寻找能在 Eclipse 上使用的应用和插件。
 
-Orbit 仓库地址：http://download.eclipse.org/tools/orbit/downloads
-
-<div align="center"><img src="https://camo.githubusercontent.com/79c0e1d7c1e50563574535f33e64b365af512af9/687474703a2f2f7777322e73696e61696d672e636e2f6c617267652f3732663936636261677731663562326a6c627239376a32306e79306867373763!zp"/></div>
+Orbit 仓库地址：[http://download.eclipse.org/tools/orbit/downloads](http://download.eclipse.org/tools/orbit/downloads)
 
 ## 使用 Mockito API
 
@@ -336,7 +292,7 @@ public class ArticleManagerTest  {
 
 1. 创建 ArticleManager 实例并注入 Mock 对象
 
-更多的详情可以查看 <http://docs.mockito.googlecode.com/hg/1.9.5/org/mockito/InjectMocks.html>.
+更多的详情可以查看 [http://docs.mockito.googlecode.com/hg/1.9.5/org/mockito/InjectMocks.html](http://docs.mockito.googlecode.com/hg/1.9.5/org/mockito/InjectMocks.html)
 
 ### 捕捉参数
 
@@ -420,7 +376,7 @@ public static Intent createQuery(Context context, String query, String value) {
 
 ### 在 app/build.gradle 文件中添加 Mockito 依赖
 
-```
+```java
 dependencies {
     // Mockito 和 JUnit 的依赖
     // instrumentation unit tests on the JVM

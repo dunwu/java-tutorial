@@ -1,14 +1,4 @@
-# Intellij IDEA 使用指南
-
-<!-- TOC depthFrom:2 depthTo:2 -->
-
-- [快捷键](#快捷键)
-- [插件](#插件)
-- [个性化](#个性化)
-- [破解](#破解)
-- [参考资料](#参考资料)
-
-<!-- /TOC -->
+# Intellij IDEA 应用指南
 
 ## 快捷键
 
@@ -16,7 +6,7 @@
 
 IntelliJ IDEA 作为一个以快捷键为中心的 IDE，为大多数操作建议了键盘快捷键。在这个主题中，您可以找到最不可缺少的列表，使 IntelliJ IDEA 轻松实现第一步。
 
-**核心快捷键表**
+核心快捷键表：
 
 | 操作                                                                                                                                                                                       | 快捷键                             |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------- |
@@ -194,13 +184,13 @@ IntelliJ IDEA 作为一个以快捷键为中心的 IDE，为大多数操作建�
 
 #### VCS/Local History
 
-| 快捷键                                            | 介绍                                               |
-| ------------------------------------------------- | -------------------------------------------------- |
-| Ctrl + K                                          | 版本控制提交项目，需要此项目有加入到版本控制才可用 |
-| Ctrl + T                                          | 版本控制更新项目，需要此项目有加入到版本控制才可用 |
-| Alt + `| 显示版本控制常用操作菜单弹出层`（必备）` |
-| Alt + Shift + C                                   | 查看最近操作项目的变化情况列表                     |
-| Alt + Shift + N                                   | 选择/添加 task`（必备）`                           |
+| 快捷键          | 介绍                                               |
+| --------------- | -------------------------------------------------- |
+| Ctrl + K        | 版本控制提交项目，需要此项目有加入到版本控制才可用 |
+| Ctrl + T        | 版本控制更新项目，需要此项目有加入到版本控制才可用 |
+| `Alt + |`       | 显示版本控制常用操作菜单弹出层`（必备）`           |
+| Alt + Shift + C | 查看最近操作项目的变化情况列表                     |
+| Alt + Shift + N | 选择/添加 task`（必备）`                           |
 
 #### Live Templates
 
@@ -230,7 +220,7 @@ IntelliJ IDEA 作为一个以快捷键为中心的 IDE，为大多数操作建�
 
 推荐几个比较好用的插件
 
-- [Key promoter](https://plugins.jetbrains.com/plugin/4455?pr=idea) 快捷键提示 <https://plugins.jetbrains.com/plugin/4455?pr=idea>
+- [Key promoter](https://plugins.jetbrains.com/plugin/4455?pr=idea) [快捷键提示](https://plugins.jetbrains.com/plugin/4455?pr=idea)
 - [CamelCase](https://plugins.jetbrains.com/plugin/7160?pr=idea) 驼峰式命名和下划线命名交替变化
 - [CheckStyle-IDEA](https://plugins.jetbrains.com/plugin/1065?pr=idea) 代码规范检查
 - [FindBugs-IDEA](https://plugins.jetbrains.com/plugin/3847?pr=idea)潜在 Bug 检查
@@ -249,9 +239,7 @@ IntelliJ IDEA 作为一个以快捷键为中心的 IDE，为大多数操作建�
 
 [intellij-colors-solarized](https://github.com/jkaving/intellij-colors-solarized) 个人觉得这种色彩搭配十分优雅
 
-下载地址：https://github.com/altercation/solarized
-
-<div align="center"><img src="https://github.com/altercation/solarized/raw/master/img/solarized-vim.png"/></div>
+[下载地址](https://github.com/altercation/solarized)
 
 ## 破解
 
@@ -277,6 +265,5 @@ Windows 版本是 exe 程序，将其设为开机自动启动即可，别告诉�
 
 ## 参考资料
 
-[IntelliJ-IDEA-Tutorial](https://github.com/judasn/IntelliJ-IDEA-Tutorial)
-
-[极客学院 - Intellij IDEA 使用教程](http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/)
+- [IntelliJ-IDEA-Tutorial](https://github.com/judasn/IntelliJ-IDEA-Tutorial)
+- [极客学院 - Intellij IDEA 使用教程](http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/)

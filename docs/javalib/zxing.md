@@ -1,30 +1,29 @@
-# ZXing 使用指南
-
+# ZXing 应用指南
 
 <!-- TOC depthFrom:2 depthTo:3 -->
 
 - [简介](#简介)
 - [实战](#实战)
-    - [安装](#安装)
-    - [生成二维码图片](#生成二维码图片)
-    - [解析二维码图片](#解析二维码图片)
+  - [安装](#安装)
+  - [生成二维码图片](#生成二维码图片)
+  - [解析二维码图片](#解析二维码图片)
 - [参考](#参考)
 
 <!-- /TOC -->
 
 ## 简介
 
-`ZXing` 是一个开源 Java 类库用于解析多种格式的 1D/2D 条形码。目标是能够对QR编码、Data Matrix、UPC的1D条形码进行解码。 其提供了多种平台下的客户端包括：J2ME、J2SE和Android。 
+`ZXing` 是一个开源 Java 类库用于解析多种格式的 1D/2D 条形码。目标是能够对 QR 编码、Data Matrix、UPC 的 1D 条形码进行解码。 其提供了多种平台下的客户端包括：J2ME、J2SE 和 Android。
 
-官网：[<u>ZXing github仓库</u>](https://github.com/zxing/zxing)
+官网：[<u>ZXing github 仓库</u>](https://github.com/zxing/zxing)
 
 ## 实战
 
-***本例演示如何在一个非 android 的 Java 项目中使用 ZXing 来生成、解析二维码图片。***
+**_本例演示如何在一个非 android 的 Java 项目中使用 ZXing 来生成、解析二维码图片。_**
 
 ### 安装
 
-maven项目只需引入依赖：
+maven 项目只需引入依赖：
 
 ```xml
 <dependency>
@@ -39,13 +38,13 @@ maven项目只需引入依赖：
 </dependency>
 ```
 
-如果非maven项目，就去官网下载发布版本：[<u>下载地址</u>](https://github.com/zxing/zxing/releases)
+如果非 maven 项目，就去官网下载发布版本：[<u>下载地址</u>](https://github.com/zxing/zxing/releases)
 
 ### 生成二维码图片
 
 ZXing 生成二维码图片有以下步骤：
 
-1. `com.google.zxing.MultiFormatWriter` 根据内容以及图像编码参数生成图像2D矩阵。
+1. `com.google.zxing.MultiFormatWriter` 根据内容以及图像编码参数生成图像 2D 矩阵。
 2. ​ `com.google.zxing.client.j2se.MatrixToImageWriter` 根据图像矩阵生成图片文件或图片缓存 `BufferedImage` 。
 
 ```java
@@ -70,7 +69,6 @@ ZXing 解析二维码图片有以下步骤：
 
 3. `com.google.zxing.MultiFormatReader` 根据图像解码参数来解析 `com.google.zxing.BinaryBitmap` 。
 
-
 ```java
 public String decode(String filepath) throws IOException, NotFoundException {
 	BufferedImage bufferedImage = ImageIO.read(new FileInputStream(filepath));
@@ -92,4 +90,4 @@ public String decode(String filepath) throws IOException, NotFoundException {
 
 ## 参考
 
-[ZXing github仓库](https://github.com/zxing/zxing)
+[ZXing github 仓库](https://github.com/zxing/zxing)
