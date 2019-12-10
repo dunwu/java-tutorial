@@ -1,51 +1,51 @@
 <?xml version="1.0"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-	xmlns="http://maven.apache.org/POM/4.0.0">
-	<modelVersion>4.0.0</modelVersion>
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+  xmlns="http://maven.apache.org/POM/4.0.0">
+  <modelVersion>4.0.0</modelVersion>
 
-	<groupId>io.github.dunwu</groupId>
-	<artifactId>javalib-log-logback</artifactId>
-	<version>1.0.0</version>
-	<description>log4j2 示例</description>
+  <groupId>io.github.dunwu</groupId>
+  <artifactId>javalib-log-logback</artifactId>
+  <version>1.0.0</version>
+  <description>log4j2 示例</description>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>1.8</java.version>
-		<maven.compiler.source>${java.version}</maven.compiler.source>
-		<maven.compiler.target>${java.version}</maven.compiler.target>
-		<logback.version>1.2.3</logback.version>
-	</properties>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <java.version>1.8</java.version>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+    <logback.version>1.2.3</logback.version>
+  </properties>
 
-	<dependencies>
-		<!-- log start -->
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<version>${logback.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-access</artifactId>
-			<version>${logback.version}</version>
-		</dependency>
-		<!-- log end -->
+  <dependencies>
+    <!-- log start -->
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>${logback.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-access</artifactId>
+      <version>${logback.version}</version>
+    </dependency>
+    <!-- log end -->
 
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 
-	<build>
-		<resources>
-			<resource>
-				<filtering>true</filtering>
-				<directory>src/main/resources</directory>
-			</resource>
-		</resources>
-	</build>
+  <build>
+    <resources>
+      <resource>
+        <filtering>true</filtering>
+        <directory>src/main/resources</directory>
+      </resource>
+    </resources>
+  </build>
 
 </project>

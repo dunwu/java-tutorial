@@ -1,93 +1,93 @@
 <?xml version="1.0"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-	xmlns="http://maven.apache.org/POM/4.0.0">
-	<modelVersion>4.0.0</modelVersion>
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+  xmlns="http://maven.apache.org/POM/4.0.0">
+  <modelVersion>4.0.0</modelVersion>
 
-	<groupId>io.github.dunwu</groupId>
-	<artifactId>javatool-embedded-server</artifactId>
-	<version>1.0.0</version>
-	<packaging>war</packaging>
-	<description>Java工具-服务器 示例</description>
+  <groupId>io.github.dunwu</groupId>
+  <artifactId>javatool-embedded-server</artifactId>
+  <version>1.0.0</version>
+  <packaging>war</packaging>
+  <description>Java工具-服务器 示例</description>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>1.8</java.version>
-		<maven.compiler.source>${java.version}</maven.compiler.source>
-		<maven.compiler.target>${java.version}</maven.compiler.target>
-		<dunwu.version>0.4.8</dunwu.version>
-		<tomcat.version>[8.5.40,)</tomcat.version>
-	</properties>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <java.version>1.8</java.version>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+    <dunwu.version>0.4.8</dunwu.version>
+    <tomcat.version>[8.5.40,)</tomcat.version>
+  </properties>
 
-	<dependencies>
-		<!-- log begin -->
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.logback-extensions</groupId>
-			<artifactId>logback-ext-spring</artifactId>
-			<version>0.1.2</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>jcl-over-slf4j</artifactId>
-		</dependency>
-		<!-- log end -->
+  <dependencies>
+    <!-- log begin -->
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.logback-extensions</groupId>
+      <artifactId>logback-ext-spring</artifactId>
+      <version>0.1.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>jcl-over-slf4j</artifactId>
+    </dependency>
+    <!-- log end -->
 
-		<!-- javaee begin -->
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet.jsp</groupId>
-			<artifactId>jsp-api</artifactId>
-			<version>2.2</version>
-			<scope>provided</scope>
-		</dependency>
-		<!-- javaee end -->
+    <!-- javaee begin -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet.jsp</groupId>
+      <artifactId>jsp-api</artifactId>
+      <version>2.2</version>
+      <scope>provided</scope>
+    </dependency>
+    <!-- javaee end -->
 
-		<!-- server betgin -->
-		<dependency>
-			<groupId>org.apache.tomcat.embed</groupId>
-			<artifactId>tomcat-embed-core</artifactId>
-			<version>${tomcat.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.tomcat.embed</groupId>
-			<artifactId>tomcat-embed-el</artifactId>
-			<version>${tomcat.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.tomcat.embed</groupId>
-			<artifactId>tomcat-embed-jasper</artifactId>
-			<version>${tomcat.version}</version>
-		</dependency>
-		<!-- server end -->
+    <!-- server betgin -->
+    <dependency>
+      <groupId>org.apache.tomcat.embed</groupId>
+      <artifactId>tomcat-embed-core</artifactId>
+      <version>${tomcat.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.tomcat.embed</groupId>
+      <artifactId>tomcat-embed-el</artifactId>
+      <version>${tomcat.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.tomcat.embed</groupId>
+      <artifactId>tomcat-embed-jasper</artifactId>
+      <version>${tomcat.version}</version>
+    </dependency>
+    <!-- server end -->
 
-		<!-- spring begin -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context-support</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
-		</dependency>
-		<!-- spring end -->
-	</dependencies>
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>io.github.dunwu</groupId>
-				<artifactId>dunwu-dependencies</artifactId>
-				<version>${dunwu.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+    <!-- spring begin -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context-support</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+    </dependency>
+    <!-- spring end -->
+  </dependencies>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>io.github.dunwu</groupId>
+        <artifactId>dunwu-dependencies</artifactId>
+        <version>${dunwu.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 </project>

@@ -14,10 +14,10 @@ import java.util.List;
 @Data(staticConstructor = "of")
 public class DataDemo {
 
-	private final Person founder;
+    private final Person founder;
 
-	protected List<Person> employees;
+    protected List<Person> employees;
 
-	private String name;
+    private String name;
 
 }

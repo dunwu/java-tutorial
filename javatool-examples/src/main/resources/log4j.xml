@@ -3,53 +3,53 @@
 
 <log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
 
-	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
-		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern"
-				value="%d{yyyy-MM-dd HH:mm:ss,SSS\} [%-5p] [%t] %c{36\}.%M - %m%n" />
-		</layout>
+  <appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern"
+        value="%d{yyyy-MM-dd HH:mm:ss,SSS\} [%-5p] [%t] %c{36\}.%M - %m%n" />
+    </layout>
 
-		<!--过滤器设置输出的级别-->
-		<filter class="org.apache.log4j.varia.LevelRangeFilter">
-			<param name="levelMin" value="debug" />
-			<param name="levelMax" value="fatal" />
-			<param name="AcceptOnMatch" value="true" />
-		</filter>
-	</appender>
+    <!--过滤器设置输出的级别-->
+    <filter class="org.apache.log4j.varia.LevelRangeFilter">
+      <param name="levelMin" value="debug" />
+      <param name="levelMax" value="fatal" />
+      <param name="AcceptOnMatch" value="true" />
+    </filter>
+  </appender>
 
 
-	<appender name="ALL" class="org.apache.log4j.DailyRollingFileAppender">
-		<param name="File" value="${user.dir}/logs/javatool-log4j-all" />
-		<param name="Append" value="true" />
-		<!-- 每天重新生成日志文件 -->
-		<param name="DatePattern" value="'-'yyyy-MM-dd'.log'" />
-		<!-- 每小时重新生成日志文件 -->
-		<!--<param name="DatePattern" value="'-'yyyy-MM-dd-HH'.log'"/>-->
-		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern"
-				value="%d{yyyy-MM-dd HH:mm:ss,SSS\} [%-5p] [%t] %c{36\}.%M - %m%n" />
-		</layout>
-	</appender>
+  <appender name="ALL" class="org.apache.log4j.DailyRollingFileAppender">
+    <param name="File" value="${user.dir}/logs/javatool-log4j-all" />
+    <param name="Append" value="true" />
+    <!-- 每天重新生成日志文件 -->
+    <param name="DatePattern" value="'-'yyyy-MM-dd'.log'" />
+    <!-- 每小时重新生成日志文件 -->
+    <!--<param name="DatePattern" value="'-'yyyy-MM-dd-HH'.log'"/>-->
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern"
+        value="%d{yyyy-MM-dd HH:mm:ss,SSS\} [%-5p] [%t] %c{36\}.%M - %m%n" />
+    </layout>
+  </appender>
 
-	<appender name="ELK" class="org.apache.log4j.net.SocketAppender">
-		<param name="remoteHost" value="192.168.28.32" />
-		<param name="port" value="9252" />
-		<param name="Threshold" value="TRACE" />
-		<param name="ReconnectionDelay" value="6000" />
-		<param name="LocationInfo" value="true" />
-	</appender>
+  <appender name="ELK" class="org.apache.log4j.net.SocketAppender">
+    <param name="remoteHost" value="192.168.28.32" />
+    <param name="port" value="9252" />
+    <param name="Threshold" value="TRACE" />
+    <param name="ReconnectionDelay" value="6000" />
+    <param name="LocationInfo" value="true" />
+  </appender>
 
-	<!-- 指定logger的设置，additivity指示是否遵循缺省的继承机制-->
-	<logger name="io.github.dunwu.javatool" additivity="false">
-		<level value="trace" />
-		<appender-ref ref="STDOUT" />
-		<appender-ref ref="ALL" />
-		<appender-ref ref="ELK" />
-	</logger>
+  <!-- 指定logger的设置，additivity指示是否遵循缺省的继承机制-->
+  <logger name="io.github.dunwu.javatool" additivity="false">
+    <level value="trace" />
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="ALL" />
+    <appender-ref ref="ELK" />
+  </logger>
 
-	<!-- 根logger的设置-->
-	<root>
-		<level value="trace" />
-		<appender-ref ref="STDOUT" />
-	</root>
+  <!-- 根logger的设置-->
+  <root>
+    <level value="trace" />
+    <appender-ref ref="STDOUT" />
+  </root>
 </log4j:configuration>

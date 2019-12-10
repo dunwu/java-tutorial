@@ -15,9 +15,9 @@ import java.util.List;
  */
 public class NonNullDemo {
 
-	@Getter
-	@Setter
-	@NonNull
-	private List<Person> members;
+    @Getter
+    @Setter
+    @NonNull
+    private List<Person> members;
 
 }

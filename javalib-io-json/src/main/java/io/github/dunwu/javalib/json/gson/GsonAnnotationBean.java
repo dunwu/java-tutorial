@@ -10,43 +10,43 @@ import java.util.Objects;
  */
 public class GsonAnnotationBean {
 
-	@SerializedName("custom_naming")
-	private String someField;
+    @SerializedName("custom_naming")
+    private String someField;
 
-	private String someOtherField;
+    private String someOtherField;
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) {
-			return true;
-		}
-		if (!(o instanceof GsonAnnotationBean)) {
-			return false;
-		}
-		GsonAnnotationBean that = (GsonAnnotationBean) o;
-		return Objects.equals(someField, that.someField) &&
-			Objects.equals(someOtherField, that.someOtherField);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(someField, someOtherField);
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(someField, someOtherField);
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof GsonAnnotationBean)) {
+            return false;
+        }
+        GsonAnnotationBean that = (GsonAnnotationBean) o;
+        return Objects.equals(someField, that.someField) &&
+            Objects.equals(someOtherField, that.someOtherField);
+    }
 
-	public String getSomeField() {
-		return someField;
-	}
+    public String getSomeField() {
+        return someField;
+    }
 
-	public void setSomeField(String someField) {
-		this.someField = someField;
-	}
+    public void setSomeField(String someField) {
+        this.someField = someField;
+    }
 
-	public String getSomeOtherField() {
-		return someOtherField;
-	}
+    public String getSomeOtherField() {
+        return someOtherField;
+    }
 
-	public void setSomeOtherField(String someOtherField) {
-		this.someOtherField = someOtherField;
-	}
+    public void setSomeOtherField(String someOtherField) {
+        this.someOtherField = someOtherField;
+    }
 
 }

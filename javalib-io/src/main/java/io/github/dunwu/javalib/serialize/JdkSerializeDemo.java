@@ -10,27 +10,27 @@ import java.io.*;
  */
 public class JdkSerializeDemo {
 
-	public static <T> byte[] serializ(T obj) throws IOException {
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		ObjectOutputStream oos = new ObjectOutputStream(baos);
-		oos.writeObject(obj);
-		byte[] bytes = baos.toByteArray();
-		baos.close();
-		oos.close();
-		return bytes;
-	}
+    public static <T> byte[] serializ(T obj) throws IOException {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ObjectOutputStream oos = new ObjectOutputStream(baos);
+        oos.writeObject(obj);
+        byte[] bytes = baos.toByteArray();
+        baos.close();
+        oos.close();
+        return bytes;
+    }
 
-	public static <T> T derialize(byte[] bytes, Class<T> clazz) throws IOException, ClassNotFoundException {
-		ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
-		ObjectInputStream ois = new ObjectInputStream(bais);
-		Object obj = ois.readObject();
-		bais.close();
-		ois.close();
-		if (clazz.isInstance(obj)) {
-			return (T) obj;
-		} else {
-			throw new IOException("derialize failed");
-		}
-	}
+    public static <T> T derialize(byte[] bytes, Class<T> clazz) throws IOException, ClassNotFoundException {
+        ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
+        ObjectInputStream ois = new ObjectInputStream(bais);
+        Object obj = ois.readObject();
+        bais.close();
+        ois.close();
+        if (clazz.isInstance(obj)) {
+            return (T) obj;
+        } else {
+            throw new IOException("derialize failed");
+        }
+    }
 
 }

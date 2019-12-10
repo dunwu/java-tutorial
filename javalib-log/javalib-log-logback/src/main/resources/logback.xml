@@ -3,42 +3,42 @@
 <!-- logback中一共有5种有效级别，分别是TRACE、DEBUG、INFO、WARN、ERROR，优先级依次从低到高 -->
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
 
-	<property name="DIR_NAME" value="javalib-log" />
-	<property name="FILE_NAME" value="logback-output" />
-	<!-- 全局统一输出形式 -->
-	<property name="PATTERN"
-		value="%d{HH:mm:ss.SSS} [%boldYellow(%thread)] [%highlight(%-5level)] %boldGreen(%c{50}.%M) - %boldBlue(%m%n)" />
+  <property name="DIR_NAME" value="javalib-log" />
+  <property name="FILE_NAME" value="logback-output" />
+  <!-- 全局统一输出形式 -->
+  <property name="PATTERN"
+    value="%d{HH:mm:ss.SSS} [%boldYellow(%thread)] [%highlight(%-5level)] %boldGreen(%c{50}.%M) - %boldBlue(%m%n)" />
 
-	<!-- 控制台输出 -->
-	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
-		<!-- 输出形式 -->
-		<encoder>
-			<pattern>${PATTERN}</pattern>
-		</encoder>
-	</appender>
+  <!-- 控制台输出 -->
+  <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <!-- 输出形式 -->
+    <encoder>
+      <pattern>${PATTERN}</pattern>
+    </encoder>
+  </appender>
 
-	<!-- 滚动日志输出 -->
-	<appender name="ALL" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<!-- 根据时间、文件大小自动分割日志 -->
-		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-			<fileNamePattern>logs/${DIR_NAME}/%d{yyyy-MM,aux}/${FILE_NAME}.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
-			<!-- 保存30天 -->
-			<maxHistory>30</maxHistory>
-			<!-- 文件最大100M -->
-			<maxFileSize>100MB</maxFileSize>
-		</rollingPolicy>
-		<!-- 输出形式 -->
-		<encoder>
-			<pattern>${PATTERN}</pattern>
-		</encoder>
-	</appender>
+  <!-- 滚动日志输出 -->
+  <appender name="ALL" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <!-- 根据时间、文件大小自动分割日志 -->
+    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      <fileNamePattern>logs/${DIR_NAME}/%d{yyyy-MM,aux}/${FILE_NAME}.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+      <!-- 保存30天 -->
+      <maxHistory>30</maxHistory>
+      <!-- 文件最大100M -->
+      <maxFileSize>100MB</maxFileSize>
+    </rollingPolicy>
+    <!-- 输出形式 -->
+    <encoder>
+      <pattern>${PATTERN}</pattern>
+    </encoder>
+  </appender>
 
-	<logger name="io.github.dunwu" level="INFO" additivity="false">
-		<appender-ref ref="ALL" />
-		<appender-ref ref="CONSOLE" />
-	</logger>
+  <logger name="io.github.dunwu" level="INFO" additivity="false">
+    <appender-ref ref="ALL" />
+    <appender-ref ref="CONSOLE" />
+  </logger>
 
-	<root level="DEBUG">
-		<appender-ref ref="CONSOLE" />
-	</root>
+  <root level="DEBUG">
+    <appender-ref ref="CONSOLE" />
+  </root>
 </configuration>

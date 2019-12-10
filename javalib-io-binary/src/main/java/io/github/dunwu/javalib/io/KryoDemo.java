@@ -20,95 +20,95 @@ import java.util.Base64;
  */
 public class KryoDemo {
 
-	// 每个线程的 Kryo 实例
-	private static final ThreadLocal<Kryo> kryoLocal = ThreadLocal.withInitial(() -> {
-		Kryo kryo = new Kryo();
+    // 每个线程的 Kryo 实例
+    private static final ThreadLocal<Kryo> kryoLocal = ThreadLocal.withInitial(() -> {
+        Kryo kryo = new Kryo();
 
-		/**
-		 * 不要轻易改变这里的配置！更改之后，序列化的格式就会发生变化，
-		 * 上线的同时就必须清除 Redis 里的所有缓存，
-		 * 否则那些缓存再回来反序列化的时候，就会报错
-		 */
-		//支持对象循环引用（否则会栈溢出）
-		kryo.setReferences(true); //默认值就是 true，添加此行的目的是为了提醒维护者，不要改变这个配置
+        /**
+         * 不要轻易改变这里的配置！更改之后，序列化的格式就会发生变化，
+         * 上线的同时就必须清除 Redis 里的所有缓存，
+         * 否则那些缓存再回来反序列化的时候，就会报错
+         */
+        //支持对象循环引用（否则会栈溢出）
+        kryo.setReferences(true); //默认值就是 true，添加此行的目的是为了提醒维护者，不要改变这个配置
 
-		//不强制要求注册类（注册行为无法保证多个 JVM 内同一个类的注册编号相同；而且业务系统中大量的 Class 也难以一一注册）
-		kryo.setRegistrationRequired(false); //默认值就是 false，添加此行的目的是为了提醒维护者，不要改变这个配置
+        //不强制要求注册类（注册行为无法保证多个 JVM 内同一个类的注册编号相同；而且业务系统中大量的 Class 也难以一一注册）
+        kryo.setRegistrationRequired(false); //默认值就是 false，添加此行的目的是为了提醒维护者，不要改变这个配置
 
-		//Fix the NPE bug when deserializing Collections.
-		((DefaultInstantiatorStrategy) kryo.getInstantiatorStrategy())
-			.setFallbackInstantiatorStrategy(new StdInstantiatorStrategy());
+        //Fix the NPE bug when deserializing Collections.
+        ((DefaultInstantiatorStrategy) kryo.getInstantiatorStrategy())
+            .setFallbackInstantiatorStrategy(new StdInstantiatorStrategy());
 
-		return kryo;
-	});
+        return kryo;
+    });
 
-	/**
-	 * 获得当前线程的 Kryo 实例
-	 *
-	 * @return 当前线程的 Kryo 实例
-	 */
-	public static Kryo getInstance() {
-		return kryoLocal.get();
-	}
+    /**
+     * 将对象序列化为 byte 数组后，再使用 Base64 编码
+     *
+     * @param obj 任意对象
+     * @param <T> 对象的类型
+     * @return 序列化后的字符串
+     */
+    public static <T> String writeToString(T obj) {
+        byte[] bytes = writeToBytes(obj);
+        return new String(Base64.getEncoder().encode(bytes), StandardCharsets.UTF_8);
+    }
 
-	/**
-	 * 将对象序列化为 byte 数组
-	 *
-	 * @param obj 任意对象
-	 * @param <T> 对象的类型
-	 * @return 序列化后的 byte 数组
-	 */
-	public static <T> byte[] writeToBytes(T obj) {
-		ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-		Output output = new Output(byteArrayOutputStream);
+    /**
+     * 将对象序列化为 byte 数组
+     *
+     * @param obj 任意对象
+     * @param <T> 对象的类型
+     * @return 序列化后的 byte 数组
+     */
+    public static <T> byte[] writeToBytes(T obj) {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        Output output = new Output(byteArrayOutputStream);
 
-		Kryo kryo = getInstance();
-		kryo.writeObject(output, obj);
-		output.flush();
+        Kryo kryo = getInstance();
+        kryo.writeObject(output, obj);
+        output.flush();
 
-		return byteArrayOutputStream.toByteArray();
-	}
+        return byteArrayOutputStream.toByteArray();
+    }
 
-	/**
-	 * 将对象序列化为 byte 数组后，再使用 Base64 编码
-	 *
-	 * @param obj 任意对象
-	 * @param <T> 对象的类型
-	 * @return 序列化后的字符串
-	 */
-	public static <T> String writeToString(T obj) {
-		byte[] bytes = writeToBytes(obj);
-		return new String(Base64.getEncoder().encode(bytes), StandardCharsets.UTF_8);
-	}
+    /**
+     * 获得当前线程的 Kryo 实例
+     *
+     * @return 当前线程的 Kryo 实例
+     */
+    public static Kryo getInstance() {
+        return kryoLocal.get();
+    }
 
-	/**
-	 * 将 byte 数组反序列化为原对象
-	 *
-	 * @param bytes {@link #writeToBytes} 方法序列化后的 byte 数组
-	 * @param clazz 原对象的类型
-	 * @param <T>   原对象的类型
-	 * @return 原对象
-	 */
-	@SuppressWarnings("unchecked")
-	public static <T> T readFromBytes(byte[] bytes, Class<T> clazz) {
-		ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bytes);
-		Input input = new Input(byteArrayInputStream);
+    /**
+     * 将字符串反序列化为原对象，先使用 Base64 解码
+     *
+     * @param str   {@link #writeToString} 方法序列化后的字符串
+     * @param clazz 原对象的类型
+     * @param <T>   原对象的类型
+     * @return 原对象
+     */
+    public static <T> T readFromString(String str, Class<T> clazz) {
+        byte[] bytes = str.getBytes(StandardCharsets.UTF_8);
+        return readFromBytes(Base64.getDecoder().decode(bytes), clazz);
+    }
 
-		Kryo kryo = getInstance();
-		return (T) kryo.readObject(input, clazz);
-	}
+    /**
+     * 将 byte 数组反序列化为原对象
+     *
+     * @param bytes {@link #writeToBytes} 方法序列化后的 byte 数组
+     * @param clazz 原对象的类型
+     * @param <T>   原对象的类型
+     * @return 原对象
+     */
+    @SuppressWarnings("unchecked")
+    public static <T> T readFromBytes(byte[] bytes, Class<T> clazz) {
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bytes);
+        Input input = new Input(byteArrayInputStream);
 
-	/**
-	 * 将字符串反序列化为原对象，先使用 Base64 解码
-	 *
-	 * @param str   {@link #writeToString} 方法序列化后的字符串
-	 * @param clazz 原对象的类型
-	 * @param <T>   原对象的类型
-	 * @return 原对象
-	 */
-	public static <T> T readFromString(String str, Class<T> clazz) {
-		byte[] bytes = str.getBytes(StandardCharsets.UTF_8);
-		return readFromBytes(Base64.getDecoder().decode(bytes), clazz);
-	}
+        Kryo kryo = getInstance();
+        return (T) kryo.readObject(input, clazz);
+    }
 
 }

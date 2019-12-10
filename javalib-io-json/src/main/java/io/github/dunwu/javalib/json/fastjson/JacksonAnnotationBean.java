@@ -11,45 +11,45 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder(alphabetic = true)
 public class JacksonAnnotationBean {
 
-	private String Name;
+    private String Name;
 
-	private int Age;
+    private int Age;
 
-	@JsonIgnore
-	private String Sex;
+    @JsonIgnore
+    private String Sex;
 
-	public JacksonAnnotationBean() {
-	}
+    public JacksonAnnotationBean() {
+    }
 
-	public JacksonAnnotationBean(String name, int age, String sex) {
-		Name = name;
-		Age = age;
-		Sex = sex;
-	}
+    public JacksonAnnotationBean(String name, int age, String sex) {
+        Name = name;
+        Age = age;
+        Sex = sex;
+    }
 
-	@JsonProperty("username")
-	public String getName() {
-		return Name;
-	}
+    @JsonProperty("username")
+    public String getName() {
+        return Name;
+    }
 
-	public void setName(String name) {
-		Name = name;
-	}
+    public void setName(String name) {
+        Name = name;
+    }
 
-	public int getAge() {
-		return Age;
-	}
+    public int getAge() {
+        return Age;
+    }
 
-	public void setAge(int age) {
-		Age = age;
-	}
+    public void setAge(int age) {
+        Age = age;
+    }
 
-	public String getSex() {
-		return Sex;
-	}
+    public String getSex() {
+        return Sex;
+    }
 
-	public void setSex(String sex) {
-		Sex = sex;
-	}
+    public void setSex(String sex) {
+        Sex = sex;
+    }
 
 }

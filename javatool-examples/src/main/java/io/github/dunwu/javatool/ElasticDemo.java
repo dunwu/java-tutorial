@@ -15,33 +15,33 @@ import java.util.concurrent.Executors;
  */
 public class ElasticDemo {
 
-	private static final Logger logger = LoggerFactory.getLogger(ElasticDemo.class);
+    private static final Logger logger = LoggerFactory.getLogger(ElasticDemo.class);
 
-	private static final org.apache.log4j.Logger log4jLog = org.apache.log4j.Logger.getLogger(ElasticDemo.class);
+    private static final org.apache.log4j.Logger log4jLog = org.apache.log4j.Logger.getLogger(ElasticDemo.class);
 
-	private static volatile int index = 0;
+    private static volatile int index = 0;
 
-	private static void sendLog4jLog() {
-		for (int i = 0; i < 100; i++) {
-			log4jLog.info(String.format("这是第 %d 条日志", ++index));
-		}
-	}
+    public static void main(String[] args) {
+        // sendLog4jLog();
+        sendLogbackLog();
+    }
 
-	public static void main(String[] args) {
-		// sendLog4jLog();
-		sendLogbackLog();
-	}
+    private static void sendLogbackLog() {
+        ExecutorService executorService = Executors.newFixedThreadPool(100);
+        for (int i = 0; i < 10000; i++) {
+            executorService.submit(new Runnable() {
+                @Override
+                public void run() {
+                    logger.info("这是第 {} 条日志", ++index);
+                }
+            });
+        }
+    }
 
-	private static void sendLogbackLog() {
-		ExecutorService executorService = Executors.newFixedThreadPool(100);
-		for (int i = 0; i < 10000; i++) {
-			executorService.submit(new Runnable() {
-				@Override
-				public void run() {
-					logger.info("这是第 {} 条日志", ++index);
-				}
-			});
-		}
-	}
+    private static void sendLog4jLog() {
+        for (int i = 0; i < 100; i++) {
+            log4jLog.info(String.format("这是第 %d 条日志", ++index));
+        }
+    }
 
 }

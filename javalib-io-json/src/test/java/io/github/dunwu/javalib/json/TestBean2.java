@@ -23,28 +23,28 @@ import java.util.Map;
 @AllArgsConstructor
 public class TestBean2 {
 
-	private int i1;
+    private int i1;
 
-	private Integer i2;
+    private Integer i2;
 
-	private float f1;
+    private float f1;
 
-	private Double d1;
+    private Double d1;
 
-	private Date date1;
+    private Date date1;
 
-	private Color color;
+    private Color color;
 
-	private String[] strArray;
+    private String[] strArray;
 
-	private List<Integer> intList;
+    private List<Integer> intList;
 
-	private Map<String, Object> map;
+    private Map<String, Object> map;
 
-	public static enum Color {
-		RED,
-		YELLOW,
-		BLUE
-	}
+    public static enum Color {
+        RED,
+        YELLOW,
+        BLUE
+    }
 
 }

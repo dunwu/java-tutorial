@@ -17,41 +17,41 @@ class Parent {}
 @EqualsAndHashCode(callSuper = true, exclude = { "address", "city", "state", "zip" })
 public class EqualsAndHashCodeDemo extends Person {
 
-	@NonNull
-	private String name;
+    @NonNull
+    private String name;
 
-	@NonNull
-	private Gender gender;
+    @NonNull
+    private Gender gender;
 
-	private String ssn;
+    private String ssn;
 
-	private String address;
+    private String address;
 
-	private String city;
+    private String city;
 
-	private String state;
+    private String state;
 
-	private String zip;
+    private String zip;
 
-	public EqualsAndHashCodeDemo(@NonNull String name, @NonNull Gender gender) {
-		this.name = name;
-		this.gender = gender;
-	}
+    public EqualsAndHashCodeDemo(@NonNull String name, @NonNull Gender gender) {
+        this.name = name;
+        this.gender = gender;
+    }
 
-	public EqualsAndHashCodeDemo(@NonNull String name, @NonNull Gender gender,
-		String ssn, String address, String city, String state, String zip) {
-		this.name = name;
-		this.gender = gender;
-		this.ssn = ssn;
-		this.address = address;
-		this.city = city;
-		this.state = state;
-		this.zip = zip;
-	}
+    public EqualsAndHashCodeDemo(@NonNull String name, @NonNull Gender gender,
+        String ssn, String address, String city, String state, String zip) {
+        this.name = name;
+        this.gender = gender;
+        this.ssn = ssn;
+        this.address = address;
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
+    }
 
-	enum Gender {
-		Male,
-		Female
-	}
+    enum Gender {
+        Male,
+        Female
+    }
 
 }

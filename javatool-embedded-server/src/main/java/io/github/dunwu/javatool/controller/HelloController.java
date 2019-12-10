@@ -19,38 +19,38 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value = "/hello")
 public class HelloController {
 
-	private final Logger log = LoggerFactory.getLogger(this.getClass());
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-	/**
-	 * <p>
-	 * 在本例中，Spring将会将数据传给 hello.jsp
-	 * <p>
-	 * 访问形式：http://localhost:8080/hello?name=张三
-	 */
-	@RequestMapping(value = "/name", method = RequestMethod.GET)
-	public ModelAndView hello(@RequestParam("name") String name) {
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("message", "你好，" + name);
-		mav.setViewName("hello");
-		return mav;
-	}
+    /**
+     * <p>
+     * 在本例中，Spring将会将数据传给 hello.jsp
+     * <p>
+     * 访问形式：http://localhost:8080/hello?name=张三
+     */
+    @RequestMapping(value = "/name", method = RequestMethod.GET)
+    public ModelAndView hello(@RequestParam("name") String name) {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("message", "你好，" + name);
+        mav.setViewName("hello");
+        return mav;
+    }
 
-	/**
-	 * <p>
-	 * 测试 logback 分级日志。配置项见src/main/resouces/logback.xml
-	 * <p>
-	 * 访问形式：http://localhost:8080/log
-	 */
-	@ResponseBody
-	@RequestMapping(value = "/log", method = RequestMethod.GET)
-	public String log() {
-		String msg = "print log, current level: {}";
-		log.trace(msg, "trace");
-		log.debug(msg, "debug");
-		log.info(msg, "info");
-		log.warn(msg, "warn");
-		log.error(msg, "error");
-		return msg;
-	}
+    /**
+     * <p>
+     * 测试 logback 分级日志。配置项见src/main/resouces/logback.xml
+     * <p>
+     * 访问形式：http://localhost:8080/log
+     */
+    @ResponseBody
+    @RequestMapping(value = "/log", method = RequestMethod.GET)
+    public String log() {
+        String msg = "print log, current level: {}";
+        log.trace(msg, "trace");
+        log.debug(msg, "debug");
+        log.info(msg, "info");
+        log.warn(msg, "warn");
+        log.error(msg, "error");
+        return msg;
+    }
 
 }

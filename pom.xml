@@ -1,27 +1,27 @@
 <?xml version="1.0"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-	xmlns="http://maven.apache.org/POM/4.0.0">
-	<modelVersion>4.0.0</modelVersion>
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+  xmlns="http://maven.apache.org/POM/4.0.0">
+  <modelVersion>4.0.0</modelVersion>
 
-	<groupId>io.github.dunwu</groupId>
-	<artifactId>java-tutorial</artifactId>
-	<version>1.0.0</version>
-	<packaging>pom</packaging>
+  <groupId>io.github.dunwu</groupId>
+  <artifactId>java-tutorial</artifactId>
+  <version>1.0.0</version>
+  <packaging>pom</packaging>
 
-	<name>java-tutorial</name>
-	<description>Java 常用 Lib / Tool 使用示例</description>
+  <name>java-tutorial</name>
+  <description>Java 常用 Lib / Tool 使用示例</description>
 
-	<modules>
-		<module>javalib-bean</module>
-		<module>javalib-cli</module>
-		<module>javalib-io</module>
-		<module>javalib-io-binary</module>
-		<module>javalib-io-json</module>
-		<module>javalib-log</module>
-		<module>javalib-mvel</module>
-		<module>javalib-office</module>
-		<module>javalib-test</module>
-		<module>javatool-embedded-server</module>
-	</modules>
+  <modules>
+    <module>javalib-bean</module>
+    <module>javalib-cli</module>
+    <module>javalib-io</module>
+    <module>javalib-io-binary</module>
+    <module>javalib-io-json</module>
+    <module>javalib-log</module>
+    <module>javalib-mvel</module>
+    <module>javalib-text</module>
+    <module>javalib-test</module>
+    <module>javatool-embedded-server</module>
+  </modules>
 </project>

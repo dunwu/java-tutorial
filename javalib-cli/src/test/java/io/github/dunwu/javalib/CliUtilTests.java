@@ -8,10 +8,10 @@ import org.junit.Test;
  */
 public class CliUtilTests {
 
-	@Test
-	public void prepare() throws Exception {
-		String[] args = {"-sql", "select * from aa", "-name", "测试"};
-		CliUtil.prepare(args);
-	}
+    @Test
+    public void prepare() throws Exception {
+        String[] args = { "-sql", "select * from aa", "-name", "测试" };
+        CliUtil.prepare(args);
+    }
 
 }

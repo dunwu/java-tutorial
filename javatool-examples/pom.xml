@@ -1,60 +1,60 @@
 <?xml version="1.0"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-	xmlns="http://maven.apache.org/POM/4.0.0">
-	<modelVersion>4.0.0</modelVersion>
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+  xmlns="http://maven.apache.org/POM/4.0.0">
+  <modelVersion>4.0.0</modelVersion>
 
 
-	<groupId>io.github.dunwu</groupId>
-	<artifactId>javatool-examples</artifactId>
-	<version>1.0.0</version>
-	<description>Java 工具使用示例</description>
+  <groupId>io.github.dunwu</groupId>
+  <artifactId>javatool-examples</artifactId>
+  <version>1.0.0</version>
+  <description>Java 工具使用示例</description>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>1.8</java.version>
-		<maven.compiler.source>${java.version}</maven.compiler.source>
-		<maven.compiler.target>${java.version}</maven.compiler.target>
-		<dunwu.version>0.4.8</dunwu.version>
-		<logback.version>1.2.3</logback.version>
-	</properties>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <java.version>1.8</java.version>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+    <dunwu.version>0.4.8</dunwu.version>
+    <logback.version>1.2.3</logback.version>
+  </properties>
 
-	<dependencies>
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.17</version>
-		</dependency>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<version>${logback.version}</version>
-		</dependency>
-	</dependencies>
+  <dependencies>
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.17</version>
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>${logback.version}</version>
+    </dependency>
+  </dependencies>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>io.github.dunwu</groupId>
-				<artifactId>dunwu-dependencies</artifactId>
-				<version>${dunwu.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>io.github.dunwu</groupId>
+        <artifactId>dunwu-dependencies</artifactId>
+        <version>${dunwu.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
-	<build>
-		<finalName>${artifactId}</finalName>
-		<resources>
-			<resource>
-				<filtering>true</filtering>
-				<directory>src/main/resources</directory>
-				<includes>
-					<include>logback.xml</include>
-					<include>log4j.xml</include>
-				</includes>
-			</resource>
-		</resources>
-	</build>
+  <build>
+    <finalName>${artifactId}</finalName>
+    <resources>
+      <resource>
+        <filtering>true</filtering>
+        <directory>src/main/resources</directory>
+        <includes>
+          <include>logback.xml</include>
+          <include>log4j.xml</include>
+        </includes>
+      </resource>
+    </resources>
+  </build>
 </project>

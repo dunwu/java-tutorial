@@ -15,230 +15,230 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class AnsiSystem {
 
-	private String code;
+    public static final AnsiSystem RED = new AnsiSystem("\033[;31m");
 
-	private static final String ENCODE_JOIN = ";";
+    public static final AnsiSystem GREEN = new AnsiSystem("\033[;32m");
 
-	private static final String ENCODE_START = "\033[";
+    public static final AnsiSystem YELLOW = new AnsiSystem("\033[;33m");
 
-	private static final String ENCODE_END = "m";
+    public static final AnsiSystem BLUE = new AnsiSystem("\033[;34m");
 
-	private static final String RESET = "\033[0;m";
+    public static final AnsiSystem MAGENTA = new AnsiSystem("\033[;35m");
 
-	public static final AnsiSystem RED = new AnsiSystem("\033[;31m");
+    public static final AnsiSystem CYAN = new AnsiSystem("\033[;36m");
 
-	public static final AnsiSystem GREEN = new AnsiSystem("\033[;32m");
+    public static final AnsiSystem WHITE = new AnsiSystem("\033[;37m");
 
-	public static final AnsiSystem YELLOW = new AnsiSystem("\033[;33m");
+    private static final String ENCODE_JOIN = ";";
 
-	public static final AnsiSystem BLUE = new AnsiSystem("\033[;34m");
+    private static final String ENCODE_START = "\033[";
 
-	public static final AnsiSystem MAGENTA = new AnsiSystem("\033[;35m");
+    private static final String ENCODE_END = "m";
 
-	public static final AnsiSystem CYAN = new AnsiSystem("\033[;36m");
+    private static final String RESET = "\033[0;m";
 
-	public static final AnsiSystem WHITE = new AnsiSystem("\033[;37m");
+    private String code;
 
-	public AnsiSystem(String code) {
-		this.code = code;
-	}
+    public AnsiSystem(String code) {
+        this.code = code;
+    }
 
-	public AnsiSystem(AnsiConfig config) {
-		this.code = encode(config);
-	}
+    public AnsiSystem(AnsiConfig config) {
+        this.code = encode(config);
+    }
 
-	public void print(String message) {
-		System.out.print(code + message + RESET);
-	}
+    private String encode(AnsiConfig config) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(ENCODE_START);
+        if (config.isBold()) {
+            sb.append(ENCODE_JOIN).append(AnsiSgr.BOLD.getCode());
+        }
+        if (config.isItalic()) {
+            sb.append(ENCODE_JOIN).append(AnsiSgr.ITALIC.getCode());
+        }
+        if (config.isUnderline()) {
+            sb.append(ENCODE_JOIN).append(AnsiSgr.UNDERLINE.getCode());
+        }
+        if (config.isSlowBlink()) {
+            sb.append(ENCODE_JOIN).append(AnsiSgr.SLOW_BLINK.getCode());
+        } else {
+            if (config.isRapidBlink()) {
+                sb.append(ENCODE_JOIN).append(AnsiSgr.RAPID_BLINK.getCode());
+            }
+        }
+        if (config.isReverseVideo()) {
+            sb.append(ENCODE_JOIN).append(AnsiSgr.REVERSE_VIDEO.getCode());
+        }
+        if (config.isCanceal()) {
+            sb.append(ENCODE_JOIN).append(AnsiSgr.CONCEAL.getCode());
+        }
+        if (config.getColor() != null) {
+            AnsiColor color = AnsiColor.valueOf(config.getColor().name());
+            if (StringUtils.isNotBlank(color.getCode())) {
+                sb.append(ENCODE_JOIN).append(color.getCode());
+            }
+        }
+        if (config.getBgColor() != null) {
+            AnsiBgColor color = AnsiBgColor.valueOf(config.getBgColor().name());
+            if (StringUtils.isNotBlank(color.getCode())) {
+                sb.append(ENCODE_JOIN).append(color.getCode());
+            }
+        }
+        sb.append(ENCODE_END);
+        return sb.toString();
+    }
 
-	public void println(String message) {
-		System.out.println(code + message + RESET);
-	}
+    public void print(String message) {
+        System.out.print(code + message + RESET);
+    }
 
-	private String encode(AnsiConfig config) {
-		StringBuilder sb = new StringBuilder();
-		sb.append(ENCODE_START);
-		if (config.isBold()) {
-			sb.append(ENCODE_JOIN).append(AnsiSgr.BOLD.getCode());
-		}
-		if (config.isItalic()) {
-			sb.append(ENCODE_JOIN).append(AnsiSgr.ITALIC.getCode());
-		}
-		if (config.isUnderline()) {
-			sb.append(ENCODE_JOIN).append(AnsiSgr.UNDERLINE.getCode());
-		}
-		if (config.isSlowBlink()) {
-			sb.append(ENCODE_JOIN).append(AnsiSgr.SLOW_BLINK.getCode());
-		} else {
-			if (config.isRapidBlink()) {
-				sb.append(ENCODE_JOIN).append(AnsiSgr.RAPID_BLINK.getCode());
-			}
-		}
-		if (config.isReverseVideo()) {
-			sb.append(ENCODE_JOIN).append(AnsiSgr.REVERSE_VIDEO.getCode());
-		}
-		if (config.isCanceal()) {
-			sb.append(ENCODE_JOIN).append(AnsiSgr.CONCEAL.getCode());
-		}
-		if (config.getColor() != null) {
-			AnsiColor color = AnsiColor.valueOf(config.getColor().name());
-			if (StringUtils.isNotBlank(color.getCode())) {
-				sb.append(ENCODE_JOIN).append(color.getCode());
-			}
-		}
-		if (config.getBgColor() != null) {
-			AnsiBgColor color = AnsiBgColor.valueOf(config.getBgColor().name());
-			if (StringUtils.isNotBlank(color.getCode())) {
-				sb.append(ENCODE_JOIN).append(color.getCode());
-			}
-		}
-		sb.append(ENCODE_END);
-		return sb.toString();
-	}
+    public void println(String message) {
+        System.out.println(code + message + RESET);
+    }
 
-	public String getCode() {
-		return code;
-	}
+    public String getCode() {
+        return code;
+    }
 
-	public void setCode(String code) {
-		this.code = code;
-	}
+    public void setCode(String code) {
+        this.code = code;
+    }
 
-	/**
-	 * Ansi 配置
-	 */
-	public static class AnsiConfig {
+    /**
+     * Ansi 配置
+     */
+    public static class AnsiConfig {
 
-		private boolean bold;
+        private boolean bold;
 
-		private boolean italic;
+        private boolean italic;
 
-		private boolean underline;
+        private boolean underline;
 
-		private boolean slowBlink;
+        private boolean slowBlink;
 
-		private boolean rapidBlink;
+        private boolean rapidBlink;
 
-		private boolean reverseVideo;
+        private boolean reverseVideo;
 
-		private boolean canceal;
+        private boolean canceal;
 
-		private Color color;
+        private Color color;
 
-		private Color bgColor;
+        private Color bgColor;
 
-		public AnsiConfig() {
-			this.bold = false;
-			this.italic = false;
-			this.underline = false;
-			this.slowBlink = false;
-			this.rapidBlink = false;
-			this.reverseVideo = false;
-			this.canceal = false;
-			this.color = Color.DEFAULT;
-			this.bgColor = Color.DEFAULT;
-		}
+        public AnsiConfig() {
+            this.bold = false;
+            this.italic = false;
+            this.underline = false;
+            this.slowBlink = false;
+            this.rapidBlink = false;
+            this.reverseVideo = false;
+            this.canceal = false;
+            this.color = Color.DEFAULT;
+            this.bgColor = Color.DEFAULT;
+        }
 
-		public AnsiConfig(boolean bold, boolean italic, boolean underline, boolean slowBlink, boolean rapidBlink,
-			boolean reverseVideo, boolean canceal, Color color, Color bgColor) {
-			this.bold = bold;
-			this.italic = italic;
-			this.underline = underline;
-			this.slowBlink = slowBlink;
-			this.rapidBlink = rapidBlink;
-			this.reverseVideo = reverseVideo;
-			this.canceal = canceal;
-			this.color = color;
-			this.bgColor = bgColor;
-		}
+        public AnsiConfig(boolean bold, boolean italic, boolean underline, boolean slowBlink, boolean rapidBlink,
+            boolean reverseVideo, boolean canceal, Color color, Color bgColor) {
+            this.bold = bold;
+            this.italic = italic;
+            this.underline = underline;
+            this.slowBlink = slowBlink;
+            this.rapidBlink = rapidBlink;
+            this.reverseVideo = reverseVideo;
+            this.canceal = canceal;
+            this.color = color;
+            this.bgColor = bgColor;
+        }
 
-		public boolean isBold() {
-			return bold;
-		}
+        @Override
+        public String toString() {
+            return "AnsiParam{" +
+                "bold=" + bold +
+                ", italic=" + italic +
+                ", underline=" + underline +
+                ", slowBlink=" + slowBlink +
+                ", rapidBlink=" + rapidBlink +
+                ", reverseVideo=" + reverseVideo +
+                ", canceal=" + canceal +
+                ", color=" + color +
+                ", bgColor=" + bgColor +
+                '}';
+        }
 
-		public void setBold(boolean bold) {
-			this.bold = bold;
-		}
+        public boolean isBold() {
+            return bold;
+        }
 
-		public boolean isItalic() {
-			return italic;
-		}
+        public void setBold(boolean bold) {
+            this.bold = bold;
+        }
 
-		public void setItalic(boolean italic) {
-			this.italic = italic;
-		}
+        public boolean isItalic() {
+            return italic;
+        }
 
-		public boolean isUnderline() {
-			return underline;
-		}
+        public void setItalic(boolean italic) {
+            this.italic = italic;
+        }
 
-		public void setUnderline(boolean underline) {
-			this.underline = underline;
-		}
+        public boolean isUnderline() {
+            return underline;
+        }
 
-		public boolean isSlowBlink() {
-			return slowBlink;
-		}
+        public void setUnderline(boolean underline) {
+            this.underline = underline;
+        }
 
-		public void setSlowBlink(boolean slowBlink) {
-			this.slowBlink = slowBlink;
-		}
+        public boolean isSlowBlink() {
+            return slowBlink;
+        }
 
-		public boolean isRapidBlink() {
-			return rapidBlink;
-		}
+        public void setSlowBlink(boolean slowBlink) {
+            this.slowBlink = slowBlink;
+        }
 
-		public void setRapidBlink(boolean rapidBlink) {
-			this.rapidBlink = rapidBlink;
-		}
+        public boolean isRapidBlink() {
+            return rapidBlink;
+        }
 
-		public boolean isReverseVideo() {
-			return reverseVideo;
-		}
+        public void setRapidBlink(boolean rapidBlink) {
+            this.rapidBlink = rapidBlink;
+        }
 
-		public void setReverseVideo(boolean reverseVideo) {
-			this.reverseVideo = reverseVideo;
-		}
+        public boolean isReverseVideo() {
+            return reverseVideo;
+        }
 
-		public boolean isCanceal() {
-			return canceal;
-		}
+        public void setReverseVideo(boolean reverseVideo) {
+            this.reverseVideo = reverseVideo;
+        }
 
-		public void setCanceal(boolean canceal) {
-			this.canceal = canceal;
-		}
+        public boolean isCanceal() {
+            return canceal;
+        }
 
-		public Color getColor() {
-			return color;
-		}
+        public void setCanceal(boolean canceal) {
+            this.canceal = canceal;
+        }
 
-		public void setColor(Color color) {
-			this.color = color;
-		}
+        public Color getColor() {
+            return color;
+        }
 
-		public Color getBgColor() {
-			return bgColor;
-		}
+        public void setColor(Color color) {
+            this.color = color;
+        }
 
-		public void setBgColor(Color bgColor) {
-			this.bgColor = bgColor;
-		}
+        public Color getBgColor() {
+            return bgColor;
+        }
 
-		@Override
-		public String toString() {
-			return "AnsiParam{" +
-				"bold=" + bold +
-				", italic=" + italic +
-				", underline=" + underline +
-				", slowBlink=" + slowBlink +
-				", rapidBlink=" + rapidBlink +
-				", reverseVideo=" + reverseVideo +
-				", canceal=" + canceal +
-				", color=" + color +
-				", bgColor=" + bgColor +
-				'}';
-		}
+        public void setBgColor(Color bgColor) {
+            this.bgColor = bgColor;
+        }
 
-	}
+    }
 
 }

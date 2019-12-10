@@ -1,44 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE log4j:configuration PUBLIC
-	"-//APACHE//DTD LOG4J 1.2//EN" "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
+  "-//APACHE//DTD LOG4J 1.2//EN" "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
 
-	<!-- 控制台输出 -->
-	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
-		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern"
-				value="%d{yyyy-MM-dd HH:mm:ss,SSS\} [%-5p] [%t] %c{36\}.%M - %m%n" />
-		</layout>
-		<filter class="org.apache.log4j.varia.LevelRangeFilter">
-			<param name="levelMin" value="warn" />
-			<param name="levelMax" value="error" />
-			<param name="AcceptOnMatch" value="true" />
-		</filter>
-	</appender>
+  <!-- 控制台输出 -->
+  <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern"
+        value="%d{yyyy-MM-dd HH:mm:ss,SSS\} [%-5p] [%t] %c{36\}.%M - %m%n" />
+    </layout>
+    <filter class="org.apache.log4j.varia.LevelRangeFilter">
+      <param name="levelMin" value="warn" />
+      <param name="levelMax" value="error" />
+      <param name="AcceptOnMatch" value="true" />
+    </filter>
+  </appender>
 
-	<appender name="ALL" class="org.apache.log4j.DailyRollingFileAppender">
-		<param name="File"
-			value="logs/javalib-log/log4j-output.log" />
-		<param name="Append" value="true" />
-		<param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />
-		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern"
-				value="%d{yyyy-MM-dd HH:mm:ss,SSS\} [%-5p] [%t] %c{36\}.%M - %m%n" />
-		</layout>
-		<filter class="org.apache.log4j.varia.LevelRangeFilter">
-			<param name="AcceptOnMatch" value="true" />
-		</filter>
-	</appender>
+  <appender name="ALL" class="org.apache.log4j.DailyRollingFileAppender">
+    <param name="File"
+      value="logs/javalib-log/log4j-output.log" />
+    <param name="Append" value="true" />
+    <param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern"
+        value="%d{yyyy-MM-dd HH:mm:ss,SSS\} [%-5p] [%t] %c{36\}.%M - %m%n" />
+    </layout>
+    <filter class="org.apache.log4j.varia.LevelRangeFilter">
+      <param name="AcceptOnMatch" value="true" />
+    </filter>
+  </appender>
 
-	<logger name="io.github.dunwu" additivity="false">
-		<!--		<level value="info" />-->
-		<appender-ref ref="ALL" />
-		<appender-ref ref="CONSOLE" />
-	</logger>
+  <logger name="io.github.dunwu" additivity="false">
+    <!--		<level value="info" />-->
+    <appender-ref ref="ALL" />
+    <appender-ref ref="CONSOLE" />
+  </logger>
 
-	<root>
-		<!--		<level value="warn" />-->
-		<appender-ref ref="ALL" />
-		<appender-ref ref="CONSOLE" />
-	</root>
+  <root>
+    <!--		<level value="warn" />-->
+    <appender-ref ref="ALL" />
+    <appender-ref ref="CONSOLE" />
+  </root>
 </log4j:configuration>

@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Server port="${tomcat.server.shutdownPort}" shutdown="SHUTDOWN">
-	<Listener className="org.apache.catalina.startup.VersionLoggerListener" />
-	<Listener className="org.apache.catalina.mbeans.GlobalResourcesLifecycleListener" />
-	<Listener className="org.apache.catalina.core.ThreadLocalLeakPreventionListener" />
-	<GlobalNamingResources>
+  <Listener className="org.apache.catalina.startup.VersionLoggerListener" />
+  <Listener className="org.apache.catalina.mbeans.GlobalResourcesLifecycleListener" />
+  <Listener className="org.apache.catalina.core.ThreadLocalLeakPreventionListener" />
+  <GlobalNamingResources>
 
-	</GlobalNamingResources>
+  </GlobalNamingResources>
 
-	<Service name="Catalina">
+  <Service name="Catalina">
 
-		<Executor name="tomcatThreadPool" namePrefix="catalina-exec-"
-			maxThreads="300" minSpareThreads="25" />
+    <Executor name="tomcatThreadPool" namePrefix="catalina-exec-"
+      maxThreads="300" minSpareThreads="25" />
 
-		<Connector port="${tomcat.connector.port}" protocol="HTTP/1.1" connectionTimeout="30000" acceptCount="500"
-			executor="tomcatThreadPool"
-			processorCache="300" />
+    <Connector port="${tomcat.connector.port}" protocol="HTTP/1.1" connectionTimeout="30000" acceptCount="500"
+      executor="tomcatThreadPool"
+      processorCache="300" />
 
-		<Engine name="localhost" defaultHost="localhost">
-			<Host name="localhost" createDirs="false" appBase="${tomcat.host.appBase}" unpackWARs="false"
-				autoDeploy="false"
-				deployOnStartup="false" failCtxIfServletStartFails="true">
-				<Context path="/javatool-server" docBase="${tomcat.context.docBase}" reloadable="false"
-					logEffectiveWebXml="false"
-					privileged="false"
-					swallowOutput="false" workDir="${catalina.base}/work">
-					<JarScanner>
-						<JarScanFilter pluggabilitySkip="*.jar" pluggabilityScan=""
-							defaultPluggabilityScan="true" tldSkip="*.jar"
-							tldScan="" defaultTldScan="true" />
-					</JarScanner>
-				</Context>
-			</Host>
-		</Engine>
-	</Service>
+    <Engine name="localhost" defaultHost="localhost">
+      <Host name="localhost" createDirs="false" appBase="${tomcat.host.appBase}" unpackWARs="false"
+        autoDeploy="false"
+        deployOnStartup="false" failCtxIfServletStartFails="true">
+        <Context path="/javatool-server" docBase="${tomcat.context.docBase}" reloadable="false"
+          logEffectiveWebXml="false"
+          privileged="false"
+          swallowOutput="false" workDir="${catalina.base}/work">
+          <JarScanner>
+            <JarScanFilter pluggabilitySkip="*.jar" pluggabilityScan=""
+              defaultPluggabilityScan="true" tldSkip="*.jar"
+              tldScan="" defaultTldScan="true" />
+          </JarScanner>
+        </Context>
+      </Host>
+    </Engine>
+  </Service>
 </Server>
 

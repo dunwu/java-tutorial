@@ -13,11 +13,11 @@ import lombok.Setter;
  */
 public class GetterAndSetterDemo {
 
-	@Getter
-	@Setter
-	private boolean employed = true;
+    @Getter
+    @Setter
+    private boolean employed = true;
 
-	@Setter(AccessLevel.PROTECTED)
-	private String name;
+    @Setter(AccessLevel.PROTECTED)
+    private String name;
 
 }

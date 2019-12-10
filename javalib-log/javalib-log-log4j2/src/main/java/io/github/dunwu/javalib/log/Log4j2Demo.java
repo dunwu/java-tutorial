@@ -12,16 +12,16 @@ import org.slf4j.LoggerFactory;
  */
 public class Log4j2Demo {
 
-	private static final Logger logger = LoggerFactory.getLogger(Log4j2Demo.class);
+    private static final Logger logger = LoggerFactory.getLogger(Log4j2Demo.class);
 
-	public static void main(String[] args) {
-		for (int i = 0; i < 10; i++) {
-			logger.trace("NO.{} 这是一条 {} 日志记录", i, "trace");
-			logger.debug("NO.{} 这是一条 {} 日志记录", i, "debug");
-			logger.info("NO.{} 这是一条 {} 日志记录", i, "info");
-			logger.warn("NO.{} 这是一条 {} 日志记录", i, "warn");
-			logger.error("NO.{} 这是一条 {} 日志记录", i, "error");
-		}
-	}
+    public static void main(String[] args) {
+        for (int i = 0; i < 10; i++) {
+            logger.trace("NO.{} 这是一条 {} 日志记录", i, "trace");
+            logger.debug("NO.{} 这是一条 {} 日志记录", i, "debug");
+            logger.info("NO.{} 这是一条 {} 日志记录", i, "info");
+            logger.warn("NO.{} 这是一条 {} 日志记录", i, "warn");
+            logger.error("NO.{} 这是一条 {} 日志记录", i, "error");
+        }
+    }
 
 }

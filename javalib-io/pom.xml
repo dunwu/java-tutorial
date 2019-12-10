@@ -1,71 +1,71 @@
 <?xml version="1.0"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-	xmlns="http://maven.apache.org/POM/4.0.0">
-	<modelVersion>4.0.0</modelVersion>
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+  xmlns="http://maven.apache.org/POM/4.0.0">
+  <modelVersion>4.0.0</modelVersion>
 
-	<groupId>io.github.dunwu</groupId>
-	<artifactId>javalib-io</artifactId>
-	<version>1.0.0</version>
+  <groupId>io.github.dunwu</groupId>
+  <artifactId>javalib-io</artifactId>
+  <version>1.0.0</version>
 
-	<name>javalib-io</name>
-	<description>IO Lib Examples</description>
+  <name>javalib-io</name>
+  <description>IO Lib Examples</description>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>1.8</java.version>
-		<maven.compiler.source>${java.version}</maven.compiler.source>
-		<maven.compiler.target>${java.version}</maven.compiler.target>
-	</properties>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <java.version>1.8</java.version>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+  </properties>
 
-	<dependencies>
-		<!--serialization-->
-		<dependency>
-			<groupId>de.ruedigermoeller</groupId>
-			<artifactId>fst</artifactId>
-			<version>2.56</version>
-		</dependency>
+  <dependencies>
+    <!--serialization-->
+    <dependency>
+      <groupId>de.ruedigermoeller</groupId>
+      <artifactId>fst</artifactId>
+      <version>2.56</version>
+    </dependency>
 
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>fastjson</artifactId>
-			<version>1.2.56</version>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>2.9.10.1</version>
-		</dependency>
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+      <version>1.2.56</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.9.10.1</version>
+    </dependency>
 
-		<!--utils-->
-		<dependency>
-			<groupId>io.github.dunwu</groupId>
-			<artifactId>dunwu-common</artifactId>
-			<version>0.4.8</version>
-		</dependency>
+    <!--utils-->
+    <dependency>
+      <groupId>io.github.dunwu</groupId>
+      <artifactId>dunwu-common</artifactId>
+      <version>0.4.8</version>
+    </dependency>
 
-		<!--test-->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.assertj</groupId>
-			<artifactId>assertj-core</artifactId>
-			<version>3.14.0</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+    <!--test-->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <version>3.14.0</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 
-	<build>
-		<resources>
-			<resource>
-				<filtering>true</filtering>
-				<directory>src/main/resources</directory>
-			</resource>
-		</resources>
-	</build>
+  <build>
+    <resources>
+      <resource>
+        <filtering>true</filtering>
+        <directory>src/main/resources</directory>
+      </resource>
+    </resources>
+  </build>
 
 </project>

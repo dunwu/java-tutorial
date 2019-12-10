@@ -10,19 +10,19 @@ import java.io.IOException;
  */
 public class FstDemo {
 
-	private static FSTConfiguration DEFAULT_CONFIG = FSTConfiguration.createDefaultConfiguration();
+    private static FSTConfiguration DEFAULT_CONFIG = FSTConfiguration.createDefaultConfiguration();
 
-	public static <T> byte[] serializ(T obj) {
-		return DEFAULT_CONFIG.asByteArray(obj);
-	}
+    public static <T> byte[] serializ(T obj) {
+        return DEFAULT_CONFIG.asByteArray(obj);
+    }
 
-	public static <T> T derialize(byte[] bytes, Class<T> clazz) throws IOException {
-		Object obj = DEFAULT_CONFIG.asObject(bytes);
-		if (clazz.isInstance(obj)) {
-			return (T) obj;
-		} else {
-			throw new IOException("derialize failed");
-		}
-	}
+    public static <T> T derialize(byte[] bytes, Class<T> clazz) throws IOException {
+        Object obj = DEFAULT_CONFIG.asObject(bytes);
+        if (clazz.isInstance(obj)) {
+            return (T) obj;
+        } else {
+            throw new IOException("derialize failed");
+        }
+    }
 
 }

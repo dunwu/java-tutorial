@@ -3,141 +3,141 @@
 <!-- logback中一共有5种有效级别，分别是TRACE、DEBUG、INFO、WARN、ERROR，优先级依次从低到高 -->
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
 
-	<property name="FILE_NAME" value="javalib-mvel" />
-	<property name="LOG_PATH" value="./" />
+  <property name="FILE_NAME" value="javalib-mvel" />
+  <property name="LOG_PATH" value="./" />
 
-	<!-- 重复信息过滤器 -->
-	<turboFilter class="ch.qos.logback.classic.turbo.DuplicateMessageFilter">
-		<AllowedRepetitions>10</AllowedRepetitions>
-		<CacheSize>100</CacheSize>
-	</turboFilter>
+  <!-- 重复信息过滤器 -->
+  <turboFilter class="ch.qos.logback.classic.turbo.DuplicateMessageFilter">
+    <AllowedRepetitions>10</AllowedRepetitions>
+    <CacheSize>100</CacheSize>
+  </turboFilter>
 
-	<!-- 控制台输出 -->
-	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-		<encoder>
-			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [javalib-mvel] [%thread] [%p] %c{36}#%M - %m%n</pattern>
-		</encoder>
-	</appender>
-	<!-- 将本项目内部日志按级别分别打印 -->
-	<appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<!-- 根据时间来制定滚动策略 -->
-		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>${LOG_PATH}/logs/${FILE_NAME}-error.%d{yyyy-MM-dd}.log</fileNamePattern>
-			<maxHistory>30</maxHistory>
-		</rollingPolicy>
+  <!-- 控制台输出 -->
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [javalib-mvel] [%thread] [%p] %c{36}#%M - %m%n</pattern>
+    </encoder>
+  </appender>
+  <!-- 将本项目内部日志按级别分别打印 -->
+  <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <!-- 根据时间来制定滚动策略 -->
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${LOG_PATH}/logs/${FILE_NAME}-error.%d{yyyy-MM-dd}.log</fileNamePattern>
+      <maxHistory>30</maxHistory>
+    </rollingPolicy>
 
-		<!-- 根据文件大小来制定滚动策略 -->
-		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-			<maxFileSize>10MB</maxFileSize>
-		</triggeringPolicy>
+    <!-- 根据文件大小来制定滚动策略 -->
+    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+      <maxFileSize>10MB</maxFileSize>
+    </triggeringPolicy>
 
-		<filter class="ch.qos.logback.classic.filter.LevelFilter">
-			<level>ERROR</level>
-			<onMatch>ACCEPT</onMatch>
-			<onMismatch>DENY</onMismatch>
-		</filter>
+    <filter class="ch.qos.logback.classic.filter.LevelFilter">
+      <level>ERROR</level>
+      <onMatch>ACCEPT</onMatch>
+      <onMismatch>DENY</onMismatch>
+    </filter>
 
-		<encoder>
-			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [javalib-mvel] [%thread] [%p] %c{36}#%M - %m%n</pattern>
-		</encoder>
-	</appender>
-	<appender name="WARN" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<!-- 根据时间来制定滚动策略 -->
-		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>${LOG_PATH}/logs/${FILE_NAME}-warn.%d{yyyy-MM-dd}.log</fileNamePattern>
-			<maxHistory>30</maxHistory>
-		</rollingPolicy>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [javalib-mvel] [%thread] [%p] %c{36}#%M - %m%n</pattern>
+    </encoder>
+  </appender>
+  <appender name="WARN" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <!-- 根据时间来制定滚动策略 -->
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${LOG_PATH}/logs/${FILE_NAME}-warn.%d{yyyy-MM-dd}.log</fileNamePattern>
+      <maxHistory>30</maxHistory>
+    </rollingPolicy>
 
-		<!-- 根据文件大小来制定滚动策略 -->
-		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-			<maxFileSize>10MB</maxFileSize>
-		</triggeringPolicy>
+    <!-- 根据文件大小来制定滚动策略 -->
+    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+      <maxFileSize>10MB</maxFileSize>
+    </triggeringPolicy>
 
-		<filter class="ch.qos.logback.classic.filter.LevelFilter">
-			<level>WARN</level>
-			<onMatch>ACCEPT</onMatch>
-			<onMismatch>DENY</onMismatch>
-		</filter>
+    <filter class="ch.qos.logback.classic.filter.LevelFilter">
+      <level>WARN</level>
+      <onMatch>ACCEPT</onMatch>
+      <onMismatch>DENY</onMismatch>
+    </filter>
 
-		<encoder>
-			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [javalib-mvel] [%thread] [%p] %c{36}#%M - %m%n</pattern>
-		</encoder>
-	</appender>
-	<appender name="INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<!-- 根据时间来制定滚动策略 -->
-		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>${LOG_PATH}/logs/${FILE_NAME}-info.%d{yyyy-MM-dd}.log</fileNamePattern>
-			<maxHistory>30</maxHistory>
-		</rollingPolicy>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [javalib-mvel] [%thread] [%p] %c{36}#%M - %m%n</pattern>
+    </encoder>
+  </appender>
+  <appender name="INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <!-- 根据时间来制定滚动策略 -->
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${LOG_PATH}/logs/${FILE_NAME}-info.%d{yyyy-MM-dd}.log</fileNamePattern>
+      <maxHistory>30</maxHistory>
+    </rollingPolicy>
 
-		<!-- 根据文件大小来制定滚动策略 -->
-		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-			<maxFileSize>10MB</maxFileSize>
-		</triggeringPolicy>
+    <!-- 根据文件大小来制定滚动策略 -->
+    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+      <maxFileSize>10MB</maxFileSize>
+    </triggeringPolicy>
 
-		<filter class="ch.qos.logback.classic.filter.LevelFilter">
-			<level>INFO</level>
-			<onMatch>ACCEPT</onMatch>
-			<onMismatch>DENY</onMismatch>
-		</filter>
+    <filter class="ch.qos.logback.classic.filter.LevelFilter">
+      <level>INFO</level>
+      <onMatch>ACCEPT</onMatch>
+      <onMismatch>DENY</onMismatch>
+    </filter>
 
-		<encoder>
-			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [javalib-mvel] [%thread] [%p] %c{36}#%M - %m%n</pattern>
-		</encoder>
-	</appender>
-	<appender name="DEBUG" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<!-- 根据时间来制定滚动策略 -->
-		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>${LOG_PATH}/logs/${FILE_NAME}-debug.%d{yyyy-MM-dd}.log</fileNamePattern>
-			<maxHistory>30</maxHistory>
-		</rollingPolicy>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [javalib-mvel] [%thread] [%p] %c{36}#%M - %m%n</pattern>
+    </encoder>
+  </appender>
+  <appender name="DEBUG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <!-- 根据时间来制定滚动策略 -->
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${LOG_PATH}/logs/${FILE_NAME}-debug.%d{yyyy-MM-dd}.log</fileNamePattern>
+      <maxHistory>30</maxHistory>
+    </rollingPolicy>
 
-		<!-- 根据文件大小来制定滚动策略 -->
-		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-			<maxFileSize>10MB</maxFileSize>
-		</triggeringPolicy>
+    <!-- 根据文件大小来制定滚动策略 -->
+    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+      <maxFileSize>10MB</maxFileSize>
+    </triggeringPolicy>
 
-		<filter class="ch.qos.logback.classic.filter.LevelFilter">
-			<level>DEBUG</level>
-			<onMatch>ACCEPT</onMatch>
-			<onMismatch>DENY</onMismatch>
-		</filter>
+    <filter class="ch.qos.logback.classic.filter.LevelFilter">
+      <level>DEBUG</level>
+      <onMatch>ACCEPT</onMatch>
+      <onMismatch>DENY</onMismatch>
+    </filter>
 
-		<encoder>
-			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [javalib-mvel] [%thread] [%p] %c{36}#%M - %m%n</pattern>
-		</encoder>
-	</appender>
-	<appender name="TRACE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<!-- 根据时间来制定滚动策略 -->
-		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>${LOG_PATH}/logs/${FILE_NAME}-trace.%d{yyyy-MM-dd}.log</fileNamePattern>
-			<maxHistory>30</maxHistory>
-		</rollingPolicy>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [javalib-mvel] [%thread] [%p] %c{36}#%M - %m%n</pattern>
+    </encoder>
+  </appender>
+  <appender name="TRACE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <!-- 根据时间来制定滚动策略 -->
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${LOG_PATH}/logs/${FILE_NAME}-trace.%d{yyyy-MM-dd}.log</fileNamePattern>
+      <maxHistory>30</maxHistory>
+    </rollingPolicy>
 
-		<!-- 根据文件大小来制定滚动策略 -->
-		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-			<maxFileSize>10MB</maxFileSize>
-		</triggeringPolicy>
+    <!-- 根据文件大小来制定滚动策略 -->
+    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+      <maxFileSize>10MB</maxFileSize>
+    </triggeringPolicy>
 
-		<filter class="ch.qos.logback.classic.filter.LevelFilter">
-			<level>TRACE</level>
-			<onMatch>ACCEPT</onMatch>
-			<onMismatch>DENY</onMismatch>
-		</filter>
+    <filter class="ch.qos.logback.classic.filter.LevelFilter">
+      <level>TRACE</level>
+      <onMatch>ACCEPT</onMatch>
+      <onMismatch>DENY</onMismatch>
+    </filter>
 
-		<encoder>
-			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [javalib-mvel] [%thread] [%p] %c{36}#%M - %m%n</pattern>
-		</encoder>
-	</appender>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [javalib-mvel] [%thread] [%p] %c{36}#%M - %m%n</pattern>
+    </encoder>
+  </appender>
 
-	<logger name="io.github.dunwu.javalib" level="TRACE">
-		<appender-ref ref="ERROR" />
-		<appender-ref ref="WARN" />
-		<appender-ref ref="INFO" />
-		<appender-ref ref="DEBUG" />
-		<appender-ref ref="TRACE" />
-	</logger>
-	<root level="DEBUG">
-		<appender-ref ref="STDOUT" />
-	</root>
+  <logger name="io.github.dunwu.javalib" level="TRACE">
+    <appender-ref ref="ERROR" />
+    <appender-ref ref="WARN" />
+    <appender-ref ref="INFO" />
+    <appender-ref ref="DEBUG" />
+    <appender-ref ref="TRACE" />
+  </logger>
+  <root level="DEBUG">
+    <appender-ref ref="STDOUT" />
+  </root>
 </configuration>

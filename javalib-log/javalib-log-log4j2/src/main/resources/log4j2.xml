@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN" monitorInterval="30">
-	<Properties>
-		<Property name="PID">????</Property>
-		<property name="DIR_NAME" value="javalib-log" />
-		<property name="FILE_NAME" value="log4j2-output" />
-		<Property name="PATTERN"><![CDATA[
+  <Properties>
+    <Property name="PID">????</Property>
+    <property name="DIR_NAME" value="javalib-log" />
+    <property name="FILE_NAME" value="log4j2-output" />
+    <Property name="PATTERN"><![CDATA[
 			%d{yyyy-MM-dd HH:mm:ss.SSS} [javalib] [%t] [%-5level] %c{36}#%M - %msg%n
 		]]></Property>
-	</Properties>
-	<Appenders>
-		<!-- 控制台输出 -->
-		<Console name="CONSOLE" target="SYSTEM_OUT" follow="true">
-			<PatternLayout pattern="${PATTERN}" />
-		</Console>
+  </Properties>
+  <Appenders>
+    <!-- 控制台输出 -->
+    <Console name="CONSOLE" target="SYSTEM_OUT" follow="true">
+      <PatternLayout pattern="${PATTERN}" />
+    </Console>
 
-		<!-- 滚动日志输出 -->
-		<RollingFile name="ALL"
-			fileName="logs/${DIR_NAME}/${FILE_NAME}.log"
-			filePattern="logs/$${date:yyyy-MM}/${DIR_NAME}/${FILE_NAME}.%d{yyyy-MM-dd}.%i.log">
-			<!--设置日志格式-->
-			<PatternLayout>
-				<pattern>${PATTERN}</pattern>
-			</PatternLayout>
-			<!-- 设置日志文件分割策略 -->
-			<Policies>
-				<!-- 按照时间分割 -->
-				<TimeBasedTriggeringPolicy />
-				<!-- 文件最大100M -->
-				<SizeBasedTriggeringPolicy size="100 MB" />
-			</Policies>
-			<!--设置最大存档数-->
-			<DefaultRolloverStrategy max="20" />
-		</RollingFile>
-	</Appenders>
-	<Loggers>
-		<Logger name="io.github.dunwu" level="info">
-			<AppenderRef ref="ALL" />
-			<AppenderRef ref="CONSOLE" />
-		</Logger>
-		<Root level="warn">
-			<AppenderRef ref="CONSOLE" />
-		</Root>
-	</Loggers>
+    <!-- 滚动日志输出 -->
+    <RollingFile name="ALL"
+      fileName="logs/${DIR_NAME}/${FILE_NAME}.log"
+      filePattern="logs/$${date:yyyy-MM}/${DIR_NAME}/${FILE_NAME}.%d{yyyy-MM-dd}.%i.log">
+      <!--设置日志格式-->
+      <PatternLayout>
+        <pattern>${PATTERN}</pattern>
+      </PatternLayout>
+      <!-- 设置日志文件分割策略 -->
+      <Policies>
+        <!-- 按照时间分割 -->
+        <TimeBasedTriggeringPolicy />
+        <!-- 文件最大100M -->
+        <SizeBasedTriggeringPolicy size="100 MB" />
+      </Policies>
+      <!--设置最大存档数-->
+      <DefaultRolloverStrategy max="20" />
+    </RollingFile>
+  </Appenders>
+  <Loggers>
+    <Logger name="io.github.dunwu" level="info">
+      <AppenderRef ref="ALL" />
+      <AppenderRef ref="CONSOLE" />
+    </Logger>
+    <Root level="warn">
+      <AppenderRef ref="CONSOLE" />
+    </Root>
+  </Loggers>
 </Configuration>

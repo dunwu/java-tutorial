@@ -9,16 +9,16 @@ import lombok.ToString;
 @ToString(callSuper = true, exclude = "someExcludedField")
 public class ToStringDemo {
 
-	private boolean someBoolean = true;
+    private boolean someBoolean = true;
 
-	private String someStringField;
+    private String someStringField;
 
-	private float someExcludedField;
+    private float someExcludedField;
 
-	public ToStringDemo(boolean someBoolean, String someStringField, float someExcludedField) {
-		this.someBoolean = someBoolean;
-		this.someStringField = someStringField;
-		this.someExcludedField = someExcludedField;
-	}
+    public ToStringDemo(boolean someBoolean, String someStringField, float someExcludedField) {
+        this.someBoolean = someBoolean;
+        this.someStringField = someStringField;
+        this.someExcludedField = someExcludedField;
+    }
 
 }

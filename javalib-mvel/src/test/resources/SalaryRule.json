@@ -1,51 +1,51 @@
 {
-	"name": "salaryRule",
-	"rules": [
-		{
-			"name": "step1",
-			"action": "fee=0",
-			"condition": "salary<=3500"
-		},
-		{
-			"name": "step2",
-			"action": "fee=(salary-3500)*0.03",
-			"condition": "salary>3500 && salary<=5000"
-		},
-		{
-			"name": "step3",
-			"action": "fee=(salary-3500)*0.1-105",
-			"condition": "salary>5000 && salary<=8000",
-			"priority": 3
-		},
-		{
-			"name": "step4",
-			"action": "fee=(salary-3500)*0.2-555",
-			"condition": "salary>8000 && salary<=12500",
-			"priority": 4
-		},
-		{
-			"name": "step5",
-			"action": "fee=(salary-3500)*0.25-1005",
-			"condition": "salary>12500 && salary<=38500",
-			"priority": 5
-		},
-		{
-			"name": "step6",
-			"action": "fee=(salary-3500)*0.3-2755",
-			"condition": "salary>38500 && salary<=58500",
-			"priority": 6
-		},
-		{
-			"name": "step7",
-			"action": "fee=(salary-3500)*0.35-5505",
-			"condition": "salary>58500 && salary<=83500",
-			"priority": 7
-		},
-		{
-			"name": "step8",
-			"action": "fee=(salary-3500)*0.45-13505",
-			"condition": "salary>83500",
-			"priority": 8
-		}
-	]
+  "name": "salaryRule",
+  "rules": [
+    {
+      "name": "step1",
+      "action": "fee=0",
+      "condition": "salary<=3500"
+    },
+    {
+      "name": "step2",
+      "action": "fee=(salary-3500)*0.03",
+      "condition": "salary>3500 && salary<=5000"
+    },
+    {
+      "name": "step3",
+      "action": "fee=(salary-3500)*0.1-105",
+      "condition": "salary>5000 && salary<=8000",
+      "priority": 3
+    },
+    {
+      "name": "step4",
+      "action": "fee=(salary-3500)*0.2-555",
+      "condition": "salary>8000 && salary<=12500",
+      "priority": 4
+    },
+    {
+      "name": "step5",
+      "action": "fee=(salary-3500)*0.25-1005",
+      "condition": "salary>12500 && salary<=38500",
+      "priority": 5
+    },
+    {
+      "name": "step6",
+      "action": "fee=(salary-3500)*0.3-2755",
+      "condition": "salary>38500 && salary<=58500",
+      "priority": 6
+    },
+    {
+      "name": "step7",
+      "action": "fee=(salary-3500)*0.35-5505",
+      "condition": "salary>58500 && salary<=83500",
+      "priority": 7
+    },
+    {
+      "name": "step8",
+      "action": "fee=(salary-3500)*0.45-13505",
+      "condition": "salary>83500",
+      "priority": 8
+    }
+  ]
 }

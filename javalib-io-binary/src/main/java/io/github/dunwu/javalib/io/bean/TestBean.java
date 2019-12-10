@@ -26,34 +26,34 @@ import java.util.Map;
 @AllArgsConstructor
 public class TestBean implements Serializable {
 
-	private static final long serialVersionUID = -6473181683996762084L;
+    private static final long serialVersionUID = -6473181683996762084L;
 
-	private int i1;
+    private int i1;
 
-	private Integer i2;
+    private Integer i2;
 
-	private float f1;
+    private float f1;
 
-	private Double d1;
+    private Double d1;
 
-	private Date date1;
+    private Date date1;
 
-	private LocalDateTime date2;
+    private LocalDateTime date2;
 
-	private LocalDate date3;
+    private LocalDate date3;
 
-	private Color color;
+    private Color color;
 
-	private String[] strArray;
+    private String[] strArray;
 
-	private List<Integer> intList;
+    private List<Integer> intList;
 
-	private Map<String, Object> map;
+    private Map<String, Object> map;
 
-	public enum Color {
-		RED,
-		YELLOW,
-		BLUE
-	}
+    public enum Color {
+        RED,
+        YELLOW,
+        BLUE
+    }
 
 }

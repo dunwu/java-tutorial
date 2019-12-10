@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-	xmlns="http://maven.apache.org/POM/4.0.0">
-	<modelVersion>4.0.0</modelVersion>
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+  xmlns="http://maven.apache.org/POM/4.0.0">
+  <modelVersion>4.0.0</modelVersion>
 
-	<groupId>io.github.dunwu</groupId>
-	<artifactId>javalib-log</artifactId>
-	<version>1.0.0</version>
-	<packaging>pom</packaging>
-	<description>javalib 之日志库示例集锦</description>
+  <groupId>io.github.dunwu</groupId>
+  <artifactId>javalib-log</artifactId>
+  <version>1.0.0</version>
+  <packaging>pom</packaging>
+  <description>javalib 之日志库示例集锦</description>
 
-	<modules>
-		<module>javalib-log-log4j</module>
-		<module>javalib-log-log4j2</module>
-		<module>javalib-log-logback</module>
-	</modules>
+  <modules>
+    <module>javalib-log-log4j</module>
+    <module>javalib-log-log4j2</module>
+    <module>javalib-log-logback</module>
+  </modules>
 </project>
