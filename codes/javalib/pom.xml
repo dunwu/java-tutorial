@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+  xmlns="http://maven.apache.org/POM/4.0.0">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>io.github.dunwu</groupId>
+  <artifactId>javalib</artifactId>
+  <version>1.0.0</version>
+  <packaging>pom</packaging>
+
+  <name>javalib</name>
+  <description>Java 常用 Lib 使用示例</description>
+
+  <modules>
+    <module>javalib-bean</module>
+    <module>javalib-cli</module>
+    <module>javalib-io</module>
+    <module>javalib-io-binary</module>
+    <module>javalib-io-json</module>
+    <module>javalib-log</module>
+    <module>javalib-mvel</module>
+    <module>javalib-text</module>
+    <module>javalib-test</module>
+  </modules>
+</project>

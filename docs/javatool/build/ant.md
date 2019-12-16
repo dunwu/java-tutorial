@@ -24,7 +24,7 @@
 
 Ant 是纯 Java 语言编写的，所以具有很好的跨平台性。
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-d9da2a06160103d0.png"/></div>
+![img](http://upload-images.jianshu.io/upload_images/3101171-d9da2a06160103d0.png)
 
 ## 下载和安装
 
@@ -34,7 +34,7 @@ ant 的官方下载地址：http://ant.apache.org/bindownload.cgi
 
 进入页面后，在下图的红色方框中可以下载最新版本。笔者下载的版本是 **apache-ant-1.9.4。**
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-72d3bc81cd29e68d.png"/></div>
+![img](http://upload-images.jianshu.io/upload_images/3101171-72d3bc81cd29e68d.png)
 
 ### 配置环境变量
 
@@ -44,15 +44,15 @@ ant 的官方下载地址：http://ant.apache.org/bindownload.cgi
 
 **ANT_HOME** C:/ apache-ant-1.9.4
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-682a8e16b82a7532.png"/></div>
+![img](http://upload-images.jianshu.io/upload_images/3101171-682a8e16b82a7532.png)
 
 **path ** C:/ apache-ant-1.9.4/bin
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-ea61070f97b5a7cc.png"/></div>
+![img](http://upload-images.jianshu.io/upload_images/3101171-ea61070f97b5a7cc.png)
 
 **classpath** C:/apache-ant-1.9.4/lib
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-5bc45dbe64602bc7.png"/></div>
+![img](http://upload-images.jianshu.io/upload_images/3101171-5bc45dbe64602bc7.png)
 
 ### 验证
 
@@ -75,7 +75,7 @@ ant 的官方下载地址：http://ant.apache.org/bindownload.cgi
 
 输入 **ant -version**，可以查看版本信息。
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-920e94f33b4d7dd9.png"/></div>
+![img](http://upload-images.jianshu.io/upload_images/3101171-920e94f33b4d7dd9.png)
 
 但如果出现 'ant' 不是内部或外部命令，也不是可运行的程序或批处理文件，说明安装失败：（可以重复前述步骤，直至安装成功。）
 
@@ -134,27 +134,27 @@ ant 的官方下载地址：http://ant.apache.org/bindownload.cgi
 
 **ant init**
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-0d37a1be0ef4238a.png"/></div>
+![img](http://upload-images.jianshu.io/upload_images/3101171-0d37a1be0ef4238a.png)
 
 在 D:\Temp\ant_test 路径下创建了一个 build 目录，执行成功。
 
 **ant compile**
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-6f35ed13331c87c9.png"/></div>
+![img](http://upload-images.jianshu.io/upload_images/3101171-6f35ed13331c87c9.png)
 
 提示错误，原来是在 build.xml 的所在目录下找不到 src 目录。好的，我们直接创建一个 src 目录，然后再次尝试。这次，执行成功。
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-9e84af99a8e952e0.png"/></div>
+![img](http://upload-images.jianshu.io/upload_images/3101171-9e84af99a8e952e0.png)
 
 **ant dist **
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-daeaf201bf05e097.png"/></div>
+![img](http://upload-images.jianshu.io/upload_images/3101171-daeaf201bf05e097.png)
 
 在 D:\Temp\ant_test 路径下创建了一个 dist 目录，执行成功。
 
 **ant clean**
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-be427613f7867513.png"/></div>
+![img](http://upload-images.jianshu.io/upload_images/3101171-be427613f7867513.png)
 
 清除创建的 build 和 dist 目录，执行成功。
 
@@ -164,7 +164,7 @@ ant 的官方下载地址：http://ant.apache.org/bindownload.cgi
 
 请留意一下 build.xml 中的内容。有部分 **target** 标签中含有 **depends** 关键字。
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-746a2156fbfb8d54.png"/></div>
+![img](http://upload-images.jianshu.io/upload_images/3101171-746a2156fbfb8d54.png)
 
 这表明，当前的 target 在执行时需要依赖其他的 target，必须先执行依赖的 target，然后再执行。
 

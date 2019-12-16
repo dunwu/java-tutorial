@@ -365,7 +365,7 @@ output {
 
 大功告成，此后，`io.github.dunwu.spring` 包中的 TRACE 及以上级别的日志信息都会被定向输出到 logstash 服务。
 
-<br><div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-cd876d79a14955b0.png"/></div><br>
+<br>![img](http://upload-images.jianshu.io/upload_images/3101171-cd876d79a14955b0.png)<br>
 
 接下来，就是 logback 的具体使用 ，如果对此不了解，不妨参考一下我的这篇博文：[细说 Java 主流日志工具库](https://github.com/dunwu/JavaStack/blob/master/docs/javalib/java-log.md) 。
 

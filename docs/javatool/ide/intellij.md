@@ -214,7 +214,7 @@ IntelliJ IDEA 作为一个以快捷键为中心的 IDE，为大多数操作建�
 
 ### Intellij IDEA 官方快捷键表
 
-<div align="center"><img src="http://upload-images.jianshu.io/upload_images/3101171-6a44121ae280a10e.png"/></div>
+![img](http://upload-images.jianshu.io/upload_images/3101171-6a44121ae280a10e.png)
 
 ## 插件
 

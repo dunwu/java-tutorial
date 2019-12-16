@@ -109,11 +109,11 @@ export PATH=\$MAVEN_HOME/bin:\$PATH
 
 执行 `source /etc/profile` ，立即生效
 
-<div align="center"><img src="http://dunwu.test.upcdn.net/snap/20181127195009.png!zp"/></div>
+![img](http://dunwu.test.upcdn.net/snap/20181127195009.png!zp)
 
 （3）检验是否安装成功，执行 `mvn -v` 命令，如果出现 maven 的版本信息，说明配置成功。
 
-<div align="center"><img src="http://dunwu.test.upcdn.net/snap/20181127195046.png!zp"/></div>
+![img](http://dunwu.test.upcdn.net/snap/20181127195046.png!zp)
 
 ### 本地仓储配置
 
@@ -123,7 +123,7 @@ export PATH=\$MAVEN_HOME/bin:\$PATH
 
 可以参照下图配置本地仓储位置。
 
-<div align="center"><img src="http://dunwu.test.upcdn.net/snap/20181127195104.png!zp"/></div>
+![img](http://dunwu.test.upcdn.net/snap/20181127195104.png!zp)
 
 ## 第一个 Maven 工程
 
@@ -133,15 +133,15 @@ export PATH=\$MAVEN_HOME/bin:\$PATH
 
 依次点击 File -> New -> Project 打开创建工程对话框，选择 Maven 工程。
 
-<div align="center"><img src="http://dunwu.test.upcdn.net/snap/1555414103572.png!zp"/></div>
+![img](http://dunwu.test.upcdn.net/snap/1555414103572.png!zp)
 
 （2）输入项目信息
 
-<div align="center"><img src="http://dunwu.test.upcdn.net/snap/1555415549748.png!zp"/></div>
+![img](http://dunwu.test.upcdn.net/snap/1555415549748.png!zp)
 
 （3）点击 Intellij 侧边栏中的 Maven 工具界面，有几个可以直接使用的 maven 命令，可以帮助你进行构建。
 
-<div align="center"><img src="http://dunwu.test.upcdn.net/snap/1555415806237.png!zp"/></div>
+![img](http://dunwu.test.upcdn.net/snap/1555415806237.png!zp)
 
 ### 在 Eclipse 中创建 Maven 工程
 
@@ -153,7 +153,7 @@ export PATH=\$MAVEN_HOME/bin:\$PATH
 
 点击 Help -> Eclipse Marketplace，搜索 maven 关键字，选择安装红框对应的 Maven 插件。
 
-<div align="center"><img src="http://dunwu.test.upcdn.net/snap/20181127195117.png!zp"/></div>
+![img](http://dunwu.test.upcdn.net/snap/20181127195117.png!zp)
 
 （2）Maven 环境配置
 
@@ -161,7 +161,7 @@ export PATH=\$MAVEN_HOME/bin:\$PATH
 
 如下图所示，配置 settings.xml 文件的位置
 
-<div align="center"><img src="http://dunwu.test.upcdn.net/snap/20181127195128.png!zp"/></div>
+![img](http://dunwu.test.upcdn.net/snap/20181127195128.png!zp)
 
 （3）创建 Maven 工程
 
@@ -169,7 +169,7 @@ File -> New -> Maven Project -> Next，在接下来的窗口中会看到一大�
 
 接下来设置项目的参数，如下：
 
-<div align="center"><img src="http://dunwu.test.upcdn.net/snap/20181127195151.png!zp"/></div>
+![img](http://dunwu.test.upcdn.net/snap/20181127195151.png!zp)
 
 **groupId**是项目组织唯一的标识符，实际对应 JAVA 的包的结构，是 main 目录里 java 的目录结构。
 
@@ -183,11 +183,11 @@ File -> New -> Maven Project -> Next，在接下来的窗口中会看到一大�
 
 在 Elipse 项目上右击 -> Run As 就能看到很多 Maven 操作。这些操作和 maven 命令是等效的。例如 Maven clean，等同于 mvn clean 命令。
 
-<div align="center"><img src="http://dunwu.test.upcdn.net/snap/20181127195208.png!zp"/></div>
+![img](http://dunwu.test.upcdn.net/snap/20181127195208.png!zp)
 
 你也可以点击 Maven build，输入组合命令，并保存下来。如下图：
 
-<div align="center"><img src="http://dunwu.test.upcdn.net/snap/20181127195219.png!zp"/></div>
+![img](http://dunwu.test.upcdn.net/snap/20181127195219.png!zp)
 
 **Maven 命令构建方式**
 
@@ -195,7 +195,7 @@ File -> New -> Maven Project -> Next，在接下来的窗口中会看到一大�
 
 进入工程所在目录，输入 maven 命令就可以了。
 
-<div align="center"><img src="http://dunwu.test.upcdn.net/snap/20181127195243.png!zp"/></div>
+![img](http://dunwu.test.upcdn.net/snap/20181127195243.png!zp)
 
 ## 使用指导
 
