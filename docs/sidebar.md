@@ -1,9 +1,6 @@
-## 前言
+# java-tutorial
 
 - [说明](README.md)
-
-## Java 教程
-
 - [JavaLib](javalib/README.md)
   - [Dozer 应用指南](javalib/dozer.md)
   - [Freemark 应用指南](javalib/freemark.md)

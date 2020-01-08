@@ -6,10 +6,10 @@
 - [Maven 实战问题和最佳实践](maven-action.md)
 - [Maven 教程之发布 jar 到私服或中央仓库](maven-deploy.md)
 
-## 学习资料
+## 资源
 
 - 官网
-  - [Maven 官网](https://maven.apache.org/)
   - [Maven Github](https://github.com/apache/maven)
+  - [Maven 官方文档](https://maven.apache.org/ref/current)
 - 书
-  - [《Maven 实战》](https://book.douban.com/subject/5345682/) - 国内最权威的 Maven 专家的力作，唯一一本哦！
+  - [《Maven 实战》](https://book.douban.com/subject/5345682/)

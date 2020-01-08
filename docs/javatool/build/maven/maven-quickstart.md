@@ -1,32 +1,37 @@
 # Maven 教程之入门指南
 
-> 📓 本文已归档到：「[blog](https://github.com/dunwu/blog/blob/master/source/_posts/java/javatool/build/maven/)」
+> **📦 本文已归档在 [java-tutorial](https://dunwu.github.io/java-tutorial/#/)**
 
 <!-- TOC depthFrom:2 depthTo:3 -->
 
-- [简介](#简介)
+- [一、Maven 简介](#一maven-简介)
   - [Maven 是什么](#maven-是什么)
   - [Maven 的生命周期](#maven-的生命周期)
   - [Maven 的标准工程结构](#maven-的标准工程结构)
   - [Maven 的"约定优于配置"](#maven-的约定优于配置)
   - [Maven 的版本规范](#maven-的版本规范)
-- [安装](#安装)
-  - [本地仓储配置](#本地仓储配置)
-- [第一个 Maven 工程](#第一个-maven-工程)
+- [二、Maven 安装](#二maven-安装)
+  - [环境准备](#环境准备)
+  - [下载解压](#下载解压)
+  - [环境变量](#环境变量)
+  - [检测安装成功](#检测安装成功)
+  - [Maven 配置文件](#maven-配置文件)
+- [三、快速入门](#三快速入门)
+  - [创建 Maven 工程](#创建-maven-工程)
   - [在 Intellij 中创建 Maven 工程](#在-intellij-中创建-maven-工程)
   - [在 Eclipse 中创建 Maven 工程](#在-eclipse-中创建-maven-工程)
-- [使用指导](#使用指导)
+- [四、使用说明](#四使用说明)
   - [如何添加依赖](#如何添加依赖)
   - [如何寻找 jar 包](#如何寻找-jar-包)
   - [如何使用 Maven 插件(Plugin)](#如何使用-maven-插件plugin)
   - [如何一次编译多个工程](#如何一次编译多个工程)
   - [常用 Maven 插件](#常用-maven-插件)
-  - [常用 Maven 命令](#常用-maven-命令)
-- [引用和引申](#引用和引申)
+  - [Maven 命令](#maven-命令)
+- [参考资料](#参考资料)
 
 <!-- /TOC -->
 
-## 简介
+## 一、Maven 简介
 
 ### Maven 是什么
 
@@ -79,6 +84,17 @@ maven 使用如下几个要素来唯一定位某一个输出物：
 - **version** - 一个项目的特定版本。
 - **packaging** - 项目的类型，默认是 jar，描述了项目打包后的输出。类型为 jar 的项目产生一个 JAR 文件，类型为 war 的项目产生一个 web 应用。
 
+例如：想在 maven 工程中引入 4.12 版本的 junit 包，添加如下依赖即可。
+
+```xml
+<dependency>
+  <groupId>junit</groupId>
+  <artifactId>junit</artifactId>
+  <version>4.12</version>
+  <scope>compile</scope>
+</dependency>
+```
+
 maven 有自己的版本规范，一般是如下定义 `<major version>`、`<minor version>`、`<incremental version>-<qualifier>` ，比如 1.2.3-beta-01。要说明的是，maven 自己判断版本的算法是 major,minor,incremental 部分用数字比 较，qualifier 部分用字符串比较，所以要小心 alpha-2 和 alpha-15 的比较关系，最好用 alpha-02 的格式。
 
 maven 在版本管理时候可以使用几个特殊的字符串 SNAPSHOT，LATEST，RELEASE。比如"1.0-SNAPSHOT"。各个部分的含义和处理逻辑如下说明：
@@ -87,17 +103,38 @@ maven 在版本管理时候可以使用几个特殊的字符串 SNAPSHOT，LATES
 - **LATEST** - 指某个特定构件的最新发布，这个发布可能是一个发布版，也可能是一个 snapshot 版，具体看哪个时间最后。
 - **RELEASE** - 指最后一个发布版。
 
-## 安装
+## 二、Maven 安装
 
-> [官网下载地址](http://maven.apache.org/download.cgi)
->
 > Linux 环境安装可以使用我写一键安装脚本：https://github.com/dunwu/linux-tutorial/tree/master/codes/linux/ops/service/maven
 
-安装步骤如下：
+### 环境准备
 
-（1）进入官网下载地址：https://maven.apache.org/download.cgi ，选择合适的版本下载并解压到本地。
+Maven 依赖于 Java，所以本地必须安装 JDK。
 
-（2）添加环境变量 MAVEN_HOME，值为 maven 的安装路径
+打开控制台，执行 `java -version` 确认本地已安装 JDK。
+
+```sh
+$ java -version
+java version "1.8.0_191"
+Java(TM) SE Runtime Environment (build 1.8.0_191-b12)
+Java HotSpot(TM) 64-Bit Server VM (build 25.191-b12, mixed mode)
+```
+
+### 下载解压
+
+进入 **[官网下载地址](https://maven.apache.org/download.cgi)**，选择合适版本，下载并解压到本地。解压命令如下：
+
+```sh
+# 以下解压命令分别针对 zip 包和 tar 包
+unzip apache-maven-3.6.3-bin.zip
+tar xzvf apache-maven-3.6.3-bin.tar.gz
+```
+
+### 环境变量
+
+添加环境变量 `MAVEN_HOME`，值为 Maven 的安装路径。
+
+#### 配置 Unix 系统环境变量
 
 输入 `vi /etc/profile` ，添加环境变量如下：
 
@@ -107,25 +144,135 @@ export MAVEN_HOME=/opt/maven/apache-maven-3.5.2
 export PATH=\$MAVEN_HOME/bin:\$PATH
 ```
 
-执行 `source /etc/profile` ，立即生效
+执行 `source /etc/profile` ，立即生效。
 
-![img](http://dunwu.test.upcdn.net/snap/20181127195009.png!zp)
+#### 配置 Windows 系统环境变量
 
-（3）检验是否安装成功，执行 `mvn -v` 命令，如果出现 maven 的版本信息，说明配置成功。
+右键 "计算机"，选择 "属性"，之后点击 "高级系统设置"，点击"环境变量"，来设置环境变量，有以下系统变量需要配置：
 
-![img](http://dunwu.test.upcdn.net/snap/20181127195046.png!zp)
+![](http://dunwu.test.upcdn.net/snap/20200108143017.png)
 
-### 本地仓储配置
+![](http://dunwu.test.upcdn.net/snap/20200108143038.png)
 
-从中央仓库下载的 jar 包，都会统一存放到本地仓库中。我们需要配置本地仓库的位置。
+### 检测安装成功
 
-打开 maven 安装目录，打开 conf 目录下的 setting.xml 文件。
+检验是否安装成功，执行 `mvn -v` 命令，如果输出类似下面的 maven 版本信息，说明配置成功。
 
-可以参照下图配置本地仓储位置。
+```sh
+$ mvn -v
+Apache Maven 3.5.4 (1edded0938998edf8bf061f1ceb3cfdeccf443fe; 2018-06-18T02:33:14+08:00)
+Maven home: /opt/maven/apache-maven-3.5.4
+Java version: 1.8.0_191, vendor: Oracle Corporation, runtime: /mnt/disk1/jdk1.8.0_191/jre
+Default locale: zh_CN, platform encoding: UTF-8
+OS name: "linux", version: "3.10.0-327.el7.x86_64", arch: "amd64", family: "unix"
+```
 
-![img](http://dunwu.test.upcdn.net/snap/20181127195104.png!zp)
+### Maven 配置文件
 
-## 第一个 Maven 工程
+`setting.xml` 文件是 Maven 的默认配置文件，其默认路径为：`<Maven 安装目录>/conf/settings.xml`。
+
+如果需要修改 Maven 配置，直接修改 `setting.xml` 并保持即可。
+
+例如：想要修改本地仓库位置可以按如下配置，这样，所有通过 Maven 下载打包的 jar 包都会存储在 `D:\maven\repo` 路径下。
+
+```xml
+<settings xmlns="http://maven.apache.org/SETTINGS/1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd">
+  <localRepository>D:\maven\repo<localRepository/>
+  <!-- 略 -->
+</settings>
+```
+
+## 三、快速入门
+
+### 创建 Maven 工程
+
+#### 初始化工程
+
+执行指令：
+
+```
+mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 -DinteractiveMode=false
+```
+
+会在当前路径新建一个名为 `my-app` 的 Maven 工程，其目录结构如下：
+
+```sh
+my-app
+|-- pom.xml
+`-- src
+    |-- main
+    |   `-- java
+    |       `-- com
+    |           `-- mycompany
+    |               `-- app
+    |                   `-- App.java
+    `-- test
+        `-- java
+            `-- com
+                `-- mycompany
+                    `-- app
+                        `-- AppTest.java
+```
+
+其中， `src/main/java` 目录包含 java 源码， `src/test/java` 目录包含 java 测试源码，而 `pom.xml` 文件是 maven 工程的配置文件。
+
+#### POM 配置
+
+pom.xml 是 maven 工程的配置文件，它描述了 maven 工程的构建方式，其配置信息是很复杂的，这里给一个最简单的配置示例：
+
+```xml
+project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.mycompany.app</groupId>
+  <artifactId>my-app</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <properties>
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>
+```
+
+#### 构建项目
+
+执行以下命令，即可构建项目：
+
+```
+mvn clean package -Dmaven.test.skip=true -B -U
+```
+
+构建成功后，会输出类似下面的信息：
+
+```
+...
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.953 s
+[INFO] Finished at: 2019-11-24T13:05:10+01:00
+[INFO] ------------------------------------------------------------------------
+```
+
+这时，在当前路径下会产生一个 `target` 目录，其中包含了构建的输出物，如：jar 包、class 文件等。
+
+这时，我们可以执行以下命令启动 jar 包：
+
+```
+java -cp target/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App
+```
 
 ### 在 Intellij 中创建 Maven 工程
 
@@ -197,7 +344,7 @@ File -> New -> Maven Project -> Next，在接下来的窗口中会看到一大�
 
 ![img](http://dunwu.test.upcdn.net/snap/20181127195243.png!zp)
 
-## 使用指导
+## 四、使用说明
 
 ### 如何添加依赖
 
@@ -374,9 +521,9 @@ exec-maven-plugin 很好理解，顾名思义，它能让你运行任何本地�
 
 很多 Maven 用户遇到过这样一个问题，当项目包含大量模块的时候，为他们集体更新版本就变成一件烦人的事情，到底有没有自动化工具能帮助完成这件 事情呢？（当然你可以使用 sed 之类的文本操作工具，不过不在本文讨论范围）答案是肯定的，versions-maven- plugin 提供了很多目标帮助你管理 Maven 项目的各种版本信息。例如最常用的，命令 **mvn versions:set -DnewVersion=1.1-SNAPSHOT** 就能帮助你把所有模块的版本更新到 1.1-SNAPSHOT。该插件还提供了其他一些很有用的目标，display-dependency- updates 能告诉你项目依赖有哪些可用的更新；类似的 display-plugin-updates 能告诉你可用的插件更新；然后 use- latest-versions 能自动帮你将所有依赖升级到最新版本。最后，如果你对所做的更改满意，则可以使用 **mvn versions:commit** 提交，不满意的话也可以使用 **mvn versions:revert** 进行撤销。
 
-### 常用 Maven 命令
+### Maven 命令
 
-> 更详细命令说明请参考：https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html
+常用 maven 命令清单：
 
 | **生命周期**                | **阶段描述**                                                                                                    |
 | --------------------------- | --------------------------------------------------------------------------------------------------------------- |
@@ -402,12 +549,24 @@ exec-maven-plugin 很好理解，顾名思义，它能让你运行任何本地�
 | mvn install                 | 安装包至本地仓库，以备本地的其它项目作为依赖使用                                                                |
 | mvn deploy                  | 复制最终的包至远程仓库，共享给其它开发人员和项目（通常和一次正式的发布相关）                                    |
 
-**使用参数**
+示例：最常用的 maven 构建命令
 
-`-Dmaven.test.skip=true`: 跳过单元测试(eg: mvn clean package -Dmaven.test.skip=true)
+```sh
+mvn clean install -Dmaven.test.skip=true -B -U
+```
 
-## 引用和引申
+清理本地输出物，并构建 maven 项目，最后将输出物归档在本地仓库。
 
-- [官方文档](https://maven.apache.org/index.html)
-- http://www.oschina.net/question/158170_29368
-- http://www.cnblogs.com/crazy-fox/archive/2012/02/09/2343722.html
+> :bulb: 想了解更多 maven 命令行细节可以参考官方文档：
+>
+> - [Maven 构建生命周期说明](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html)
+> - [Maven 命令行参数说明](https://maven.apache.org/ref/3.6.3/maven-embedder/cli.html)
+
+## 参考资料
+
+- [Maven Github](https://github.com/apache/maven)
+- [Maven 官方文档](https://maven.apache.org/ref/current)
+- [Maven in 5 Minutes](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html)
+- [Maven Getting Started Guide](https://maven.apache.org/guides/getting-started/index.html)
+- [maven 常见问题问答](http://www.oschina.net/question/158170_29368)
+- [常用 Maven 插件介绍](https://www.cnblogs.com/crazy-fox/archive/2012/02/09/2343722.html)

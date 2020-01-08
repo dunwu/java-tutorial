@@ -12,7 +12,7 @@
     "install": "gitbook install",
     "serve": "gitbook serve",
     "build": "npm run clean & gitbook build",
-    "pdf": "gitbook pdf"
+    "pdf": "gitbook pdf ."
   },
   "dependencies": {
     "gitbook-plugin-advanced-emoji": "^0.2.2",

@@ -1,6 +1,16 @@
-# Java 教程
+<p align="center">
+    <a href="https://dunwu.github.io/java-tutorial/#/" target="_blank" rel="noopener noreferrer">
+        <img src="http://dunwu.test.upcdn.net/common/logo/java-logo.png" alt="logo" width="100px">
+    </a>
+</p>
 
-> ☕ Java Tutorial 是本人在 Java 技术领域的十年积累。
+<p align="center">
+    <img src="https://badgen.net/github/license/dunwu/java-tutorial" alt="license">
+</p>
+
+<h1 align="center">JavaTutorial</h1>
+
+> ☕ **JavaTutorial** 是一个 Java 教程，汇集一个老司机在 Java 领域的十年积累。
 >
 > - 🔁 项目同步维护：[Github](https://github.com/dunwu/java-tutorial/) | [Gitee](https://gitee.com/turnon/java-tutorial/)
 > - 📖 电子书阅读：[Github Pages](https://dunwu.github.io/java-tutorial/) | [Gitee Pages](https://turnon.gitee.io/java-tutorial/)
