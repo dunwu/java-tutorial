@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- a tag library descriptor -->
+
+<taglib xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/j2ee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee web-jsptaglibrary_2_0.xsd"
+	version="2.0">
+
+	<tlibversion>1.0</tlibversion>
+	<jspversion>1.1</jspversion>
+	<shortname>taglib</shortname>
+	<uri>http://www.victorzhang.com/tags</uri>
+	<info>A simple tab library for the examples</info>
+
+	<tag>
+		<name>copyright</name>
+		<tagclass>io.github.dunwu.javaee.taglib.Copyright</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<info>Copyright tag.</info>
+	</tag>
+
+	<tag>
+		<name>hello</name>
+		<tagclass>io.github.dunwu.javaee.taglib.tags.HelloTag</tagclass>
+		<bodycontent>empty</bodycontent>
+		<info>Hello tag with parameters.</info>
+		<attribute>
+			<name>name</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>add</name>
+		<tagclass>io.github.dunwu.javaee.taglib.tags.AddTag</tagclass>
+		<bodycontent>empty</bodycontent>
+		<info>Add tag with parameters.</info>
+		<attribute>
+			<name>num1</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>num2</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>toLowerCase</name>
+		<tagclass>io.github.dunwu.javaee.taglib.tags.ToLowerCaseTag</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<info>Tag with body.</info>
+	</tag>
+
+	<tag>
+		<name>loop</name>
+		<tagclass>io.github.dunwu.javaee.taglib.tags.LoopTag</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<info>Tag with body.</info>
+	</tag>
+
+	<tag>
+		<name>dynamicAttribute</name>
+		<tagclass>io.github.dunwu.javaee.taglib.tags.DynamicAttributeTag</tagclass>
+		<bodycontent>empty</bodycontent>
+		<dynamic-attributes>true</dynamic-attributes>
+		<info>Tag with dynamic attribute.</info>
+	</tag>
+
+	<tag>
+		<name>table</name>
+		<tagclass>io.github.dunwu.javaee.taglib.tags.table.Table</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<info>Table tag.</info>
+		<attribute>
+			<name>items</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>url</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>column</name>
+		<tagclass>io.github.dunwu.javaee.taglib.tags.table.Column</tagclass>
+		<bodycontent>empty</bodycontent>
+		<info>Column tag.</info>
+		<attribute>
+			<name>property</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>label</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>multi</name>
+		<tagclass>io.github.dunwu.javaee.taglib.tags2.MultiTag</tagclass>
+		<bodycontent>empty</bodycontent>
+		<info>multi tag with parameters.</info>
+		<attribute>
+			<name>num1</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>num2</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>toUpperCase</name>
+		<tagclass>io.github.dunwu.javaee.taglib.tags2.ToUpperCaseTag</tagclass>
+		<bodycontent>tagdependent</bodycontent>
+		<info>body tag</info>
+	</tag>
+
+	<tag>
+		<name>multiAttribute</name>
+		<tagclass>io.github.dunwu.javaee.taglib.tags2.MultiAttributeTag</tagclass>
+		<bodycontent>tagdependent</bodycontent>
+		<info>multi attribute tag with parameters.</info>
+		<attribute>
+			<name>body1</name>
+			<required>false</required>
+			<fragment>true</fragment>
+		</attribute>
+		<attribute>
+			<name>body2</name>
+			<required>false</required>
+			<fragment>true</fragment>
+		</attribute>
+	</tag>
+
+</taglib>

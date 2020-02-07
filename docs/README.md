@@ -1,82 +1,76 @@
-<p align="center">
-    <a href="https://dunwu.github.io/java-tutorial/#/" target="_blank" rel="noopener noreferrer">
-        <img src="http://dunwu.test.upcdn.net/common/logo/java-logo.png" alt="logo" width="100px">
-    </a>
-</p>
+---
+home: true
+heroImage: http://dunwu.test.upcdn.net/common/logo/java-logo.png
+heroText: JAVA-TUTORIAL
+tagline: ☕ java-tutorial 是一个 Java 教程，汇集一个老司机在 Java 领域的十年积累。
+actionLink: /
+footer: CC-BY-SA-4.0 Licensed | Copyright © 2018-Now Dunwu
+---
 
-<p align="center">
-    <img src="https://badgen.net/github/license/dunwu/java-tutorial" alt="license">
-</p>
-
-<h1 align="center">JavaTutorial</h1>
-
-> ☕ **JavaTutorial** 是一个 Java 教程，汇集一个老司机在 Java 领域的十年积累。
+> ☕ **java-tutorial** 是一个 Java 教程，汇集一个老司机在 Java 领域的十年积累。
 >
 > - 🔁 项目同步维护：[Github](https://github.com/dunwu/java-tutorial/) | [Gitee](https://gitee.com/turnon/java-tutorial/)
 > - 📖 电子书阅读：[Github Pages](https://dunwu.github.io/java-tutorial/) | [Gitee Pages](https://turnon.gitee.io/java-tutorial/)
 
-## [JavaLib](javalib/README.md)
+## javacore
 
-> 各种主流 Java 库的应用。
+> 📚 [javacore](https://dunwu.github.io/javacore/) 是一个 Java 核心技术教程。内容包含：Java 基础特性、Java 高级特性、Java 并发、JVM、Java IO 等。
 
-- [Dozer 应用指南](javalib/dozer.md)
-- [Freemark 应用指南](javalib/freemark.md)
-- [Java 与 JSON](javalib/javalib-json.md)
-- [细说 Java 主流日志工具库](javalib/javalib-log.md)
-- [细说 Java 主流工具包](javalib/javalib-util.md)
-- [JavaMail 应用指南](javalib/javamail.md)
-- [Jsoup 应用指南](javalib/jsoup.md)
-- [JUnit5 应用指南](javalib/junit.md)
-- [Lombok 应用指南](javalib/lombok.md)
-- [Mockito 应用指南](javalib/mockito.md)
-- [Reflections 应用指南](javalib/reflections.md)
-- [Thumbnailator 应用指南](javalib/thumbnailator.md)
-- [ZXing 应用指南](javalib/zxing.md)
+## javaee
 
-## [JavaTool](javatool/README.md)
+> [☕ JavaEE](javaee/README.md) 技术是 Java Web 的基石
 
-> 各种主流 Java 工具的应用。
+- [JavaEE 面经](javaee/javaee-interview.md)
+- [Servlet](javaee/javaee-servlet.md)
+- [Jsp](javaee/javaee-jsp.md)
+- [Filter 和 Listener](javaee/javaee-filter-listener.md)
+- [Cookie 和 Session](javaee/javaee-cookie-sesion.md)
 
-- [构建工具](javatool/build/README.md)
-  - [Maven 教程 📚](javatool/build/maven/README.md)
-    - [Maven 快速指南](javatool/build/maven/maven-quickstart.md)
-    - [Maven 教程之 pom.xml 详解](javatool/build/maven/maven-pom.md)
-    - [Maven 教程之 settings.xml 详解](javatool/build/maven/maven-settings.md)
-    - [Maven 实战问题和最佳实践](javatool/build/maven/maven-action.md)
-    - [Maven 教程之发布 jar 到私服或中央仓库](javatool/build/maven/maven-deploy.md)
-    - [Maven 插件之代码检查](javatool/build/maven/maven-checkstyle-plugin.md)
-  - [Ant 简易教程](javatool/build/ant.md)
-- [搜索引擎 Elastic](javatool/elastic/README.md)
-  - [Elastic 技术栈快速入门](javatool/elastic/elastic-quickstart.md)
-  - [Elasticsearch 运维](javatool/elastic/elastic-elasticsearch-ops.md)
-  - [Beats 运维](javatool/elastic/elastic-beats-ops.md)
-  - [Kibana 运维](javatool/elastic/elastic-kibana-ops.md)
-  - [Logstash 运维](javatool/elastic/elastic-logstash-ops.md)
-- [Java IDE](javatool/ide/README.md)
-  - [Intellij IDEA 应用指南](javatool/ide/intellij.md)
-  - [Eclipse 应用指南](javatool/ide/eclipse.md)
-- **测试工具**
-  - [Jmeter 应用指南](javatool/test/jmeter.md)
+## javatech
 
-## [JavaCore 教程](https://dunwu.github.io/javacore/)
+> 📚 [javatech](https://dunwu.github.io/javatech/) 是一个 Java 应用技术教程。内容包含 Java 开发中常见应用技术，如：框架、缓存、消息队列、存储、安全、微服务、测试、服务器等。
 
-> Java 核心技术教程。内容包含：Java 基础特性、Java 高级特性、Java 并发、JVM、Java IO 等。
+## spring-tutorial
 
-## [JavaWeb 教程](https://dunwu.github.io/javaweb/)
+> 📚 [spring-tutorial](https://dunwu.github.io/spring-tutorial/) 是一个 Spring 实战教程。
 
-> Java Web 技术教程。内容包含：JavaEE、分布式应用技术等。
+## spring-boot-tutorial
 
-## [Spring 教程](https://dunwu.github.io/spring-tutorial/)
+> 📚 [Spring Boot 教程](https://dunwu.github.io/spring-boot-tutorial/) 是一个 Spring Boot 实战教程。
 
-> Spring 教程。
+## javatool
 
-## [Spring Boot 教程](https://dunwu.github.io/spring-boot-tutorial/)
+### 构建
 
-> Spring Boot 教程
+> Java 项目需要通过 [**构建工具**](javatool/build) 来管理项目依赖，完成编译、打包、发布、生成 JavaDoc 等任务。
+>
+> - 目前最主流的构建工具是 Maven，它的功能非常强大。
+> - Gradle 号称是要替代 Maven 等构件工具，它的版本管理确实简洁，但是需要学习 Groovy，学习成本比 Maven 高。
+> - Ant 功能比 Maven 和 Gradle 要弱，现代 Java 项目基本不用了，但也有一些传统的 Java 项目还在使用。
+
+- [Maven](javatool/build/maven) 📚
+- [Ant](javatool/build/ant.md)
+
+### IDE
+
+> 自动有了 [**IDE**](javatool/ide)，写代码从此就告别了刀耕火种的蛮荒时代。
+>
+> - [Eclipse](javatool/ide/eclipse.md) 是久负盛名的开源 Java IDE，我的学生时代一直使用它写 Java。
+> - 曾经抗拒从转 [Intellij Idea](javatool/ide/intellij-idea.md) ，但后来发现真香，不得不说，确实是目前最优秀的 Java IDE。
+> - 你可以在 [vscode](javatool/ide/vscode.md) 中写各种语言，只要安装相应插件即可。如果你的项目中使用了很多种编程语言，又懒得在多个 IDE 之间切换，那么就用 vscode 来一网打尽吧。
+
+- [Intellij Idea](javatool/ide/intellij-idea.md)
+- [Eclipse](javatool/ide/eclipse.md)
+- [vscode](javatool/ide/vscode.md)
+
+### 监控
+
+- [Arthas](javatool/monitor/arthas.md)
+- [SkyWalking](javatool/monitor/skywalking.md)
 
 ---
 
-## 相关技术栈
+## 其他技术栈
 
 - [db-tutorial](https://dunwu.github.io/db-tutorial/) - 是对数据库领域开发经验的总结。内容包含：关系型数据库和 Nosql 理论、Mysql、Redis 等。
 - [algorithm-tutorial](https://dunwu.github.io/algorithm-tutorial/) - 是对数据结构和算法的总结。内容包含：一些基本的数据结构、算法。

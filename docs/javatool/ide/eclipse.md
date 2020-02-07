@@ -1,19 +1,5 @@
 # Eclipse 应用指南
 
-<!-- TOC depthFrom:2 depthTo:2 -->
-
-- [代码智能提示](#代码智能提示)
-- [插件安装](#插件安装)
-- [基本设置](#基本设置)
-- [设置文本文件及 JSP 文件编码](#设置文本文件及-jsp-文件编码)
-- [设置 JDK 本地 JavaDOC API 路径及源码路径](#设置-jdk-本地-javadoc-api-路径及源码路径)
-- [设置 Servlet 源码或其它 Jar 包源码](#设置-servlet-源码或其它-jar-包源码)
-- [反编译插件 JD-Eclipse](#反编译插件-jd-eclipse)
-- [Validate 优化](#validate-优化)
-- [常用快捷键](#常用快捷键)
-
-<!-- /TOC -->
-
 ## 代码智能提示
 
 ### Java 智能提示

@@ -1,41 +1,8 @@
 # Maven 教程之 pom.xml 详解
 
-> 📦 本文已归档到：「[blog](https://github.com/dunwu/blog/blob/master/source/_posts/java/javatool/build/maven/)」
-
-<!-- TOC depthFrom:2 depthTo:3 -->
-
-- [简介](#简介)
-  - [什么是 pom？](#什么是-pom)
-  - [pom 配置一览](#pom-配置一览)
-- [基本配置](#基本配置)
-  - [maven 坐标](#maven-坐标)
-- [依赖配置](#依赖配置)
-  - [dependencies](#dependencies)
-  - [parent](#parent)
-  - [dependencyManagement](#dependencymanagement)
-  - [modules](#modules)
-  - [properties](#properties)
-- [构建配置](#构建配置)
-  - [build](#build)
-  - [reporting](#reporting)
-- [项目信息](#项目信息)
-- [环境配置](#环境配置)
-  - [issueManagement](#issuemanagement)
-  - [ciManagement](#cimanagement)
-  - [mailingLists](#mailinglists)
-  - [scm](#scm)
-  - [prerequisites](#prerequisites)
-  - [repositories](#repositories)
-  - [pluginRepositories](#pluginrepositories)
-  - [distributionManagement](#distributionmanagement)
-  - [profiles](#profiles)
-- [参考资料](#参考资料)
-
-<!-- /TOC -->
-
 ## 简介
 
-### 什么是 pom？
+### 什么是 pom
 
 **POM 是 Project Object Model 的缩写，即项目对象模型。**
 

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>io.github.dunwu</groupId>
+    <artifactId>dunwu-parent</artifactId>
+    <version>0.5.1</version>
+  </parent>
+
+  <groupId>io.github.dunwu.javaee</groupId>
+	<artifactId>javaee</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+  <name>JAVAEE</name>
+
+	<modules>
+		<module>javaee-servlet</module>
+		<module>javaee-jsp</module>
+		<module>javaee-session</module>
+		<module>javaee-filter</module>
+		<module>javaee-listener</module>
+		<module>javaee-jstl</module>
+		<module>javaee-taglib</module>
+		<module>javaee-oss</module>
+		<module>javaee-websocket</module>
+	</modules>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.6</java.version>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+
+		<!-- 核心库版本 -->
+<!--		<jetty.version>9.4.12.v20180830</jetty.version>-->
+<!--		<spring.version>4.1.4.RELEASE</spring.version>-->
+<!--		<shiro.version>1.4.0</shiro.version>-->
+<!--		<junit.version>4.12</junit.version>-->
+
+		<fasterxml.jackson>2.9.5</fasterxml.jackson>
+	</properties>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.12</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.tomcat.maven</groupId>
+					<artifactId>tomcat7-maven-plugin</artifactId>
+					<version>2.2</version>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.jetty</groupId>
+					<artifactId>jetty-maven-plugin</artifactId>
+					<version>${jetty.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>aspectj-maven-plugin</artifactId>
+					<!-- Have to use version 1.2 since version 1.3 does not appear to work with ITDs -->
+					<version>1.2</version>
+					<dependencies>
+						<!-- You must use Maven 2.0.9 or above or these are ignored (see MNG-2972) -->
+						<dependency>
+							<groupId>org.aspectj</groupId>
+							<artifactId>aspectjrt</artifactId>
+							<version>1.8.1</version>
+						</dependency>
+						<dependency>
+							<groupId>org.aspectj</groupId>
+							<artifactId>aspectjtools</artifactId>
+							<version>1.8.1</version>
+						</dependency>
+					</dependencies>
+					<executions>
+						<execution>
+							<goals>
+								<goal>compile</goal>
+								<goal>test-compile</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<outxml>true</outxml>
+						<source>${java.version}</source>
+						<target>${java.version}</target>
+					</configuration>
+				</plugin>
+				<!--本插件为mybatis-generator，使用mvn mybatis-generator:generate命令可自动生成mybatis代码-->
+				<plugin>
+					<groupId>org.mybatis.generator</groupId>
+					<artifactId>mybatis-generator-maven-plugin</artifactId>
+					<version>1.3.5</version>
+					<dependencies>
+						<dependency>
+							<groupId>org.mybatis.generator</groupId>
+							<artifactId>mybatis-generator-core</artifactId>
+							<version>1.3.5</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>

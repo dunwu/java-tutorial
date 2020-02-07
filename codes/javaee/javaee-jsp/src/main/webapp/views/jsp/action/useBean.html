@@ -1,0 +1,38 @@
+<html>
+<head>
+	<title>Java Bean Actions</title>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+	<link href='css/style.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<br/>
+<div align="center">
+	<form action="useBean.jsp" method="post">
+		<fieldset style='width: 300'>
+			<legend>请填写 Person 信息</legend>
+			<table>
+				<tr>
+					<td style="font-weight: bold;">姓名：</td>
+					<td><input name="name" style="width: 200px;" type="text" value=""/></td>
+				</tr>
+				<tr>
+					<td style="font-weight: bold;">年龄：</td>
+					<td><input name="age" style="width: 200px;" type="text" value=""/></td>
+				</tr>
+				<tr>
+					<td style="font-weight: bold;">性别：</td>
+					<td><input name="sex" type="radio" value="Male"/>Male <input name="sex"
+																																			 type="radio" value="Female"/>Female
+					</td>
+				</tr>
+				<tr>
+					<td style="font-weight: bold;"></td>
+					<td><input class="button" name="search" type="submit" value=" 提交 Person 信息 ">
+					</td>
+				</tr>
+			</table>
+		</fieldset>
+	</form>
+</div>
+</body>
+</html>

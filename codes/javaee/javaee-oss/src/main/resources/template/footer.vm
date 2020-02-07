@@ -1,0 +1,16 @@
+#set ($company = "Apache")
+#set ($year = "2016")
+<tr>
+  <td bgcolor="#000000">
+    <table width="460" height="55" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tbody>
+      <tr valign="top">
+        <td width="350" valign="middle">
+          <span
+              style="color: #999999; font-size: 12px; font-family: Verdana, Arial, Helvetica, sans-serif;">Copyright $company $year. 保留所有权利。</span>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </td>
+</tr>

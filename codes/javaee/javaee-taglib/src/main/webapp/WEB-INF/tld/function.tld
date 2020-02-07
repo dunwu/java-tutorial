@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/j2ee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+	version="2.0">
+
+	<description>custom functions library</description>
+	<display-name>custom functions</display-name>
+	<tlib-version>1.1</tlib-version>
+	<short-name>function</short-name>
+	<uri>http://www.victorzhang.com/function</uri>
+
+	<function>
+		<description>
+		</description>
+		<name>length</name>
+		<function-class>
+			io.github.dunwu.javaee.taglib.function.Function
+		</function-class>
+		<function-signature>
+			int length(java.lang.Object)
+		</function-signature>
+		<example>
+			${fn:length(string)}
+		</example>
+	</function>
+
+	<function>
+		<description>
+		</description>
+		<name>substring</name>
+		<function-class>
+			io.github.dunwu.javaee.taglib.function.Function
+		</function-class>
+		<function-signature>
+			java.lang.String substring(java.lang.String, int)
+		</function-signature>
+		<example>
+			${fn:length(string, 3)}
+		</example>
+	</function>
+
+</taglib>

@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>webscocket test</title>
+
+	<script type="text/javascript">
+    /* websocket 示例 */
+    function WebSocketTest() {
+
+      var content = document.getElementById('content');
+
+      if ('WebSocket' in window) {
+        var node = document.createElement('p');
+        node.innerText = '您的浏览器支持 WebSocket!';
+        content.appendChild(node);
+
+        // 打开一个 web socket
+        var ws = new WebSocket('ws://localhost:8089/auth/user/aaa');
+
+        ws.onopen = function () {
+          // Web Socket 已连接上，使用 send() 方法发送数据
+          ws.send('发送数据');
+          var node = document.createElement('p');
+          node.innerText = '数据发送中...';
+          content.appendChild(node)
+        };
+
+        ws.onmessage = function (evt) {
+          var received_msg = evt.data;
+          var node = document.createElement('p');
+          node.innerText = received_msg;
+          content.appendChild(node)
+        }
+
+        //        ws.onclose = function () {
+        //          // 关闭 websocket
+        //          alert("连接已关闭...");
+        //        };
+      } else {
+        // 浏览器不支持 WebSocket
+        var node = document.createElement('p');
+        node.innerText = '您的浏览器不支持 WebSocket!';
+        content.appendChild(node)
+      }
+    }
+	</script>
+
+</head>
+<body>
+
+<div id="sse">
+	<a href="javascript:WebSocketTest()">运行 WebSocket</a>
+</div>
+
+<div id="content">
+</div>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+body, div, td, input {
+	font-size: 12px;
+	margin: 0px;
+}
+
+select {
+	height: 20px;
+	width: 300px;
+}
+
+.title {
+	font-size: 16px;
+	padding: 10px;
+	margin: 10px;
+	width: 80%;
+}
+
+.text {
+	height: 20px;
+	width: 300px;
+	border: 1px solid #AAAAAA;
+}
+
+.line {
+	margin: 2px;
+}
+
+.leftDiv {
+	width: 110px;
+	float: left;
+	height: 22px;
+	line-height: 22px;
+	font-weight: bold;
+}
+
+.rightDiv {
+	height: 22px;
+	line-height: 22px;
+}
+
+.button {
+	color: #FFFFFF;
+	font-weight: bold;
+	font-size: 11px;
+	text-align: center;
+	padding: .17em 0 .2em .17em;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #99CCFF #115599 #115599 #99CCFF;
+	background: #6699CC url(../images/bg-btn-blue.gif) repeat-x;
+}

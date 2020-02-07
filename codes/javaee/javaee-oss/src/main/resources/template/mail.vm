@@ -1,0 +1,140 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <base target="_blank">
+  <style type="text/css">
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+  <style id="cloudAttachStyle" type="text/css">
+    #divNeteaseBigAttach, #divNeteaseBigAttach_bak {
+      display: none;
+    }
+  </style>
+  <style media="all" type="text/css">
+    td, p, h1, h3, a {
+      font-family: Helvetica, Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+<table style="width: 538px; background-color: #393836;" align="center" cellspacing="0"
+       cellpadding="0">
+  <tbody>
+
+	## 页首
+		#parse("template/header.vm")
+
+  <tr>
+    <td bgcolor="#17212e">
+      <table width="470" border="0" align="center" cellpadding="0" cellspacing="0"
+             style="padding-left: 5px; padding-right: 5px; padding-bottom: 10px;">
+
+        <tbody>
+				## 收件人名
+        <tr bgcolor="#17212e">
+          <td style="padding-top: 32px;">
+					<span
+              style="padding-top: 16px; padding-bottom: 16px; font-size: 24px; color: #66c0f4; font-family: Arial, Helvetica, sans-serif; font-weight: bold;">
+						亲爱的 $name：
+					</span><br>
+          </td>
+        </tr>
+
+				## 提示
+        <tr>
+          <td style="padding-top: 12px;">
+					<span
+              style="font-size: 17px; color: #c6d4df; font-family: Arial, Helvetica, sans-serif; font-weight: bold;">
+						<p>$hint</p>
+					</span>
+          </td>
+        </tr>
+
+				## 邮件正文
+        <tr bgcolor="#121a25">
+          <td style="padding: 20px; font-size: 12px; line-height: 17px; color: #c6d4df; font-family: Arial, Helvetica, sans-serif;">
+            <p style="color: #c6d4df;">将超链接、超链接名存入对象，将多个这样的对象放入列表：</p>
+						#foreach( $item in $links )
+              <a style="color: #c6d4df;" href="$item.link">$item.name</a><br/>
+						#end
+            <p style="color: #ffffff; font-weight: bold;">传图片url，显示logo</p>
+            <img src="$logo" alt="logo" height="100" width="100"/>
+          </td>
+        </tr>
+
+				## 日期
+        <tr>
+          <td>
+            <div>
+              <span
+                  style="font-size: 16px; color: #66c0f4; font-family: Arial, Helvetica, sans-serif; font-weight: bold; padding-top: 16px; float: right;"> $date </span>
+            </div>
+          </td>
+        </tr>
+
+				## 系统提示
+        <tr>
+          <td>
+            <div>
+              <span
+                  style="font-size: 12px; color: #6d7880; padding-top: 16px; float: right;">提示：此邮件由系统自动发送，请勿直接回复</span>
+            </div>
+          </td>
+        </tr>
+
+        </tbody>
+      </table>
+    </td>
+  </tr>
+
+	## 页脚
+		#parse("template/footer.vm")
+  </tbody>
+</table>
+
+<style type="text/css">
+  body {
+    font-size: 14px;
+    font-family: arial, verdana, sans-serif;
+    line-height: 1.666;
+    padding: 0;
+    margin: 0;
+    overflow: auto;
+    white-space: normal;
+    word-wrap: break-word;
+    min-height: 100px
+  }
+
+  td, input, button, select, body {
+    font-family: Helvetica, 'Microsoft Yahei', verdana
+  }
+
+  pre {
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+    width: 95%
+  }
+
+  th, td {
+    font-family: arial, verdana, sans-serif;
+    line-height: 1.666
+  }
+
+  img {
+    border: 0
+  }
+
+  header, footer, section, aside, article, nav, hgroup, figure, figcaption {
+    display: block
+  }
+</style>
+<style id="ntes_link_color" type="text/css">a, td a {
+  color: #064977
+}</style>
+</body>
+</html>

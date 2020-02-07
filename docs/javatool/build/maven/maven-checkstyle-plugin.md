@@ -1,16 +1,5 @@
 # Maven 插件之代码检查
 
-<!-- TOC depthFrom:2 depthTo:3 -->
-
-- [maven-checkstyle-plugin](#maven-checkstyle-plugin)
-    - [定义 checkstyle.xml](#定义-checkstylexml)
-    - [配置 pom.xml](#配置-pomxml)
-- [maven-pmd-plugin](#maven-pmd-plugin)
-    - [配置 pom.xml](#配置-pomxml-1)
-- [参考资料](#参考资料)
-
-<!-- /TOC -->
-
 ## maven-checkstyle-plugin
 
 > **maven-checkstyle-plugin，用于检测代码中不符合规范的地方。**
@@ -307,7 +296,7 @@
 </module>
 ```
 
-### 配置 pom.xml
+配置 `pom.xml`：
 
 ```xml
 
@@ -367,7 +356,7 @@
 
 > maven-pmd-plugin 是阿里编程规范检查插件。
 
-### 配置 pom.xml
+配置 `pom.xml`：
 
 参考 https://github.com/alibaba/p3c/blob/master/p3c-pmd/pom.xml 配置
 

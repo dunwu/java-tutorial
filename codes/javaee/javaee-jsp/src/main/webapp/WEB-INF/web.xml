@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+    http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+	<servlet>
+		<servlet-name>HelloServlet</servlet-name>
+		<jsp-file>/examples/configuration.jsp</jsp-file>
+		<init-param>
+			<param-name>message</param-name>
+			<param-value>welcome to jsp</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HelloServlet</servlet-name>
+		<url-pattern>/config</url-pattern>
+		<url-pattern>/config.jsp</url-pattern>
+	</servlet-mapping>
+
+	<!-- 欢迎页面 -->
+	<welcome-file-list>
+		<welcome-file>/WEB-INF/views/jsp/index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

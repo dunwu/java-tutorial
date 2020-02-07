@@ -1,22 +1,5 @@
 # Maven 教程之发布 jar 到私服或中央仓库
 
-> 📦 本文已归档到：「[blog](https://github.com/dunwu/blog/blob/master/source/_posts/java/javatool/build/maven/)」
-
-<!-- TOC depthFrom:2 depthTo:3 -->
-
-- [发布 jar 包到中央仓库](#发布-jar-包到中央仓库)
-  - [在 Sonatype 创建 Issue](#在-sonatype-创建-issue)
-  - [使用 GPG 生成公私钥对](#使用-gpg-生成公私钥对)
-  - [Maven 配置](#maven-配置)
-  - [部署和发布](#部署和发布)
-- [部署 maven 私服](#部署-maven-私服)
-  - [下载安装 Nexus](#下载安装-nexus)
-  - [启动停止 Nexus](#启动停止-nexus)
-  - [使用 Nexus](#使用-nexus)
-- [参考资料](#参考资料)
-
-<!-- /TOC -->
-
 ## 发布 jar 包到中央仓库
 
 > 为了避免重复造轮子，相信每个 Java 程序员都想打造自己的脚手架或工具包（自己定制的往往才是最适合自己的）。那么如何将自己的脚手架发布到中央仓库呢？下面我们将一步步来实现。
@@ -49,7 +32,7 @@ Windows 系统，可以下载 Gpg4win 软件来生成密钥对。
 
 安装后，执行命令 gpg --version 检查是否安装成功。
 
-```
+```batch
 C:\Program Files (x86)\GnuPG\bin>gpg --version
 gpg (GnuPG) 2.2.10
 libgcrypt 1.8.3
@@ -71,7 +54,7 @@ Compression: Uncompressed, ZIP, ZLIB, BZIP2
 
 执行命令 `gpg --gen-key`
 
-```
+```batch
 C:\Program Files (x86)\GnuPG\bin>gpg --gen-key
 gpg (GnuPG) 2.2.10; Copyright (C) 2018 Free Software Foundation, Inc.
 This is free software: you are free to change and redistribute it.
@@ -93,7 +76,7 @@ Change (N)ame, (E)mail, or (O)kay/(Q)uit? O
 
 （3）查看公钥
 
-```bat
+```batch
 C:\Program Files (x86)\GnuPG\bin>gpg --list-keys
 
 gpg: checking the trustdb
@@ -114,7 +97,7 @@ sub   rsa2048 2018-11-06 [E] [expires: 2020-11-06]
 
 执行 `gpg --keyserver hkp://pool.sks-keyservers.net --send-keys` 发布公钥：
 
-```
+```batch
 C:\Program Files (x86)\GnuPG\bin>gpg --keyserver hkp://pool.sks-keyservers.net --send-keys E4CE537A3803D49C35332221A306519BAFF57F60
 gpg: sending key A306519BAFF57F60 to hkp://pool.sks-keyservers.net
 ```
@@ -125,7 +108,7 @@ gpg: sending key A306519BAFF57F60 to hkp://pool.sks-keyservers.net
 
 执行 `gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys` 查看公钥是否发布成功。
 
-```
+```batch
 C:\Program Files (x86)\GnuPG\bin>gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys E4CE537A3803D49C35332221A306519BAFF57F60
 gpg: key A306519BAFF57F60: "forbreak <forbreak@163.com>" not changed
 gpg: Total number processed: 1

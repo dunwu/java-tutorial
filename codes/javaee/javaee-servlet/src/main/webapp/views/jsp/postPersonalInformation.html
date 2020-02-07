@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	<title>提交用户信息</title>
+	<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+	<style>
+		body, div, td, input {
+			font-size: 12px;
+			margin: 0px;
+		}
+
+		select {
+			height: 20px;
+			width: 300px;
+		}
+
+		.title {
+			font-size: 16px;
+			padding: 10px;
+			margin: 10px;
+			width: 80%;
+		}
+
+		.text {
+			height: 20px;
+			width: 300px;
+			border: 1px solid #AAAAAA;
+		}
+
+		.line {
+			margin: 2px;
+		}
+
+		.leftDiv {
+			width: 110px;
+			float: left;
+			height: 22px;
+			line-height: 22px;
+			font-weight: bold;
+		}
+
+		.rightDiv {
+			height: 22px;
+		}
+
+		.button {
+			color: #FFFFFF;
+			font-weight: bold;
+			font-size: 11px;
+			text-align: center;
+			padding: .17em 0 .2em .17em;
+			border-style: solid;
+			border-width: 1px;
+			border-color: #99CCFF #115599 #115599 #99CCFF;
+			background: #6699CC url(images/bg-btn-blue.gif) repeat-x;
+		}
+	</style>
+</head>
+<body>
+<form action="/servlet/PostServlet" method="POST">
+	<div align="center">
+		<br/>
+		<fieldset style='width:90%'>
+			<legend>填写用户信息</legend>
+			<br/>
+			<div class='line'>
+				<div align="left" class='leftDiv'>请填写您的姓名：</div>
+				<div align="left" class='rightDiv'>
+					<input class="text" name="name" type="text"/>
+				</div>
+			</div>
+			<div class='line'>
+				<div align="left" class='leftDiv'>请填写您的密码：</div>
+				<div align="left" class='rightDiv'>
+					<input class="text" name="password" type="password"/>
+				</div>
+			</div>
+			<div class='line'>
+				<div align="left" class='leftDiv'>请再次输入密码：</div>
+				<div align="left" class='rightDiv'>
+					<input class="text" name="passwordConfirm" type="password"/>
+				</div>
+			</div>
+			<div class='line'>
+				<div align="left" class='leftDiv'>请选择性别：</div>
+				<div align="left" class='rightDiv'>
+					<input id="sexMale" name="sex" type="radio" value="男">
+					<label for="sexMale">男</label>
+					<input id="sexFemale" name="sex" type="radio" value="女">
+					<label for="sexFemale">女</label>
+				</div>
+			</div>
+			<div class='line'>
+				<div align="left" class='leftDiv'>请输入年龄：</div>
+				<div align="left" class='rightDiv'>
+					<input class="text" name="age" type="text">
+				</div>
+			</div>
+			<div class='line'>
+				<div align="left" class='leftDiv'>请输入生日：</div>
+				<div align="left" class='rightDiv'>
+					<input class="text" name="birthday" type="text">
+					<br/>格式："yyyy-mm-dd"
+				</div>
+			</div>
+			<div class='line'>
+				<div align="left" class='leftDiv'>请选择您的爱好</div>
+				<div align="left" class='rightDiv'>
+					<input id="i1" name="interesting" type="checkbox" value="音乐影视">
+					<label for="i1">音乐影视</label>
+					<input id="i2" name="interesting" type="checkbox" value="外出旅游">
+					<label for="i2">外出旅游</label>
+					<input id="i3" name="interesting" type="checkbox" value="社交活动">
+					<label for="i3">社交活动</label>
+				</div>
+			</div>
+			<div class='line'>
+				<div align="left" class='leftDiv'>请选择省市：</div>
+				<div align="left" class='rightDiv'>
+					<select name="area">
+						<option>---请选择省份---</option>
+						<optgroup label="北京市">
+							<option value="北京市海淀区">海淀区</option>
+							<option value="北京市朝阳区">朝阳区</option>
+							<option value="北京市东城区">东城区</option>
+							<option value="北京市西城区">西城区</option>
+						</optgroup>
+						<optgroup label="山东省">
+							<option value="山东省济南市">济南市</option>
+							<option value="山东省青岛市">青岛市</option>
+							<option value="山东省潍坊市">潍坊市</option>
+						</optgroup>
+					</select>
+				</div>
+			</div>
+			<div class='line'>
+				<div align="left" class='leftDiv'>自我描述：</div>
+				<div align="left" class='rightDiv'>
+					<textarea name="description" rows="8" style="width:300px; ">请填写其他资料... </textarea>
+				</div>
+			</div>
+			<div class='line'>
+				<div align="left" class='leftDiv'></div>
+				<div align="left" class='rightDiv'>
+					<br/><input class="button" name="btn" type="submit" value=" 提交信息 "><br/>
+				</div>
+			</div>
+		</fieldset>
+	</div>
+</form>
+</body>
+</html>

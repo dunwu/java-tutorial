@@ -1,19 +1,16 @@
-<?xml version="1.0"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-  xmlns="http://maven.apache.org/POM/4.0.0">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>io.github.dunwu</groupId>
+	<groupId>io.github.dunwu.java</groupId>
   <artifactId>java-tutorial</artifactId>
   <version>1.0.0</version>
   <packaging>pom</packaging>
+  <name>JAVA-TUTORIAL</name>
 
-  <name>java-tutorial</name>
-  <description>Java Lib 示例 + Java Tool 示例</description>
-
-  <modules>
-    <module>codes/javalib</module>
-    <module>codes/javatool</module>
-  </modules>
+	<modules>
+		<module>codes/java-distributed</module>
+		<module>codes/javaee</module>
+	</modules>
 </project>

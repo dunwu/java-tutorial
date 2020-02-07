@@ -2,7 +2,7 @@
 
 > **📦 本文已归档在 [java-tutorial](https://dunwu.github.io/java-tutorial/#/)**
 
-<!-- TOC depthFrom:2 depthTo:3 -->
+<!-- TOC depthFrom:2 depthTo:5 -->
 
 - [一、Maven 简介](#一maven-简介)
   - [Maven 是什么](#maven-是什么)
@@ -14,10 +14,15 @@
   - [环境准备](#环境准备)
   - [下载解压](#下载解压)
   - [环境变量](#环境变量)
+    - [配置 Unix 系统环境变量](#配置-unix-系统环境变量)
+    - [配置 Windows 系统环境变量](#配置-windows-系统环境变量)
   - [检测安装成功](#检测安装成功)
   - [Maven 配置文件](#maven-配置文件)
 - [三、快速入门](#三快速入门)
   - [创建 Maven 工程](#创建-maven-工程)
+    - [初始化工程](#初始化工程)
+    - [POM 配置](#pom-配置)
+    - [构建项目](#构建项目)
   - [在 Intellij 中创建 Maven 工程](#在-intellij-中创建-maven-工程)
   - [在 Eclipse 中创建 Maven 工程](#在-eclipse-中创建-maven-工程)
 - [四、使用说明](#四使用说明)
@@ -26,6 +31,19 @@
   - [如何使用 Maven 插件(Plugin)](#如何使用-maven-插件plugin)
   - [如何一次编译多个工程](#如何一次编译多个工程)
   - [常用 Maven 插件](#常用-maven-插件)
+    - [[maven-antrun-plugin](http://maven.apache.org/plugins/maven-antrun-plugin/)](#maven-antrun-pluginhttpmavenapacheorgpluginsmaven-antrun-plugin)
+    - [[maven-archetype-plugin](http://maven.apache.org/archetype/maven-archetype-plugin/)](#maven-archetype-pluginhttpmavenapacheorgarchetypemaven-archetype-plugin)
+    - [[maven-assembly-plugin](http://maven.apache.org/plugins/maven-assembly-plugin/)](#maven-assembly-pluginhttpmavenapacheorgpluginsmaven-assembly-plugin)
+    - [[maven-dependency-plugin](http://maven.apache.org/plugins/maven-dependency-plugin/)](#maven-dependency-pluginhttpmavenapacheorgpluginsmaven-dependency-plugin)
+    - [[maven-enforcer-plugin](http://maven.apache.org/plugins/maven-enforcer-plugin/)](#maven-enforcer-pluginhttpmavenapacheorgpluginsmaven-enforcer-plugin)
+    - [[maven-help-plugin](http://maven.apache.org/plugins/maven-help-plugin/)](#maven-help-pluginhttpmavenapacheorgpluginsmaven-help-plugin)
+    - [[maven-release-plugin](http://maven.apache.org/plugins/maven-release-plugin/)](#maven-release-pluginhttpmavenapacheorgpluginsmaven-release-plugin)
+    - [[maven-resources-plugin](http://maven.apache.org/plugins/maven-resources-plugin/)](#maven-resources-pluginhttpmavenapacheorgpluginsmaven-resources-plugin)
+    - [[maven-surefire-plugin](http://maven.apache.org/plugins/maven-surefire-plugin/)](#maven-surefire-pluginhttpmavenapacheorgpluginsmaven-surefire-plugin)
+    - [[build-helper-maven-plugin](http://mojo.codehaus.org/build-helper-maven-plugin/)](#build-helper-maven-pluginhttpmojocodehausorgbuild-helper-maven-plugin)
+    - [[exec-maven-plugin](http://mojo.codehaus.org/exec-maven-plugin/)](#exec-maven-pluginhttpmojocodehausorgexec-maven-plugin)
+    - [[jetty-maven-plugin](http://wiki.eclipse.org/Jetty/Feature/Jetty_Maven_Plugin)](#jetty-maven-pluginhttpwikieclipseorgjettyfeaturejetty_maven_plugin)
+    - [[versions-maven-plugin](http://mojo.codehaus.org/versions-maven-plugin/)](#versions-maven-pluginhttpmojocodehausorgversions-maven-plugin)
   - [Maven 命令](#maven-命令)
 - [参考资料](#参考资料)
 
@@ -55,12 +73,12 @@ maven 把项目的构建划分为不同的生命周期(lifecycle)。粗略一点
 
 Maven 的标准工程结构如下：
 
-```
+```shell
 |-- pom.xml(maven的核心配置文件)
 |-- src
 |-- main
-	|-- java(java源代码目录)
-	|-- resources(资源文件目录)
+  |-- java(java源代码目录)
+  |-- resources(资源文件目录)
 |-- test
     |-- java(单元测试代码目录)
 |-- target(输出目录，所有的输出物都存放在这个目录下)
@@ -113,7 +131,7 @@ Maven 依赖于 Java，所以本地必须安装 JDK。
 
 打开控制台，执行 `java -version` 确认本地已安装 JDK。
 
-```sh
+```shell
 $ java -version
 java version "1.8.0_191"
 Java(TM) SE Runtime Environment (build 1.8.0_191-b12)
@@ -124,7 +142,7 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.191-b12, mixed mode)
 
 进入 **[官网下载地址](https://maven.apache.org/download.cgi)**，选择合适版本，下载并解压到本地。解压命令如下：
 
-```sh
+```shell
 # 以下解压命令分别针对 zip 包和 tar 包
 unzip apache-maven-3.6.3-bin.zip
 tar xzvf apache-maven-3.6.3-bin.tar.gz
@@ -138,10 +156,10 @@ tar xzvf apache-maven-3.6.3-bin.tar.gz
 
 输入 `vi /etc/profile` ，添加环境变量如下：
 
-```
+```shell
 # MAVEN 的根路径
 export MAVEN_HOME=/opt/maven/apache-maven-3.5.2
-export PATH=\$MAVEN_HOME/bin:\$PATH
+export PATH=$MAVEN_HOME/bin:$PATH
 ```
 
 执行 `source /etc/profile` ，立即生效。
@@ -150,15 +168,15 @@ export PATH=\$MAVEN_HOME/bin:\$PATH
 
 右键 "计算机"，选择 "属性"，之后点击 "高级系统设置"，点击"环境变量"，来设置环境变量，有以下系统变量需要配置：
 
-![](http://dunwu.test.upcdn.net/snap/20200108143017.png)
+![img](http://dunwu.test.upcdn.net/snap/20200108143017.png)
 
-![](http://dunwu.test.upcdn.net/snap/20200108143038.png)
+![img](http://dunwu.test.upcdn.net/snap/20200108143038.png)
 
 ### 检测安装成功
 
 检验是否安装成功，执行 `mvn -v` 命令，如果输出类似下面的 maven 版本信息，说明配置成功。
 
-```sh
+```shell
 $ mvn -v
 Apache Maven 3.5.4 (1edded0938998edf8bf061f1ceb3cfdeccf443fe; 2018-06-18T02:33:14+08:00)
 Maven home: /opt/maven/apache-maven-3.5.4
@@ -191,13 +209,13 @@ OS name: "linux", version: "3.10.0-327.el7.x86_64", arch: "amd64", family: "unix
 
 执行指令：
 
-```
+```shell
 mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 -DinteractiveMode=false
 ```
 
 会在当前路径新建一个名为 `my-app` 的 Maven 工程，其目录结构如下：
 
-```sh
+```shell
 my-app
 |-- pom.xml
 `-- src
@@ -250,13 +268,13 @@ project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2
 
 执行以下命令，即可构建项目：
 
-```
+```shell
 mvn clean package -Dmaven.test.skip=true -B -U
 ```
 
 构建成功后，会输出类似下面的信息：
 
-```
+```shell
 ...
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
@@ -270,7 +288,7 @@ mvn clean package -Dmaven.test.skip=true -B -U
 
 这时，我们可以执行以下命令启动 jar 包：
 
-```
+```shell
 java -cp target/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App
 ```
 
@@ -326,7 +344,7 @@ File -> New -> Maven Project -> Next，在接下来的窗口中会看到一大�
 
 （4）使用 Maven 进行构建
 
-**Eclipse 中构建方式**
+Eclipse 中构建方式：
 
 在 Elipse 项目上右击 -> Run As 就能看到很多 Maven 操作。这些操作和 maven 命令是等效的。例如 Maven clean，等同于 mvn clean 命令。
 
@@ -336,7 +354,7 @@ File -> New -> Maven Project -> Next，在接下来的窗口中会看到一大�
 
 ![img](http://dunwu.test.upcdn.net/snap/20181127195219.png!zp)
 
-**Maven 命令构建方式**
+Maven 命令构建方式：
 
 当然，你也可以直接使用 maven 命令进行构建。
 
@@ -426,7 +444,7 @@ File -> New -> Maven Project -> Next，在接下来的窗口中会看到一大�
 
 假设要创建一个父 maven 工程，它有两个子工程：my-app 和 my-webapp：
 
-```
+```shell
 +- pom.xml
 +- my-app
 | +- pom.xml
@@ -551,7 +569,7 @@ exec-maven-plugin 很好理解，顾名思义，它能让你运行任何本地�
 
 示例：最常用的 maven 构建命令
 
-```sh
+```shell
 mvn clean install -Dmaven.test.skip=true -B -U
 ```
 

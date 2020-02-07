@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+    http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+	<context-param>
+		<param-name>contextPath</param-name>
+		<param-value>value. sdf</param-value>
+	</context-param>
+
+	<!--监听对象的创建和销毁-->
+	<listener>
+		<listener-class>io.github.dunwu.javaee.listener.MyHttpSessionListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>io.github.dunwu.javaee.listener.MyServletContextListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>io.github.dunwu.javaee.listener.MyServletRequestListener</listener-class>
+	</listener>
+
+	<!--监听对象的属性变化-->
+	<listener>
+		<listener-class>io.github.dunwu.javaee.listener.MyHttpSessionAttributeListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>io.github.dunwu.javaee.listener.MyServletContextAttributeListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>io.github.dunwu.javaee.listener.MyServletRequestAttributeListener</listener-class>
+	</listener>
+
+	<!--监听Session内的对象-->
+	<listener>
+		<listener-class>io.github.dunwu.javaee.listener.MyHttpSessionBindingListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>io.github.dunwu.javaee.listener.MyHttpSessionActivationListener</listener-class>
+	</listener>
+
+	<listener>
+		<listener-class>
+			io.github.dunwu.javaee.listener.LoginSessionListener
+		</listener-class>
+	</listener>
+
+	<listener>
+		<listener-class>
+			io.github.dunwu.javaee.listener.PersonInfoListener
+		</listener-class>
+	</listener>
+	<!-- listener end -->
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

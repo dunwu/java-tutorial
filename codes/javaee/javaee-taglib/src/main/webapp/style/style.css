@@ -1,0 +1,66 @@
+body, td, div, input, textarea, span {
+	font-size: 12px;
+	font-family: Arial;
+}
+
+.list_table {
+	border-collapse: collapse;
+}
+
+.list_table .tr_title {
+
+}
+
+.list_table .tr_title td {
+	border: 1px solid #DDDDDD;
+	background: #EEEEEE;
+	background: url("../images/ibm-tab-background.gif") no-repeat 0px 0px;
+	border-top: 1px solid #7E9AB0;
+	color: #FFFFFF;
+	text-align: center;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	white-space: nowrap;
+	font-weight: bold;
+}
+
+.list_table .tr_title td span {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.list_table .tr_title img {
+	padding-top: 1px;
+	padding-bottom: 1px;
+}
+
+.list_table .tr_data {
+	padding: 2px;
+	text-align: center;
+}
+
+.list_table .tr_data td {
+	border: 1px solid #DDDDDD;
+	padding: 2px;
+}
+
+.list_table .tr_data td span {
+	width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.button {
+	color: #FFFFFF;
+	font-weight: bold;
+	font-size: 11px;
+	font-family: verdana;
+	text-align: center;
+	padding: .17em 0 .2em .17em;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #99CCFF #115599 #115599 #99CCFF;
+	background: #6699CC url(../images/bg-btn-blue.gif) repeat-x;
+}

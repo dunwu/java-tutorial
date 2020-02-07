@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type='text/xsl' href='MessageLog.xsl'?>
+<Log FirstSessionID="1" LastSessionID="3">
+	<Message Date="2007-11-21" Time="13:17:19" DateTime="2007-11-21T05:17:19.343Z" SessionID="1">
+		<From>
+			<User FriendlyName="(Ricky)" />
+		</From>
+		<To>
+			<User FriendlyName="Zhang Peng" />
+		</To>
+		<Text Style="font-family:宋体; color:#000000; ">你会Ajax吗</Text>
+	</Message>
+	<Message Date="2007-11-21" Time="13:17:43" DateTime="2007-11-21T05:17:43.218Z" SessionID="1">
+		<From>
+			<User FriendlyName="Zhang Peng" />
+		</From>
+		<To>
+			<User FriendlyName="(Ricky)" />
+		</To>
+		<Text Style="font-family:宋体; color:#000000; ">我们用的是ｄｏｊｏ框架的</Text>
+	</Message>
+	<Message Date="2007-12-7" Time="15:08:26" DateTime="2007-12-07T07:08:26.531Z" SessionID="2">
+		<From>
+			<User FriendlyName="Zhang Peng" />
+		</From>
+		<To>
+			<User FriendlyName="(Ricky)" />
+		</To>
+		<Text Style="font-family:宋体; color:#000000; ">response.setHeader("Content-Disposition",
+			"attachment;filename="
+			+ URLEncoder.encode(newFile.getName(),
+			"UTF-8"));
+			response.setHeader("Connection", "close");
+			response.setContentLength((int)newFile.length());
+			resp
+		</Text>
+	</Message>
+	<Message Date="2007-12-7" Time="15:08:36" DateTime="2007-12-07T07:08:36.187Z" SessionID="2">
+		<From>
+			<User FriendlyName="Zhang Peng" />
+		</From>
+		<To>
+			<User FriendlyName="(Ricky)" />
+		</To>
+		<Text Style="font-family:宋体; color:#000000; ">先　out.clear()</Text>
+	</Message>
+	<Message Date="2007-12-7" Time="15:09:01" DateTime="2007-12-07T07:09:01.687Z" SessionID="2">
+		<From>
+			<User FriendlyName="(Ricky)" />
+		</From>
+		<To>
+			<User FriendlyName="Zhang Peng" />
+		</To>
+		<Text Style="font-family:宋体; color:#000000; ">ok</Text>
+	</Message>
+	<Message Date="2007-12-7" Time="15:09:33" DateTime="2007-12-07T07:09:33.375Z" SessionID="3">
+		<From>
+			<User FriendlyName="Zhang Peng" />
+		</From>
+		<To>
+			<User FriendlyName="(Ricky)" />
+		</To>
+		<Text Style="font-family:宋体; color:#000000; ">
+			response.setContentLength((int)newFile.length());
+			response.setHeader("Content-Type",
+			"application/octet-stream");
+		</Text>
+	</Message>
+	<Message Date="2007-12-7" Time="15:27:27" DateTime="2007-12-07T07:27:27.500Z" SessionID="3">
+		<From>
+			<User FriendlyName="Zhang Peng" />
+		</From>
+		<To>
+			<User FriendlyName="(Ricky)" />
+		</To>
+		<Text Style="font-family:宋体; color:#000000; ">application/vnd.ms-excel</Text>
+	</Message>
+</Log>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+    http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+	<display-name>javaee-filter</display-name>
+
+	<!-- servlet begin -->
+	<servlet>
+		<servlet-name>index.jsp</servlet-name>
+		<jsp-file>/views/jsp/index.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>index.jsp</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>dispatcherServlet</servlet-name>
+		<jsp-file>/views/jsp/dispatcher.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>dispatcherServlet</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	<!-- servlet end -->
+
+	<!-- filter begin -->
+	<filter>
+		<filter-name>CacheFilter</filter-name>
+		<filter-class>
+			io.github.dunwu.javaee.filter.CacheFilter
+		</filter-class>
+		<init-param>
+			<param-name>cache</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>cacheTime</param-name>
+			<param-value>1000000</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CacheFilter</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+		<url-pattern>*.html</url-pattern>
+		<url-pattern>*.do</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>characterEncodingFilter</filter-name>
+		<filter-class>
+			io.github.dunwu.javaee.filter.CharacterEncodingFilter
+		</filter-class>
+		<init-param>
+			<param-name>characterEncoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>enable</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>characterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>ExceptionHandlerFilter</filter-name>
+		<filter-class>
+			io.github.dunwu.javaee.filter.ExceptionHandlerFilter
+		</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>ExceptionHandlerFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>GZipFilter</filter-name>
+		<filter-class>io.github.dunwu.javaee.filter.GZipFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>GZipFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>ImageRedirectFilter</filter-name>
+		<filter-class>
+			io.github.dunwu.javaee.filter.ImageRedirectFilter
+		</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>ImageRedirectFilter</filter-name>
+		<url-pattern>/views/images/*</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>LogFilter</filter-name>
+		<filter-class>io.github.dunwu.javaee.filter.LogFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>LogFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>OutputReplaceFilter</filter-name>
+		<filter-class>
+			io.github.dunwu.javaee.filter.OutputReplaceFilter
+		</filter-class>
+		<init-param>
+			<param-name>file</param-name>
+			<param-value>/WEB-INF/sensitive.properties</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>OutputReplaceFilter</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>UploadFilter</filter-name>
+		<filter-class>io.github.dunwu.javaee.filter.UploadFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>UploadFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>PrivilegeFilter</filter-name>
+		<filter-class>
+			io.github.dunwu.javaee.filter.PrivilegeFilter
+		</filter-class>
+		<init-param>
+			<param-name>file</param-name>
+			<param-value>/WEB-INF/privilege.properties</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>PrivilegeFilter</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>WaterMarkFilter</filter-name>
+		<filter-class>
+			io.github.dunwu.javaee.filter.WaterMarkFilter
+		</filter-class>
+		<init-param>
+			<param-name>waterMarkFile</param-name>
+			<param-value>/WEB-INF/logo.png</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>WaterMarkFilter</filter-name>
+		<url-pattern>*.jpg</url-pattern>
+		<url-pattern>*.png</url-pattern>
+		<url-pattern>*.bmp</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>XSLTFilter</filter-name>
+		<filter-class>io.github.dunwu.javaee.filter.XSLTFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>XSLTFilter</filter-name>
+		<url-pattern>/views/xml/*</url-pattern>
+	</filter-mapping>
+	<!-- filter end -->
+
+	<welcome-file-list>
+		<welcome-file>/views/jsp/index.html</welcome-file>
+		<welcome-file>/views/jsp/index.htm</welcome-file>
+		<welcome-file>/views/jsp/index.jsp</welcome-file>
+	</welcome-file-list>
+
+</web-app>

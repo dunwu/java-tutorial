@@ -1,32 +1,8 @@
 # Maven 教程之 settings.xml 详解
 
-> 📦 本文已归档到：「[blog](https://github.com/dunwu/blog/blob/master/source/_posts/java/javatool/build/maven/)」
-
-<!-- TOC depthFrom:2 depthTo:3 -->
-
-- [简介](#简介)
-  - [settings.xml 有什么用？](#settingsxml-有什么用)
-  - [settings.xml 文件位置](#settingsxml-文件位置)
-  - [配置优先级](#配置优先级)
-- [settings.xml 元素详解](#settingsxml-元素详解)
-  - [顶级元素概览](#顶级元素概览)
-  - [LocalRepository](#localrepository)
-  - [InteractiveMode](#interactivemode)
-  - [UsePluginRegistry](#usepluginregistry)
-  - [Offline](#offline)
-  - [PluginGroups](#plugingroups)
-  - [Servers](#servers)
-  - [Mirrors](#mirrors)
-  - [Proxies](#proxies)
-  - [Profiles](#profiles)
-  - [ActiveProfiles](#activeprofiles)
-- [参考资料](#参考资料)
-
-<!-- /TOC -->
-
 ## 简介
 
-### settings.xml 有什么用？
+### settings.xml 有什么用
 
 从 settings.xml 的文件名就可以看出，它是用来设置 maven 参数的配置文件。settings.xml 中包含类似本地仓储位置、修改远程仓储服务器、认证信息等配置。
 

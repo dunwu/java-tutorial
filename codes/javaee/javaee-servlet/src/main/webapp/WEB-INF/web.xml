@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	version="2.5"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+	<servlet>
+		<servlet-name>FirstServlet</servlet-name>
+		<servlet-class>
+			io.github.dunwu.javaee.servlet.FirstServlet
+		</servlet-class>
+		<init-param>
+			<param-name>message</param-name>
+			<param-value>welcome to FirstServlet</param-value>
+		</init-param>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FirstServlet</servlet-name>
+		<url-pattern>/servlet/FirstServlet</url-pattern>
+		<url-pattern>/servlet/FirstServlet.asp</url-pattern>
+		<url-pattern>/servlet/FirstServlet.jsp</url-pattern>
+		<url-pattern>/servlet/FirstServlet.php</url-pattern>
+		<url-pattern>/servlet/FirstServlet.aspx</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>RequestServlet</servlet-name>
+		<servlet-class>
+			io.github.dunwu.javaee.servlet.RequestServlet
+		</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RequestServlet</servlet-name>
+		<url-pattern>/servlet/RequestServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>InitParamServlet</servlet-name>
+		<servlet-class>
+			io.github.dunwu.javaee.servlet.InitParamServlet
+		</servlet-class>
+		<init-param>
+			<param-name>root</param-name>
+			<param-value>root</param-value>
+		</init-param>
+		<init-param>
+			<param-name>admin</param-name>
+			<param-value>admin</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InitParamServlet</servlet-name>
+		<url-pattern>/servlet/InitParamServlet</url-pattern>
+	</servlet-mapping>
+
+
+	<context-param>
+		<param-name>upload folder</param-name>
+		<param-value>attachment</param-value>
+	</context-param>
+	<context-param>
+		<param-name>allowed file type</param-name>
+		<param-value>.gif,.jpg,.bmp</param-value>
+	</context-param>
+	<servlet>
+		<servlet-name>ContextParamServlet</servlet-name>
+		<servlet-class>
+			io.github.dunwu.javaee.servlet.ContextParamServlet
+		</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ContextParamServlet</servlet-name>
+		<url-pattern>/servlet/ContextParamServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>InjectionServlet</servlet-name>
+		<servlet-class>
+			io.github.dunwu.javaee.servlet.InjectionServlet
+		</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InjectionServlet</servlet-name>
+		<url-pattern>/servlet/InjectionServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>PostServlet</servlet-name>
+		<servlet-class>
+			io.github.dunwu.javaee.servlet.PostServlet
+		</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PostServlet</servlet-name>
+		<url-pattern>/servlet/PostServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ImageServlet</servlet-name>
+		<servlet-class>
+			io.github.dunwu.javaee.servlet.ImageServlet
+		</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>UploadServlet</servlet-name>
+		<servlet-class>
+			io.github.dunwu.javaee.servlet.UploadServlet
+		</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>LifeCycleServlet</servlet-name>
+		<servlet-class>
+			io.github.dunwu.javaee.servlet.LifeCycleServlet
+		</servlet-class>
+		<init-param>
+			<param-name>startPoint</param-name>
+			<param-value>2000</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<servlet-name>AnnotationServlet</servlet-name>
+		<servlet-class>
+			io.github.dunwu.javaee.servlet.AnnotationServlet
+		</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ForwardServlet</servlet-name>
+		<servlet-class>
+			io.github.dunwu.javaee.servlet.ForwardServlet
+		</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>RedirectServlet</servlet-name>
+		<servlet-class>
+			io.github.dunwu.javaee.servlet.RedirectServlet
+		</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ProgressUploadServlet</servlet-name>
+		<servlet-class>
+			io.github.dunwu.javaee.servlet.upload.ProgressUploadServlet
+		</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ThreadSafetyServlet</servlet-name>
+		<servlet-class>
+			io.github.dunwu.javaee.servlet.ThreadSafetyServlet
+		</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ImageServlet</servlet-name>
+		<url-pattern>/upload/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UploadServlet</servlet-name>
+		<url-pattern>/servlet/UploadServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LifeCycleServlet</servlet-name>
+		<url-pattern>/servlet/LifeCycleServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AnnotationServlet</servlet-name>
+		<url-pattern>/servlet/AnnotationServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ForwardServlet</servlet-name>
+		<url-pattern>/servlet/ForwardServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RedirectServlet</servlet-name>
+		<url-pattern>/servlet/RedirectServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ProgressUploadServlet</servlet-name>
+		<url-pattern>/servlet/ProgressUploadServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ThreadSafetyServlet</servlet-name>
+		<url-pattern>/servlet/ThreadSafetyServlet</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<env-entry>
+		<env-entry-name>hello</env-entry-name>
+		<env-entry-type>java.lang.String</env-entry-type>
+		<env-entry-value>
+			Hello, Welcome to the JavaEE Resource Injection.
+		</env-entry-value>
+	</env-entry>
+
+	<env-entry>
+		<env-entry-name>i</env-entry-name>
+		<env-entry-type>java.lang.Integer</env-entry-type>
+		<env-entry-value>30</env-entry-value>
+	</env-entry>
+
+	<env-entry>
+		<env-entry-name>persons</env-entry-name>
+		<env-entry-type>java.lang.String</env-entry-type>
+		<env-entry-value>
+			Helloween, Cobain, Roses, Axl,
+		</env-entry-value>
+	</env-entry>
+</web-app>
