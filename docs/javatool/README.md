@@ -6,7 +6,7 @@
 
 > [构建工具](build/README.md)
 
-- [Maven 快速指南](build/maven/maven-quickstart.md)
+- [Maven 入门指南](build/maven/maven-quickstart.md)
 - [Maven 教程之 pom.xml 详解](build/maven/maven-pom.md)
 - [Maven 教程之 settings.xml 详解](build/maven/maven-settings.md)
 - [Maven 实战问题和最佳实践](build/maven/maven-action.md)

@@ -66,10 +66,15 @@
 - [Eclipse](docs/javatool/ide/eclipse.md)
 - [vscode](docs/javatool/ide/vscode.md)
 
-### 监控
+### 监控/诊断
 
-- [Arthas](docs/javatool/monitor/arthas.md)
+> [监控/诊断](docs/javatool/monitor) 工具主要用于 Java 应用的运维。通过采集、分析、存储、可视化应用的有效数据，帮助开发者、使用者快速定位问题，找到性能瓶颈。
+
+- [监控工具对比](docs/javatool/monitor/monitor-summary.md)
+- [CAT](docs/javatool/monitor/cat.md)
+- [Zipkin](docs/javatool/monitor/zipkin.md)
 - [SkyWalking](docs/javatool/monitor/skywalking.md)
+- [Arthas](docs/javatool/monitor/arthas.md)
 
 ---
 

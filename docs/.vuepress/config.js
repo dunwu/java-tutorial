@@ -41,7 +41,7 @@ module.exports = {
               },
               {
                 text: "监控",
-                link: "/monitor/"
+                link: "/javatool/monitor/"
               }
             ]
           },
