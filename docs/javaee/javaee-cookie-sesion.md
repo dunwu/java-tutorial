@@ -16,7 +16,7 @@ Cookie 实际上是存储在客户端上的文本信息，并保留了各种跟�
 2. 客户端浏览器会把 Cookie 保存下来。
 3. 当浏览器再请求该网站时，浏览器把该请求的网址连同 Cookie 一同提交给服务器。服务器检查该 Cookie，以此来辨认用户状态。
 
-**_注：Cookie 功能需要浏览器的支持，如果浏览器不支持 Cookie 或者 Cookie 禁用了，Cookie 功能就会失效。_**
+***注：Cookie 功能需要浏览器的支持，如果浏览器不支持 Cookie 或者 Cookie 禁用了，Cookie 功能就会失效。***
 
 Java 中把 Cookie 封装成了`javax.servlet.http.Cookie`类。
 

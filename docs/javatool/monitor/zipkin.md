@@ -1,6 +1,10 @@
 # Zipkin
 
-Zipkin 是一个基于 Java 开发的分布式跟踪系统。它采集有助于解决服务架构中延迟问题的实时数据。其核心功能是采集和查找数据。
+Zipkin 是一个基于 Java 开发的、开源的、分布式实时数据跟踪系统（Distributed Tracking System）。它采集有助于解决服务架构中延迟问题的实时数据。
+
+Zipkin 主要功能是聚集来自各个异构系统的实时监控数据。分布式跟踪系统还有其他比较成熟的实现，例如：Naver 的 Pinpoint、Apache 的 HTrace、阿里的鹰眼 Tracing、京东的 Hydra、新浪的 Watchman，美团点评的 CAT，skywalking 等。
+
+Zipkin 基于 Google Dapper 的论文设计而来，由 Twitter 公司开发贡献。
 
 ## Zipkin 简介
 
@@ -67,15 +71,29 @@ java -jar ./zipkin-server/target/zipkin-server-*exec.jar
 
 ## Zipkin 架构
 
+ZipKin 可以分为两部分，
+
+- 一部分是 Zipkin server，用来作为数据的采集存储、数据分析与展示；
+- 另一部分是 Zipkin client 是 Zipkin 基于不同的语言及框架封装的一些列客户端工具，这些工具完成了追踪数据的生成与上报功能。
+
+架构如下：
+
 ![Zipkin 架构](https://raw.githubusercontent.com/dunwu/images/master/snap/20200211155836.png)
 
-`Tracer` 存在于你的应用中，它负责采集关于已发生操作的实时元数据。它们通常会检测库，因此对于用户是透明的。例如，已检测的 Web 服务器记录它何时接收到请求，以及何时发送响应。收集的跟踪数据称为跨度（Span）。
+### Zipkin Server
 
-Instrumentation 保证了生产环境的安全性和很少的开销。因此，它们仅在内部传播 ID，以告知接收方正在进行追踪。完成的 Span 将通过外部通信告知 Zipkin，类似于应用程序异步报告指标的方式。
+Zipkin Server 主要包括四个模块：
 
-例如，当跟踪某个操作并且需要发出 http 请求时，会添加一些 header 来传播 ID。header 不用于发送详细信息，例如操作名称。
+- **Collector** - 负责采集客户端传输的数据。
+- **Storage** - 负责存储采集的数据，当前支持 Memory，MySQL，Cassandra，ElasticSearch 等，默认存储在内存中。
+- **API（Query）** - 负责查询 Storage 中存储的数据，提供简单的 JSON API 获取数据，主要提供给 web UI 使用。
+- **UI** - 提供简单的 web 界面。
 
-能够将数据发送到 Zipkin 的检测应用程序中的组件，被称为 Reporter。Reporter 有多种传输方式，可以将跟踪数据发送到 Zipkin 采集器，后者将跟踪数据持久化保存到存储中。稍后，API 会查询存储以向 UI 提供渲染数据。
+### Zipkin Client
+
+- **Tracer** - `Tracer` 存在于你的应用中，它负责采集关于已发生操作的实时元数据。它们通常会检测库，因此对于用户是透明的。例如，已检测的 Web 服务器记录它何时接收到请求，以及何时发送响应。收集的跟踪数据称为跨度（Span）。
+- **Instrumentation** - Instrumentation 保证了生产环境的安全性和很少的开销。因此，它们仅在内部传播 ID，以告知接收方正在进行追踪。完成的 Span 将通过外部通信告知 Zipkin，类似于应用程序异步报告指标的方式。例如，当跟踪某个操作并且需要发出 http 请求时，会添加一些 header 来传播 ID。header 不用于发送详细信息，例如操作名称。
+- **Reporter** - 能够将数据发送到 Zipkin 的检测应用程序中的组件，被称为 Reporter。Reporter 有多种传输方式，可以将跟踪数据发送到 Zipkin 采集器，后者将跟踪数据持久化保存到存储中。稍后，API 会查询存储以向 UI 提供渲染数据。
 
 以下是 Zipkin 的一个示例工作流：
 
@@ -122,7 +140,18 @@ Instrumentation 保证了生产环境的安全性和很少的开销。因此，�
                              └────────────────────────────────┘
 ```
 
+Instrumented client 和 server 是分别使用了 ZipKin Client 的服务，Zipkin Client 会根据配置将追踪数据发送到 Zipkin Server 中进行数据存储、分析和展示。
+
+## Zipkin 客户端
+
+[Brave](https://github.com/openzipkin/brave) 是 Java 版的 zipkin 客户端。
+
+一般不会手动编写 Trace 相关的代码，Brave 提供可一些开箱即用的库，帮助我们追踪一些特定的请求。比如：dubbo、grpc、servlet、mysql、httpClient、kafka、springMVC 等。
+
+示例源码参考：codes/javatool/javatool-monitor
+
 ## 参考资料
 
 - [Zipkin 官网](https://zipkin.io/)
 - [Zipkin Github](https://github.com/openzipkin/zipkin)
+- [brave](https://github.com/openzipkin/brave)
