@@ -1,12 +1,12 @@
-# Zipkin
+# Zipkin 应用指南
 
-Zipkin 是一个基于 Java 开发的、开源的、分布式实时数据跟踪系统（Distributed Tracking System）。它采集有助于解决服务架构中延迟问题的实时数据。
+**Zipkin 是一个基于 Java 开发的、开源的、分布式实时数据跟踪系统（Distributed Tracking System）**。它采集有助于解决服务架构中延迟问题的实时数据。
 
 Zipkin 主要功能是聚集来自各个异构系统的实时监控数据。分布式跟踪系统还有其他比较成熟的实现，例如：Naver 的 Pinpoint、Apache 的 HTrace、阿里的鹰眼 Tracing、京东的 Hydra、新浪的 Watchman，美团点评的 CAT，skywalking 等。
 
 Zipkin 基于 Google Dapper 的论文设计而来，由 Twitter 公司开发贡献。
 
-## Zipkin 简介
+## 一、Zipkin 简介
 
 ### 特性
 
@@ -14,7 +14,7 @@ Zipkin 基于 Google Dapper 的论文设计而来，由 Twitter 公司开发贡�
 
 Zipkin UI 还提供了一个依赖关系图，该关系图显示了每个应用程序中跟踪了多少个请求。这对于识别聚合行为（包括错误路径或对不赞成使用的服务的调用）很有帮助。
 
-![Zipkin UI](https://raw.githubusercontent.com/dunwu/images/master/snap/20200211161706.png)
+![Zipkin UI](http://dunwu.test.upcdn.net/snap/20200211161706.png)
 
 ### 多平台
 
@@ -32,9 +32,9 @@ Zipkin 服务器捆绑了用于采集和存储数据的扩展。
 
 数据以 json 形式存储，可以参考：[Zipkin 官方的 Swagger API](https://zipkin.io/zipkin-api/#/default/post_spans)
 
-![Zipkin Swagger API](https://raw.githubusercontent.com/dunwu/images/master/snap/20200211162055.png)
+![Zipkin Swagger API](http://dunwu.test.upcdn.net/snap/20200211162055.png)
 
-## Zipkin 安装
+## 二、Zipkin 安装
 
 ### Docker
 
@@ -69,7 +69,7 @@ cd zipkin
 java -jar ./zipkin-server/target/zipkin-server-*exec.jar
 ```
 
-## Zipkin 架构
+## 三、Zipkin 架构
 
 ZipKin 可以分为两部分，
 
@@ -78,7 +78,7 @@ ZipKin 可以分为两部分，
 
 架构如下：
 
-![Zipkin 架构](https://raw.githubusercontent.com/dunwu/images/master/snap/20200211155836.png)
+![Zipkin 架构](http://dunwu.test.upcdn.net/snap/20200211155836.png)
 
 ### Zipkin Server
 
@@ -142,13 +142,11 @@ Zipkin Server 主要包括四个模块：
 
 Instrumented client 和 server 是分别使用了 ZipKin Client 的服务，Zipkin Client 会根据配置将追踪数据发送到 Zipkin Server 中进行数据存储、分析和展示。
 
-## Zipkin 客户端
+## 四、Zipkin 客户端
 
 [Brave](https://github.com/openzipkin/brave) 是 Java 版的 zipkin 客户端。
 
 一般不会手动编写 Trace 相关的代码，Brave 提供可一些开箱即用的库，帮助我们追踪一些特定的请求。比如：dubbo、grpc、servlet、mysql、httpClient、kafka、springMVC 等。
-
-示例源码参考：codes/javatool/javatool-monitor
 
 ## 参考资料
 

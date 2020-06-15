@@ -1,6 +1,6 @@
 package io.github.dunwu.javatech;
 
-import io.github.dunwu.tool.collection.CollectionUtil;
+import cn.hutool.core.collection.CollectionUtil;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;

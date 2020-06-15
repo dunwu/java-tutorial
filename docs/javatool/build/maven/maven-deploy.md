@@ -153,7 +153,7 @@ gpg:              unchanged: 1
       <id>nexus-aliyun</id>
       <mirrorOf>*</mirrorOf>
       <name>Aliyun</name>
-      <url>http://maven.aliyun.com/nexus/condunwu/groups/public</url>
+      <url>http://maven.aliyun.com/nexus/groups/public</url>
     </mirror>
   </mirrors>
 
