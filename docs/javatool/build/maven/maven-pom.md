@@ -1,6 +1,39 @@
 # Maven 教程之 pom.xml 详解
 
-## 简介
+> **📦 本文已归档在 [java-tutorial](https://dunwu.github.io/java-tutorial/#/)**
+
+<!-- TOC depthFrom:2 depthTo:3 -->
+
+- [一、pom.xml 简介](#一pomxml-简介)
+  - [什么是 pom](#什么是-pom)
+  - [pom 配置一览](#pom-配置一览)
+- [二、基本配置](#二基本配置)
+  - [maven 坐标](#maven-坐标)
+- [三、依赖配置](#三依赖配置)
+  - [dependencies](#dependencies)
+  - [parent](#parent)
+  - [dependencyManagement](#dependencymanagement)
+  - [modules](#modules)
+  - [properties](#properties)
+- [四、构建配置](#四构建配置)
+  - [build](#build)
+  - [reporting](#reporting)
+- [五、项目信息](#五项目信息)
+- [六、环境配置](#六环境配置)
+  - [issueManagement](#issuemanagement)
+  - [ciManagement](#cimanagement)
+  - [mailingLists](#mailinglists)
+  - [scm](#scm)
+  - [prerequisites](#prerequisites)
+  - [repositories](#repositories)
+  - [pluginRepositories](#pluginrepositories)
+  - [distributionManagement](#distributionmanagement)
+  - [profiles](#profiles)
+- [参考资料](#参考资料)
+
+<!-- /TOC -->
+
+## 一、pom.xml 简介
 
 ### 什么是 pom
 
@@ -55,7 +88,7 @@ pom.xml 就是 maven 的配置文件，用以描述项目的各种信息。
 </project>
 ```
 
-## 基本配置
+## 二、基本配置
 
 - **project** - `project` 是 pom.xml 中描述符的根。
 - **modelVersion** - `modelVersion` 指定 pom.xml 符合哪个版本的描述符。maven 2 和 3 只能为 4.0.0。
@@ -90,7 +123,7 @@ pom.xml 就是 maven 的配置文件，用以描述项目的各种信息。
     - **RELEASE** ：指最后一个发布版。
 - **packaging** - 项目的类型，描述了项目打包后的输出，默认是 jar。常见的输出类型为：pom, jar, maven-plugin, ejb, war, ear, rar, par。
 
-## 依赖配置
+## 三、依赖配置
 
 ### dependencies
 
@@ -206,7 +239,7 @@ maven 支持继承功能。子 POM 可以使用 `parent` 指定父 POM ，然后
 </project>
 ```
 
-## 构建配置
+## 四、构建配置
 
 ### build
 
@@ -460,7 +493,7 @@ build 可以分为 "project build" 和 "profile build"。
 </project>
 ```
 
-## 项目信息
+## 五、项目信息
 
 项目信息相关的这部分标签**都不是必要的**，也就是说完全可以不填写。
 
@@ -554,7 +587,7 @@ build 可以分为 "project build" 和 "profile build"。
 
 - **contributors** - 项目贡献者列表，`<contributor>` 的子标签和 `<developer>` 的完全相同。
 
-## 环境配置
+## 六、环境配置
 
 ### issueManagement
 

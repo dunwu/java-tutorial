@@ -1,6 +1,6 @@
 <p align="center">
-    <a href="https://dunwu.github.io/java-tutorial/#/" target="_blank" rel="noopener noreferrer">
-        <img src="http://dunwu.test.upcdn.net/common/logo/java-logo.png" alt="logo" width="100px">
+    <a href="https://dunwu.github.io/java-tutorial/" target="_blank" rel="noopener noreferrer">
+        <img src="http://dunwu.test.upcdn.net/common/logo/dunwu-logo.png" alt="logo" width="150px"/>
     </a>
 </p>
 
@@ -52,7 +52,13 @@
 > - Ant 功能比 Maven 和 Gradle 要弱，现代 Java 项目基本不用了，但也有一些传统的 Java 项目还在使用。
 
 - [Maven](docs/javatool/build/maven) 📚
-- [Ant](docs/javatool/build/ant.md)
+  - [Maven 入门指南](docs/javatool/build/maven/maven-quickstart.md)
+  - [Maven 教程之 pom.xml 详解](docs/javatool/build/maven/maven-pom.md)
+  - [Maven 教程之 settings.xml 详解](docs/javatool/build/maven/maven-settings.md)
+  - [Maven 实战问题和最佳实践](docs/javatool/build/maven/maven-action.md)
+  - [Maven 教程之发布 jar 到私服或中央仓库](docs/javatool/build/maven/maven-deploy.md)
+  - [Maven 插件之代码检查](docs/javatool/build/maven/maven-checkstyle-plugin.md)
+- [Ant 简易教程](docs/javatool/build/ant.md)
 
 ### IDE
 

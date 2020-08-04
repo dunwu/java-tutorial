@@ -1,5 +1,16 @@
 # Maven 插件之代码检查
 
+> **📦 本文已归档在 [java-tutorial](https://dunwu.github.io/java-tutorial/#/)**
+>
+<!-- TOC depthFrom:2 depthTo:3 -->
+
+- [maven-checkstyle-plugin](#maven-checkstyle-plugin)
+  - [定义 checkstyle.xml](#定义-checkstylexml)
+- [maven-pmd-plugin](#maven-pmd-plugin)
+- [参考资料](#参考资料)
+
+<!-- /TOC -->
+
 ## maven-checkstyle-plugin
 
 > **maven-checkstyle-plugin，用于检测代码中不符合规范的地方。**

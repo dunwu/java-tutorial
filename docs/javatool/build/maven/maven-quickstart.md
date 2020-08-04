@@ -2,7 +2,7 @@
 
 > **📦 本文已归档在 [java-tutorial](https://dunwu.github.io/java-tutorial/#/)**
 
-<!-- TOC depthFrom:2 depthTo:5 -->
+<!-- TOC depthFrom:2 depthTo:3 -->
 
 - [一、Maven 简介](#一maven-简介)
   - [Maven 是什么](#maven-是什么)
@@ -14,15 +14,10 @@
   - [环境准备](#环境准备)
   - [下载解压](#下载解压)
   - [环境变量](#环境变量)
-    - [配置 Unix 系统环境变量](#配置-unix-系统环境变量)
-    - [配置 Windows 系统环境变量](#配置-windows-系统环境变量)
   - [检测安装成功](#检测安装成功)
   - [Maven 配置文件](#maven-配置文件)
 - [三、快速入门](#三快速入门)
   - [创建 Maven 工程](#创建-maven-工程)
-    - [初始化工程](#初始化工程)
-    - [POM 配置](#pom-配置)
-    - [构建项目](#构建项目)
   - [在 Intellij 中创建 Maven 工程](#在-intellij-中创建-maven-工程)
   - [在 Eclipse 中创建 Maven 工程](#在-eclipse-中创建-maven-工程)
 - [四、使用说明](#四使用说明)
@@ -31,19 +26,6 @@
   - [如何使用 Maven 插件(Plugin)](#如何使用-maven-插件plugin)
   - [如何一次编译多个工程](#如何一次编译多个工程)
   - [常用 Maven 插件](#常用-maven-插件)
-    - [[maven-antrun-plugin](http://maven.apache.org/plugins/maven-antrun-plugin/)](#maven-antrun-pluginhttpmavenapacheorgpluginsmaven-antrun-plugin)
-    - [[maven-archetype-plugin](http://maven.apache.org/archetype/maven-archetype-plugin/)](#maven-archetype-pluginhttpmavenapacheorgarchetypemaven-archetype-plugin)
-    - [[maven-assembly-plugin](http://maven.apache.org/plugins/maven-assembly-plugin/)](#maven-assembly-pluginhttpmavenapacheorgpluginsmaven-assembly-plugin)
-    - [[maven-dependency-plugin](http://maven.apache.org/plugins/maven-dependency-plugin/)](#maven-dependency-pluginhttpmavenapacheorgpluginsmaven-dependency-plugin)
-    - [[maven-enforcer-plugin](http://maven.apache.org/plugins/maven-enforcer-plugin/)](#maven-enforcer-pluginhttpmavenapacheorgpluginsmaven-enforcer-plugin)
-    - [[maven-help-plugin](http://maven.apache.org/plugins/maven-help-plugin/)](#maven-help-pluginhttpmavenapacheorgpluginsmaven-help-plugin)
-    - [[maven-release-plugin](http://maven.apache.org/plugins/maven-release-plugin/)](#maven-release-pluginhttpmavenapacheorgpluginsmaven-release-plugin)
-    - [[maven-resources-plugin](http://maven.apache.org/plugins/maven-resources-plugin/)](#maven-resources-pluginhttpmavenapacheorgpluginsmaven-resources-plugin)
-    - [[maven-surefire-plugin](http://maven.apache.org/plugins/maven-surefire-plugin/)](#maven-surefire-pluginhttpmavenapacheorgpluginsmaven-surefire-plugin)
-    - [[build-helper-maven-plugin](http://mojo.codehaus.org/build-helper-maven-plugin/)](#build-helper-maven-pluginhttpmojocodehausorgbuild-helper-maven-plugin)
-    - [[exec-maven-plugin](http://mojo.codehaus.org/exec-maven-plugin/)](#exec-maven-pluginhttpmojocodehausorgexec-maven-plugin)
-    - [[jetty-maven-plugin](http://wiki.eclipse.org/Jetty/Feature/Jetty_Maven_Plugin)](#jetty-maven-pluginhttpwikieclipseorgjettyfeaturejetty_maven_plugin)
-    - [[versions-maven-plugin](http://mojo.codehaus.org/versions-maven-plugin/)](#versions-maven-pluginhttpmojocodehausorgversions-maven-plugin)
   - [Maven 命令](#maven-命令)
 - [参考资料](#参考资料)
 
@@ -53,7 +35,7 @@
 
 ### Maven 是什么
 
-Maven 是一个项目管理工具。它负责管理项目开发过程中的几乎所有的东西。
+[Maven](https://github.com/apache/maven) 是一个项目管理工具。它负责管理项目开发过程中的几乎所有的东西。
 
 - **版本** - maven 有自己的版本定义和规则。
 - **构建** - maven 支持许多种的应用程序类型，对于每一种支持的应用程序类型都定义好了一组构建规则和工具集。

@@ -1,6 +1,30 @@
 # Maven 教程之 settings.xml 详解
 
-## 简介
+> **📦 本文已归档在 [java-tutorial](https://dunwu.github.io/java-tutorial/#/)**
+
+<!-- TOC depthFrom:2 depthTo:3 -->
+
+- [一、settings.xml 简介](#一settingsxml-简介)
+  - [settings.xml 有什么用](#settingsxml-有什么用)
+  - [settings.xml 文件位置](#settingsxml-文件位置)
+  - [配置优先级](#配置优先级)
+- [二、settings.xml 元素详解](#二settingsxml-元素详解)
+  - [顶级元素概览](#顶级元素概览)
+  - [LocalRepository](#localrepository)
+  - [InteractiveMode](#interactivemode)
+  - [UsePluginRegistry](#usepluginregistry)
+  - [Offline](#offline)
+  - [PluginGroups](#plugingroups)
+  - [Servers](#servers)
+  - [Mirrors](#mirrors)
+  - [Proxies](#proxies)
+  - [Profiles](#profiles)
+  - [ActiveProfiles](#activeprofiles)
+- [参考资料](#参考资料)
+
+<!-- /TOC -->
+
+## 一、settings.xml 简介
 
 ### settings.xml 有什么用
 
@@ -26,7 +50,7 @@ settings.xml 文件一般存在于两个位置：
 
 如果这些文件同时存在，在应用配置时，会合并它们的内容，如果有重复的配置，优先级高的配置会覆盖优先级低的。
 
-## settings.xml 元素详解
+## 二、settings.xml 元素详解
 
 ### 顶级元素概览
 

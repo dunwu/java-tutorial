@@ -1,5 +1,22 @@
 # Maven 教程之发布 jar 到私服或中央仓库
 
+> **📦 本文已归档在 [java-tutorial](https://dunwu.github.io/java-tutorial/#/)**
+
+<!-- TOC depthFrom:2 depthTo:3 -->
+
+- [发布 jar 包到中央仓库](#发布-jar-包到中央仓库)
+  - [在 Sonatype 创建 Issue](#在-sonatype-创建-issue)
+  - [使用 GPG 生成公私钥对](#使用-gpg-生成公私钥对)
+  - [Maven 配置](#maven-配置)
+  - [部署和发布](#部署和发布)
+- [部署 maven 私服](#部署-maven-私服)
+  - [下载安装 Nexus](#下载安装-nexus)
+  - [启动停止 Nexus](#启动停止-nexus)
+  - [使用 Nexus](#使用-nexus)
+- [参考资料](#参考资料)
+
+<!-- /TOC -->
+
 ## 发布 jar 包到中央仓库
 
 > 为了避免重复造轮子，相信每个 Java 程序员都想打造自己的脚手架或工具包（自己定制的往往才是最适合自己的）。那么如何将自己的脚手架发布到中央仓库呢？下面我们将一步步来实现。

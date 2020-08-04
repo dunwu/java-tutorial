@@ -85,9 +85,11 @@ ZipKin 可以分为两部分，
 Zipkin Server 主要包括四个模块：
 
 - **Collector** - 负责采集客户端传输的数据。
-- **Storage** - 负责存储采集的数据，当前支持 Memory，MySQL，Cassandra，ElasticSearch 等，默认存储在内存中。
-- **API（Query）** - 负责查询 Storage 中存储的数据，提供简单的 JSON API 获取数据，主要提供给 web UI 使用。
+- **Storage** - 负责存储采集的数据。当前支持 Memory，MySQL，Cassandra，ElasticSearch 等，默认存储在内存中。
+- **API（Query）** - 负责查询 Storage 中存储的数据。提供简单的 JSON API 获取数据，主要提供给 web UI 使用。
 - **UI** - 提供简单的 web 界面。
+
+Instrumented Client 和 Instrumented Server，是指分布式架构中使用了 Trace 工具的两个应用，Client 会调用 Server 提供的服务，两者都会向 Zipkin 上报 Trace 相关信息。在 Client 和 Server 通过 Transport 上报 Trace 信息后，由 Zipkin 的 Collector 模块接收，并由 Storage 模块将数据存储在对应的存储介质中，然后 Zipkin 提供 API 供 UI 界面查询 Trace 跟踪信息。Non-Instrumented Server，指的是未使用 Trace 工具的 Server，显然它不会上报 Trace 信息。
 
 ### Zipkin Client
 
