@@ -13,5 +13,7 @@
 		<module>codes/java-distributed</module>
 		<module>codes/javaee</module>
 		<module>codes/javatool</module>
+		<module>codes/trouble-shooting</module>
+		<module>codes/deadloop</module>
 	</modules>
 </project>
