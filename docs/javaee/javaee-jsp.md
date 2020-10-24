@@ -1,8 +1,8 @@
 # JSP 指南
 
-## 简介
+## 1. 简介
 
-### 什么是 Java Server Pages
+### 1.1. 什么是 Java Server Pages
 
 `JSP`全称`Java Server Pages`，是一种动态网页开发技术。
 
@@ -14,7 +14,7 @@ JSP 通过网页表单获取用户输入数据、访问数据库及其他数据�
 
 JSP 标签有多种功能，比如访问数据库、记录用户选择信息、访问 JavaBeans 组件等，还可以在不同的网页中传递控制信息和共享信息。
 
-### 为什么使用 JSP
+### 1.2. 为什么使用 JSP
 
 JSP 也是一种 Servlet，因此 JSP 能够完成 Servlet 能完成的任何工作。
 
@@ -27,7 +27,7 @@ JSP 程序与 CGI 程序有着相似的功能，但和 CGI 程序相比，JSP �
 
 最后，JSP 是 Java EE 不可或缺的一部分，是一个完整的企业级应用平台。这意味着 JSP 可以用最简单的方式来实现最复杂的应用。
 
-### JSP 的优势
+### 1.3. JSP 的优势
 
 以下列出了使用 JSP 带来的其他好处：
 
@@ -37,7 +37,7 @@ JSP 程序与 CGI 程序有着相似的功能，但和 CGI 程序相比，JSP �
 - 与 JavaScript 相比：虽然 JavaScript 可以在客户端动态生成 HTML，但是很难与服务器交互，因此不能提供复杂的服务，比如访问数据库和图像处理等等。
 - 与静态 HTML 相比：静态 HTML 不包含动态信息。
 
-## JSP 工作原理
+## 2. JSP 工作原理
 
 **JSP 是一种 Servlet**，但工作方式和 Servlet 有所差别。
 
@@ -47,7 +47,7 @@ Jsp 是先将源代码部署到服务器再编译，**先部署后编译**。
 
 Jsp 会在客户端第一次请求 Jsp 文件时被编译为 HttpJspPage 类（Servlet 的一个子类）。该类会被服务器临时存放在服务器工作目录里。所以，第一次请求 Jsp 后，访问速度会变快就是这个道理。
 
-### JSP 工作流程
+### 2.1. JSP 工作流程
 
 网络服务器需要一个 JSP 引擎，也就是一个容器来处理 JSP 页面。容器负责截获对 JSP 页面的请求。本教程使用内嵌 JSP 容器的 Apache 来支持 JSP 开发。
 
@@ -57,7 +57,7 @@ JSP 容器与 Web 服务器协同合作，为 JSP 的正常运行提供必要的
 
 ![img](http://www.runoob.com/wp-content/uploads/2014/01/jsp-arch.jpg)
 
-#### 工作步骤
+#### 2.1.1. 工作步骤
 
 以下步骤表明了 Web 服务器是如何使用 JSP 来创建网页的：
 
@@ -73,7 +73,7 @@ JSP 容器与 Web 服务器协同合作，为 JSP 的正常运行提供必要的
 
 一般情况下，JSP 引擎会检查 JSP 文件对应的 servlet 是否已经存在，并且检查 JSP 文件的修改日期是否早于 servlet。如果 JSP 文件的修改日期早于对应的 servlet，那么容器就可以确定 JSP 文件没有被修改过并且 servlet 有效。这使得整个流程与其他脚本语言（比如 PHP）相比要高效快捷一些。
 
-### JSP 生命周期
+### 2.2. JSP 生命周期
 
 理解 JSP 底层功能的关键就是去理解它们所遵守的生命周期。
 
@@ -90,7 +90,7 @@ JSP 生命周期就是从创建到销毁的整个过程，类似于 servlet 生�
 
 ![img](http://www.runoob.com/wp-content/uploads/2014/01/jsp_life_cycle.jpg)
 
-#### JSP 编译
+#### 2.2.1. JSP 编译
 
 当浏览器请求 JSP 页面时，JSP 引擎会首先去检查是否需要编译这个文件。如果这个文件没有被编译过，或者在上次编译后被更改过，则编译这个 JSP 文件。
 
@@ -100,7 +100,7 @@ JSP 生命周期就是从创建到销毁的整个过程，类似于 servlet 生�
 - 将 JSP 文件转为 servlet。
 - 编译 servlet。
 
-#### JSP 初始化
+#### 2.2.2. JSP 初始化
 
 容器载入 JSP 文件后，它会在为请求提供任何服务前调用 jspInit()方法。如果您需要执行自定义的 JSP 初始化任务，复写 jspInit()方法就行了，就像下面这样：
 
@@ -112,7 +112,7 @@ public void jspInit(){
 
 一般来讲程序只初始化一次，servlet 也是如此。通常情况下您可以在 jspInit()方法中初始化数据库连接、打开文件和创建查询表。
 
-#### JSP 执行
+#### 2.2.3. JSP 执行
 
 这一阶段描述了 JSP 生命周期中一切与请求相关的交互行为，直到被销毁。
 
@@ -129,7 +129,7 @@ void _jspService(HttpServletRequest request,
 
 `_jspService()` 方法在每个 request 中被调用一次并且负责产生与之相对应的 response，并且它还负责产生所有 7 个 HTTP 方法的回应，比如 GET、POST、DELETE 等等。
 
-#### JSP 清理
+#### 2.2.4. JSP 清理
 
 JSP 生命周期的销毁阶段描述了当一个 JSP 网页从容器中被移除时所发生的一切。
 
@@ -143,9 +143,9 @@ public void jspDestroy() {
 }
 ```
 
-## 语法
+## 3. 语法
 
-### 脚本
+### 3.1. 脚本
 
 脚本程序可以包含任意量的 Java 语句、变量、方法或表达式，只要它们在脚本语言中是有效的。
 
@@ -185,7 +185,7 @@ public void jspDestroy() {
 
 ![img](http://www.runoob.com/wp-content/uploads/2014/01/jsp_hello_world.jpg)
 
-#### 中文编码问题
+#### 3.1.1. 中文编码问题
 
 如果我们要在页面正常显示中文，我们需要在 JSP 文件头部添加以下代码：`<>`
 
@@ -214,7 +214,7 @@ pageEncoding="UTF-8"%>
 
 这样中文就可以正常显示了。
 
-### JSP 声明
+### 3.2. JSP 声明
 
 一个声明语句可以声明一个或多个变量、方法，供后面的 Java 代码使用。在 JSP 文件中，您必须先声明这些变量和方法然后才能使用它们。
 
@@ -238,7 +238,7 @@ JSP 声明的语法格式：
 <%! int i = 0; %> <%! int a, b, c; %> <%! Circle a = new Circle(2.0); %>
 ```
 
-### JSP 表达式
+### 3.3. JSP 表达式
 
 一个 JSP 表达式中包含的脚本语言表达式，先被转化成 String，然后插入到表达式出现的地方。
 
@@ -287,7 +287,7 @@ pageEncoding="UTF-8"%>
 
 ---
 
-### JSP 注释
+### 3.4. JSP 注释
 
 JSP 注释主要有两个作用：为代码作注释以及将某段代码注释掉。
 
@@ -328,11 +328,11 @@ pageEncoding="UTF-8"%>
 | `'`              | 在属性中使用的单引号                                  |
 | `"`              | 在属性中使用的双引号                                  |
 
-### 控制语句
+### 3.5. 控制语句
 
 JSP 提供对 Java 语言的全面支持。您可以在 JSP 程序中使用 Java API 甚至建立 Java 代码块，包括判断语句和循环语句等等。
 
-#### if…else 语句
+#### 3.5.1. if…else 语句
 
 `If…else`块，请看下面这个例子：
 
@@ -363,7 +363,7 @@ IF...ELSE 实例
 今天不是周末
 ```
 
-#### switch…case 语句
+#### 3.5.2. switch…case 语句
 
 现在来看看 switch…case 块，与 if…else 块有很大的不同，它使用 out.println()，并且整个都装在脚本程序的标签中，就像下面这样：
 
@@ -394,7 +394,7 @@ SWITCH...CASE 实例
 星期三
 ```
 
-#### 循环语句
+#### 3.5.3. 循环语句
 
 在 JSP 程序中可以使用 Java 的三个基本循环类型：for，while，和 do…while。
 
@@ -474,7 +474,7 @@ JSP 支持所有 Java 逻辑和算术运算符。
 | 赋值      | `= += -= *= /= %= >>= <<= &= ^= |=` | 右到左     |
 | 逗号      | `,`                                 | 左到右     |
 
-### JSP 字面量
+### 3.6. JSP 字面量
 
 JSP 语言定义了以下几个字面量：
 
@@ -484,7 +484,7 @@ JSP 语言定义了以下几个字面量：
 - 字符串(string)：以单引号或双引号开始和结束;
 - Null：null。
 
-## 指令
+## 4. 指令
 
 JSP 指令用来设置整个 JSP 页面相关的属性，如网页的编码方式和脚本语言。
 
@@ -506,7 +506,7 @@ JSP 中的三种指令标签：
 | `<%@ include ... %>` | 包含其他文件                                             |
 | `<%@ taglib ... %>`  | 引入标签库的定义，可以是自定义标签                       |
 
-### Page 指令
+### 4.1. Page 指令
 
 Page 指令为容器提供当前页面的使用说明。一个 JSP 页面可以包含多个`page`指令。
 
@@ -529,7 +529,7 @@ Page 指令的语法格式：
 pageEncoding="UTF-8" %>
 ```
 
-#### 属性
+#### 4.1.1. 属性
 
 下表列出与 Page 指令相关的属性：
 
@@ -549,7 +549,7 @@ pageEncoding="UTF-8" %>
 | isELIgnored        | 指定是否执行 EL 表达式                                |
 | isScriptingEnabled | 确定脚本元素能否被使用                                |
 
-### Include 指令
+### 4.2. Include 指令
 
 JSP 可以通过`include`指令来包含其他文件。
 
@@ -571,7 +571,7 @@ Include 指令的语法格式如下：
 <jsp:directive.include file="文件相对 url 地址" />
 ```
 
-### Taglib 指令
+### 4.3. Taglib 指令
 
 JSP 允许用户自定义标签，一个自定义标签库就是自定义标签的集合。
 
@@ -591,7 +591,7 @@ uri 属性确定标签库的位置，prefix 属性指定标签库的前缀。
 <jsp:directive.taglib uri="uri" prefix="prefixOfTag" />
 ```
 
-## JSP 动作元素
+## 5. JSP 动作元素
 
 JSP 动作元素是一组 JSP 内置的标签，只需要书写很少的标记代码就能使用 JSP 提供的丰富功能。JSP 动作元素是对常用的 JSP 功能的抽象与封装，包括两种，自定义 JSP 动作元素与标准 JSP 动作元素。
 
@@ -620,14 +620,14 @@ JSP 动作元素是一组 JSP 内置的标签，只需要书写很少的标记�
 | jsp:body        | 设置动态定义的 XML 元素内容。                         |
 | jsp:text        | 在 JSP 页面和文档中使用写入文本的模板                 |
 
-### 常见的属性
+### 5.1. 常见的属性
 
 所有的动作要素都有两个属性：id 属性和 scope 属性。
 
 - **id 属性：**id 属性是动作元素的唯一标识，可以在 JSP 页面中引用。动作元素创建的 id 值可以通过 PageContext 来调用。
 - **scope 属性：**该属性用于识别动作元素的生命周期。 id 属性和 scope 属性有直接关系，scope 属性定义了相关联 id 对象的寿命。 scope 属性有四个可能的值： (a) page, (b)request, (c)session, 和 (d) application。
 
-### `<jsp:include>`
+### 5.2. `<jsp:include>`
 
 `<jsp:include>` 用来包含静态和动态的文件。该动作把指定文件插入正在生成的页面。
 
@@ -688,7 +688,7 @@ include 动作实例
 今天的日期是: 2016-6-25 14:08:17
 ```
 
-### `<jsp:useBean>`
+### 5.3. `<jsp:useBean>`
 
 **jsp:useBean** 动作用来加载一个将在 JSP 页面中使用的 JavaBean。
 
@@ -712,7 +712,7 @@ jsp:useBean 动作最简单的语法为：
 
 在给出具体实例前，让我们先来看下 jsp:setProperty 和 jsp:getProperty 动作元素：
 
-### `<jsp:setProperty>`
+### 5.4. `<jsp:setProperty>`
 
 jsp:setProperty 用来设置已经实例化的 Bean 对象的属性，有两种用法。首先，你可以在 jsp:useBean 元素的外面（后面）使用 jsp:setProperty，如下所示：
 
@@ -742,7 +742,7 @@ jsp:setProperty 动作有下面四个属性,如下表：
 | value    | value 属性是可选的。该属性用来指定 Bean 属性的值。字符串数据会在目标类中通过标准的 valueOf 方法自动转换成数字、boolean、Boolean、 byte、Byte、char、Character。例如，boolean 和 Boolean 类型的属性值（比如"true"）通过 Boolean.valueOf 转换，int 和 Integer 类型的属性值（比如"42"）通过 Integer.valueOf 转换。 　　 value 和 param 不能同时使用，但可以使用其中任意一个。 |
 | param    | param 是可选的。它指定用哪个请求参数作为 Bean 属性的值。如果当前请求没有参数，则什么事情也不做，系统不会把 null 传递给 Bean 属性的 set 方法。因此，你可以让 Bean 自己提供默认属性值，只有当请求参数明确指定了新值时才修改默认属性值。                                                                                                                                      |
 
-### `<jsp:getProperty>`
+### 5.5. `<jsp:getProperty>`
 
 jsp:getProperty 动作提取指定 Bean 属性的值，转换成字符串，然后输出。语法格式如下：
 
@@ -820,7 +820,7 @@ pageEncoding="UTF-8"%>
 
 ![img](http://www.runoob.com/wp-content/uploads/2014/01/D7AD87A8-3392-4D4E-8731-18806B0644CD.jpg)
 
-### `<jsp:forward>`
+### 5.6. `<jsp:forward>`
 
 jsp:forward 动作把请求转到另外的页面。jsp:forward 标记只有一个属性 page。语法格式如下所示：
 
@@ -872,7 +872,7 @@ pageEncoding="UTF-8"%>
 今天的日期是: 2016-6-25 14:37:25
 ```
 
-### `<jsp:plugin>`
+### 5.7. `<jsp:plugin>`
 
 jsp:plugin 动作用来根据浏览器的类型，插入通过 Java 插件 运行 Java Applet 所必需的 OBJECT 或 EMBED 元素。
 
@@ -897,7 +897,7 @@ plugin 动作有多个对应 HTML 元素的属性用于格式化 Java 组件。p
 
 如果你有兴趣可以尝试使用 applet 来测试 `jsp:plugin` 动作元素，`<fallback>` 元素是一个新元素，在组件出现故障的错误是发送给用户错误信息。
 
-### `<jsp:element>` 、 `<jsp:attribute>`、`<jsp:body>`
+### 5.8. `<jsp:element>` 、 `<jsp:attribute>`、`<jsp:body>`
 
 `<jsp:element>` 、 `<jsp:attribute>`、`<jsp:body>` 动作元素动态定义 XML 元素。动态是非常重要的，这就意味着 XML 元素在编译时是动态生成的而非静态。
 
@@ -929,7 +929,7 @@ pageEncoding="UTF-8"%>
 
 ![img](http://www.runoob.com/wp-content/uploads/2014/01/7D8C47F0-0DDE-4F1D-8BE1-B2C9C955683E.jpg)
 
-### `<jsp:text>`
+### 5.9. `<jsp:text>`
 
 <jsp:text>动作元素允许在 JSP 页面和文档中使用写入文本的模板，语法格式如下：
 
@@ -963,7 +963,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 
 你可以对以上实例尝试使用<jsp:text>及不使用该动作元素执行结果的区别。
 
-## JSP 隐式对象
+## 6. JSP 隐式对象
 
 JSP 隐式对象是 JSP 容器为每个页面提供的 Java 对象，开发者可以直接使用它们而不用显式声明。JSP 隐式对象也被称为预定义变量。
 
@@ -981,7 +981,7 @@ JSP 所支持的九大隐式对象：
 | page        | 类似于 Java 类中的 this 关键字                                     |
 | Exception   | **Exception**类的对象，代表发生错误的 JSP 页面中对应的异常对象     |
 
-### request 对象
+### 6.1. request 对象
 
 `request`对象是`javax.servlet.http.HttpServletRequest` 类的实例。
 
@@ -989,7 +989,7 @@ JSP 所支持的九大隐式对象：
 
 `request`对象提供了一系列方法来获取 HTTP 头信息，cookies，HTTP 方法等等。
 
-### response 对象
+### 6.2. response 对象
 
 `response`对象是`javax.servlet.http.HttpServletResponse`类的实例。
 
@@ -997,7 +997,7 @@ JSP 所支持的九大隐式对象：
 
 `response`对象也定义了处理 HTTP 头模块的接口。通过这个对象，开发者们可以添加新的 cookies，时间戳，HTTP 状态码等等。
 
-### out 对象
+### 6.3. out 对象
 
 `out`对象是`javax.servlet.jsp.JspWriter`类的实例，用来在`response`对象中写入内容。
 
@@ -1013,13 +1013,13 @@ JSP 所支持的九大隐式对象：
 | **out.println(dataType dt)** | 输出 Type 类型的值然后换行 |
 | **out.flush()**              | 刷新输出流                 |
 
-### session 对象
+### 6.4. session 对象
 
 `session`对象是`javax.servlet.http.HttpSession`类的实例。和 Java Servlets 中的`session`对象有一样的行为。
 
 `session`对象用来跟踪在各个客户端请求间的会话。
 
-### application 对象
+### 6.5. application 对象
 
 `application`对象直接包装了 servlet 的`ServletContext`类的对象，是`javax.servlet.ServletContext`类的实例。
 
@@ -1027,7 +1027,7 @@ JSP 所支持的九大隐式对象：
 
 通过向`application`中添加属性，则所有组成您 web 应用的 JSP 文件都能访问到这些属性。
 
-### config 对象
+### 6.6. config 对象
 
 `config`对象是`javax.servlet.ServletConfig`类的实例，直接包装了 servlet 的`ServletConfig`类的对象。
 
@@ -1041,7 +1041,7 @@ config.getServletName();
 
 它返回包含在`<servlet-name>`元素中的 servlet 名字，注意，`<servlet-name>`元素在`WEB-INF\web.xml`文件中定义。
 
-### pageContext 对象
+### 6.7. pageContext 对象
 
 `pageContext`对象是`javax.servlet.jsp.PageContext`类的实例，用来代表整个 JSP 页面。
 
@@ -1059,23 +1059,23 @@ config.getServletName();
 pageContext.removeAttribute("attrName", PAGE_SCOPE);
 ```
 
-### page 对象
+### 6.8. page 对象
 
 这个对象就是页面实例的引用。它可以被看做是整个 JSP 页面的代表。
 
 `page`对象就是`this`对象的同义词。
 
-### exception 对象
+### 6.9. exception 对象
 
 `exception`对象包装了从先前页面中抛出的异常信息。它通常被用来产生对出错条件的适当响应。
 
-## EL 表达式
+## 7. EL 表达式
 
 EL 表达式是用`${}`括起来的脚本，用来更方便地读取对象。EL 表达式写在 JSP 的 HTML 代码中，而不能写在`<%`与`%>`引起的 JSP 脚本中。
 
 JSP 表达式语言（EL）使得访问存储在 JavaBean 中的数据变得非常简单。JSP EL 既可以用来创建算术表达式也可以用来创建逻辑表达式。在 JSP EL 表达式内可以使用整型数，浮点数，字符串，常量 true、false，还有 null。
 
-### 一个简单的语法
+### 7.1. 一个简单的语法
 
 典型的，当您需要在 JSP 标签中指定一个属性值时，只需要简单地使用字符串即可：
 
@@ -1129,7 +1129,7 @@ ${expr}
 
 这样，EL 表达式就会被忽略。若设为 false，则容器将会计算 EL 表达式。
 
-### EL 中的基础操作符
+### 7.2. EL 中的基础操作符
 
 EL 表达式支持大部分 Java 所提供的算术和逻辑操作符：
 
@@ -1154,7 +1154,7 @@ EL 表达式支持大部分 Java 所提供的算术和逻辑操作符：
 | ! or not   | 测试取反                           |
 | empty      | 测试是否空值                       |
 
-### JSP EL 中的函数
+### 7.3. JSP EL 中的函数
 
 JSP EL 允许您在表达式中使用函数。这些函数必须被定义在自定义标签库中。函数的使用语法如下：
 
@@ -1170,7 +1170,7 @@ ${fn:length("Get my length")}
 
 要使用任何标签库中的函数，您需要将这些库安装在服务器中，然后使用 `<taglib>` 标签在 JSP 文件中包含这些库。
 
-### JSP EL 隐含对象
+### 7.4. JSP EL 隐含对象
 
 JSP EL 支持下表列出的隐含对象：
 
@@ -1190,7 +1190,7 @@ JSP EL 支持下表列出的隐含对象：
 
 您可以在表达式中使用这些对象，就像使用变量一样。接下来会给出几个例子来更好的理解这个概念。
 
-### pageContext 对象
+### 7.5. pageContext 对象
 
 pageContext 对象是 JSP 中 pageContext 对象的引用。通过 pageContext 对象，您可以访问 request 对象。比如，访问 request 对象传入的查询字符串，就像这样：
 
@@ -1198,13 +1198,13 @@ pageContext 对象是 JSP 中 pageContext 对象的引用。通过 pageContext �
 ${pageContext.request.queryString}
 ```
 
-### Scope 对象
+### 7.6. Scope 对象
 
 pageScope，requestScope，sessionScope，applicationScope 变量用来访问存储在各个作用域层次的变量。
 
 举例来说，如果您需要显式访问在 applicationScope 层的 box 变量，可以这样来访问：applicationScope.box。
 
-### param 和 paramValues 对象
+### 7.7. param 和 paramValues 对象
 
 param 和 paramValues 对象用来访问参数值，通过使用 request.getParameter 方法和 request.getParameterValues 方法。
 
@@ -1232,7 +1232,7 @@ Param"; %>
 
 param 对象返回单一的字符串，而 paramValues 对象则返回一个字符串数组。
 
-### header 和 headerValues 对象
+### 7.8. header 和 headerValues 对象
 
 header 和 headerValues 对象用来访问信息头，通过使用 request.getHeader 方法和 request.getHeaders 方法。
 
@@ -1264,7 +1264,7 @@ Example"; %>
 
 header 对象返回单一值，而 headerValues 则返回一个字符串数组。
 
-## JSTL
+## 8. JSTL
 
 JSP 标准标签库（JSTL）是一个 JSP 标签集合，它封装了 JSP 应用的通用核心功能。
 
@@ -1278,7 +1278,7 @@ JSTL 支持通用的、结构化的任务，比如迭代，条件判断，XML �
 - **XML 标签**
 - **JSTL 函数**
 
-### JSTL 库安装
+### 8.1. JSTL 库安装
 
 Apache Tomcat 安装 JSTL 库步骤如下：
 
@@ -1341,7 +1341,7 @@ Apache Tomcat 安装 JSTL 库步骤如下：
 
 使用任何库，你必须在每个 JSP 文件中的头部包含 **<taglib>** 标签。
 
-### 核心标签
+### 8.2. 核心标签
 
 核心标签是最常用的 JSTL 标签。引用核心标签库的语法如下：
 
@@ -1366,7 +1366,7 @@ Apache Tomcat 安装 JSTL 库步骤如下：
 | [`<c:redirect>`](http://www.runoob.com/jsp/jstl-core-redirect-tag.html) | 重定向至一个新的 URL.                                                       |
 | [`<c:url>`](http://www.runoob.com/jsp/jstl-core-url-tag.html)           | 使用可选的查询参数来创造一个 URL                                            |
 
-### 格式化标签
+### 8.3. 格式化标签
 
 JSTL 格式化标签用来格式化并输出文本、日期、时间、数字。引用格式化标签库的语法如下：
 
@@ -1388,7 +1388,7 @@ JSTL 格式化标签用来格式化并输出文本、日期、时间、数字。
 | [`<fmt:message>`](http://www.runoob.com/jsp/jstl-format-message-tag.html)                 | 显示资源配置文件信息                     |
 | [`<fmt:requestEncoding>`](http://www.runoob.com/jsp/jstl-format-requestencoding-tag.html) | 设置 request 的字符编码                  |
 
-### SQL 标签
+### 8.4. SQL 标签
 
 JSTL SQL 标签库提供了与关系型数据库（Oracle，MySQL，SQL Server 等等）进行交互的标签。引用 SQL 标签库的语法如下：
 
@@ -1405,7 +1405,7 @@ JSTL SQL 标签库提供了与关系型数据库（Oracle，MySQL，SQL Server �
 | [`<sql:dateParam>`](http://www.runoob.com/jsp/jstl-sql-dateparam-tag.html)         | 将 SQL 语句中的日期参数设为指定的 java.util.Date 对象值                      |
 | [`<sql:transaction>`](http://www.runoob.com/jsp/jstl-sql-transaction-tag.html)     | 在共享数据库连接中提供嵌套的数据库行为元素，将所有语句以一个事务的形式来运行 |
 
-### XML 标签
+### 8.5. XML 标签
 
 JSTL XML 标签库提供了创建和操作 XML 文档的标签。引用 XML 标签库的语法如下：
 
@@ -1436,7 +1436,7 @@ JSTL XML 标签库提供了创建和操作 XML 文档的标签。引用 XML 标�
 | [`<x:transform>`](http://www.runoob.com/jsp/jstl-xml-transform-tag.html) | 将 XSL 转换应用在 XML 文档中                                |
 | [`<x:param>`](http://www.runoob.com/jsp/jstl-xml-param-tag.html)         | 与<x:transform>共同使用，用于设置 XSL 样式表                |
 
-### JSTL 函数
+### 8.6. JSTL 函数
 
 JSTL 包含一系列标准函数，大部分是通用的字符串处理函数。引用 JSTL 函数库的语法如下：
 
@@ -1463,9 +1463,9 @@ JSTL 包含一系列标准函数，大部分是通用的字符串处理函数。
 | [fn:toUpperCase()](http://www.runoob.com/jsp/jstl-function-touppercase.html)               | 将字符串中的字符转为大写                                 |
 | [fn:trim()](http://www.runoob.com/jsp/jstl-function-trim.html)                             | 移除首尾的空白符                                         |
 
-## Taglib
+## 9. Taglib
 
-### JSP 自定义标签
+### 9.1. JSP 自定义标签
 
 自定义标签是用户定义的 JSP 语言元素。当 JSP 页面包含一个自定义标签时将被转化为 servlet，标签转化为对被 称为 tag handler 的对象的操作，即当 servlet 执行时 Web container 调用那些操作。
 
@@ -1473,7 +1473,7 @@ JSP 标签扩展可以让你创建新的标签并且可以直接插入到一个 
 
 你可以继承 SimpleTagSupport 类并重写的 doTag()方法来开发一个最简单的自定义标签。
 
-### 创建"Hello"标签
+### 9.2. 创建"Hello"标签
 
 接下来，我们想创建一个自定义标签叫作<ex:Hello>，标签格式为：
 
@@ -1527,7 +1527,7 @@ JspWriter out = getJspContext().getOut(); out.println("Hello Custom Tag!"); } }
 Hello Custom Tag!
 ```
 
-### 访问标签体
+### 9.3. 访问标签体
 
 你可以像标准标签库一样在标签中包含消息内容。如我们要在我们自定义的 Hello 中包含内容，格式如下：
 
@@ -1596,7 +1596,7 @@ public class HelloTag extends SimpleTagSupport {
 This is message body
 ```
 
-### 自定义标签属性
+### 9.4. 自定义标签属性
 
 你可以在自定义标准中设置各种属性，要接收属性，值自定义标签类必须实现 setter 方法， JavaBean 中的 setter 方法如下所示：
 

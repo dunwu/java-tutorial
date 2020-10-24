@@ -1,12 +1,12 @@
 # JavaEE 之 Cookie 和 Session
 
-## Cookie
+## 1. Cookie
 
 由于 Http 是一种无状态的协议，服务器单从网络连接上无从知道客户身份。
 
 会话跟踪是 Web 程序中常用的技术，用来跟踪用户的整个会话。常用会话跟踪技术是 Cookie 与 Session。
 
-### Cookie 是什么
+### 1.1. Cookie 是什么
 
 Cookie 实际上是存储在客户端上的文本信息，并保留了各种跟踪的信息。
 
@@ -20,7 +20,7 @@ Cookie 实际上是存储在客户端上的文本信息，并保留了各种跟�
 
 Java 中把 Cookie 封装成了`javax.servlet.http.Cookie`类。
 
-### Cookie 剖析
+### 1.2. Cookie 剖析
 
 Cookies 通常设置在 HTTP 头信息中（虽然 JavaScript 也可以直接在浏览器上设置一个 Cookie）。
 
@@ -52,7 +52,7 @@ Accept-Charset: iso-8859-1,*,utf-8
 Cookie: name=xyz
 ```
 
-### Cookie 类中的方法
+### 1.3. Cookie 类中的方法
 
 | 方法                                   | 功能                                                                                                               |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
@@ -69,7 +69,7 @@ Cookie: name=xyz
 | public void setComment(String purpose) | 该方法规定了描述 cookie 目的的注释。该注释在浏览器向用户呈现 cookie 时非常有用。                                   |
 | public String getComment()             | 该方法返回了描述 cookie 目的的注释，如果 cookie 没有注释则返回 null。                                              |
 
-### Cookie 的有效期
+### 1.4. Cookie 的有效期
 
 `Cookie`的`maxAge`决定着 Cookie 的有效期，单位为秒。
 
@@ -79,7 +79,7 @@ Cookie: name=xyz
 
 Cookie 中提供`getMaxAge()`**和**`setMaxAge(int expiry)`方法来读写`maxAge`属性。
 
-### Cookie 的域名
+### 1.5. Cookie 的域名
 
 Cookie 是不可以跨域名的。域名 www.google.com 颁发的 Cookie 不会被提交到域名 www.baidu.com 去。这是由 Cookie 的隐私安全机制决定的。隐私安全机制能够禁止网站非法获取其他网站的 Cookie。
 
@@ -87,13 +87,13 @@ Cookie 是不可以跨域名的。域名 www.google.com 颁发的 Cookie 不会�
 
 Java 中使用`setDomain(Stringdomain)`和`getDomain()`方法来设置、获取 domain。
 
-### Cookie 的路径
+### 1.6. Cookie 的路径
 
 Path 属性决定允许访问 Cookie 的路径。
 
 Java 中使用`setPath(Stringuri)`和`getPath()`方法来设置、获取 path。
 
-### Cookie 的安全属性
+### 1.7. Cookie 的安全属性
 
 HTTP 协议不仅是无状态的，而且是不安全的。
 
@@ -101,9 +101,9 @@ HTTP 协议不仅是无状态的，而且是不安全的。
 
 Java 中使用`setSecure(booleanflag)`和`getSecure ()`方法来设置、获取 Secure。
 
-### Cookie 实例
+### 1.8. Cookie 实例
 
-#### 添加 Cookie
+#### 1.8.1. 添加 Cookie
 
 通过 Servlet 添加 Cookies 包括三个步骤：
 
@@ -200,7 +200,7 @@ addCookies.jsp
 </html>
 ```
 
-#### 显示 Cookie
+#### 1.8.2. 显示 Cookie
 
 要读取 Cookies，您需要通过调用 `HttpServletRequest` 的 `getCookies()` 方法创建一个 `javax.servlet.http.Cookie` 对象的数组。然后循环遍历数组，并使用 `getName()` 和 `getValue()` 方法来访问每个 cookie 和关联的值。
 
@@ -277,7 +277,7 @@ public class ReadCookies extends HttpServlet {
 }
 ```
 
-#### 删除 Cookie
+#### 1.8.3. 删除 Cookie
 
 Java 中并没有提供直接删除 Cookie 的方法，如果想要删除一个 Cookie，直接将这个 Cookie 的有效期设为 0 就可以了。步骤如下：
 
@@ -359,9 +359,9 @@ public class DeleteCookies extends HttpServlet {
 }
 ```
 
-## Session
+## 2. Session
 
-### Session 是什么
+### 2.1. Session 是什么
 
 不同于 Cookie 保存在客户端浏览器中，Session 保存在服务器上。
 
@@ -369,7 +369,7 @@ public class DeleteCookies extends HttpServlet {
 
 Session 对应的类为 `javax.servlet.http.HttpSession` 类。Session 对象是在客户第一次请求服务器时创建的。
 
-### Session 类中的方法
+### 2.2. Session 类中的方法
 
 `javax.servlet.http.HttpSession` 类中的方法：
 
@@ -387,7 +387,7 @@ Session 对应的类为 `javax.servlet.http.HttpSession` 类。Session 对象是
 | public void setAttribute(String name, Object value) | 该方法使用指定的名称绑定一个对象到该 session 会话。                                                                       |
 | public void setMaxInactiveInterval(int interval)    | 该方法在 Servlet 容器指示该 session 会话无效之前，指定客户端请求之间的时间，以秒为单位。                                  |
 
-### Session 的有效期
+### 2.3. Session 的有效期
 
 由于会有越来越多的用户访问服务器，因此 Session 也会越来越多。为防止内存溢出，服务器会把长时间没有活跃的 Session 从内存中删除。
 
@@ -403,19 +403,19 @@ Tomcat 中 Session 的默认超时时间为 20 分钟。可以修改 web.xml 改
 </session-config>
 ```
 
-### Session 对浏览器的要求
+### 2.4. Session 对浏览器的要求
 
 HTTP 协议是无状态的，Session 不能依据 HTTP 连接来判断是否为同一客户。因此服务器向客户端浏览器发送一个名为 JESSIONID 的 Cookie，他的值为该 Session 的 id（也就是 HttpSession.getId()的返回值）。Session 依据该 Cookie 来识别是否为同一用户。
 
 该 Cookie 为服务器自动生成的，它的`maxAge`属性一般为-1，表示仅当前浏览器内有效，并且各浏览器窗口间不共享，关闭浏览器就会失效。
 
-### URL 地址重写
+### 2.5. URL 地址重写
 
 URL 地址重写的原理是将该用户 Session 的 id 信息重写到 URL 地址中。服务器能够解析重写后的 URL 获取 Session 的 id。这样即使客户端不支持 Cookie，也可以使用 Session 来记录用户状态。
 
 `HttpServletResponse`类提供了`encodeURL(Stringurl)`实现 URL 地址重写。
 
-### Session 中禁用 Cookie
+### 2.6. Session 中禁用 Cookie
 
 在`META-INF/context.xml`中编辑如下：
 
@@ -426,9 +426,9 @@ URL 地址重写的原理是将该用户 Session 的 id 信息重写到 URL 地�
 
 部署后，TOMCAT 便不会自动生成名 JESSIONID 的 Cookie，Session 也不会以 Cookie 为识别标志，而仅仅以重写后的 URL 地址为识别标志了。
 
-### Session 实例
+### 2.7. Session 实例
 
-#### Session 跟踪
+#### 2.7.1. Session 跟踪
 
 SessionTrackServlet.java
 
@@ -510,7 +510,7 @@ web.xml
 </servlet-mapping>
 ```
 
-#### 删除 Session 会话数据
+#### 2.7.2. 删除 Session 会话数据
 
 当您完成了一个用户的 session 会话数据，您有以下几种选择：
 
@@ -534,33 +534,33 @@ web.xml
 
 在一个 Servlet 中的 `getMaxInactiveInterval()` 方法会返回 session 会话的超时时间，以秒为单位。所以，如果在 web.xml 中配置 session 会话超时时间为 15 分钟，那么`getMaxInactiveInterval()` 会返回 900。
 
-## Cookie vs Session
+## 3. Cookie vs Session
 
-### 存取方式
+### 3.1. 存取方式
 
 Cookie 只能保存`ASCII`字符串，如果需要存取 Unicode 字符或二进制数据，需要进行`UTF-8`、`GBK`或`BASE64`等方式的编码。
 
 Session 可以存取任何类型的数据，甚至是任何 Java 类。可以将 Session 看成是一个 Java 容器类。
 
-### 隐私安全
+### 3.2. 隐私安全
 
 Cookie 存于客户端浏览器，一些客户端的程序可能会窥探、复制或修改 Cookie 内容。
 
 Session 存于服务器，对客户端是透明的，不存在敏感信息泄露的危险。
 
-### 有效期
+### 3.3. 有效期
 
 使用 Cookie 可以保证长时间登录有效，只要设置 Cookie 的`maxAge`属性为一个很大的数字。
 
 而 Session 虽然理论上也可以通过设置很大的数值来保持长时间登录有效，但是，由于 Session 依赖于名为`JESSIONID`的 Cookie，而 Cookie `JESSIONID`的`maxAge`默认为-1，只要关闭了浏览器该 Session 就会失效，因此，Session 不能实现信息永久有效的效果。使用 URL 地址重写也不能实现。
 
-### 服务器的开销
+### 3.4. 服务器的开销
 
 由于 Session 是保存在服务器的，每个用户都会产生一个 Session，如果并发访问的用户非常多，会产生很多的 Session，消耗大量的内存。
 
 而 Cookie 由于保存在客户端浏览器上，所以不占用服务器资源。
 
-### 浏览器的支持
+### 3.5. 浏览器的支持
 
 Cookie 需要浏览器支持才能使用。
 
@@ -568,7 +568,7 @@ Cookie 需要浏览器支持才能使用。
 
 需要注意的事所有的用到 Session 程序的 URL 都要使用`response.encodeURL(StringURL)` 或`response.encodeRediretURL(String URL)`进行 URL 地址重写，否则导致 Session 会话跟踪失效。
 
-### 跨域名
+### 3.6. 跨域名
 
 * Cookie 支持跨域名。
 * Session 不支持跨域名。
