@@ -32,7 +32,7 @@ public class LoadBalanceTests {
         Map<Node, Long> staticMap = new TreeMap<>();
 
         for (int i = 0; i < 10000; i++) {
-            Node node = algorithm.next();
+            Node node = algorithm.select();
             // System.out.printf(">>>> url = %s\n", node.url);
             if (staticMap.containsKey(node)) {
                 Long value = staticMap.get(node);
@@ -56,12 +56,12 @@ public class LoadBalanceTests {
         List<Node> nodes = initNodes();
 
         LoadBalance<Node> loadBalance = new RandomLoadBalance<>();
-        loadBalance.buildInList(nodes);
+        loadBalance.buildNodes(nodes);
         System.out.println("======================= 随机负载均衡 =======================");
         staticLoadBalance(loadBalance);
 
-        LoadBalance<Node> loadBalance2 = new RandomLoadBalance<>(true);
-        loadBalance2.buildInList(nodes);
+        LoadBalance<Node> loadBalance2 = new RandomLoadBalance<>();
+        loadBalance2.buildNodes(nodes);
         System.out.println("======================= 加权随机负载均衡 =======================");
         staticLoadBalance(loadBalance2);
     }
@@ -72,15 +72,15 @@ public class LoadBalanceTests {
         List<Node> newNodes = oldNodes.subList(0, 80);
 
         LoadBalance<Node> oldLoadBalance = new RandomLoadBalance<>();
-        oldLoadBalance.buildInList(oldNodes);
+        oldLoadBalance.buildNodes(oldNodes);
         LoadBalance<Node> newLoadBalance = new RandomLoadBalance<>();
-        newLoadBalance.buildInList(newNodes);
+        newLoadBalance.buildNodes(newNodes);
 
         double count = 0.0d;
         int size = newNodes.size();
         for (int i = 0; i < newNodes.size(); i++) {
-            Node oldNode = oldLoadBalance.next();
-            Node newNode = newLoadBalance.next();
+            Node oldNode = oldLoadBalance.select();
+            Node newNode = newLoadBalance.select();
             if (oldNode.equals(newNode)) count++;
         }
         System.out.println(count / size);
@@ -91,12 +91,12 @@ public class LoadBalanceTests {
         List<Node> nodes = initNodes();
 
         LoadBalance<Node> loadBalance = new RoundRobinLoadBalance<>();
-        loadBalance.buildInList(nodes);
+        loadBalance.buildNodes(nodes);
         System.out.println("======================= 轮询负载均衡 =======================");
         staticLoadBalance(loadBalance);
 
         LoadBalance<Node> loadBalance2 = new RoundRobinLoadBalance<>(true);
-        loadBalance2.buildInList(nodes);
+        loadBalance2.buildNodes(nodes);
         System.out.println("======================= 加权轮询负载均衡 =======================");
         staticLoadBalance(loadBalance2);
     }
@@ -107,15 +107,15 @@ public class LoadBalanceTests {
         List<Node> newNodes = oldNodes.subList(0, 80);
 
         LoadBalance<Node> oldLoadBalance = new RoundRobinLoadBalance<>();
-        oldLoadBalance.buildInList(oldNodes);
+        oldLoadBalance.buildNodes(oldNodes);
         LoadBalance<Node> newLoadBalance = new RoundRobinLoadBalance<>();
-        newLoadBalance.buildInList(newNodes);
+        newLoadBalance.buildNodes(newNodes);
 
         double count = 0.0d;
         int size = newNodes.size();
         for (int i = 0; i < newNodes.size(); i++) {
-            Node oldNode = oldLoadBalance.next();
-            Node newNode = newLoadBalance.next();
+            Node oldNode = oldLoadBalance.select();
+            Node newNode = newLoadBalance.select();
             if (oldNode.equals(newNode)) count++;
         }
         System.out.println(count / size);
@@ -124,7 +124,7 @@ public class LoadBalanceTests {
     @Test
     public void consistentHashLoadBalanceDistribution() {
         LoadBalance<Node> loadBalance = new ConsistentHashLoadBalance<>();
-        loadBalance.buildInList(initNodes());
+        loadBalance.buildNodes(initNodes());
         System.out.println("======================= 一致性 Hash 负载均衡 =======================");
         staticLoadBalance(loadBalance);
     }
@@ -148,9 +148,9 @@ public class LoadBalanceTests {
 
         List<Node> newNodes = nodes.subList(0, 80);
         ConsistentHashLoadBalance<Node> oldLoadBalance = new ConsistentHashLoadBalance<>();
-        oldLoadBalance.buildInList(nodes);
+        oldLoadBalance.buildNodes(nodes);
         ConsistentHashLoadBalance<Node> newLoadBalance = new ConsistentHashLoadBalance<>();
-        newLoadBalance.buildInList(newNodes);
+        newLoadBalance.buildNodes(newNodes);
 
         int count = 0;
         for (String key : keys) {

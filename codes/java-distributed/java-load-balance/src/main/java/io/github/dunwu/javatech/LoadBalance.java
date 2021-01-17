@@ -8,14 +8,14 @@ import java.util.Collection;
  * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>
  * @since 2020-01-21
  */
-public interface LoadBalance<V extends Node> {
+public interface LoadBalance<N extends Node> {
 
-    void buildInList(Collection<V> collection);
+    void buildNodes(Collection<N> collection);
 
-    void addNode(V node);
+    void addNode(N node);
 
-    void removeNode(V node);
+    void removeNode(N node);
 
-    V next();
+    N select();
 
 }

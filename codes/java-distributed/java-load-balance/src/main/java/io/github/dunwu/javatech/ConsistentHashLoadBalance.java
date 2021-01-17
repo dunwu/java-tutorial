@@ -18,7 +18,7 @@ public class ConsistentHashLoadBalance<V extends Node> implements LoadBalance<V>
     private TreeMap<Integer, V> hashRing = new TreeMap<>();
 
     @Override
-    public void buildInList(final Collection<V> collection) {
+    public void buildNodes(final Collection<V> collection) {
         this.nodes = new LinkedHashSet<>(collection);
         this.hashRing = buildConsistentHashRing(this.nodes);
     }
@@ -36,7 +36,7 @@ public class ConsistentHashLoadBalance<V extends Node> implements LoadBalance<V>
     }
 
     @Override
-    public V next() {
+    public V select() {
         return next(UUID.randomUUID().toString());
     }
 

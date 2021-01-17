@@ -28,7 +28,7 @@ public class RoundRobinLoadBalance<V extends Node> implements LoadBalance<V> {
     }
 
     @Override
-    public void buildInList(final Collection<V> collection) {
+    public void buildNodes(final Collection<V> collection) {
         this.offset = new AtomicInteger(0);
         this.nodes = new LinkedHashSet<>(collection);
     }
@@ -44,7 +44,7 @@ public class RoundRobinLoadBalance<V extends Node> implements LoadBalance<V> {
     }
 
     @Override
-    public V next() {
+    public V select() {
         if (weightMode) {
             return getNextInWeightMode();
         } else {
