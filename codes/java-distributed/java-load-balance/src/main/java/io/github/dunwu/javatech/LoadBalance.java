@@ -1,6 +1,6 @@
 package io.github.dunwu.javatech;
 
-import java.util.Collection;
+import java.util.List;
 
 /**
  * 负载均衡策略接口
@@ -10,12 +10,6 @@ import java.util.Collection;
  */
 public interface LoadBalance<N extends Node> {
 
-    void buildNodes(Collection<N> collection);
-
-    void addNode(N node);
-
-    void removeNode(N node);
-
-    N select();
+    N select(List<N> nodes, String ip);
 
 }

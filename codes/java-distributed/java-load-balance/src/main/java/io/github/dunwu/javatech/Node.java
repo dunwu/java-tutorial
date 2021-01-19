@@ -11,19 +11,22 @@ import java.util.Objects;
 public class Node implements Comparable<Node> {
 
     public static final Integer DEFAULT_WEIGHT = 1;
+    public static final Integer DEFAULT_ACTIVE = 0;
 
     protected String url;
 
     protected Integer weight;
 
+    protected Integer active;
+
     public Node(String url) {
-        this.url = url;
-        this.weight = DEFAULT_WEIGHT;
+        this(url, DEFAULT_WEIGHT, DEFAULT_ACTIVE);
     }
 
-    public Node(String url, Integer weight) {
+    public Node(String url, Integer weight, Integer active) {
         this.url = url;
         this.weight = weight;
+        this.active = active;
     }
 
     @Override
@@ -53,6 +56,7 @@ public class Node implements Comparable<Node> {
         return "Node{" +
             "url='" + url + '\'' +
             ", weight=" + weight +
+            ", active=" + active +
             '}';
     }
 
@@ -60,18 +64,24 @@ public class Node implements Comparable<Node> {
         return url;
     }
 
-    public Node setUrl(String url) {
+    public void setUrl(String url) {
         this.url = url;
-        return this;
     }
 
     public Integer getWeight() {
         return weight;
     }
 
-    public Node setWeight(Integer weight) {
+    public void setWeight(Integer weight) {
         this.weight = weight;
-        return this;
+    }
+
+    public Integer getActive() {
+        return active;
+    }
+
+    public void setActive(Integer active) {
+        this.active = active;
     }
 
 }

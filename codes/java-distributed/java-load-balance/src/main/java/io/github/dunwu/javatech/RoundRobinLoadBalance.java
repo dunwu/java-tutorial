@@ -1,8 +1,6 @@
 package io.github.dunwu.javatech;
 
-import cn.hutool.core.collection.CollectionUtil;
-
-import java.util.*;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -11,77 +9,18 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @author <a href="mailto:forbreak@163.com">Zhang Peng</a>
  * @since 2020-01-20
  */
-public class RoundRobinLoadBalance<V extends Node> implements LoadBalance<V> {
+public class RoundRobinLoadBalance<N extends Node> extends BaseLoadBalance<N> implements LoadBalance<N> {
 
-    private boolean weightMode;
-
-    private AtomicInteger offset = new AtomicInteger(0);
-
-    private Set<V> nodes = Collections.emptyNavigableSet();
-
-    public RoundRobinLoadBalance() {
-        this.weightMode = false;
-    }
-
-    public RoundRobinLoadBalance(boolean weightMode) {
-        this.weightMode = weightMode;
-    }
+    private final AtomicInteger position = new AtomicInteger(0);
 
     @Override
-    public void buildNodes(final Collection<V> collection) {
-        this.offset = new AtomicInteger(0);
-        this.nodes = new LinkedHashSet<>(collection);
-    }
-
-    @Override
-    public void addNode(V node) {
-        this.nodes.add(node);
-    }
-
-    @Override
-    public void removeNode(V node) {
-        this.nodes.remove(node);
-    }
-
-    @Override
-    public V select() {
-        if (weightMode) {
-            return getNextInWeightMode();
-        } else {
-            return getNextInNormalMode();
-        }
-    }
-
-    private V getNextInWeightMode() {
-        if (CollectionUtil.isEmpty(nodes)) {
-            return null;
-        }
-
-        int totalWeight = nodes.stream().mapToInt(Node::getWeight).sum();
-        int number = offset.getAndIncrement() % totalWeight;
-
-        for (V node : nodes) {
-            if (node.getWeight() > number) {
-                return node;
-            }
-            number -= node.getWeight();
-        }
-        return null;
-    }
-
-    private V getNextInNormalMode() {
-        if (CollectionUtil.isEmpty(this.nodes)) {
-            return null;
-        }
-
-        int size = this.nodes.size();
-        offset.compareAndSet(size, 0);
-        int number = offset.getAndIncrement();
-        Iterator<V> iterator = nodes.iterator();
-        while (number-- > 0) {
-            iterator.next();
-        }
-        return iterator.next();
+    protected N doSelect(List<N> nodes, String ip) {
+        int length = nodes.size();
+        // 如果位置值已经等于节点数，重置为 0
+        position.compareAndSet(length, 0);
+        N node = nodes.get(position.get());
+        position.getAndIncrement();
+        return node;
     }
 
 }

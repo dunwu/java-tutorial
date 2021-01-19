@@ -2,8 +2,6 @@ package io.github.dunwu.javatech;
 
 import cn.hutool.core.collection.CollectionUtil;
 
-import java.util.Collection;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -12,37 +10,28 @@ import java.util.List;
  */
 public abstract class BaseLoadBalance<N extends Node> implements LoadBalance<N> {
 
-    protected List<N> nodes = new LinkedList<>();
-
     @Override
-    public void buildNodes(final Collection<N> collection) {
-        this.nodes = new LinkedList<>(collection);
-    }
-
-    @Override
-    public void addNode(N node) {
-        this.nodes.add(node);
-    }
-
-    @Override
-    public void removeNode(N node) {
-        this.nodes.remove(node);
-    }
-
-    @Override
-    public N select() {
+    public N select(List<N> nodes, String ip) {
+        // nodes 列表为空，返回 null
         if (CollectionUtil.isEmpty(nodes)) {
             return null;
         }
 
-        // 如果 nodes 列表中仅有一个 node，直接返回即可，无需进行负载均衡
+        // 如果 nodes 列表中仅有一个 node，直接返回即可
         if (nodes.size() == 1) {
             return nodes.get(0);
         }
 
-        return doSelect();
+        return doSelect(nodes, ip);
     }
 
-    protected abstract N doSelect();
+    /**
+     * 负载均衡算法抽象方法，各个算法需要自行实现
+     *
+     * @param nodes 节点列表
+     * @param ip    请求方 IP
+     * @return <N> 被选中的节点
+     */
+    protected abstract N doSelect(List<N> nodes, String ip);
 
 }

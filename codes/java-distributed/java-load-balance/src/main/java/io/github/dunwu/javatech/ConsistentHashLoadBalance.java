@@ -1,65 +1,108 @@
 package io.github.dunwu.javatech;
 
-import io.github.dunwu.javatech.support.HashStrategy;
-import io.github.dunwu.javatech.support.MurmurHashStrategy;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
-import java.util.*;
+public class ConsistentHashLoadBalance<N extends Node> extends BaseLoadBalance<N> implements LoadBalance<N> {
 
-public class ConsistentHashLoadBalance<V extends Node> implements LoadBalance<V> {
+    private final ConcurrentMap<String, ConsistentHashSelector<?>> selectors = new ConcurrentHashMap<>();
 
-    private HashStrategy hashStrategy = new MurmurHashStrategy();
-
-    private final static int VIRTUAL_NODE_SIZE = 1000;
-
-    private final static String VIRTUAL_NODE_SUFFIX = "&&";
-
-    private Set<V> nodes = new LinkedHashSet<>();
-
-    private TreeMap<Integer, V> hashRing = new TreeMap<>();
-
+    @SuppressWarnings("unchecked")
     @Override
-    public void buildNodes(final Collection<V> collection) {
-        this.nodes = new LinkedHashSet<>(collection);
-        this.hashRing = buildConsistentHashRing(this.nodes);
-    }
-
-    @Override
-    public void addNode(V node) {
-        this.nodes.add(node);
-        this.hashRing = buildConsistentHashRing(this.nodes);
-    }
-
-    @Override
-    public void removeNode(V node) {
-        this.nodes.removeIf(v -> v.equals(node));
-        this.hashRing = buildConsistentHashRing(this.nodes);
-    }
-
-    @Override
-    public V select() {
-        return next(UUID.randomUUID().toString());
-    }
-
-    public V next(String key) {
-        int hashCode = hashStrategy.hashCode(key);
-        // 向右找到第一个 key
-        Map.Entry<Integer, V> entry = hashRing.ceilingEntry(hashCode);
-        if (entry == null) {
-            // 想象成一个环，超过尾部则取第一个 key
-            entry = hashRing.firstEntry();
+    protected N doSelect(List<N> nodes, String ip) {
+        // 获取 nodes 原始的 hashcode
+        int identityHashCode = System.identityHashCode(nodes);
+        ConsistentHashSelector<N> selector = (ConsistentHashSelector<N>) selectors.get(ip);
+        if (selector == null || selector.identityHashCode != identityHashCode) {
+            selectors.put(ip, new ConsistentHashSelector<>(nodes, identityHashCode, 1000));
+            selector = (ConsistentHashSelector<N>) selectors.get(ip);
         }
-        return entry.getValue();
+        return selector.select(ip);
     }
 
-    private TreeMap<Integer, V> buildConsistentHashRing(Set<V> nodes) {
-        TreeMap<Integer, V> hashRing = new TreeMap<>();
-        for (V node : nodes) {
-            for (int i = 0; i < VIRTUAL_NODE_SIZE; i++) {
-                // 新增虚拟节点的方式如果有影响，也可以抽象出一个由物理节点扩展虚拟节点的类
-                hashRing.put(hashStrategy.hashCode(node + VIRTUAL_NODE_SUFFIX + i), node);
+    /**
+     * @param <N>
+     */
+    private static final class ConsistentHashSelector<N extends Node> {
+
+        /**
+         * 使用 TreeMap 存储 Node 虚拟节点
+         */
+        private final TreeMap<Long, N> virtualNodes;
+
+        private final int identityHashCode;
+
+        ConsistentHashSelector(List<N> nodes, int identityHashCode, Integer replicaNum) {
+            this.virtualNodes = new TreeMap<>();
+            this.identityHashCode = identityHashCode;
+            // 获取虚拟节点数，默认为 100
+            if (replicaNum == null) {
+                replicaNum = 100;
+            }
+            for (N node : nodes) {
+                for (int i = 0; i < replicaNum / 4; i++) {
+                    // 对 url 进行 md5 运算，得到一个长度为16的字节数组
+                    byte[] digest = md5(node.getUrl());
+                    // 对 digest 部分字节进行 4 次 hash 运算，得到四个不同的 long 型正整数
+                    for (int j = 0; j < 4; j++) {
+                        // h = 0 时，取 digest 中下标为 0 ~ 3 的4个字节进行位运算
+                        // h = 1 时，取 digest 中下标为 4 ~ 7 的4个字节进行位运算
+                        // h = 2, h = 3 时过程同上
+                        long m = hash(digest, j);
+                        // 将 hash 到 node 的映射关系存储到 virtualNodes 中，
+                        // virtualNodes 需要提供高效的查询操作，因此选用 TreeMap 作为存储结构
+                        virtualNodes.put(m, node);
+                    }
+                }
             }
         }
-        return hashRing;
+
+        public N select(String key) {
+            byte[] digest = md5(key);
+            return selectForKey(hash(digest, 0));
+        }
+
+        private N selectForKey(long hash) {
+            Map.Entry<Long, N> entry = virtualNodes.ceilingEntry(hash);
+            if (entry == null) {
+                entry = virtualNodes.firstEntry();
+            }
+            return entry.getValue();
+        }
+
+    }
+
+    /**
+     * 计算 hash 值
+     */
+    public static long hash(byte[] digest, int number) {
+        return (((long) (digest[3 + number * 4] & 0xFF) << 24)
+            | ((long) (digest[2 + number * 4] & 0xFF) << 16)
+            | ((long) (digest[1 + number * 4] & 0xFF) << 8)
+            | (digest[number * 4] & 0xFF))
+            & 0xFFFFFFFFL;
+    }
+
+    /**
+     * 计算 MD5 值
+     */
+    public static byte[] md5(String value) {
+        MessageDigest md5;
+        try {
+            md5 = MessageDigest.getInstance("MD5");
+        } catch (NoSuchAlgorithmException e) {
+            throw new IllegalStateException(e.getMessage(), e);
+        }
+        md5.reset();
+        byte[] bytes = value.getBytes(StandardCharsets.UTF_8);
+        md5.update(bytes);
+        return md5.digest();
     }
 
 }

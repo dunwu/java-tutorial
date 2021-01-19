@@ -2,6 +2,8 @@ package io.github.dunwu.javatech;
 
 public class StatisticsUtil {
 
+    private StatisticsUtil() {}
+
     // 方差 s^2=[(x1-x)^2 +...(xn-x)^2]/n
     public static double variance(Long[] array) {
         int m = array.length;
