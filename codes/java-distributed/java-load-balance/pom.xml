@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>io.github.dunwu.javatech</groupId>
-  <artifactId>java-distributed-load-balance</artifactId>
+  <artifactId>java-load-balance</artifactId>
   <version>1.0.0</version>
   <packaging>jar</packaging>
   <name>${project.artifactId}</name>
