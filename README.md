@@ -62,7 +62,7 @@
 
 ### IDE
 
-> 自动有了 [**IDE**](docs/javatool/ide)，写代码从此就告别了刀耕火种的蛮荒时代。
+> 自从有了 [**IDE**](docs/javatool/ide)，写代码从此就告别了刀耕火种的蛮荒时代。
 >
 > - [Eclipse](docs/javatool/ide/eclipse.md) 是久负盛名的开源 Java IDE，我的学生时代一直使用它写 Java。
 > - 曾经抗拒从转 [Intellij Idea](docs/javatool/ide/intellij-idea.md) ，但后来发现真香，不得不说，确实是目前最优秀的 Java IDE。
