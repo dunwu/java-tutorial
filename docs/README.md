@@ -1,11 +1,14 @@
 ---
 home: true
-heroImage: http://dunwu.test.upcdn.net/common/logo/dunwu-logo.png
+heroImage: https://raw.githubusercontent.com/dunwu/images/dev/common/dunwu-logo-200.png
 heroText: JAVA-TUTORIAL
 tagline: ☕ java-tutorial 是一个 Java 教程，汇集一个老司机在 Java 领域的十年积累。
 actionLink: /
 footer: CC-BY-SA-4.0 Licensed | Copyright © 2018-Now Dunwu
 ---
+
+![license](https://badgen.net/github/license/dunwu/java-tutorial)
+![build](https://travis-ci.com/dunwu/java-tutorial.svg?branch=master)
 
 > ☕ **java-tutorial** 是一个 Java 教程，汇集一个老司机在 Java 领域的十年积累。
 >

@@ -24,7 +24,7 @@
 
 Filter 提供了过滤链（Filter Chain）的概念，一个过滤链包括多个 Filter。客户端请求 request 在抵达 Servlet 之前会经过过滤链的所有 Filter，服务器响应 response 从 Servlet 抵达客户端浏览器之前也会经过过滤链的所有 FIlter。
 
-![img](http://dunwu.test.upcdn.net/snap/1559054413341.png)
+![img](https://raw.githubusercontent.com/dunwu/images/dev/snap/1559054413341.png)
 
 ### 1.1. 过滤器方法
 

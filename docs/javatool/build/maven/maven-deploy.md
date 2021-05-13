@@ -33,7 +33,7 @@
 
 注册账号成功后，根据你 Java 包的功能分别写上`Summary`、`Description`、`Group Id`、`SCM url`以及`Project URL`等必要信息，可以参见我之前创建的 Issue：[OSSRH-36187](https://issues.sonatype.org/browse/OSSRH-36187)。
 
-![img](http://dunwu.test.upcdn.net/snap/20181106143734.png!zp)
+![img](https://raw.githubusercontent.com/dunwu/images/dev/snap/20181106143734.png)
 
 创建完之后需要等待 Sonatype 的工作人员审核处理，审核时间还是很快的，我的审核差不多等待了两小时。当 Issue 的 Status 变为`RESOLVED`后，就可以进行下一步操作了。
 
@@ -309,7 +309,7 @@ gpg:              unchanged: 1
 
 进入[官方下载地址](https://www.sonatype.com/download-oss-sonatype)，选择合适版本下载。
 
-![img](http://dunwu.test.upcdn.net/snap/20181127203029.png!zp)
+![img](https://raw.githubusercontent.com/dunwu/images/dev/snap/20181127203029.png)
 
 本人希望将 Nexus 部署在 Linux 机器，所以选用的是 Unix 版本。
 
@@ -341,13 +341,13 @@ Usage: ./nexus {start|stop|run|run-redirect|status|restart|force-reload}
 
 启动成功后，在浏览器中访问 `http://<ip>:8081`，欢迎页面如下图所示：
 
-![img](http://dunwu.test.upcdn.net/snap/20181127203131.png!zp)
+![img](https://raw.githubusercontent.com/dunwu/images/dev/snap/20181127203131.png)
 
 点击右上角 Sign in 登录，默认用户名/密码为：admin/admin123。
 
 有必要提一下的是，在 Nexus 的 Repositories 管理页面，展示了可用的 maven 仓库，如下图所示：
 
-![img](http://dunwu.test.upcdn.net/snap/20181127203156.png!zp)
+![img](https://raw.githubusercontent.com/dunwu/images/dev/snap/20181127203156.png)
 
 > 说明：
 >

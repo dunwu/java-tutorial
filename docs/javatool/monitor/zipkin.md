@@ -14,7 +14,7 @@ Zipkin 基于 Google Dapper 的论文设计而来，由 Twitter 公司开发贡�
 
 Zipkin UI 还提供了一个依赖关系图，该关系图显示了每个应用程序中跟踪了多少个请求。这对于识别聚合行为（包括错误路径或对不赞成使用的服务的调用）很有帮助。
 
-![Zipkin UI](http://dunwu.test.upcdn.net/snap/20200211161706.png)
+![Zipkin UI](https://raw.githubusercontent.com/dunwu/images/dev/snap/20200211161706.png)
 
 ### 多平台
 
@@ -32,7 +32,7 @@ Zipkin 服务器捆绑了用于采集和存储数据的扩展。
 
 数据以 json 形式存储，可以参考：[Zipkin 官方的 Swagger API](https://zipkin.io/zipkin-api/#/default/post_spans)
 
-![Zipkin Swagger API](http://dunwu.test.upcdn.net/snap/20200211162055.png)
+![Zipkin Swagger API](https://raw.githubusercontent.com/dunwu/images/dev/snap/20200211162055.png)
 
 ## 二、Zipkin 安装
 
@@ -78,7 +78,7 @@ ZipKin 可以分为两部分，
 
 架构如下：
 
-![Zipkin 架构](http://dunwu.test.upcdn.net/snap/20200211155836.png)
+![Zipkin 架构](https://raw.githubusercontent.com/dunwu/images/dev/snap/20200211155836.png)
 
 ### Zipkin Server
 

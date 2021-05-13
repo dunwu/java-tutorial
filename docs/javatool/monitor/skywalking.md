@@ -8,7 +8,7 @@ SkyWalking 是观察性分析平台和应用性能管理系统。
 
 提供分布式追踪、服务网格遥测分析、度量聚合和可视化一体化解决方案。
 
-![img](http://dunwu.test.upcdn.net/snap/20200211152235.png)
+![img](https://raw.githubusercontent.com/dunwu/images/dev/snap/20200211152235.png)
 
 ### SkyWalking 特性
 
@@ -29,7 +29,7 @@ SkyWalking 是观察性分析平台和应用性能管理系统。
 
 从逻辑上讲，SkyWalking 分为四个部分：探针（Probes），平台后端，存储和 UI。
 
-![SkyWalking 架构](http://dunwu.test.upcdn.net/snap/20200211153516.png)
+![SkyWalking 架构](https://raw.githubusercontent.com/dunwu/images/dev/snap/20200211153516.png)
 
 - **探针（Probes）** - 探针是指集成到目标系统中的代理或SDK库。它们负责收集数据（包括跟踪数据和统计数据）并将其按照 SkyWalking 的要求重新格式化为。
 - **平台后端** - 平台后端是一个提供后端服务的集群。它用于聚合、分析和驱动从探针到 UI 的流程。它还为传入格式（如 Zipkin 的格式），存储实现程序和集群管理提供可插入功能。 您甚至可以使用 Observability Analysis Language 自定义聚合和分析。
@@ -40,7 +40,7 @@ SkyWalking 是观察性分析平台和应用性能管理系统。
 
 进入 [Apache SkyWalking 官方下载页面](http://skywalking.apache.org/downloads/)，选择安装版本，下载解压到本地。
 
-![SkyWalking 组件](http://dunwu.test.upcdn.net/snap/20200211154612.png)
+![SkyWalking 组件](https://raw.githubusercontent.com/dunwu/images/dev/snap/20200211154612.png)
 
 安装分为三个部分：
 
