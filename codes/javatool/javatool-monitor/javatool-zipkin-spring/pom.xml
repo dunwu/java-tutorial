@@ -16,7 +16,7 @@
     <maven.compiler.target>1.7</maven.compiler.target>
 
     <spring.version>4.3.26.RELEASE</spring.version>
-    <log4j.version>2.13.0</log4j.version>
+    <log4j.version>2.17.0</log4j.version>
     <brave.version>5.10.1</brave.version>
   </properties>
 
