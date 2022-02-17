@@ -30,26 +30,58 @@ module.exports = {
         lastUpdated: '上次更新',
         nav: [
           {
+            text: 'JavaEE',
+            link: '/javaee/',
+          },
+          {
+            text: '框架',
+            link: '/framework/',
+          },
+          {
+            text: '缓存',
+            link: '/cache/',
+          },
+          {
+            text: '消息队列',
+            link: '/mq/',
+          },
+          {
+            text: 'LIB库',
+            link: '/lib/',
+          },
+          {
+            text: '微服务',
+            link: '/microservice/',
+          },
+          {
+            text: '安全',
+            link: '/security/',
+          },
+          {
+            text: '测试',
+            link: '/test/',
+          },
+          {
+            text: '服务器',
+            link: '/server/',
+          },
+          {
             text: '工具',
-            link: '/javatool/',
+            link: '/tool/',
             items: [
               {
                 text: '构建',
-                link: '/javatool/build/',
+                link: '/tool/build/',
               },
               {
                 text: 'IDE',
-                link: '/javatool/ide/',
+                link: '/tool/ide/',
               },
               {
                 text: '监控',
-                link: '/javatool/monitor/',
+                link: '/tool/monitor/',
               },
             ],
-          },
-          {
-            text: 'JavaEE',
-            link: '/javaee/',
           },
           {
             text: '✨ Java系列',
@@ -64,12 +96,6 @@ module.exports = {
               {
                 text: 'JavaCore 教程 📚',
                 link: 'https://dunwu.github.io/javacore/',
-                target: '_blank',
-                rel: '',
-              },
-              {
-                text: 'JavaTech 教程 📚',
-                link: 'https://dunwu.github.io/javatech/',
                 target: '_blank',
                 rel: '',
               },

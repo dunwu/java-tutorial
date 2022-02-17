@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Reflections>
+    <FieldsAnnotated>
+        <entry>
+            <key>io.github.dunwu.javatech.reflections.TestModel$AF1</key>
+            <values>
+                <value>io.github.dunwu.javatech.reflections.TestModel$C4.f1</value>
+                <value>io.github.dunwu.javatech.reflections.TestModel$C4.f2</value>
+            </values>
+        </entry>
+    </FieldsAnnotated>
+</Reflections>

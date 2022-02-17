@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.github.dunwu.javatech</groupId>
+    <artifactId>javatech</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+    <name>JAVATECH</name>
+    <description>Java 技术示例源码</description>
+
+    <modules>
+        <module>javatech-cache</module>
+        <module>javatech-io</module>
+        <module>javatech-lib</module>
+        <module>javatech-log</module>
+        <module>javatech-mq</module>
+        <module>javatech-server</module>
+        <module>javatech-test</module>
+        <module>javatech-others</module>
+    </modules>
+</project>

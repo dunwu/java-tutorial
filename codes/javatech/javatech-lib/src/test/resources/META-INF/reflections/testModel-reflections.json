@@ -1,0 +1,200 @@
+{
+  "store": {
+    "TypesAnnotated": {
+      "io.github.dunwu.javatech.reflections.TestModel$AC3": [
+        "io.github.dunwu.javatech.reflections.TestModel$C7"
+      ],
+      "io.github.dunwu.javatech.reflections.TestModel$MAI1": [
+        "io.github.dunwu.javatech.reflections.TestModel$AI1"
+      ],
+      "io.github.dunwu.javatech.reflections.TestModel$AC2": [
+        "io.github.dunwu.javatech.reflections.TestModel$C3",
+        "io.github.dunwu.javatech.reflections.TestModel$C2",
+        "io.github.dunwu.javatech.reflections.TestModel$AC3",
+        "io.github.dunwu.javatech.reflections.TestModel$I3"
+      ],
+      "io.github.dunwu.javatech.reflections.TestModel$AC1n": [
+        "io.github.dunwu.javatech.reflections.TestModel$C1"
+      ],
+      "io.github.dunwu.javatech.reflections.TestModel$AC1": [
+        "io.github.dunwu.javatech.reflections.TestModel$C1"
+      ],
+      "io.github.dunwu.javatech.reflections.TestModel$AI2": [
+        "io.github.dunwu.javatech.reflections.TestModel$I2"
+      ],
+      "java.lang.annotation.Inherited": [
+        "io.github.dunwu.javatech.reflections.TestModel$MAI1",
+        "io.github.dunwu.javatech.reflections.TestModel$AC1",
+        "io.github.dunwu.javatech.reflections.TestModel$AI2"
+      ],
+      "io.github.dunwu.javatech.reflections.TestModel$AI1": [
+        "io.github.dunwu.javatech.reflections.TestModel$I1"
+      ],
+      "java.lang.annotation.Retention": [
+        "io.github.dunwu.javatech.reflections.TestModel$AC3",
+        "io.github.dunwu.javatech.reflections.TestModel$MAI1",
+        "io.github.dunwu.javatech.reflections.TestModel$AC1n",
+        "io.github.dunwu.javatech.reflections.TestModel$AC2",
+        "io.github.dunwu.javatech.reflections.TestModel$AC1",
+        "io.github.dunwu.javatech.reflections.TestModel$AI2",
+        "io.github.dunwu.javatech.reflections.TestModel$AI1",
+        "io.github.dunwu.javatech.reflections.TestModel$AF1",
+        "io.github.dunwu.javatech.reflections.TestModel$AM1"
+      ]
+    },
+    "MethodsSignature": {
+      "[io.github.dunwu.javatech.reflections.TestModel$C2]": [
+        "io.github.dunwu.javatech.reflections.TestModel$C4.c2toC3(io.github.dunwu.javatech.reflections.TestModel$C2)"
+      ],
+      "[]": [
+        "io.github.dunwu.javatech.reflections.TestModel$C7.\u003cinit\u003e()",
+        "io.github.dunwu.javatech.reflections.TestModel$AF1.value()",
+        "io.github.dunwu.javatech.reflections.TestModel$C4.m1()",
+        "io.github.dunwu.javatech.reflections.TestModel$C4.\u003cinit\u003e()",
+        "io.github.dunwu.javatech.reflections.TestModel$C2.\u003cinit\u003e()",
+        "io.github.dunwu.javatech.reflections.TestModel$C4.m3()",
+        "io.github.dunwu.javatech.reflections.TestModel$C3.\u003cinit\u003e()",
+        "io.github.dunwu.javatech.reflections.TestModel$C6.\u003cinit\u003e()",
+        "io.github.dunwu.javatech.reflections.TestModel$C5.\u003cinit\u003e()",
+        "io.github.dunwu.javatech.reflections.TestModel$AM1.value()",
+        "io.github.dunwu.javatech.reflections.TestModel$AC2.value()",
+        "io.github.dunwu.javatech.reflections.TestModel$C1.\u003cinit\u003e()"
+      ],
+      "[int, java.lang.String[]]": [
+        "io.github.dunwu.javatech.reflections.TestModel$C4.m1(int, java.lang.String[])"
+      ],
+      "[int, int]": [
+        "io.github.dunwu.javatech.reflections.TestModel$C4.add(int, int)"
+      ],
+      "[java.lang.String]": [
+        "io.github.dunwu.javatech.reflections.TestModel$C4.m4(java.lang.String)",
+        "io.github.dunwu.javatech.reflections.TestModel$C4.\u003cinit\u003e(java.lang.String)"
+      ],
+      "[int[][], java.lang.String[][]]": [
+        "io.github.dunwu.javatech.reflections.TestModel$C4.m1(int[][], java.lang.String[][])"
+      ]
+    },
+    "MethodsParameter": {
+      "io.github.dunwu.javatech.reflections.TestModel$C2": [
+        "io.github.dunwu.javatech.reflections.TestModel$C4.c2toC3(io.github.dunwu.javatech.reflections.TestModel$C2)"
+      ],
+      "int[][]": [
+        "io.github.dunwu.javatech.reflections.TestModel$C4.m1(int[][], java.lang.String[][])"
+      ],
+      "java.lang.String[][]": [
+        "io.github.dunwu.javatech.reflections.TestModel$C4.m1(int[][], java.lang.String[][])"
+      ],
+      "java.lang.String": [
+        "io.github.dunwu.javatech.reflections.TestModel$C4.m4(java.lang.String)",
+        "io.github.dunwu.javatech.reflections.TestModel$C4.\u003cinit\u003e(java.lang.String)"
+      ],
+      "java.lang.String[]": [
+        "io.github.dunwu.javatech.reflections.TestModel$C4.m1(int, java.lang.String[])"
+      ],
+      "io.github.dunwu.javatech.reflections.TestModel$AM1": [
+        "io.github.dunwu.javatech.reflections.TestModel$C4.m4(java.lang.String)",
+        "io.github.dunwu.javatech.reflections.TestModel$C4.\u003cinit\u003e(java.lang.String)"
+      ],
+      "int": [
+        "io.github.dunwu.javatech.reflections.TestModel$C4.m1(int, java.lang.String[])",
+        "io.github.dunwu.javatech.reflections.TestModel$C4.add(int, int)"
+      ]
+    },
+    "SubTypes": {
+      "io.github.dunwu.javatech.reflections.TestModel$C3": [
+        "io.github.dunwu.javatech.reflections.TestModel$C5"
+      ],
+      "io.github.dunwu.javatech.reflections.TestModel$C1": [
+        "io.github.dunwu.javatech.reflections.TestModel$C3",
+        "io.github.dunwu.javatech.reflections.TestModel$C2"
+      ],
+      "java.lang.annotation.Annotation": [
+        "io.github.dunwu.javatech.reflections.TestModel$AC3",
+        "io.github.dunwu.javatech.reflections.TestModel$MAI1",
+        "io.github.dunwu.javatech.reflections.TestModel$AC2",
+        "io.github.dunwu.javatech.reflections.TestModel$AC1n",
+        "io.github.dunwu.javatech.reflections.TestModel$AC1",
+        "io.github.dunwu.javatech.reflections.TestModel$AI2",
+        "io.github.dunwu.javatech.reflections.TestModel$AI1",
+        "io.github.dunwu.javatech.reflections.TestModel$AF1",
+        "io.github.dunwu.javatech.reflections.TestModel$AM1"
+      ],
+      "io.github.dunwu.javatech.reflections.TestModel$I1": [
+        "io.github.dunwu.javatech.reflections.TestModel$I2"
+      ],
+      "io.github.dunwu.javatech.reflections.TestModel$I3": [
+        "io.github.dunwu.javatech.reflections.TestModel$C6"
+      ],
+      "java.lang.Object": [
+        "io.github.dunwu.javatech.reflections.TestModel$AI2",
+        "io.github.dunwu.javatech.reflections.TestModel$AI1",
+        "io.github.dunwu.javatech.reflections.TestModel$AF1",
+        "io.github.dunwu.javatech.reflections.TestModel$C7",
+        "io.github.dunwu.javatech.reflections.TestModel$AM1",
+        "io.github.dunwu.javatech.reflections.TestModel$C6",
+        "io.github.dunwu.javatech.reflections.TestModel$AC3",
+        "io.github.dunwu.javatech.reflections.TestModel$C4",
+        "io.github.dunwu.javatech.reflections.TestModel$MAI1",
+        "io.github.dunwu.javatech.reflections.TestModel$AC2",
+        "io.github.dunwu.javatech.reflections.TestModel$C1",
+        "io.github.dunwu.javatech.reflections.TestModel$AC1n",
+        "io.github.dunwu.javatech.reflections.TestModel$AC1",
+        "io.github.dunwu.javatech.reflections.TestModel$I1",
+        "io.github.dunwu.javatech.reflections.TestModel$I3",
+        "io.github.dunwu.javatech.reflections.TestModel$I2"
+      ],
+      "io.github.dunwu.javatech.reflections.TestModel$I2": [
+        "io.github.dunwu.javatech.reflections.TestModel$C1"
+      ]
+    },
+    "MethodsReturn": {
+      "io.github.dunwu.javatech.reflections.TestModel$C3": [
+        "io.github.dunwu.javatech.reflections.TestModel$C4.c2toC3(io.github.dunwu.javatech.reflections.TestModel$C2)"
+      ],
+      "void": [
+        "io.github.dunwu.javatech.reflections.TestModel$C4.m1(int, java.lang.String[])",
+        "io.github.dunwu.javatech.reflections.TestModel$C4.m1()",
+        "io.github.dunwu.javatech.reflections.TestModel$C4.m1(int[][], java.lang.String[][])"
+      ],
+      "java.lang.String": [
+        "io.github.dunwu.javatech.reflections.TestModel$AF1.value()",
+        "io.github.dunwu.javatech.reflections.TestModel$C4.m4(java.lang.String)",
+        "io.github.dunwu.javatech.reflections.TestModel$C4.m3()",
+        "io.github.dunwu.javatech.reflections.TestModel$AM1.value()",
+        "io.github.dunwu.javatech.reflections.TestModel$AC2.value()"
+      ],
+      "int": [
+        "io.github.dunwu.javatech.reflections.TestModel$C4.add(int, int)"
+      ]
+    },
+    "MethodsAnnotated": {
+      "io.github.dunwu.javatech.reflections.TestModel$AM1": [
+        "io.github.dunwu.javatech.reflections.TestModel$C4.m1(int, java.lang.String[])",
+        "io.github.dunwu.javatech.reflections.TestModel$C4.m1()",
+        "io.github.dunwu.javatech.reflections.TestModel$C4.m3()",
+        "io.github.dunwu.javatech.reflections.TestModel$C4.m1(int[][], java.lang.String[][])",
+        "io.github.dunwu.javatech.reflections.TestModel$C4.\u003cinit\u003e(java.lang.String)"
+      ]
+    },
+    "FieldsAnnotated": {
+      "io.github.dunwu.javatech.reflections.TestModel$AF1": [
+        "io.github.dunwu.javatech.reflections.TestModel$C4.f1",
+        "io.github.dunwu.javatech.reflections.TestModel$C4.f2"
+      ]
+    },
+    "Resources": {
+      "resource1-reflections.xml": [
+        "META-INF/reflections/resource1-reflections.xml"
+      ],
+      "saved-testModel-reflections.xml": [
+        "META-INF/reflections/saved-testModel-reflections.xml"
+      ],
+      "resource2-reflections.xml": [
+        "META-INF/reflections/inner/resource2-reflections.xml"
+      ],
+      "testModel-reflections.xml": [
+        "META-INF/reflections/testModel-reflections.xml"
+      ]
+    }
+  }
+}

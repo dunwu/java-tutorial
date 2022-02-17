@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:cache="http://www.springframework.org/schema/cache"
+  xmlns="http://www.springframework.org/schema/beans"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+         http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
+
+  <description>使用 Caffeine 作为 Spring 缓存</description>
+
+  <!--配置参考：https://docs.spring.io/spring/docs/current/spring-framework-reference/integration.html#cache-store-configuration-->
+
+  <context:component-scan base-package="io.github.dunwu.javatech" />
+
+  <bean id="caffeineCacheManager" class="org.springframework.cache.caffeine.CaffeineCacheManager" />
+
+  <cache:annotation-driven cache-manager="caffeineCacheManager" />
+</beans>

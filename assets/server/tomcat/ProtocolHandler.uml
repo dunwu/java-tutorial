@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>org.apache.coyote.ajp.AjpAprProtocol</OriginalElement>
+  <nodes>
+    <node x="994.0" y="258.0">org.apache.coyote.ajp.AjpNioProtocol</node>
+    <node x="969.5" y="172.0">org.apache.coyote.ajp.AbstractAjpProtocol</node>
+    <node x="512.0" y="258.0">org.apache.coyote.http11.Http11NioProtocol</node>
+    <node x="1215.0" y="258.0">org.apache.coyote.ajp.AjpAprProtocol</node>
+    <node x="630.0" y="0.0">org.apache.coyote.ProtocolHandler</node>
+    <node x="261.0" y="258.0">org.apache.coyote.http11.Http11AprProtocol</node>
+    <node x="236.5" y="172.0">org.apache.coyote.http11.AbstractHttp11Protocol</node>
+    <node x="0.0" y="258.0">org.apache.coyote.http11.Http11Nio2Protocol</node>
+    <node x="625.0" y="86.0">org.apache.coyote.AbstractProtocol</node>
+    <node x="763.0" y="258.0">org.apache.coyote.ajp.AjpNio2Protocol</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.apache.coyote.http11.Http11AprProtocol" target="org.apache.coyote.http11.AbstractHttp11Protocol">
+      <point x="0.0" y="-18.0" />
+      <point x="0.0" y="18.0" />
+    </edge>
+    <edge source="org.apache.coyote.AbstractProtocol" target="org.apache.coyote.ProtocolHandler">
+      <point x="0.0" y="-18.0" />
+      <point x="0.0" y="18.0" />
+    </edge>
+    <edge source="org.apache.coyote.ajp.AbstractAjpProtocol" target="org.apache.coyote.AbstractProtocol">
+      <point x="0.0" y="-18.0" />
+      <point x="1095.0" y="147.0" />
+      <point x="790.75" y="147.0" />
+      <point x="55.25" y="18.0" />
+    </edge>
+    <edge source="org.apache.coyote.ajp.AjpNioProtocol" target="org.apache.coyote.ajp.AbstractAjpProtocol">
+      <point x="0.0" y="-18.0" />
+      <point x="0.0" y="18.0" />
+    </edge>
+    <edge source="org.apache.coyote.http11.AbstractHttp11Protocol" target="org.apache.coyote.AbstractProtocol">
+      <point x="0.0" y="-18.0" />
+      <point x="377.0" y="147.0" />
+      <point x="680.25" y="147.0" />
+      <point x="-55.25" y="18.0" />
+    </edge>
+    <edge source="org.apache.coyote.http11.Http11NioProtocol" target="org.apache.coyote.http11.AbstractHttp11Protocol">
+      <point x="0.0" y="-18.0" />
+      <point x="627.5" y="233.0" />
+      <point x="470.6666666666667" y="233.0" />
+      <point x="93.66666666666669" y="18.0" />
+    </edge>
+    <edge source="org.apache.coyote.ajp.AjpNio2Protocol" target="org.apache.coyote.ajp.AbstractAjpProtocol">
+      <point x="0.0" y="-18.0" />
+      <point x="868.5" y="233.0" />
+      <point x="1011.3333333333333" y="233.0" />
+      <point x="-83.66666666666663" y="18.0" />
+    </edge>
+    <edge source="org.apache.coyote.ajp.AjpAprProtocol" target="org.apache.coyote.ajp.AbstractAjpProtocol">
+      <point x="0.0" y="-18.0" />
+      <point x="1315.5" y="233.0" />
+      <point x="1178.6666666666667" y="233.0" />
+      <point x="83.66666666666674" y="18.0" />
+    </edge>
+    <edge source="org.apache.coyote.http11.Http11Nio2Protocol" target="org.apache.coyote.http11.AbstractHttp11Protocol">
+      <point x="0.0" y="-18.0" />
+      <point x="120.5" y="233.0" />
+      <point x="283.3333333333333" y="233.0" />
+      <point x="-93.66666666666669" y="18.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.1" x="777.1717171717168" y="233.63636363636363" />
+  <SelectedNodes>
+    <node>org.apache.coyote.ProtocolHandler</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

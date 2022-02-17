@@ -1,0 +1,537 @@
+# Hystrix 应用指南
+
+<!-- TOC depthFrom:2 depthTo:3 -->
+
+- [一、Hystrix 简介](#一hystrix-简介)
+  - [Hystrix 是什么](#hystrix-是什么)
+  - [为什么需要 Hystrix](#为什么需要-hystrix)
+  - [Hystrix 的功能](#hystrix-的功能)
+- [Hystrix 核心概念](#hystrix-核心概念)
+- [二、Hystrix 工作流程](#二hystrix-工作流程)
+  - [（一）包装命令](#一包装命令)
+  - [（二）执行命令](#二执行命令)
+  - [（三）是否缓存](#三是否缓存)
+  - [（四）是否开启断路器](#四是否开启断路器)
+  - [（五）信号量、线程池是否拒绝](#五信号量线程池是否拒绝)
+  - [（六）construct() 或 run()](#六construct-或-run)
+  - [（七）健康检查](#七健康检查)
+  - [（八）获取 Fallback](#八获取-fallback)
+  - [（九）返回结果](#九返回结果)
+- [三、断路器工作原理](#三断路器工作原理)
+  - [系统指标](#系统指标)
+- [四、资源隔离技术](#四资源隔离技术)
+  - [线程池隔离](#线程池隔离)
+  - [信号量隔离](#信号量隔离)
+- [五、Hystrix 应用](#五hystrix-应用)
+  - [Spring Cloud + Hystrix](#spring-cloud--hystrix)
+- [六、其他限流技术](#六其他限流技术)
+- [Hystrix 配置](#hystrix-配置)
+  - [执行配置](#执行配置)
+  - [断路配置](#断路配置)
+  - [指标配置](#指标配置)
+  - [线程池配置](#线程池配置)
+- [参考资料](#参考资料)
+
+<!-- /TOC -->
+
+## 一、Hystrix 简介
+
+### Hystrix 是什么
+
+Hystrix 是 Netflix 开源的一款容错框架，包含常用的容错方法：线程池隔离、信号量隔离、熔断、降级。
+
+Hystrix 官方宣布**不再发布新版本**。
+
+但是 Hystrix 的客户端熔断保护，断路器设计理念，有非常高的学习价值。
+
+### 为什么需要 Hystrix
+
+复杂的分布式系统架构中的应用程序往往具有数十个依赖项，每个依赖项都会不可避免地在某个时刻失败。 如果主机应用程序未与这些外部故障隔离开来，则可能会被波及。
+
+例如，对于依赖于 30 个服务的应用程序，假设每个服务的正常运行时间为 99.99％，则可以期望：
+
+> 99.99<sup>30</sup> = 99.7％ 的正常运行时间
+>
+> 10 亿个请求中的 0.3％= 3,000,000 个失败
+>
+> 即使所有依赖项都具有出色的正常运行时间，每月也会有 2 个小时以上的停机时间。
+>
+> 然而，现实情况一般比这种估量情况更糟糕。
+
+---
+
+当一切正常时，整体系统如下所示：
+
+![img](https://raw.githubusercontent.com/dunwu/images/dev/snap/20200717141615.png)
+
+在高并发场景，这些依赖的稳定性与否对系统的影响非常大，但是依赖有很多不可控问题：如网络连接、资源繁忙、服务宕机等。例如：下图中有一个 QPS 为 50 的依赖 I 出现不可用，但是其他依赖服务是可用的。
+
+![img](https://raw.githubusercontent.com/dunwu/images/dev/snap/20200717141749.png)
+
+但是，在高并发场景下，当依赖 I 阻塞时，大多数服务器的线程池就出现阻塞(BLOCK)。当这种级联故障愈演愈烈，就可能造成整个线上服务不可用的雪崩效应，如下图：
+
+![img](https://raw.githubusercontent.com/dunwu/images/dev/snap/20200717141859.png)
+
+Hystrix 就是为了解决这类问题而应运而生。
+
+### Hystrix 的功能
+
+Hystrix 具有以下功能：
+
+- 避免资源耗尽：阻止任何一个依赖服务耗尽所有的资源，比如 tomcat 中的所有线程资源。
+- 避免请求排队和积压：采用限流和 `fail fast` 来控制故障。
+- 支持降级：提供 fallback 降级机制来应对故障。
+- 资源隔离：比如 `bulkhead`（舱壁隔离技术）、`swimlane`（泳道技术）、`circuit breaker`（断路技术）来限制任何一个依赖服务的故障的影响。
+- 统计/监控/报警：通过近实时的统计/监控/报警功能，来提高故障发现的速度。
+- 通过近实时的属性和配置**热修改**功能，来提高故障处理和恢复的速度。
+- 保护依赖服务调用的所有故障情况，而不仅仅只是网络故障情况。
+
+如果使用 Hystrix 对每个基础依赖服务进行过载保护，则整个系统架构将会类似下图所示，每个依赖项彼此隔离，受到延迟时发生饱和的资源的被限制访问，并包含 fallback 逻辑（用于降级处理），该逻辑决定了在依赖项中发生任何类型的故障时做出对应的处理。
+
+![img](https://raw.githubusercontent.com/dunwu/images/dev/snap/20200717142842.png)
+
+## Hystrix 核心概念
+
+## 二、Hystrix 工作流程
+
+如下图所示，Hystrix 的工作流程大致可以分为 9 个步骤。
+
+![img](https://raw.githubusercontent.com/dunwu/images/dev/snap/20200717143247.png)
+
+### （一）包装命令
+
+x 支持资源隔离。
+
+资源隔离，就是说，你如果要把对某一个依赖服务的所有调用请求，全部隔离在同一份资源池内，不会去用其它资源了，这就叫资源隔离。哪怕对这个依赖服务，比如说商品服务，现在同时发起的调用量已经到了 1000，但是分配给商品服务线程池内就 10 个线程，最多就只会用这 10 个线程去执行。不会因为对商品服务调用的延迟，将 Tomcat 内部所有的线程资源全部耗尽。
+
+Hystrix 进行资源隔离，其实是提供了一个抽象，叫做命令模式。这也是 Hystrix 最最基本的资源隔离技术。
+
+在使用 Hystrix 的过程中，会对**依赖服务**的调用请求封装成**命令对象**，Hystrix 对 **命令对象**抽象了两个抽象类：`HystrixCommand` 和`HystrixObservableCommand` 。
+
+- `HystrixCommand` 表示的**命令对象**会返回一个唯一返回值。
+- `HystrixObservableCommand` 表示的**命令对象** 会返回多个返回值。
+
+```java
+HystrixCommand command = new HystrixCommand(arg1, arg2);
+HystrixObservableCommand command = new HystrixObservableCommand(arg1, arg2);
+```
+
+### （二）执行命令
+
+Hystrix 中共有 4 种方式执行命令，如下所示：
+
+| 执行方式       | 说明                                                                                                                           | 可用对象                   |
+| :------------- | :----------------------------------------------------------------------------------------------------------------------------- | :------------------------- |
+| `execute()`    | 阻塞式同步执行，返回依赖服务的单一返回结果(或者抛出异常)                                                                       | `HystrixCommand`           |
+| `queue()`      | 基于 Future 的异步方式执行，返回依赖服务的单一返回结果(或者抛出异常)                                                           | `HystrixCommand`           |
+| `observe()`    | 基于 Rxjava 的 Observable 方式，返回通过 Observable 表示的依赖服务返回结果,代调用代码先执行(Hot Obserable)                     | `HystrixObservableCommand` |
+| `toObvsevable` | 基于 Rxjava 的 Observable 方式，返回通过 Observable 表示的依赖服务返回结果,执行代码等到真正订阅的时候才会执行(cold observable) | `HystrixObservableCommand` |
+
+这四种命令中，`exeucte()`、`queue()`、`observe()`的表示也是通过`toObservable()`实现的，其转换关系如下图所示：
+
+![img](https:////upload-images.jianshu.io/upload_images/14126519-60964d9fa41614c1.png?imageMogr2/auto-orient/strip|imageView2/2/w/563/format/webp)
+
+`HystrixCommand` 执行方式
+
+```java
+K value   = command.execute();
+// 等价语句：
+K value = command.execute().queue().get();
+
+
+Future<K> fValue  = command.queue();
+//等价语句：
+Future<K> fValue = command.toObservable().toBlocking().toFuture();
+
+
+Observable<K> ohValue = command.observe(); //hot observable，立刻订阅，命令立刻执行
+//等价语句：
+Observable<K> ohValue = command.toObservable().subscribe(subject);
+
+// 上述执行最终实现还是基于 toObservable()
+Observable<K> ocValue = command.toObservable(); //cold observable，延后订阅，订阅发生后，执行才真正执行
+```
+
+### （三）是否缓存
+
+如果当前命令对象配置了允许从`结果缓存`中取返回结果，并且在`结果缓存`中已经缓存了请求结果，则缓存的请求结果会立刻通过 `Observable` 的格式返回。
+
+### （四）是否开启断路器
+
+如果第三步没有缓存没有命中，则判断一下当前断路器的断路状态是否打开。如果断路器状态为`打开`状态，则 `Hystrix` 将不会执行此 Command 命令，直接执行**步骤 8** 调用 Fallback；
+
+如果断路器状态是`关闭`，则执行 **步骤 5** 检查是否有足够的资源运行 Command 命令
+
+### （五）信号量、线程池是否拒绝
+
+如果当前要执行的 Command 命令 先关连的线程池 和队列(或者信号量)资源已经满了，Hystrix 将不会运行 Command 命令，直接执行 **步骤 8**的 Fallback 降级处理；如果未满，表示有剩余的资源执行 Command 命令，则执行**步骤 6**
+
+### （六）construct() 或 run()
+
+当经过**步骤 5** 判断，有足够的资源执行 Command 命令时，本步骤将调用 Command 命令运行方法，基于不同类型的 Command，有如下两种两种运行方式：
+
+| 运行方式                               | 说明                                                                   |
+| :------------------------------------- | :--------------------------------------------------------------------- |
+| `HystrixCommand.run()`                 | 返回一个处理结果或者抛出一个异常                                       |
+| `HystrixObservableCommand.construct()` | 返回一个 Observable 表示的结果(可能多个)，或者 基于`onError`的错误通知 |
+
+如果`run()` 或者`construct()`方法 的`真实执行时间`超过了 Command 设置的`超时时间阈值`, 则**当前则执行线程**（或者是独立的定时器线程）将会抛出`TimeoutException`。抛出超时异常 TimeoutException，后，将执行**步骤 8**的 Fallback 降级处理。即使`run()`或者`construct()`执行没有被取消或中断，最终能够处理返回结果，但在降级处理逻辑中，将会抛弃`run()`或`construct()`方法的返回结果，而返回 Fallback 降级处理结果。
+
+> **注意事项**
+> 需要注意的是，Hystrix 无法强制 将正在运行的线程停止掉--Hystrix 能够做的最好的方式就是在 JVM 中抛出一个`InterruptedException`。如果 Hystrix 包装的工作不抛出中断异常`InterruptedException`, 则在 Hystrix 线程池中的线程将会继续执行，尽管`调用的客户端`已经接收到了`TimeoutException`。这种方式会使 Hystrix 的线程池处于饱和状态。大部分的 Java Http Client 开源库并不会解析 `InterruptedException`。所以确认 HTTP client 相关的连接和读/写相关的超时时间设置。
+> 如果 Command 命令没有抛出任何异常，并且有返回结果，则 Hystrix 将会在做完日志记录和统计之后会将结果返回。 如果是通过`run()`方式运行，则返回一个`Obserable`对象，包含一个唯一值，并且发送一个`onCompleted`通知；如果是通过`consturct()`方式运行 ，则返回一个`Observable对象`。
+
+### （七）健康检查
+
+Hystrix 会统计 Command 命令执行执行过程中的**成功数**、**失败数**、**拒绝数**和**超时数**,将这些信息记录到**断路器(Circuit Breaker)**中。断路器将上述统计按照**时间窗**的形式记录到一个定长数组中。断路器根据时间窗内的统计数据去判定请求什么时候可以被熔断，熔断后，在接下来一段恢复周期内，相同的请求过来后会直接被熔断。当再次校验，如果健康监测通过后，熔断开关将会被关闭。
+
+### （八）获取 Fallback
+
+当以下场景出现后，Hystrix 将会尝试触发 `Fallback`:
+
+> - 步骤 6 Command 执行时抛出了任何异常；
+> - 步骤 4 断路器已经被打开
+> - 步骤 5 执行命令的线程池、队列或者信号量资源已满
+> - 命令执行的时间超过阈值
+
+### （九）返回结果
+
+如果 Hystrix 命令对象执行成功，将会返回结果，或者以`Observable`形式包装的结果。根据**步骤 2**的 command 调用方式，返回的`Observable` 会按照如下图说是的转换关系进行返回：
+
+![img](https:////upload-images.jianshu.io/upload_images/14126519-8790f97df332d9a2.png?imageMogr2/auto-orient/strip|imageView2/2/w/640/format/webp)
+
+- `execute()` — 用和 `.queue()` 相同的方式获取 `Future`，然后调用 `Future` 的 `get()` 以获取 `Observable` 的单个值。
+- `queue()` —将 `Observable` 转换为 `BlockingObservable`，以便可以将其转换为 `Future` 并返回。
+- `watch()` —订阅 `Observable` 并开始执行命令的流程； 返回一个 `Observable`，当订阅该 `Observable` 时，它会重新通知。
+- `toObservable()` —返回不变的 `Observable`； 必须订阅它才能真正开始执行命令的流程。
+
+## 三、断路器工作原理
+
+![img](https:////upload-images.jianshu.io/upload_images/14126519-dce007513bf90794.png?imageMogr2/auto-orient/strip|imageView2/2/w/640/format/webp)
+
+1. 断路器时间窗内的请求数 是否超过了**请求数断路器生效阈值**`circuitBreaker.requestVolumeThreshold`,如果超过了阈值，则将会触发断路，断路状态为**开启**
+   例如，如果当前阈值设置的是`20`,则当时间窗内统计的请求数共计 19 个，即使 19 个全部失败了，都不会触发断路器。
+2. 并且请求错误率超过了**请求错误率阈值**`errorThresholdPercentage`
+3. 如果两个都满足，则将断路器由**关闭**迁移到**开启**
+4. 如果断路器开启，则后续的所有相同请求将会被断路掉；
+5. 直到过了**沉睡时间窗**`sleepWindowInMilliseconds`后，再发起请求时，允许其通过（此时的状态为**半开起状态**）。如果请求失败了，则保持断路器状态为**开启**状态，并更新**沉睡时间窗**。如果请求成功了，则将断路器状态改为**关闭**状态；
+
+核心的逻辑如下：
+
+```java
+ @Override
+                        public void onNext(HealthCounts hc) {
+                            // check if we are past the statisticalWindowVolumeThreshold
+                            if (hc.getTotalRequests() < properties.circuitBreakerRequestVolumeThreshold().get()) {
+                                // we are not past the minimum volume threshold for the stat window,
+                                // so no change to circuit status.
+                                // if it was CLOSED, it stays CLOSED
+                                // if it was half-open, we need to wait for a successful command execution
+                                // if it was open, we need to wait for sleep window to elapse
+                            } else {
+                                if (hc.getErrorPercentage() < properties.circuitBreakerErrorThresholdPercentage().get()) {
+                                    //we are not past the minimum error threshold for the stat window,
+                                    // so no change to circuit status.
+                                    // if it was CLOSED, it stays CLOSED
+                                    // if it was half-open, we need to wait for a successful command execution
+                                    // if it was open, we need to wait for sleep window to elapse
+                                } else {
+                                    // our failure rate is too high, we need to set the state to OPEN
+                                    if (status.compareAndSet(Status.CLOSED, Status.OPEN)) {
+                                        circuitOpened.set(System.currentTimeMillis());
+                                    }
+                                }
+                            }
+                        }
+```
+
+### 系统指标
+
+Hystrix 对系统指标的统计是基于时间窗模式的：
+
+> **时间窗**：最近的一个时间区间内，比如前一小时到现在，那么时间窗的长度就是`1小时`；
+> **桶**：桶是在特定的**时间窗**内，等分的指标收集的统计集合；比如时间窗的长度为`1小时`，而桶的数量为`10`,那么每个桶在时间轴上依次排开，时间由远及近，每个桶统计的时间分片为 `1h / 10 = 6 min` 6 分钟。一个桶中，包含了`成功数`、`失败数`、`超时数`、`拒绝数` 四个指标。
+
+在系统内，时间窗会随着系统的运行逐渐向前移动，而时间窗的长度和桶的数量是固定不变的，那么随着时间的移动，会出现较久的过期的桶被移除出去，新的桶被添加进来，如下图所示：
+
+![img](https:////upload-images.jianshu.io/upload_images/14126519-11710915e1a5dcda.png?imageMogr2/auto-orient/strip|imageView2/2/w/640/format/webp)
+
+## 四、资源隔离技术
+
+### 线程池隔离
+
+如下图所示，由于计算机系统的基本执行单位就是线程，线程具备独立的执行能力，所以，为了做到资源保护，需要对系统的线程池进行划分，对于外部调用方
+
+```
+User Request
+```
+
+的请求，调用各个线程池的服务，各个线程池独立完成调用，然后将结果返回
+
+```
+调用方
+```
+
+。在调用服务的过程中，如果
+
+```
+服务提供方
+```
+
+执行时间过长，则
+
+```
+调用方
+```
+
+可以直接以超时的方式直接返回，快速失败。
+
+![img](https:////upload-images.jianshu.io/upload_images/14126519-55a0be64ecac4cda.png?imageMogr2/auto-orient/strip|imageView2/2/w/640/format/webp)
+
+线程池隔离的几点好处
+
+> 1. 使用超时返回的机制，避免同步调用服务时，调用时间过长，无法释放，导致资源耗尽的情况
+> 2. 服务方可以控制请求数量，请求过多，可以直接拒绝,达到快速失败的目的；
+> 3. 请求排队，线程池可以维护执行队列，将请求压到队列中处理
+
+举个例子，如下代码段，模拟了同步调用服务的过程：
+
+```java
+        //服务提供方，执行服务的时候模拟2分钟的耗时
+        Callable<String> callableService  = ()->{
+            long start = System.currentTimeMillis();
+            while(System.currentTimeMillis()-start> 1000 * 60 *2){
+               //模拟服务执行时间过长的情况
+            }
+            return "OK";
+        };
+
+        //模拟10个客户端调用服务
+        ExecutorService clients = Executors.newFixedThreadPool(10);
+        //模拟给10个客户端提交处理请求
+        for (int i = 0; i < 20; i++) {
+            clients.execute(()->{
+                //同步调用
+                try {
+                    String result = callableService.call();
+                    System.out.println("当前客户端："+Thread.currentThread().getName()+"调用服务完成，得到结果："+result);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
+        }
+```
+
+在此环节中，客户端 `clients`必须等待服务方返回结果之后，才能接收新的请求。如果用吞吐量来衡量系统的话，会发现系统的处理能力比较低。为了提高相应时间，可以借助线程池的方式，设置超时时间，这样的话，客户端就不需要必须等待服务方返回，如果时间过长，可以提前返回,改造后的代码如下所示：
+
+```java
+ //服务提供方，执行服务的时候模拟2分钟的耗时
+        Callable<String> callableService  = ()->{
+            long start = System.currentTimeMillis();
+            while(System.currentTimeMillis()-start> 1000 * 60 *2){
+               //模拟服务执行时间过长的情况
+            }
+            return "OK";
+        };
+
+        //创建线程池作为服务方
+        ExecutorService executorService = Executors.newFixedThreadPool(30);
+
+
+        //模拟10个客户端调用服务
+        ExecutorService clients = Executors.newFixedThreadPool(10);
+        for (int i = 0; i < 10; i++) {
+            clients.execute(()->{
+                //同步调用
+                    //将请求提交给线程池执行，Callable 和 Runnable在某种意义上，也是Command对象
+                    Future<String> future = executorService.submit(callableService::call);
+                    //在指定的时间内获取结果，如果超时，调用方可以直接返回
+                    try {
+                        String result = future.get(1000, TimeUnit.SECONDS);
+                        //客户端等待时间之后，快速返回
+                        System.out.println("当前客户端："+Thread.currentThread().getName()+"调用服务完成，得到结果："+result);
+                    }catch (TimeoutException timeoutException){
+                        System.out.println("服务调用超时，返回处理");
+                    } catch (InterruptedException e) {
+
+                    } catch (ExecutionException e) {
+                    }
+            });
+        }
+```
+
+如果我们将服务方的线程池设置为：
+
+```java
+ThreadPoolExecutor executorService = new ThreadPoolExecutor(10,1000,TimeUnit.SECONDS,
+new ArrayBlockingQueue<>(100),
+new ThreadPoolExecutor.DiscardPolicy() // 提交请求过多时，可以丢弃请求，避免死等阻塞的情况。
+)
+```
+
+**线程池隔离模式的弊端**
+
+> 线程池隔离模式，会根据服务划分出独立的线程池，系统资源的线程并发数是有限的，当线程数过多，系统话费大量的 CPU 时间来做线程上下文切换的无用操作，反而降低系统性能；如果线程池隔离的过多，会导致真正用于接收用户请求的线程就相应地减少，系统吞吐量反而下降；
+> **在实践上，应当对像远程方法调用，网络资源请求这种服务时间不太可控的场景下使用线程池隔离模式处理**
+> 如下图所示，是线程池隔离模式的三种场景：
+
+![img](https:////upload-images.jianshu.io/upload_images/14126519-8e16e7f8072475eb.png?imageMogr2/auto-orient/strip|imageView2/2/w/640/format/webp)
+
+### 信号量隔离
+
+由于基于线程池隔离的模式占用系统线程池资源，Hystrix 还提供了另外一个隔离技术：基于信号量的隔离。
+
+基于信号量的隔离方式非常地简单，其核心就是使用共用变量
+
+```
+semaphore
+```
+
+进行原子操作，控制线程的并发量，当并发量达到一定量级时，服务禁止调用。如下图所示：信号量本身不会消耗多余的线程资源，所以就非常轻量。
+
+![img](https:////upload-images.jianshu.io/upload_images/14126519-9af3442e03df941e.png?imageMogr2/auto-orient/strip|imageView2/2/w/640/format/webp)
+
+基于信号量隔离的利弊
+
+> 利：基于信号量的隔离，利用 JVM 的原子性 CAS 操作，避免了资源锁的竞争，省去了线程池开销，效率非常高；
+> 弊：本质上基于信号量的隔离是同步行为，所以无法做到超时熔断，所以服务方自身要控制住执行时间，避免超时。
+> 应用场景：**业务服务上，有并发上限限制时，可以考虑此方式** > `Alibaba Sentinel`开源框架，就是基于信号量的熔断和断路器框架。
+
+## 五、Hystrix 应用
+
+### Spring Cloud + Hystrix
+
+- **Hystrix 配置无法动态调节生效**。Hystrix 框架本身是使用的[Archaius](https://links.jianshu.com/go?to=https%3A%2F%2Fgithub.com%2FNetflix%2Farchaius)框架完成的配置加载和刷新，但是集成自 Spring Cloud 下，无法有效地根据实时监控结果，动态调整熔断和系统参数
+- **线程池和 Command 之间的配置比较复杂**,在 Spring Cloud 在做 feigin-hystrix 集成的时候，还有些 BUG，对 command 的默认配置没有处理好，导致所有 command 占用公共的 command 线程池，没有细粒度控制，还需要做框架适配调整
+
+```php
+public interface SetterFactory {
+
+  /**
+   * Returns a hystrix setter appropriate for the given target and method
+   */
+  HystrixCommand.Setter create(Target<?> target, Method method);
+
+  /**
+   * Default behavior is to derive the group key from {@link Target#name()} and the command key from
+   * {@link Feign#configKey(Class, Method)}.
+   */
+  final class Default implements SetterFactory {
+
+    @Override
+    public HystrixCommand.Setter create(Target<?> target, Method method) {
+      String groupKey = target.name();
+      String commandKey = Feign.configKey(target.type(), method);
+      return HystrixCommand.Setter
+          .withGroupKey(HystrixCommandGroupKey.Factory.asKey(groupKey))
+          .andCommandKey(HystrixCommandKey.Factory.asKey(commandKey));
+          //没有处理好default配置项的加载
+    }
+  }
+}
+```
+
+## Hystrix 配置
+
+> 详细配置可以参考 [Hystrix 官方配置手册](https://github.com/Netflix/Hystrix/wiki/Configuration)，这里仅介绍比较核心的配置
+
+### 执行配置
+
+以下配置用于控制 [`HystrixCommand.run()`](<http://netflix.github.io/Hystrix/javadoc/com/netflix/hystrix/HystrixCommand.html#run()>) 如何执行。
+
+| 配置项                                                                                                                                                             | 说明                                        | 默认值   |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------- | -------- |
+| [`execution.isolation.strategy`](https://github.com/Netflix/Hystrix/wiki/Configuration#execution.isolation.strategy)                                               | 线程隔离（THREAD）或信号量隔离（SEMAPHORE） | THREAD   |
+| [`execution.isolation.thread.timeoutInMilliseconds`](https://github.com/Netflix/Hystrix/wiki/Configuration#execution.isolation.thread.timeoutInMilliseconds)       | 方法执行超时时间                            | 1000(ms) |
+| [`execution.isolation.semaphore.maxConcurrentRequests`](https://github.com/Netflix/Hystrix/wiki/Configuration#execution.isolation.semaphore.maxConcurrentRequests) | 信号量隔离最大并发数                        | 10       |
+
+### 断路配置
+
+以下配置用于控制 [`HystrixCircuitBreaker`](http://netflix.github.io/Hystrix/javadoc/index.html?com/netflix/hystrix/HystrixCircuitBreaker.html) 的断路处理。
+
+| 配置项                                                                                                                                       | 说明                           | 默认值   |
+| :------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------- | :------- |
+| [`circuitBreaker.enabled`](https://github.com/Netflix/Hystrix/wiki/Configuration#circuitBreaker.enabled)                                     | 是否开启断路器                 | true     |
+| [`circuitBreaker.requestVolumeThreshold`](https://github.com/Netflix/Hystrix/wiki/Configuration#circuitBreaker.requestVolumeThreshold)       | 断路器启用请求数阈值           | 20       |
+| [`circuitBreaker.sleepWindowInMilliseconds`](https://github.com/Netflix/Hystrix/wiki/Configuration#circuitBreaker.sleepWindowInMilliseconds) | 断路器启用后的休眠时间         | 5000(ms) |
+| [`circuitBreaker.errorThresholdPercentage`](https://github.com/Netflix/Hystrix/wiki/Configuration#circuitBreaker.errorThresholdPercentage)   | 断路器启用失败率阈值           | 50(%)    |
+| [`circuitBreaker.forceOpen`](https://github.com/Netflix/Hystrix/wiki/Configuration#circuitBreaker.forceOpen)                                 | 是否强制将断路器设置成开启状态 | false    |
+| [`circuitBreaker.forceClosed`](https://github.com/Netflix/Hystrix/wiki/Configuration#circuitBreaker.forceClosed)                             | 是否强制将断路器设置成关闭状态 | false    |
+
+### 指标配置
+
+以下配置用于从 HystrixCommand 和 HystrixObservableCommand 执行中捕获相关指标。
+
+| 配置项                                                                                                                                                 | 说明                                                   | 默认值    |
+| :----------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------- | :-------- |
+| [`metrics.rollingStats.timeInMilliseconds`](https://github.com/Netflix/Hystrix/wiki/Configuration#metrics.rollingStats.timeInMilliseconds)             | 时间窗的长度                                           | 10000(ms) |
+| [`metrics.rollingStats.numBuckets`](https://github.com/Netflix/Hystrix/wiki/Configuration#metrics.rollingStats.numBuckets)                             | 桶的数量，需要保证`timeInMilliseconds % numBuckets =0` | 10        |
+| [`metrics.rollingPercentile.enabled`](https://github.com/Netflix/Hystrix/wiki/Configuration#metrics.rollingPercentile.enabled)                         | 是否统计运行延迟的占比                                 | true      |
+| [`metrics.rollingPercentile.timeInMilliseconds`](https://github.com/Netflix/Hystrix/wiki/Configuration#metrics.rollingPercentile.timeInMilliseconds)   | **运行延迟占比**统计的时间窗                           | 60000(ms) |
+| [`metrics.rollingPercentile.numBuckets`](https://github.com/Netflix/Hystrix/wiki/Configuration#metrics.rollingPercentile.numBuckets)                   | **运行延迟占比**统计的桶数                             | 6         |
+| [`metrics.rollingPercentile.bucketSize`](https://github.com/Netflix/Hystrix/wiki/Configuration#metrics.rollingPercentile.bucketSize)                   | 百分比统计桶的容量，桶内最多保存的运行时间统计         | 100       |
+| [`metrics.healthSnapshot.intervalInMilliseconds`](https://github.com/Netflix/Hystrix/wiki/Configuration#metrics.healthSnapshot.intervalInMilliseconds) | 统计快照刷新间隔                                       | 500 (ms)  |
+
+### 线程池配置
+
+以下配置用于控制 Hystrix Command 执行所使用的线程池。
+
+| 配置项                                                                                                                                 | 说明                                                                                                                                                                                              | 默认值 |
+| :------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :----- |
+| [`coreSize`](https://github.com/Netflix/Hystrix/wiki/Configuration#coreSize)                                                           | 线程池核心线程数                                                                                                                                                                                  | 10     |
+| [`maximumSize`](https://github.com/Netflix/Hystrix/wiki/Configuration#maximumSize)                                                     | 线程池最大线程数                                                                                                                                                                                  | 10     |
+| [`maxQueueSize`](https://github.com/Netflix/Hystrix/wiki/Configuration#maxQueueSize)                                                   | 最大 LinkedBlockingQueue 的大小，-1 表示用 SynchronousQueue                                                                                                                                       | -1     |
+| [`queueSizeRejectionThreshold`](https://github.com/Netflix/Hystrix/wiki/Configuration#queueSizeRejectionThreshold)                     | 队列大小阈值，超过则拒绝                                                                                                                                                                          | 5      |
+| [`allowMaximumSizeToDivergeFromCoreSize`](https://github.com/Netflix/Hystrix/wiki/Configuration#allowMaximumSizeToDivergeFromCoreSize) | 此属性允许 maximumSize 的配置生效。该值可以等于或大于 coreSize。设置 coreSize <maximumSize 使得线程池可以维持 maximumSize 并发性，但是会在相对空闲时将线程回收。（取决于 keepAliveTimeInMinutes） | false  |
+
+## 六、其他限流技术
+
+- **resilience4j**
+  Hystrix 虽然官方宣布不再维护，其推荐另外一个框架：[resilience4j](https://links.jianshu.com/go?to=https%3A%2F%2Fgithub.com%2Fresilience4j%2Fresilience4j), 这个框架是是为 Java 8 和 函数式编程设计的一个轻量级的容错框架，该框架充分利用函数式编程的概念，为`函数式接口`、`lamda表达式`、`方法引用`高阶函数进行包装，(本质上是装饰者模式的概念)，通过包装实现`断路`、`限流`、`重试`、`舱壁`功能。
+  这个框架整体而言比较轻量，没有控制台，不太好做系统级监控；
+
+- Alibaba Sentinel
+
+  ```
+  Sentinel
+  ```
+
+  是 阿里巴巴开源的轻量级的流量控制、熔断降级 Java 库，该库的核心是使用的是信号量隔离的方式做流量控制和熔断，其优点是其集成性和易用性，几乎能和当前主流的 Spring Cloud, dubbo ,grpc ,nacos, zookeeper 做集成，如下图所示：
+
+  ![img](https:////upload-images.jianshu.io/upload_images/14126519-70fd779fc1f3b9b3.png?imageMogr2/auto-orient/strip|imageView2/2/w/1200/format/webp)
+
+  sentinel-features-overview-en.png
+
+  ```
+  Sentinel
+  ```
+
+  的目标生态圈：
+
+  ![img](https:////upload-images.jianshu.io/upload_images/14126519-84833e6225a05df0.png?imageMogr2/auto-orient/strip|imageView2/2/w/1200/format/webp)
+
+  ```
+  sentinel
+  ```
+
+  一个强大的功能，就是它有一个流控管理控制台，你可以实时地监控每个服务的流控情况，并且可以实时编辑各种流控、熔断规则，有效地保证了服务保护的及时性。下图是内部试用的 sentinel 控制台：
+
+  ![img](https:////upload-images.jianshu.io/upload_images/14126519-bb4aa4ba3a1de64c.png?imageMogr2/auto-orient/strip|imageView2/2/w/1200/format/webp)另外，
+
+  ```
+  sentinel
+  ```
+
+  还可以和
+
+  ```
+  ctrip apollo
+  ```
+
+  分布式配置系统进行集成，将流控规降级等各种规则先配置在 apollo 中，然后服务启动自动加载流控规则。
+
+## 参考资料
+
+- [Hystrix Github](https://github.com/Netflix/Hystrix)
+- [Spring Cloud Hystrix 设计原理](https://www.jianshu.com/p/684b04b6c454)
+- [Hystrix 都停更了，我为什么还要学？](https://juejin.im/post/5c009ff6f265da614b11b84d)

@@ -1,0 +1,5 @@
+name: "weather rule"
+description: "if it rains then take an umbrella"
+condition: "rain == true"
+actions:
+  - "System.out.println(\"It rains, take an umbrella!\");"

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd">
+
+	<!-- 磁盘缓存位置 -->
+	<diskStore path="java.io.tmpdir/ehcache" />
+
+	<!-- 默认缓存 -->
+	<defaultCache
+		maxEntriesLocalHeap="10000"
+		eternal="false"
+		timeToIdleSeconds="120"
+		timeToLiveSeconds="120"
+		maxEntriesLocalDisk="10000000"
+		diskExpiryThreadIntervalSeconds="120"
+		memoryStoreEvictionPolicy="LRU">
+		<persistence strategy="localTempSwap" />
+	</defaultCache>
+
+	<!--
+			 配置自定义缓存
+			 maxElementsInMemory：缓存中允许创建的最大对象数
+			 eternal：缓存中对象是否为永久的，如果是，超时设置将被忽略，对象从不过期。
+			 timeToIdleSeconds：缓存数据的钝化时间，也就是在一个元素消亡之前，
+									 两次访问时间的最大时间间隔值，这只能在元素不是永久驻留时有效，
+									 如果该值是 0 就意味着元素可以停顿无穷长的时间。
+			 timeToLiveSeconds：缓存数据的生存时间，也就是一个元素从构建到消亡的最大时间间隔值，
+									 这只能在元素不是永久驻留时有效，如果该值是0就意味着元素可以停顿无穷长的时间。
+			 maxEntriesLocalDisk：磁盘缓存允许的最大对象数
+			 overflowToDisk：内存不足时，是否启用磁盘缓存。
+			 memoryStoreEvictionPolicy：缓存满了之后的淘汰算法。
+	 -->
+	<!-- 菜单缓存 -->
+	<cache name="users"
+		maxElementsInMemory="1000"
+		eternal="false"
+		timeToIdleSeconds="3"
+		timeToLiveSeconds="3"
+		maxEntriesLocalDisk="10000000"
+		overflowToDisk="false"
+		memoryStoreEvictionPolicy="LRU" />
+</ehcache>

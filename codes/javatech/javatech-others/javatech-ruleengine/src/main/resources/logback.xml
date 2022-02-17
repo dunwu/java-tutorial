@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds" debug="false">
+
+  <!-- ==========================================================================
+       property
+  =========================================================================== -->
+
+  <contextName>dunwu-admin</contextName>
+  <property name="APP_NAME" value="javatech" />
+  <property name="LOG_DIR" value="${DUNWU_ADMIN_LOG_DIR:-/var/log/dunwu}" />
+  <property name="LOG_MAX_HISTORY" value="14" />
+  <property name="LOG_MAX_FILE_SIZE" value="100MB" />
+  <property name="LOG_MAX_QUEUE_SIZE" value="256" />
+  <property name="LOG_CHARSET" value="utf8" />
+  <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%contextName] [%-5level] [%thread] %c.%M | %m%n" />
+  <property name="LOG_COLOR_PATTERN"
+    value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%highlight(%-5level)] [%boldYellow(%thread)] %boldGreen(%c.%M) | %boldBlue(%m%n)" />
+
+  <!-- ==========================================================================
+       appender
+  =========================================================================== -->
+
+  <!--控制台输出-->
+  <appender name="ConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <charset>${LOG_CHARSET}</charset>
+      <pattern>${LOG_COLOR_PATTERN}</pattern>
+    </encoder>
+  </appender>
+
+  <!--滚动日志输出-->
+  <appender name="RollingFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <!-- 根据时间、文件大小自动分割日志 -->
+    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      <fileNamePattern>${LOG_DIR}/%d{yyyy-MM,aux}/${APP_NAME}_debug.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+      <!-- 日志文件保留最长天数 -->
+      <maxHistory>${LOG_MAX_HISTORY}</maxHistory>
+      <!-- 日志文件最大尺寸 -->
+      <maxFileSize>${LOG_MAX_FILE_SIZE}</maxFileSize>
+    </rollingPolicy>
+    <!-- 输出形式 -->
+    <encoder>
+      <pattern>${LOG_PATTERN}</pattern>
+    </encoder>
+    <!-- 过滤级别 -->
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      <level>DEBUG</level>
+    </filter>
+  </appender>
+
+  <!-- 异步日志输出 -->
+  <appender name="AsyncAppender" class="ch.qos.logback.classic.AsyncAppender">
+    <!-- 不丢失日志。默认的，如果队列的 80% 已满，则会丢弃 TRACE、DEBUG、INFO 级别的日志 -->
+    <discardingThreshold>0</discardingThreshold>
+    <!-- 更改默认的队列的深度，该值会影响性能。默认值为 256 -->
+    <queueSize>${LOG_MAX_QUEUE_SIZE}</queueSize>
+    <appender-ref ref="RollingFileAppender" />
+  </appender>
+
+  <!-- ==========================================================================
+       logger
+  =========================================================================== -->
+
+  <!--监控sql日志输出 -->
+  <logger name="jdbc.sqlonly" level="INFO" additivity="false">
+    <appender-ref ref="ConsoleAppender" />
+  </logger>
+  <logger name="jdbc.resultset" level="ERROR" additivity="false">
+    <appender-ref ref="ConsoleAppender" />
+  </logger>
+
+  <!--  如想看到表格数据，将OFF改为INFO  -->
+  <logger name="jdbc.resultsettable" level="OFF" additivity="false">
+    <appender-ref ref="ConsoleAppender" />
+  </logger>
+  <logger name="jdbc.connection" level="OFF" additivity="false">
+    <appender-ref ref="ConsoleAppender" />
+  </logger>
+  <logger name="jdbc.sqltiming" level="OFF" additivity="false">
+    <appender-ref ref="ConsoleAppender" />
+  </logger>
+  <logger name="jdbc.audit" level="OFF" additivity="false">
+    <appender-ref ref="ConsoleAppender" />
+  </logger>
+
+  <logger name="io.github.dunwu" level="TRACE" additivity="false">
+    <appender-ref ref="ConsoleAppender" />
+    <appender-ref ref="AsyncAppender" />
+  </logger>
+
+  <root level="WARN">
+    <appender-ref ref="ConsoleAppender" />
+    <appender-ref ref="AsyncAppender" />
+  </root>
+</configuration>

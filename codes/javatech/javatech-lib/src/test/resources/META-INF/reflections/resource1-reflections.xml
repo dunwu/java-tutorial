@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Reflections>
+    <MethodsAnnotated>
+        <entry>
+            <key>io.github.dunwu.javatech.reflections.TestModel$AM1</key>
+            <values>
+                <value>io.github.dunwu.javatech.reflections.TestModel$C4.&lt;init&gt;(java.lang.String)</value>
+                <value>io.github.dunwu.javatech.reflections.TestModel$C4.m3()</value>
+                <value>io.github.dunwu.javatech.reflections.TestModel$C4.m1(int[][], java.lang.String[][])</value>
+                <value>io.github.dunwu.javatech.reflections.TestModel$C4.m1(int, java.lang.String[])</value>
+                <value>io.github.dunwu.javatech.reflections.TestModel$C4.m1()</value>
+            </values>
+        </entry>
+    </MethodsAnnotated>
+</Reflections>
