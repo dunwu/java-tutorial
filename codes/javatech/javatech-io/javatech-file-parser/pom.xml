@@ -16,7 +16,7 @@
     <name>Java IO 文件解析</name>
 
     <properties>
-        <poi.version>4.0.0</poi.version>
+        <poi.version>5.2.1</poi.version>
     </properties>
 
     <dependencies>
