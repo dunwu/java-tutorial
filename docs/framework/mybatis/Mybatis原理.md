@@ -243,7 +243,7 @@ public class MybatisDemo {
 
 ## 2. Mybatis 生命周期
 
-![](https://raw.githubusercontent.com/dunwu/images/dev/snap/20210510113446.png)
+![img](https://raw.githubusercontent.com/dunwu/images/dev/snap/20210510113446.png)
 
 ### 2.1. SqlSessionFactoryBuilder
 
@@ -253,7 +253,7 @@ public class MybatisDemo {
 
 `Configuration` 类包含了对一个 `SqlSessionFactory` 实例你可能关心的所有内容。
 
-![](https://raw.githubusercontent.com/dunwu/images/dev/snap/20210508173040.png)
+![img](https://raw.githubusercontent.com/dunwu/images/dev/snap/20210508173040.png)
 
 `SqlSessionFactoryBuilder` 应用了建造者设计模式，它有五个 `build` 方法，允许你通过不同的资源创建 `SqlSessionFactory` 实例。
 
@@ -275,7 +275,7 @@ SqlSessionFactory build(Configuration config)
 
 **`SqlSessionFactory` 负责创建 `SqlSession` 实例。**
 
-![](https://raw.githubusercontent.com/dunwu/images/dev/snap/20210510105641.png)
+![img](https://raw.githubusercontent.com/dunwu/images/dev/snap/20210510105641.png)
 
 `SqlSessionFactory` 应用了工厂设计模式，它提供了一组方法，用于创建 SqlSession 实例。
 
@@ -318,7 +318,7 @@ Configuration getConfiguration();
 
 SqlSession 类的方法可以按照下图进行大致分类：
 
-![](https://raw.githubusercontent.com/dunwu/images/dev/snap/20210510110638.png)
+![img](https://raw.githubusercontent.com/dunwu/images/dev/snap/20210510110638.png)
 
 #### SqlSession 生命周期
 
@@ -352,7 +352,7 @@ Mybatis 会根据相应的接口声明的方法信息，通过动态代理机制
 
 下面的示例展示了一些方法签名以及它们是如何映射到 `SqlSession` 上的。
 
-![](https://raw.githubusercontent.com/dunwu/images/dev/snap/20210512111723.png)
+![img](https://raw.githubusercontent.com/dunwu/images/dev/snap/20210512111723.png)
 
 > **注意**
 >
@@ -397,7 +397,7 @@ Mybatis 支持诸如 `@Insert`、`@Update`、`@Delete`、`@Select`、`@Result` �
 
 这些组件的架构层次如下：
 
-![](https://raw.githubusercontent.com/dunwu/images/dev/snap/20210512114852.png)
+![img](https://raw.githubusercontent.com/dunwu/images/dev/snap/20210512114852.png)
 
 ### 3.1. 配置层
 
@@ -451,13 +451,13 @@ Mybatis 和数据库的交互有两种方式：
     - 如果开启了二级缓存，`SqlSession` 会先使用 `CachingExecutor` 对象来处理查询请求。`CachingExecutor` 会在二级缓存中查看是否有匹配的数据，如果匹配，则直接返回缓存结果；如果缓存中没有，再交给真正的 `Executor` 对象来完成查询，之后 `CachingExecutor` 会将真正 `Executor` 返回的查询结果放置到缓存中，然后在返回给用户。
     - 二级缓存的生命周期是应用级别的。
 
-![](https://raw.githubusercontent.com/dunwu/images/dev/snap/20210512185709.png)
+![img](https://raw.githubusercontent.com/dunwu/images/dev/snap/20210512185709.png)
 
 ## 4. SqlSession 内部工作机制
 
 从前文，我们已经了解了，Mybatis 封装了对数据库的访问，把对数据库的会话和事务控制放到了 SqlSession 对象中。那么具体是如何工作的呢？接下来，我们通过源码解读来进行分析。
 
-![](https://raw.githubusercontent.com/dunwu/images/dev/snap/20210512173437.png)
+![img](https://raw.githubusercontent.com/dunwu/images/dev/snap/20210512173437.png)
 
 `SqlSession` 对于 insert、update、delete、select 的内部处理机制基本上大同小异。所以，接下来，我会以一次完整的 select 查询流程为例讲解 `SqlSession` 内部的工作机制。相信读者如果理解了 select 的处理流程，对于其他 CRUD 操作也能做到一通百通。
 
@@ -473,7 +473,7 @@ Mybatis 和数据库的交互有两种方式：
 
 Executor 即执行器，它负责生成动态 SQL 以及管理缓存。
 
-![](https://raw.githubusercontent.com/dunwu/images/dev/snap/20210512150000.png)
+![img](https://raw.githubusercontent.com/dunwu/images/dev/snap/20210512150000.png)
 
 - `Executor` 即执行器接口。
 - `BaseExecutor` 是 `Executor` 的抽象类，它采用了模板方法设计模式，内置了一些共性方法，而将定制化方法留给子类去实现。
@@ -488,7 +488,7 @@ Executor 即执行器，它负责生成动态 SQL 以及管理缓存。
 
 `StatementHandler` 的家族成员：
 
-![](https://raw.githubusercontent.com/dunwu/images/dev/snap/20210512160243.png)
+![img](https://raw.githubusercontent.com/dunwu/images/dev/snap/20210512160243.png)
 
 - `StatementHandler` 是接口；
 - `BaseStatementHandler` 是实现 `StatementHandler` 的抽象类，内置一些共性方法；
@@ -586,7 +586,7 @@ Mybatis 所有的配置信息都维持在 `Configuration` 对象之中。中维�
 
 `MappedStatement` 维护了一个 Mapper 方法的元数据信息，其数据组织可以参考下面的 debug 截图：
 
-![](https://raw.githubusercontent.com/dunwu/images/dev/snap/20210511150650.png)
+![img](https://raw.githubusercontent.com/dunwu/images/dev/snap/20210511150650.png)
 
 > 小结：
 >

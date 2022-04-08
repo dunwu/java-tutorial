@@ -26,7 +26,7 @@
 
 ## 1. Mybatis 简介
 
-![](https://raw.githubusercontent.com/dunwu/images/dev/snap/20210510164925.png)
+![img](https://raw.githubusercontent.com/dunwu/images/dev/snap/20210510164925.png)
 
 ### 1.1. 什么是 MyBatis
 

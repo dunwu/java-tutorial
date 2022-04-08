@@ -2,7 +2,7 @@
 
 > Mybatis 的前身就是 iBatis ，是一款优秀的持久层框架，它支持自定义 SQL、存储过程以及高级映射。本文以一个 Mybatis 完整示例为切入点，结合 Mybatis 底层源码分析，图文并茂的讲解 Mybatis 的核心工作机制。
 
-![](https://raw.githubusercontent.com/dunwu/images/dev/snap/20210522101005.png)
+![img](https://raw.githubusercontent.com/dunwu/images/dev/snap/20210522101005.png)
 
 ## 📖 内容
 

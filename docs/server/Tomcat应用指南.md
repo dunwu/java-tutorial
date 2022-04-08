@@ -384,7 +384,7 @@ public class SimpleTomcatServer {
 
 ## 3. Tomcat 架构
 
-![](https://raw.githubusercontent.com/dunwu/images/dev/snap/20201113193431.png)
+![img](https://raw.githubusercontent.com/dunwu/images/dev/snap/20201113193431.png)
 
 Tomcat 要实现 2 个核心功能：
 
@@ -412,7 +412,7 @@ Tomcat 支持的应用层协议有：
 
 Tomcat 支持多种 I/O 模型和应用层协议。为了实现这点，一个容器可能对接多个连接器。但是，单独的连接器或容器都不能对外提供服务，需要把它们组装起来才能工作，组装后这个整体叫作 Service 组件。Tomcat 内可能有多个 Service，通过在 Tomcat 中配置多个 Service，可以实现通过不同的端口号来访问同一台机器上部署的不同应用。
 
-![](https://raw.githubusercontent.com/dunwu/images/dev/snap/20201111093124.png)
+![img](https://raw.githubusercontent.com/dunwu/images/dev/snap/20201111093124.png)
 
 **一个 Tomcat 实例有一个或多个 Service；一个 Service 有多个 Connector 和 Container**。Connector 和 Container 之间通过标准的 ServletRequest 和 ServletResponse 通信。
 
@@ -428,13 +428,13 @@ Tomcat 支持多种 I/O 模型和应用层协议。为了实现这点，一个�
 
 Tomcat 设计了 3 个组件来实现这 3 个功能，分别是 **`EndPoint`**、**`Processor`** 和 **`Adapter`**。
 
-![](https://raw.githubusercontent.com/dunwu/images/dev/snap/20201111101440.png)
+![img](https://raw.githubusercontent.com/dunwu/images/dev/snap/20201111101440.png)
 
 组件间通过抽象接口交互。这样做还有一个好处是**封装变化。**这是面向对象设计的精髓，将系统中经常变化的部分和稳定的部分隔离，有助于增加复用性，并降低系统耦合度。网络通信的 I/O 模型是变化的，可能是非阻塞 I/O、异步 I/O 或者 APR。应用层协议也是变化的，可能是 HTTP、HTTPS、AJP。浏览器端发送的请求信息也是变化的。但是整体的处理逻辑是不变的，EndPoint 负责提供字节流给 Processor，Processor 负责提供 Tomcat Request 对象给 Adapter，Adapter 负责提供 ServletRequest 对象给容器。
 
 如果要支持新的 I/O 方案、新的应用层协议，只需要实现相关的具体子类，上层通用的处理逻辑是不变的。由于 I/O 模型和应用层协议可以自由组合，比如 NIO + HTTP 或者 NIO2 + AJP。Tomcat 的设计者将网络通信和应用层协议解析放在一起考虑，设计了一个叫 ProtocolHandler 的接口来封装这两种变化点。各种协议和通信模型的组合有相应的具体实现类。比如：Http11NioProtocol 和 AjpNioProtocol。
 
-![](https://raw.githubusercontent.com/dunwu/images/dev/snap/20201027091819.png)
+![img](https://raw.githubusercontent.com/dunwu/images/dev/snap/20201027091819.png)
 
 #### ProtocolHandler 组件
 
@@ -454,7 +454,7 @@ EndPoint 是一个接口，对应的抽象实现类是 AbstractEndpoint，而 Ab
 
 Processor 是一个接口，定义了请求的处理等方法。它的抽象实现类 AbstractProcessor 对一些协议共有的属性进行封装，没有对方法进行实现。具体的实现有 AJPProcessor、HTTP11Processor 等，这些具体实现类实现了特定协议的解析方法和请求处理方式。
 
-![](https://raw.githubusercontent.com/dunwu/images/dev/snap/20201113185929.png)
+![img](https://raw.githubusercontent.com/dunwu/images/dev/snap/20201113185929.png)
 
 从图中我们看到，EndPoint 接收到 Socket 连接后，生成一个 SocketProcessor 任务提交到线程池去处理，SocketProcessor 的 Run 方法会调用 Processor 组件去解析应用层协议，Processor 通过解析生成 Request 对象后，会调用 Adapter 的 Service 方法。
 
@@ -481,7 +481,7 @@ Tomcat 是怎么确定请求是由哪个 Wrapper 容器里的 Servlet 来处理�
 
 举例来说，假如有一个网购系统，有面向网站管理人员的后台管理系统，还有面向终端客户的在线购物系统。这两个系统跑在同一个 Tomcat 上，为了隔离它们的访问域名，配置了两个虚拟域名：`manage.shopping.com`和`user.shopping.com`，网站管理人员通过`manage.shopping.com`域名访问 Tomcat 去管理用户和商品，而用户管理和商品管理是两个单独的 Web 应用。终端客户通过`user.shopping.com`域名去搜索商品和下订单，搜索功能和订单管理也是两个独立的 Web 应用。如下所示，演示了 url 应声 Servlet 的处理流程。
 
-![](https://raw.githubusercontent.com/dunwu/images/dev/snap/20201113192022.jpg)
+![img](https://raw.githubusercontent.com/dunwu/images/dev/snap/20201113192022.jpg)
 
 假如有用户访问一个 URL，比如图中的`http://user.shopping.com:8080/order/buy`，Tomcat 如何将这个 URL 定位到一个 Servlet 呢？
 
@@ -509,7 +509,7 @@ Pipeline-Valve 是责任链模式，责任链模式是指在一个请求处理�
 - 各层容器对应的 basic valve 分别是 `StandardEngineValve`、`StandardHostValve`、 `StandardContextValve`、`StandardWrapperValve`。
 - 由于 Valve 是一个处理点，因此 invoke 方法就是来处理请求的。注意到 Valve 中有 getNext 和 setNext 方法，因此我们大概可以猜到有一个链表将 Valve 链起来了。
 
-![](https://raw.githubusercontent.com/dunwu/images/dev/cs/java/javaweb/tools/tomcat/请求处理过程.png)
+![img](https://raw.githubusercontent.com/dunwu/images/dev/cs/java/javaweb/tools/tomcat/请求处理过程.png)
 
 整个调用过程由连接器中的 Adapter 触发的，它会调用 Engine 的第一个 Valve：
 
@@ -521,7 +521,7 @@ connector.getService().getContainer().getPipeline().getFirst().invoke(request, r
 
 ### 4.1. Tomcat 的启动过程
 
-![](https://raw.githubusercontent.com/dunwu/images/dev/snap/20201118145455.png)
+![img](https://raw.githubusercontent.com/dunwu/images/dev/snap/20201118145455.png)
 
 1. Tomcat 是一个 Java 程序，它的运行从执行 `startup.sh` 脚本开始。`startup.sh` 会启动一个 JVM 来运行 Tomcat 的启动类 `Bootstrap`。
 2. `Bootstrap` 会初始化 Tomcat 的类加载器并实例化 `Catalina`。
@@ -741,7 +741,7 @@ ContextConfig 解析 web.xml 顺序：
 
 ### 4.3. LifeCycle
 
-![](https://raw.githubusercontent.com/dunwu/images/dev/snap/20201118105012.png)
+![img](https://raw.githubusercontent.com/dunwu/images/dev/snap/20201118105012.png)
 
 #### 4.2.3. 请求处理过程
 
