@@ -1,174 +1,208 @@
-/**
- * @see https://vuepress.vuejs.org/zh/
- */
+const baiduCode = require('./config/baiduCode.js') // 百度统计hm码
+const htmlModules = require('./config/htmlModules.js')
+
 module.exports = {
   port: '4000',
-  dest: 'dist',
-  base: '/java-tutorial/',
+  dest: 'docs/.temp',
+  base: '/java-tutorial/', // 默认'/'。如果你想将你的网站部署到如 https://foo.github.io/bar/，那么 base 应该被设置成 "/bar/",（否则页面将失去样式等文件）
   title: 'JAVA-TUTORIAL',
-  description: 'Java 教程',
-  head: [['link', { rel: 'icon', href: `/favicon.ico` }]],
-  markdown: {
-    externalLinks: {
-      target: '_blank',
-      rel: 'noopener noreferrer',
-    },
-  },
+  description: '☕ java-tutorial 是一个 Java 教程，汇集一个老司机在 Java 领域的十年积累。',
+  theme: 'vdoing', // 使用依赖包主题
+  // theme: require.resolve('../../vdoing'), // 使用本地主题
+  head: [
+    // 注入到页面<head> 中的标签，格式[tagName, { attrName: attrValue }, innerHTML?]
+    ['link', { rel: 'icon', href: '/img/favicon.ico' }], //favicons，资源放在public文件夹
+    ['meta', { name: 'keywords', content: 'vuepress,theme,blog,vdoing' }],
+    ['meta', { name: 'theme-color', content: '#11a8cd' }] // 移动浏览器主题颜色
+  ],
+
+  // 主题配置
   themeConfig: {
-    logo: 'https://raw.githubusercontent.com/dunwu/images/dev/common/dunwu-logo-200.png',
-    repo: 'dunwu/java-tutorial',
-    repoLabel: 'Github',
-    docsDir: 'docs',
-    docsBranch: 'master',
-    editLinks: true,
-    smoothScroll: true,
-    locales: {
-      '/': {
-        label: '简体中文',
-        selectText: 'Languages',
-        editLinkText: '帮助我们改善此页面！',
-        lastUpdated: '上次更新',
-        nav: [
-          {
-            text: 'JavaEE',
-            link: '/javaee/',
-          },
-          {
-            text: '框架',
-            link: '/framework/',
-          },
-          {
-            text: '缓存',
-            link: '/cache/',
-          },
-          {
-            text: '消息队列',
-            link: '/mq/',
-          },
-          {
-            text: 'LIB库',
-            link: '/lib/',
-          },
-          {
-            text: '微服务',
-            link: '/microservice/',
-          },
-          {
-            text: '安全',
-            link: '/security/',
-          },
-          {
-            text: '测试',
-            link: '/test/',
-          },
-          {
-            text: '服务器',
-            link: '/server/',
-          },
-          {
-            text: '工具',
-            link: '/tool/',
-            items: [
-              {
-                text: '构建',
-                link: '/tool/build/',
-              },
-              {
-                text: 'IDE',
-                link: '/tool/ide/',
-              },
-              {
-                text: '监控',
-                link: '/tool/monitor/',
-              },
-            ],
-          },
-          {
-            text: '✨ Java系列',
-            ariaLabel: 'Java',
-            items: [
-              {
-                text: 'Java 教程 📚',
-                link: 'https://dunwu.github.io/java-tutorial/',
-                target: '_blank',
-                rel: '',
-              },
-              {
-                text: 'JavaCore 教程 📚',
-                link: 'https://dunwu.github.io/javacore/',
-                target: '_blank',
-                rel: '',
-              },
-              {
-                text: 'Spring 教程 📚',
-                link: 'https://dunwu.github.io/spring-tutorial/',
-                target: '_blank',
-                rel: '',
-              },
-              {
-                text: 'Spring Boot 教程 📚',
-                link: 'https://dunwu.github.io/spring-boot-tutorial/',
-                target: '_blank',
-                rel: '',
-              },
-            ],
-          },
-          {
-            text: '🎯 博客',
-            link: 'https://github.com/dunwu/blog',
-            target: '_blank',
-            rel: '',
-          },
-        ],
-        sidebar: 'auto',
-        sidebarDepth: 2,
+    nav: [
+      { text: '首页', link: '/' },
+      { text: 'JavaEE', link: '/01.JavaEE/' },
+      {
+        text: 'Java软件',
+        link: '/02.Java软件/',
+        items: [
+          { text: 'Java构建', link: '/02.Java软件/01.Java构建/' },
+          { text: 'Java IDE', link: '/02.Java软件/02.JavaIDE/' },
+          { text: 'Java服务器', link: '/02.Java软件/03.Java服务器/' },
+          { text: 'Java监控诊断', link: '/02.Java软件/04.Java监控诊断/' }
+        ]
       },
+      {
+        text: 'Java工具',
+        link: '/03.Java工具/',
+        items: [
+          { text: 'Java序列化工具', link: '/03.Java工具/01.Java序列化工具/' },
+          { text: 'JavaBean工具', link: '/03.Java工具/02.JavaBean工具/' },
+          { text: 'Java模板引擎', link: '/03.Java工具/03.Java模板引擎/' },
+          { text: 'Java测试工具', link: '/03.Java工具/04.Java测试工具/' },
+          { text: '其他', link: '/03.Java工具/05.其他Java工具/' }
+        ]
+      },
+      { text: 'Java框架', link: '/04.Java框架/' },
+      { text: 'Java中间件', link: '/05.Java中间件/' },
+      {
+        text: '✨ Java系列',
+        ariaLabel: 'Java',
+        items: [
+          { text: 'Java 教程 📚', link: 'https://dunwu.github.io/java-tutorial/', target: '_blank' },
+          { text: 'JavaCore 教程 📚', link: 'https://dunwu.github.io/javacore/', target: '_blank' }
+        ]
+      }
+    ],
+    sidebarDepth: 2, // 侧边栏显示深度，默认1，最大2（显示到h3标题）
+    logo: 'https://raw.githubusercontent.com/dunwu/images/dev/common/dunwu-logo-200.png', // 导航栏logo
+    repo: 'dunwu/java-tutorial', // 导航栏右侧生成Github链接
+    searchMaxSuggestions: 10, // 搜索结果显示最大数
+    lastUpdated: '上次更新', // 更新的时间，及前缀文字   string | boolean (取值为git提交时间)
+
+    docsDir: 'docs', // 编辑的文件夹
+    editLinks: true, // 编辑链接
+    editLinkText: '编辑',
+
+    // 以下配置是Vdoing主题改动的和新增的配置
+    sidebar: { mode: 'structuring', collapsable: false }, // 侧边栏  'structuring' | { mode: 'structuring', collapsable: Boolean} | 'auto' | 自定义    温馨提示：目录页数据依赖于结构化的侧边栏数据，如果你不设置为'structuring',将无法使用目录页
+
+    // sidebarOpen: false, // 初始状态是否打开侧边栏，默认true
+    updateBar: {
+      // 最近更新栏
+      showToArticle: false // 显示到文章页底部，默认true
+      // moreArticle: '/archives' // “更多文章”跳转的页面，默认'/archives'
     },
+    // titleBadge: false, // 文章标题前的图标是否显示，默认true
+    // titleBadgeIcons: [ // 文章标题前图标的地址，默认主题内置图标
+    //   '图标地址1',
+    //   '图标地址2'
+    // ],
+    // bodyBgImg: [
+    //   'https://cdn.jsdelivr.net/gh/xugaoyi/image_store/blog/20200507175828.jpeg',
+    //   'https://cdn.jsdelivr.net/gh/xugaoyi/image_store/blog/20200507175845.jpeg',
+    //   'https://cdn.jsdelivr.net/gh/xugaoyi/image_store/blog/20200507175846.jpeg'
+    // ], // body背景大图，默认无。 单张图片 String || 多张图片 Array, 多张图片时每隔15秒换一张。
+
+    // categoryText: '随笔', // 碎片化文章（_posts文件夹的文章）预设生成的分类值，默认'随笔'
+
+    // contentBgStyle: 1,
+
+    category: false, // 是否打开分类功能，默认true。 如打开，会做的事情有：1. 自动生成的frontmatter包含分类字段 2.页面中显示与分类相关的信息和模块 3.自动生成分类页面（在@pages文件夹）。如关闭，则反之。
+    tag: false, // 是否打开标签功能，默认true。 如打开，会做的事情有：1. 自动生成的frontmatter包含标签字段 2.页面中显示与标签相关的信息和模块 3.自动生成标签页面（在@pages文件夹）。如关闭，则反之。
+    archive: true, // 是否打开归档功能，默认true。 如打开，会做的事情有：1.自动生成归档页面（在@pages文件夹）。如关闭，则反之。
+
+    author: {
+      // 文章默认的作者信息，可在md文件中单独配置此信息 String | {name: String, href: String}
+      name: 'dunwu', // 必需
+      href: 'https://github.com/dunwu' // 可选的
+    },
+    social: {
+      // 社交图标，显示于博主信息栏和页脚栏
+      // iconfontCssFile: '//at.alicdn.com/t/font_1678482_u4nrnp8xp6g.css', // 可选，阿里图标库在线css文件地址，对于主题没有的图标可自由添加
+      icons: [
+        {
+          iconClass: 'icon-youjian',
+          title: '发邮件',
+          link: 'mailto:forbreak@163.com'
+        },
+        {
+          iconClass: 'icon-github',
+          title: 'GitHub',
+          link: 'https://github.com/dunwu'
+        }
+      ]
+    },
+    footer: {
+      // 页脚信息
+      createYear: 2019, // 博客创建年份
+      copyrightInfo: '钝悟（dunwu） | MIT License' // 博客版权信息，支持a标签
+    },
+    htmlModules
   },
+
+  // 插件
   plugins: [
+    // [require('./plugins/love-me'), { // 鼠标点击爱心特效
+    //   color: '#11a8cd', // 爱心颜色，默认随机色
+    //   excludeClassName: 'theme-vdoing-content' // 要排除元素的class, 默认空''
+    // }],
+
+    ['fulltext-search'], // 全文搜索
+
+    // ['thirdparty-search', { // 可以添加第三方搜索链接的搜索框（原官方搜索框的参数仍可用）
+    //   thirdparty: [ // 可选，默认 []
+    //     {
+    //       title: '在GitHub中搜索',
+    //       frontUrl: 'https://github.com/search?q=', // 搜索链接的前面部分
+    //       behindUrl: '' // 搜索链接的后面部分，可选，默认 ''
+    //     },
+    //     {
+    //       title: '在npm中搜索',
+    //       frontUrl: 'https://www.npmjs.com/search?q=',
+    //     },
+    //     {
+    //       title: '在Bing中搜索',
+    //       frontUrl: 'https://cn.bing.com/search?q='
+    //     }
+    //   ]
+    // }],
+
     [
-      '@vuepress/active-header-links',
+      'vuepress-plugin-baidu-tongji', // 百度统计
       {
-        sidebarLinkSelector: '.sidebar-link',
-        headerAnchorSelector: '.header-anchor',
-      },
+        hm: baiduCode || '01293bffa6c3962016c08ba685c79d78'
+      }
     ],
-    ['@vuepress/back-to-top', true],
+
     [
-      '@vuepress/pwa',
+      'one-click-copy',
       {
-        serviceWorker: true,
-        updatePopup: true,
-      },
+        // 代码块复制按钮
+        copySelector: ['div[class*="language-"] pre', 'div[class*="aside-code"] aside'], // String or Array
+        copyMessage: '复制成功', // default is 'Copy successfully and then paste it for use.'
+        duration: 1000, // prompt message display time.
+        showInMobile: false // whether to display on the mobile side, default: false.
+      }
     ],
     [
-      '@vuepress/last-updated',
+      'demo-block',
+      {
+        // demo演示模块 https://github.com/xiguaxigua/vuepress-plugin-demo-block
+        settings: {
+          // jsLib: ['http://xxx'], // 在线示例(jsfiddle, codepen)中的js依赖
+          // cssLib: ['http://xxx'], // 在线示例中的css依赖
+          // vue: 'https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js', // 在线示例中的vue依赖
+          jsfiddle: false, // 是否显示 jsfiddle 链接
+          codepen: true, // 是否显示 codepen 链接
+          horizontal: false // 是否展示为横向样式
+        }
+      }
+    ],
+    [
+      'vuepress-plugin-zooming', // 放大图片
+      {
+        selector: '.theme-vdoing-content img:not(.no-zoom)',
+        options: {
+          bgColor: 'rgba(0,0,0,0.6)'
+        }
+      }
+    ],
+    [
+      '@vuepress/last-updated', // "上次更新"时间格式
       {
         transformer: (timestamp, lang) => {
-          // 不要忘了安装 moment
-          const moment = require('moment')
-          moment.locale(lang)
-          return moment(timestamp).fromNow()
-        },
-      },
-    ],
-    ['@vuepress/medium-zoom', true],
-    [
-      'container',
-      {
-        type: 'vue',
-        before: '<pre class="vue-container"><code>',
-        after: '</code></pre>',
-      },
-    ],
-    [
-      'container',
-      {
-        type: 'upgrade',
-        before: (info) => `<UpgradePath title="${info}">`,
-        after: '</UpgradePath>',
-      },
-    ],
-    ['flowchart'],
+          const dayjs = require('dayjs') // https://day.js.org/
+          return dayjs(timestamp).format('YYYY/MM/DD, HH:mm:ss')
+        }
+      }
+    ]
   ],
+
+  markdown: {
+    // lineNumbers: true,
+    extractHeaders: ['h2', 'h3', 'h4', 'h5', 'h6'] // 提取标题到侧边栏的级别，默认['h2', 'h3']
+  },
+
+  // 监听文件变化并重新构建
+  extraWatchFiles: ['.vuepress/config.js', '.vuepress/config/htmlModules.js']
 }

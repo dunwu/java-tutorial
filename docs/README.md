@@ -1,14 +1,31 @@
 ---
 home: true
-heroImage: https://raw.githubusercontent.com/dunwu/images/dev/common/dunwu-logo-200.png
+heroImage: img/bg.gif
 heroText: JAVA-TUTORIAL
 tagline: ☕ java-tutorial 是一个 Java 教程，汇集一个老司机在 Java 领域的十年积累。
-actionLink: /
-footer: CC-BY-SA-4.0 Licensed | Copyright © 2018-Now Dunwu
+bannerBg: none
+postList: none
 ---
 
-![license](https://badgen.net/github/license/dunwu/java-tutorial)
-![build](https://travis-ci.com/dunwu/java-tutorial.svg?branch=master)
+<p align="center">
+
+  <a href="https://github.com/dunwu/java-tutorial">
+      <img alt="star" class="no-zoom" src="https://img.shields.io/github/stars/dunwu/java-tutorial?style=for-the-badge">
+  </a>
+
+  <a href="https://github.com/dunwu/java-tutorial">
+      <img alt="fork" class="no-zoom" src="https://img.shields.io/github/forks/dunwu/java-tutorial?style=for-the-badge">
+  </a>
+
+  <a href="https://github.com/dunwu/java-tutorial/commits/master">
+      <img alt="commit" class="no-zoom" src="https://img.shields.io/github/workflow/status/dunwu/java-tutorial/CI?style=for-the-badge">
+  </a>
+
+  <a href="https://www.apache.org/licenses/LICENSE-2.0">
+      <img alt="code style" class="no-zoom" src="https://img.shields.io/github/license/dunwu/java-tutorial?style=for-the-badge">
+  </a>
+
+</p>
 
 > ☕ **java-tutorial** 是一个 Java 教程，汇集一个老司机在 Java 领域的十年积累。
 >
@@ -20,129 +37,74 @@ footer: CC-BY-SA-4.0 Licensed | Copyright © 2018-Now Dunwu
 > - 下面的内容清单中，凡是有 📚 标记的技术，都已整理成详细的教程。
 > - 部分技术因为可以应用于不同领域，所以可能会同时出现在不同的类别下。
 
-## 📖 内容
+- [Tomcat 应用指南](02.Java软件/03.Java服务器/01.Tomcat/01.Tomcat应用指南.md)
+- [Tomcat 连接器](02.Java软件/03.Java服务器/01.Tomcat/02.Tomcat连接器.md)
+- [Tomcat 容器](02.Java软件/03.Java服务器/01.Tomcat/03.Tomcat容器.md)
+- [Tomcat 优化](02.Java软件/03.Java服务器/01.Tomcat/04.Tomcat优化.md)
+- [Tomcat 和 Jetty](02.Java软件/03.Java服务器/01.Tomcat/05.Tomcat和Jetty.md)
+- [Jetty](02.Java软件/03.Java服务器/02.Jetty.md)
 
-### JavaSE
+#### Java 监控诊断
 
-> 📚 [javacore](https://dunwu.github.io/javacore/) 是一个 Java 核心技术教程。内容包含：Java 基础特性、Java 高级特性、Java 并发、JVM、Java IO 等。
+> [监控/诊断](02.Java软件/04.Java监控诊断) 工具主要用于 Java 应用的运维。通过采集、分析、存储、可视化应用的有效数据，帮助开发者、使用者快速定位问题，找到性能瓶颈。
 
-### JavaEE
-
-> [☕ JavaEE](javaee/README.md) 技术是 Java Web 的基石
-
-- [JavaEE 面经](javaee/javaee-interview.md)
-- [JavaEE 之 Servlet 指南](javaee/javaee-servlet.md)
-- [JavaEE 之 Jsp 指南](javaee/javaee-jsp.md)
-- [JavaEE 之 Filter 和 Listener](javaee/javaee-filter-listener.md)
-- [JavaEE 之 Cookie 和 Session](javaee/javaee-cookie-sesion.md)
+- [监控工具对比](02.Java软件/04.Java监控诊断/01.监控诊断工具.md)
+- [CAT](02.Java软件/04.Java监控诊断/02.CAT.md)
+- [Zipkin](02.Java软件/04.Java监控诊断/03.Zipkin.md)
+- [SkyWalking](02.Java软件/04.Java监控诊断/04.Skywalking.md)
+- [Arthas](02.Java软件/04.Java监控诊断/05.Arthas.md)
 
 ### Java 工具
 
-#### 构建
+#### Java 序列化工具
 
-> Java 项目需要通过 [**构建工具**](tool/build) 来管理项目依赖，完成编译、打包、发布、生成 JavaDoc 等任务。
->
-> - 目前最主流的构建工具是 Maven，它的功能非常强大。
-> - Gradle 号称是要替代 Maven 等构件工具，它的版本管理确实简洁，但是需要学习 Groovy，学习成本比 Maven 高。
-> - Ant 功能比 Maven 和 Gradle 要弱，现代 Java 项目基本不用了，但也有一些传统的 Java 项目还在使用。
+- [JSON 序列化](03.Java工具/01.Java序列化工具/01.JSON序列化.md) - [fastjson](https://github.com/alibaba/fastjson)、[Jackson](https://github.com/FasterXML/jackson)、[Gson](https://github.com/google/gson)
+- [二进制序列化](03.Java工具/01.Java序列化工具/02.二进制序列化.md) - [Protobuf](https://developers.google.com/protocol-buffers)、[Thrift](https://thrift.apache.org/)、[Hessian](http://hessian.caucho.com/)、[Kryo](https://github.com/EsotericSoftware/kryo)、[FST](https://github.com/RuedigerMoeller/fast-serialization)
 
-- [Maven](tool/build/maven) 📚
-  - [Maven 入门指南](tool/build/maven/maven-quickstart.md)
-  - [Maven 教程之 pom.xml 详解](tool/build/maven/maven-pom.md)
-  - [Maven 教程之 settings.xml 详解](tool/build/maven/maven-settings.md)
-  - [Maven 实战问题和最佳实践](tool/build/maven/maven-action.md)
-  - [Maven 教程之发布 jar 到私服或中央仓库](tool/build/maven/maven-deploy.md)
-  - [Maven 插件之代码检查](tool/build/maven/maven-checkstyle-plugin.md)
-- [Ant 简易教程](tool/build/ant.md)
+#### JavaBean 工具
 
-#### IDE
+- [Lombok](03.Java工具/02.JavaBean工具/01.Lombok.md)
+- [Dozer](03.Java工具/02.JavaBean工具/02.Dozer.md)
 
-> 自从有了 [**IDE**](tool/ide)，写代码从此就告别了刀耕火种的蛮荒时代。
->
-> - [Eclipse](tool/ide/eclipse.md) 是久负盛名的开源 Java IDE，我的学生时代一直使用它写 Java。
-> - 曾经抗拒从转 [Intellij Idea](tool/ide/intellij-idea.md) ，但后来发现真香，不得不说，确实是目前最优秀的 Java IDE。
-> - 你可以在 [vscode](tool/ide/vscode.md) 中写各种语言，只要安装相应插件即可。如果你的项目中使用了很多种编程语言，又懒得在多个 IDE 之间切换，那么就用 vscode 来一网打尽吧。
+#### Java 模板引擎
 
-- [Intellij Idea](tool/ide/intellij-idea.md)
-- [Eclipse](tool/ide/eclipse.md)
-- [vscode](tool/ide/vscode.md)
+- [Freemark](03.Java工具/03.Java模板引擎/01.Freemark.md)
+- [Velocity](03.Java工具/03.Java模板引擎/02.Thymeleaf.md)
+- [Thymeleaf](03.Java工具/03.Java模板引擎/03.Velocity.md)
 
-#### 监控/诊断
+#### Java 测试工具
 
-> [监控/诊断](tool/monitor) 工具主要用于 Java 应用的运维。通过采集、分析、存储、可视化应用的有效数据，帮助开发者、使用者快速定位问题，找到性能瓶颈。
-
-- [监控工具对比](tool/monitor/monitor-summary.md)
-- [CAT](tool/monitor/cat.md)
-- [Zipkin](tool/monitor/zipkin.md)
-- [SkyWalking](tool/monitor/skywalking.md)
-- [Arthas](tool/monitor/arthas.md)
-
-### [框架](framework)
-
-#### Spring
-
-[spring-tutorial 📚](https://dunwu.github.io/spring-tutorial/) 是一个 Spring 实战教程。
-
-#### Spring Boot
-
-[Spring Boot 教程 📚](https://dunwu.github.io/spring-boot-tutorial/) 是一个 Spring Boot 实战教程。
+- [Freemark](03.Java工具/04.Java测试工具/01.Junit.md)
+- [Velocity](03.Java工具/04.Java测试工具/02.Mockito.md)
+- [Thymeleaf](03.Java工具/04.Java测试工具/03.Jmeter.md)
+- [Thymeleaf](03.Java工具/04.Java测试工具/04.JMH.md)
 
 #### 其他
 
-- [Spring Cloud](https://github.com/dunwu/spring-cloud-tutorial) 📚
-- [MyBatis](framework/mybatis)
-  - [Mybatis 应用指南](framework/mybatis/Mybatis应用指南.md)
-  - [Mybatis 原理](framework/mybatis/Mybatis原理.md)
-- [Netty](framework/netty.md)
+- [Java 日志](03.Java工具/05.其他Java工具/01.Java日志.md)
+- [Java 工具包](03.Java工具/05.其他Java工具/02.Java工具包.md)
+- [Java 反射工具](03.Java工具/05.其他Java工具/03.Java反射工具.md)
+- [JavaMail](03.Java工具/05.其他Java工具/04.JavaMail.md)
+- [Jsoup 应用](03.Java工具/05.其他Java工具/05.Jsoup应用.md)
+- [Thumbnailator 应用](03.Java工具/05.其他Java工具/06.Thumbnailator应用.md)
+- [Zxing 应用](03.Java工具/05.其他Java工具/07.Zxing应用.md)
 
-### [消息队列](mq)
+### Java 框架
 
-> 消息队列（Message Queue，简称 MQ）技术是分布式应用间交换信息的一种技术。
->
-> 消息队列主要解决应用耦合，异步消息，流量削锋等问题，实现高性能，高可用，可伸缩和最终一致性架构。是大型分布式系统不可缺少的中间件。
->
-> 如果想深入学习各种消息队列产品，建议先了解一下 [消息队列基本原理](https://github.com/dunwu/blog/blob/master/source/_posts/theory/mq.md) ，有助于理解消息队列特性的实现和设计思路。
+#### Spring
 
-- [消息队列基本原理](mq/消息队列基本原理.md)
-- [消息队列面试题](mq/消息队列面试.md) 💯
-- [Kafka](https://dunwu.github.io/bigdata-tutorial/kafka) 📚
-- [RocketMQ](mq/rocketmq.md)
-- [ActiveMQ](mq/activemq.md)
+📚 [spring-tutorial](https://dunwu.github.io/spring-tutorial/) 是一个 Spring 实战教程。
 
-### [缓存](cache)
+#### Spring Boot
 
-> 缓存可以说是优化系统性能的第一手段，在各种技术中都会有缓存的应用。
->
-> 如果想深入学习缓存，建议先了解一下 [缓存基本原理](https://dunwu.github.io/design/distributed/分布式缓存.html)，有助于理解缓存的特性、原理，使用缓存常见的问题及解决方案。
+📚 [Spring Boot 教程](https://dunwu.github.io/spring-boot-tutorial/) 是一个 Spring Boot 实战教程。
 
-- [缓存面试题](cache/cache-interview.md) 💯
-- [缓存基本原理](https://dunwu.github.io/design/distributed/分布式缓存.html)
-- [Java 缓存框架](cache/cache-framework.md) - 关键词：Spring Cache、J2Cache、JetCache
-- [Redis 教程](https://dunwu.github.io/db-tutorial/nosql/redis/) 📚
-- [Memcached 应用指南](cache/memcached.md)
-- [Java 缓存库](cache/cache-libs.md) - 关键词：ConcurrentHashMap、LRUHashMap、Guava Cache、Caffeine、Ehcache
-- [Ehcache 应用指南](cache/ehcache.md)
-- [Http 缓存](cache/http-cache.md)
+#### ORM
 
-### [微服务](microservice)
+- [Mybatis 应用指南](04.Java框架/01.ORM/01.Mybatis应用指南.md)
+- [Mybatis 原理](04.Java框架/01.ORM/02.Mybatis原理.md)
 
-- [Dubbo](microservice/dubbo.md)
-- [**Spring Cloud**](https://github.com/dunwu/spring-cloud-tutorial) 📚
-  - Eureka
-  - Consul
-  - Nacos
-  - Zuul
-  - Gateway
-- 通信
-  - [Netty](framework/netty.md)
-
-### 搜索引擎
-
-- [ElasticSearch](https://dunwu.github.io/db-tutorial/nosql/elasticsearch/) 📚
-- Solr
-- Lucene
-
-### [安全](security)
+#### 安全
 
 > Java 领域比较流行的安全框架就是 shiro 和 spring-security。
 >
@@ -150,28 +112,48 @@ footer: CC-BY-SA-4.0 Licensed | Copyright © 2018-Now Dunwu
 >
 > spring-security 功能更丰富，也比 shiro 更复杂。值得一提的是由于 spring-security 是 spring 团队开发，所以集成 spring 和 spring-boot 框架更容易。
 
-- [Shiro](security/shiro.md)
-- [Spring Security](security/spring-security.md)
+- [Shiro](04.Java框架/02.安全/01.Shiro.md)
+- [SpringSecurity](04.Java框架/02.安全/02.SpringSecurity.md)
 
-### [测试](test)
+#### IO
 
-- [Junit](test/junit.md)
-- [Mockito](test/mockito.md)
-- [JMH](test/jmh.md)
-- [Jmeter](test/jmeter.md)
+- [Shiro](04.Java框架/03.IO/01.Netty.md)
 
-### [服务器](server)
+### Java 中间件
 
-> Tomcat 和 Jetty 都是 Java 比较流行的轻量级服务器。
+#### 消息队列
+
+> 消息队列（Message Queue，简称 MQ）技术是分布式应用间交换信息的一种技术。
 >
-> Nginx 是目前最流行的反向代理服务器，也常用于负载均衡。
+> 消息队列主要解决应用耦合，异步消息，流量削锋等问题，实现高性能，高可用，可伸缩和最终一致性架构。是大型分布式系统不可缺少的中间件。
+>
+> 如果想深入学习各种消息队列产品，建议先了解一下 [消息队列基本原理](https://github.com/dunwu/blog/blob/master/source/_posts/theory/mq.md) ，有助于理解消息队列特性的实现和设计思路。
 
-- [Tomcat 应用指南](server/Tomcat应用指南.md)
-- [Tomcat 连接器](server/Tomcat连接器.md)
-- [Tomcat 容器](server/Tomcat容器.md)
-- [Tomcat 优化](server/Tomcat优化.md)
-- [Jetty](server/jetty.md)
-- [Nginx](https://github.com/dunwu/nginx-tutorial) 📚
+- [消息队列面试](05.Java中间件/01.消息队列/01.消息队列面试.md)
+- [消息队列基本原理](05.Java中间件/01.消息队列/02.消息队列基本原理.md)
+- [RocketMQ](05.Java中间件/01.消息队列/03.RocketMQ.md)
+- [ActiveMQ](05.Java中间件/01.消息队列/04.ActiveMQ.md)
+
+#### 缓存
+
+> 缓存可以说是优化系统性能的第一手段，在各种技术中都会有缓存的应用。
+>
+> 如果想深入学习缓存，建议先了解一下 [缓存基本原理](https://dunwu.github.io/design/distributed/分布式缓存.html)，有助于理解缓存的特性、原理，使用缓存常见的问题及解决方案。
+
+- [缓存面试题](05.Java中间件/02.缓存/01.缓存面试题.md)
+- [Java 缓存框架](05.Java中间件/02.缓存/02.Java缓存框架.md)
+- [Memcached 应用指南](05.Java中间件/02.缓存/03.Memcached应用指南.md)
+- [Ehcache 应用指南](05.Java中间件/02.缓存/04.Ehcache应用指南.md)
+- [Java 缓存库](05.Java中间件/02.缓存/05.Java缓存库.md)
+- [Http 缓存](05.Java中间件/02.缓存/06.Http缓存.md)
+
+#### 流量控制
+
+- [Hystrix](05.Java中间件/03.流量控制/01.Hystrix.md)
+
+#### 微服务
+
+- [Dubbo](05.Java中间件/04.微服务/01.Dubbo.md)
 
 ### [大数据](https://dunwu.github.io/bigdata-tutorial)
 
@@ -187,21 +169,6 @@ footer: CC-BY-SA-4.0 Licensed | Copyright © 2018-Now Dunwu
 - Spark
 - Storm
 - [Flink](https://dunwu.github.io/bigdata-tutorial/tree/master/docs/flink)
-
-### [LIB](lib)
-
-- [日志](lib/javalib-log.md) - [log4j2](https://logging.apache.org/log4j/2.x/)、[logback](https://logback.qos.ch/)、log4j、[Slf4j](http://www.slf4j.org/)
-- [序列化](lib/serialized/)
-  - [JSON](lib/serialized/javalib-json.md) - [fastjson](https://github.com/alibaba/fastjson)、[Jackson](https://github.com/FasterXML/jackson)、[Gson](https://github.com/google/gson)
-  - [二进制](lib/serialized/javalib-binary.md) - [Protobuf](https://developers.google.com/protocol-buffers)、[Thrift](https://thrift.apache.org/)、[Hessian](http://hessian.caucho.com/)、[Kryo](https://github.com/EsotericSoftware/kryo)、[FST](https://github.com/RuedigerMoeller/fast-serialization)
-- [模板引擎](lib/template) - [Freemark](lib/template/freemark.md)、[Velocity](lib/template/velocity.md)、[Thymeleaf](lib/template/thymeleaf.md)
-- JavaBean - [Lombok](lib/bean/lombok.md)、[Dozer](lib/bean/dozer.md)
-- 工具包
-  - [apache common](https://commons.apache.org/) - 老牌 Java 工具集
-  - [guava](https://github.com/google/guava) - Google Java 工具包
-  - [hutool](https://github.com/dromara/hutool) - Hutool 是一个小而全的 Java 工具类库，且中文文档、注释比较齐备
-- 辅助
-  - [swagger](https://swagger.io/) - 自动生成 API 文档（半侵入式）
 
 ## 📚 资料
 
@@ -232,3 +199,18 @@ footer: CC-BY-SA-4.0 Licensed | Copyright © 2018-Now Dunwu
 - [数据结构和算法教程](https://dunwu.github.io/algorithm-tutorial/) 📚
 - [Linux 教程](https://dunwu.github.io/linux-tutorial/) 📚
 - [Nginx 教程](https://github.com/dunwu/nginx-tutorial/) 📚
+
+<script>
+export default {
+  mounted () {
+    var xmlHttp = new XMLHttpRequest()
+    xmlHttp.open("GET", "https://img.shields.io/maven-central/v/com.dunwu/java-tutorial.json", false)
+    xmlHttp.send(null)
+    var mpVersion = JSON.parse(xmlHttp.responseText).value.replace('v', '')
+    var codeNodeList = document.querySelectorAll('code')
+    for (var i = 0; i < codeNodeList.length; i++) {
+        codeNodeList[i].innerHTML = codeNodeList[i].innerHTML.replace('latest-version', mpVersion)
+    }
+  }
+}
+</script>
