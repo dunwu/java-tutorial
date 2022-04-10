@@ -61,7 +61,7 @@ module.exports = {
 
     docsDir: 'docs', // 编辑的文件夹
     editLinks: true, // 编辑链接
-    editLinkText: '编辑',
+    editLinkText: '📝 帮助改善此页面！',
 
     // 以下配置是Vdoing主题改动的和新增的配置
     sidebar: { mode: 'structuring', collapsable: false }, // 侧边栏  'structuring' | { mode: 'structuring', collapsable: Boolean} | 'auto' | 自定义    温馨提示：目录页数据依赖于结构化的侧边栏数据，如果你不设置为'structuring',将无法使用目录页
@@ -69,7 +69,7 @@ module.exports = {
     // sidebarOpen: false, // 初始状态是否打开侧边栏，默认true
     updateBar: {
       // 最近更新栏
-      showToArticle: false // 显示到文章页底部，默认true
+      showToArticle: true // 显示到文章页底部，默认true
       // moreArticle: '/archives' // “更多文章”跳转的页面，默认'/archives'
     },
     // titleBadge: false, // 文章标题前的图标是否显示，默认true
@@ -122,10 +122,14 @@ module.exports = {
 
   // 插件
   plugins: [
-    // [require('./plugins/love-me'), { // 鼠标点击爱心特效
-    //   color: '#11a8cd', // 爱心颜色，默认随机色
-    //   excludeClassName: 'theme-vdoing-content' // 要排除元素的class, 默认空''
-    // }],
+    [
+      require('./plugins/love-me'),
+      {
+        // 鼠标点击爱心特效
+        color: '#11a8cd', // 爱心颜色，默认随机色
+        excludeClassName: 'theme-vdoing-content' // 要排除元素的class, 默认空''
+      }
+    ],
 
     ['fulltext-search'], // 全文搜索
 
@@ -146,13 +150,6 @@ module.exports = {
     //     }
     //   ]
     // }],
-
-    [
-      'vuepress-plugin-baidu-tongji', // 百度统计
-      {
-        hm: baiduCode || '01293bffa6c3962016c08ba685c79d78'
-      }
-    ],
 
     [
       'one-click-copy',
