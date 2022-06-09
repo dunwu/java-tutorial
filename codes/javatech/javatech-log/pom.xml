@@ -8,7 +8,7 @@
     <artifactId>javatech-log</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
-    <name>Java 日志</name>
+    <name>JAVATECH-日志示例</name>
 
     <modules>
         <module>javatech-log4j</module>

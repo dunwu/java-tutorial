@@ -13,7 +13,7 @@
     <artifactId>javatech-cache</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
-    <name>Java 缓存</name>
+    <name>JAVATECH-缓存示例</name>
 
     <dependencies>
         <dependency>

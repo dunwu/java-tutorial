@@ -13,7 +13,7 @@
     <artifactId>javatech-kafka-springboot</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
-    <name>Java 消息队列 Kafka + Spring Boot</name>
+    <name>JAVATECH-MQ示例-Kafka+SpringBoot</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

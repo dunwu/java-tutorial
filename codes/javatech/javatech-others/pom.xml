@@ -8,7 +8,7 @@
     <artifactId>javatech-others</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
-    <name>Java 其他</name>
+    <name>JAVATECH-其他示例</name>
 
     <modules>
         <module>javatech-cli</module>

@@ -8,7 +8,7 @@
     <artifactId>javatech-mq</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
-    <name>Java 消息队列</name>
+    <name>JAVATECH-MQ示例</name>
 
     <modules>
         <module>javatech-kafka</module>

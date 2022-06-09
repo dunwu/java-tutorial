@@ -12,12 +12,10 @@
 
     <modules>
         <module>javatech-cache</module>
-        <module>javatech-io</module>
         <module>javatech-lib</module>
         <module>javatech-log</module>
         <module>javatech-mq</module>
         <module>javatech-server</module>
-        <module>javatech-test</module>
         <module>javatech-others</module>
     </modules>
 </project>

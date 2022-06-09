@@ -7,14 +7,14 @@
     <parent>
         <groupId>io.github.dunwu</groupId>
         <artifactId>dunwu-parent</artifactId>
-        <version>1.0.7</version>
+        <version>1.0.8</version>
     </parent>
 
     <groupId>io.github.dunwu.javatech</groupId>
     <artifactId>javatech-server</artifactId>
     <version>1.0.0</version>
     <packaging>war</packaging>
-    <name>Java 服务器</name>
+    <name>JAVATECH-服务器示例</name>
 
     <properties>
         <tomcat.version>[8.5.40,)</tomcat.version>

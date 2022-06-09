@@ -8,14 +8,14 @@
     <parent>
         <groupId>io.github.dunwu</groupId>
         <artifactId>dunwu-parent</artifactId>
-        <version>1.0.7</version>
+        <version>1.0.8</version>
     </parent>
 
     <groupId>io.github.dunwu.javatech</groupId>
     <artifactId>javatech-ruleengine</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
-    <name>Java 其他 - 规则引擎</name>
+    <name>JAVATECH-其他示例-规则引擎</name>
 
     <properties>
         <easy-rules.version>3.4.0</easy-rules.version>

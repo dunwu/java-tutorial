@@ -7,14 +7,14 @@
     <parent>
         <groupId>io.github.dunwu</groupId>
         <artifactId>dunwu-parent</artifactId>
-        <version>1.0.7</version>
+        <version>1.0.8</version>
     </parent>
 
     <groupId>io.github.dunwu.javatech</groupId>
     <artifactId>javatech-kafka</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
-    <name>Java 消息队列 Kafka</name>
+    <name>JAVATECH-MQ示例-Kafka</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
