@@ -16,7 +16,7 @@
     <name>JAVATECH-工具包示例</name>
 
     <properties>
-        <poi.version>4.0.0</poi.version>
+        <poi.version>4.1.1</poi.version>
         <jmh.version>1.22</jmh.version>
     </properties>
 
