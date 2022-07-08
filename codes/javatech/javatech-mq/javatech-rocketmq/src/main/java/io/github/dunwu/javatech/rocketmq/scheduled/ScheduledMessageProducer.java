@@ -1,5 +1,6 @@
-package io.github.dunwu.javatech.rocketmq;
+package io.github.dunwu.javatech.rocketmq.scheduled;
 
+import io.github.dunwu.javatech.rocketmq.RocketConstant;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.common.message.Message;
 
@@ -13,6 +14,8 @@ public class ScheduledMessageProducer {
 	public static void main(String[] args) throws Exception {
 		// Instantiate a producer to send scheduled messages
 		DefaultMQProducer producer = new DefaultMQProducer("ExampleProducerGroup");
+        // Specify name server addresses.
+        producer.setNamesrvAddr(RocketConstant.HOST);
 		// Launch producer
 		producer.start();
 		int totalMessagesToSend = 100;
