@@ -121,8 +121,8 @@
 #### Java 模板引擎
 
 - [Freemark](docs/12.工具/03.模板引擎/01.Freemark.md)
-- [Velocity](docs/12.工具/03.模板引擎/02.Thymeleaf.md)
-- [Thymeleaf](docs/12.工具/03.模板引擎/03.Velocity.md)
+- [Velocity](docs/12.工具/03.模板引擎/03.Velocity.md)
+- [Thymeleaf](docs/12.工具/03.模板引擎/02.Thymeleaf.md)
 
 #### Java 测试工具
 
