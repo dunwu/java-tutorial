@@ -1,7 +1,9 @@
 package io.github.dunwu.javatech.controller;
 
+import io.github.dunwu.javatech.service.HelloService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,6 +23,9 @@ public class HelloController {
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
+    @Autowired
+    private HelloService helloService;
+
     /**
      * <p>
      * 在本例中，Spring将会将数据传给 hello.jsp
@@ -31,7 +36,7 @@ public class HelloController {
     public ModelAndView hello(@RequestParam("name") String name) {
         ModelAndView mav = new ModelAndView();
         mav.addObject("message", "你好，" + name);
-        mav.setViewName("hello");
+        mav.setViewName(helloService.hello());
         return mav;
     }
 
