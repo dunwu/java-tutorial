@@ -16,7 +16,7 @@
     <name>JAVATECH-工具包示例</name>
 
     <properties>
-        <poi.version>4.0.0</poi.version>
+        <poi.version>5.2.2</poi.version>
         <jmh.version>1.22</jmh.version>
     </properties>
 
@@ -53,7 +53,7 @@
         <dependency>
             <groupId>com.esotericsoftware</groupId>
             <artifactId>kryo</artifactId>
-            <version>5.0.0-RC4</version>
+            <version>5.3.0</version>
         </dependency>
 
         <!--日志工具包-->
@@ -73,7 +73,7 @@
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
-            <version>4.9.3</version>
+            <version>4.10.0</version>
         </dependency>
 
         <!-- OFFICE文件解析工具包 -->
@@ -97,7 +97,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>easyexcel</artifactId>
-            <version>2.2.6</version>
+            <version>3.1.1</version>
         </dependency>
 
         <!--xml解析工具包-->
@@ -111,7 +111,7 @@
         <dependency>
             <groupId>com.github.javaparser</groupId>
             <artifactId>javaparser-symbol-solver-core</artifactId>
-            <version>3.24.0</version>
+            <version>3.24.2</version>
         </dependency>
 
         <!--汉字转拼音-->

@@ -12,8 +12,8 @@ class RepeatedTests {
         int currentRepetition = repetitionInfo.getCurrentRepetition();
         int totalRepetitions = repetitionInfo.getTotalRepetitions();
         String methodName = testInfo.getTestMethod().get().getName();
-        System.out.println(String.format("About to execute repetition %d of %d for %s", //
-                                         currentRepetition, totalRepetitions, methodName));
+        System.out.printf("About to execute repetition %d of %d for %s%n", //
+                          currentRepetition, totalRepetitions, methodName);
     }
 
     @RepeatedTest(value = 1, name = "{displayName} {currentRepetition}/{totalRepetitions}")
