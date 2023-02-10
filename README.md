@@ -15,7 +15,7 @@
   </a>
 
   <a href="https://github.com/dunwu/java-tutorial/commits/master">
-      <img alt="commit" class="no-zoom" src="https://img.shields.io/github/workflow/status/dunwu/java-tutorial/CI?style=for-the-badge">
+      <img alt="build" class="no-zoom" src="https://img.shields.io/github/actions/workflow/status/dunwu/java-tutorial/deploy.yml?style=for-the-badge">
   </a>
 
   <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">
@@ -183,7 +183,7 @@
 >
 > 消息队列主要解决应用耦合，异步消息，流量削锋等问题，实现高性能，高可用，可伸缩和最终一致性架构。是大型分布式系统不可缺少的中间件。
 >
-> 如果想深入学习各种消息队列产品，建议先了解一下 [消息队列基本原理](https://github.com/dunwu/blog/blob/master/source/_posts/theory/mq.md) ，有助于理解消息队列特性的实现和设计思路。
+> 如果想深入学习各种消息队列产品，建议先了解一下 [消息队列基本原理](https://dunwu.github.io/blog/pages/1fd240/) ，有助于理解消息队列特性的实现和设计思路。
 
 - [消息队列面试](docs/14.中间件/01.MQ/01.消息队列面试.md)
 - [消息队列基本原理](docs/14.中间件/01.MQ/02.消息队列基本原理.md)
