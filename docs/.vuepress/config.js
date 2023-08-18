@@ -14,45 +14,54 @@ module.exports = {
     ['link', { rel: 'icon', href: '/img/favicon.ico' }], //favicons，资源放在public文件夹
     ['meta', { name: 'keywords', content: 'vuepress,theme,blog,vdoing' }],
     ['meta', { name: 'theme-color', content: '#11a8cd' }], // 移动浏览器主题颜色
+
+    ['meta', { name: 'wwads-cn-verify', content: 'mxqWx62nfQQ9ocT4e5DzISHzOWyF4s' }], // 广告相关，你可以去掉
+    ['script', { src: 'https://cdn.wwads.cn/js/makemoney.js', type: 'text/javascript' }], // 广告相关，你可以去掉
   ],
   markdown: {
     // lineNumbers: true,
     extractHeaders: ['h2', 'h3', 'h4', 'h5', 'h6'], // 提取标题到侧边栏的级别，默认['h2', 'h3']
     externalLinks: {
       target: '_blank',
-      rel: 'noopener noreferrer',
-    },
+      rel: 'noopener noreferrer'
+    }
   },
   // 主题配置
   themeConfig: {
     nav: [
-      {
-        text: 'JavaEE',
-        items: [
-          { text: 'JavaWeb', link: '/02.JavaEE/01.JavaWeb/' },
-          { text: '服务器', link: '/02.JavaEE/02.服务器/' },
-        ],
-      },
+      { text: '首页', link: '/' },
+      { text: 'JavaEE', link: '/01.JavaEE/' },
       {
         text: 'Java软件',
-        link: '/11.软件/',
+        link: '/02.Java软件/',
         items: [
-          { text: 'Java构建', link: '/11.软件/01.构建/' },
-          { text: 'Java IDE', link: '/11.软件/02.IDE/' },
-          { text: 'Java监控诊断', link: '/11.软件/03.监控诊断/' },
-        ],
+          { text: 'Java构建', link: '/02.Java软件/01.Java构建/' },
+          { text: 'Java IDE', link: '/02.Java软件/02.JavaIDE/' },
+          { text: 'Java服务器', link: '/02.Java软件/03.Java服务器/' },
+          { text: 'Java监控诊断', link: '/02.Java软件/04.Java监控诊断/' }
+        ]
       },
-      { text: 'Java工具', link: '/12.工具/' },
-      { text: 'Java框架', link: '/13.框架/' },
-      { text: 'Java中间件', link: '/14.中间件/' },
+      {
+        text: 'Java工具',
+        link: '/03.Java工具/',
+        items: [
+          { text: 'Java序列化工具', link: '/03.Java工具/01.Java序列化工具/' },
+          { text: 'JavaBean工具', link: '/03.Java工具/02.JavaBean工具/' },
+          { text: 'Java模板引擎', link: '/03.Java工具/03.Java模板引擎/' },
+          { text: 'Java测试工具', link: '/03.Java工具/04.Java测试工具/' },
+          { text: '其他', link: '/03.Java工具/05.其他Java工具/' }
+        ]
+      },
+      { text: 'Java框架', link: '/04.Java框架/' },
+      { text: 'Java中间件', link: '/05.Java中间件/' },
       {
         text: '✨ Java系列',
         ariaLabel: 'Java',
         items: [
           { text: 'Java 教程 📚', link: 'https://dunwu.github.io/java-tutorial/', target: '_blank' },
-          { text: 'JavaCore 教程 📚', link: 'https://dunwu.github.io/javacore/', target: '_blank' },
-        ],
-      },
+          { text: 'JavaCore 教程 📚', link: 'https://dunwu.github.io/javacore/', target: '_blank' }
+        ]
+      }
     ],
     sidebarDepth: 2, // 侧边栏显示深度，默认1，最大2（显示到h3标题）
     logo: 'https://raw.githubusercontent.com/dunwu/images/dev/common/dunwu-logo.png', // 导航栏logo
@@ -65,12 +74,13 @@ module.exports = {
     editLinkText: '📝 帮助改善此页面！',
 
     // 以下配置是Vdoing主题改动的和新增的配置
-    sidebar: { mode: 'structuring', collapsable: false }, // 侧边栏  'structuring' | { mode: 'structuring', collapsable: Boolean} | 'auto' | 自定义    温馨提示：目录页数据依赖于结构化的侧边栏数据，如果你不设置为'structuring',将无法使用目录页
+    sidebar: { mode: 'structuring', collapsable: true }, // 侧边栏  'structuring' | { mode: 'structuring', collapsable:
+    // Boolean} | 'auto' | 自定义    温馨提示：目录页数据依赖于结构化的侧边栏数据，如果你不设置为'structuring',将无法使用目录页
 
-    // sidebarOpen: false, // 初始状态是否打开侧边栏，默认true
+    sidebarOpen: true, // 初始状态是否打开侧边栏，默认true
     updateBar: {
       // 最近更新栏
-      showToArticle: true, // 显示到文章页底部，默认true
+      showToArticle: true // 显示到文章页底部，默认true
       // moreArticle: '/archives' // “更多文章”跳转的页面，默认'/archives'
     },
     // titleBadge: false, // 文章标题前的图标是否显示，默认true
@@ -95,7 +105,7 @@ module.exports = {
     author: {
       // 文章默认的作者信息，可在md文件中单独配置此信息 String | {name: String, href: String}
       name: 'dunwu', // 必需
-      href: 'https://github.com/dunwu', // 可选的
+      href: 'https://github.com/dunwu' // 可选的
     },
     social: {
       // 社交图标，显示于博主信息栏和页脚栏
@@ -104,21 +114,21 @@ module.exports = {
         {
           iconClass: 'icon-youjian',
           title: '发邮件',
-          link: 'mailto:forbreak@163.com',
+          link: 'mailto:forbreak@163.com'
         },
         {
           iconClass: 'icon-github',
           title: 'GitHub',
-          link: 'https://github.com/dunwu',
-        },
-      ],
+          link: 'https://github.com/dunwu'
+        }
+      ]
     },
     footer: {
       // 页脚信息
       createYear: 2019, // 博客创建年份
-      copyrightInfo: '钝悟（dunwu） | CC-BY-SA-4.0', // 博客版权信息，支持a标签
+      copyrightInfo: '钝悟（dunwu） | CC-BY-SA-4.0' // 博客版权信息，支持a标签
     },
-    htmlModules,
+    htmlModules
   },
 
   // 插件
@@ -128,8 +138,8 @@ module.exports = {
       {
         // 鼠标点击爱心特效
         color: '#11a8cd', // 爱心颜色，默认随机色
-        excludeClassName: 'theme-vdoing-content', // 要排除元素的class, 默认空''
-      },
+        excludeClassName: 'theme-vdoing-content' // 要排除元素的class, 默认空''
+      }
     ],
 
     ['fulltext-search'], // 全文搜索
@@ -159,8 +169,8 @@ module.exports = {
         copySelector: ['div[class*="language-"] pre', 'div[class*="aside-code"] aside'], // String or Array
         copyMessage: '复制成功', // default is 'Copy successfully and then paste it for use.'
         duration: 1000, // prompt message display time.
-        showInMobile: false, // whether to display on the mobile side, default: false.
-      },
+        showInMobile: false // whether to display on the mobile side, default: false.
+      }
     ],
     [
       'demo-block',
@@ -172,18 +182,18 @@ module.exports = {
           // vue: 'https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js', // 在线示例中的vue依赖
           jsfiddle: false, // 是否显示 jsfiddle 链接
           codepen: true, // 是否显示 codepen 链接
-          horizontal: false, // 是否展示为横向样式
-        },
-      },
+          horizontal: false // 是否展示为横向样式
+        }
+      }
     ],
     [
       'vuepress-plugin-zooming', // 放大图片
       {
         selector: '.theme-vdoing-content img:not(.no-zoom)',
         options: {
-          bgColor: 'rgba(0,0,0,0.6)',
-        },
-      },
+          bgColor: 'rgba(0,0,0,0.6)'
+        }
+      }
     ],
     [
       '@vuepress/last-updated', // "上次更新"时间格式
@@ -191,11 +201,11 @@ module.exports = {
         transformer: (timestamp, lang) => {
           const dayjs = require('dayjs') // https://day.js.org/
           return dayjs(timestamp).format('YYYY/MM/DD, HH:mm:ss')
-        },
-      },
-    ],
+        }
+      }
+    ]
   ],
 
   // 监听文件变化并重新构建
-  extraWatchFiles: ['.vuepress/config.js', '.vuepress/config/htmlModules.js'],
+  extraWatchFiles: ['.vuepress/config.js', '.vuepress/config/htmlModules.js']
 }
