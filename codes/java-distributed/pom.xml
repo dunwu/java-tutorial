@@ -12,6 +12,7 @@
 
   <modules>
     <module>java-load-balance</module>
+    <module>java-rate-limit</module>
   </modules>
 
 </project>
