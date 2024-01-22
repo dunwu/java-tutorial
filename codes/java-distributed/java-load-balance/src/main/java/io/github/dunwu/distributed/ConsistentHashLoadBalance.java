@@ -1,4 +1,4 @@
-package io.github.dunwu.javatech;
+package io.github.dunwu.distributed;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;

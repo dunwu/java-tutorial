@@ -1,4 +1,4 @@
-package io.github.dunwu.javatech;
+package io.github.dunwu.distributed;
 
 public class StatisticsUtil {
 

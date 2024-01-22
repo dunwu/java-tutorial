@@ -1,4 +1,4 @@
-package io.github.dunwu.javatech.support;
+package io.github.dunwu.distributed.support;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;

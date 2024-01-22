@@ -1,4 +1,4 @@
-package io.github.dunwu.javatech;
+package io.github.dunwu.distributed;
 
 import cn.hutool.core.util.HashUtil;
 import cn.hutool.core.util.StrUtil;
