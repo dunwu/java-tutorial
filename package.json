@@ -14,7 +14,6 @@
     "show-help": "vuepress --help",
     "view-info": "vuepress view-info ./ --temp docs/.temp"
   },
-  "license": "MIT",
   "devDependencies": {
     "dayjs": "^1.11.7",
     "inquirer": "^9.1.4",

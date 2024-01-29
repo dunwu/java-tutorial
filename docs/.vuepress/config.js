@@ -16,7 +16,7 @@ module.exports = {
     ['meta', { name: 'theme-color', content: '#11a8cd' }], // 移动浏览器主题颜色
 
     ['meta', { name: 'wwads-cn-verify', content: 'mxqWx62nfQQ9ocT4e5DzISHzOWyF4s' }], // 广告相关，你可以去掉
-    ['script', { src: 'https://cdn.wwads.cn/js/makemoney.js', type: 'text/javascript' }], // 广告相关，你可以去掉
+    ['script', { src: 'https://cdn.wwads.cn/js/makemoney.js', type: 'text/javascript' }] // 广告相关，你可以去掉
   ],
   markdown: {
     // lineNumbers: true,
@@ -30,30 +30,28 @@ module.exports = {
   themeConfig: {
     nav: [
       { text: '首页', link: '/' },
-      { text: 'JavaEE', link: '/01.JavaEE/' },
+      { text: 'JavaEE', link: '/01.Java/02.JavaEE/' },
       {
         text: 'Java软件',
-        link: '/02.Java软件/',
+        link: '/01.Java/11.软件/',
         items: [
-          { text: 'Java构建', link: '/02.Java软件/01.Java构建/' },
-          { text: 'Java IDE', link: '/02.Java软件/02.JavaIDE/' },
-          { text: 'Java服务器', link: '/02.Java软件/03.Java服务器/' },
-          { text: 'Java监控诊断', link: '/02.Java软件/04.Java监控诊断/' }
+          { text: 'Java 构建', link: '/01.Java/11.软件/01.构建/' },
+          { text: 'Java IDE', link: '/01.Java/11.软件/02.IDE/' },
+          { text: 'Java 监控诊断', link: '/01.Java/11.软件/03.监控诊断/' }
         ]
       },
       {
         text: 'Java工具',
-        link: '/03.Java工具/',
+        link: '/01.Java/12.工具/',
         items: [
-          { text: 'Java序列化工具', link: '/03.Java工具/01.Java序列化工具/' },
-          { text: 'JavaBean工具', link: '/03.Java工具/02.JavaBean工具/' },
-          { text: 'Java模板引擎', link: '/03.Java工具/03.Java模板引擎/' },
-          { text: 'Java测试工具', link: '/03.Java工具/04.Java测试工具/' },
-          { text: '其他', link: '/03.Java工具/05.其他Java工具/' }
+          { text: 'Java IO 工具', link: '/01.Java/12.工具/01.IO/' },
+          { text: 'JavaBean 工具', link: '/01.Java/12.工具/02.JavaBean/' },
+          { text: 'Java 模板引擎', link: '/01.Java/12.工具/03.模板引擎/' },
+          { text: 'Java 测试工具', link: '/01.Java/12.工具/04.测试/' }
         ]
       },
-      { text: 'Java框架', link: '/04.Java框架/' },
-      { text: 'Java中间件', link: '/05.Java中间件/' },
+      { text: 'Java框架', link: '/01.Java/13.框架/' },
+      { text: 'Java中间件', link: '/01.Java/14.中间件/' },
       {
         text: '✨ Java系列',
         ariaLabel: 'Java',
